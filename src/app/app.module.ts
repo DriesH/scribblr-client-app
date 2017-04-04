@@ -12,29 +12,39 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { RegistrationFormComponent } from './components/registration-page/registration-form/registration-form.component';
 import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
 
+import { RegisterService } from './services/register.service';
+import { HttpHelperService } from './services/http-helper.service';
+import { JWTTokenService } from './services/jwttoken.service';
+
 // import { StoreModule } from '@ngrx/store';
 
 import { APP_ROUTES } from './_routes/app.routes';
 
+
+
 @NgModule({
-  declarations: [
-      AppComponent,
-      HomePageComponent,
-      NavBarComponent,
-      NavBarProfileComponent,
-      UrlSanitizerPipe,
-      RegistrationPageComponent,
-      RegistrationFormComponent,
-      BodyMovinBackgroundComponent
-  ],
-  imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      APP_ROUTES
-      // StoreModule disabled for now.
-  ],
-  providers: [],
-  bootstrap: [ AppComponent ]
+    declarations: [
+        AppComponent,
+        HomePageComponent,
+        NavBarComponent,
+        NavBarProfileComponent,
+        UrlSanitizerPipe,
+        RegistrationPageComponent,
+        RegistrationFormComponent,
+        BodyMovinBackgroundComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        APP_ROUTES
+        // StoreModule disabled for now.
+    ],
+    providers: [
+        RegisterService,
+        HttpHelperService,
+        JWTTokenService
+    ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

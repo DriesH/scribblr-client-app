@@ -15,7 +15,7 @@ const ROUTES: Routes = [
 
     // registration route.
     {
-        path: 'registration',
+        path: 'register',
         component: RegistrationPageComponent
         // TODO: add a route guard.
     }

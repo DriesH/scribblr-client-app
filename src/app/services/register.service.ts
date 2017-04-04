@@ -8,15 +8,22 @@ import { HttpHelperService } from './http-helper.service';
 
 import { API_ROUTES } from '../_api-routes/api.routes';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 @Injectable()
 export class RegisterService {
 
-    constructor(private http: Http, private _hhs: HttpHelperService) { }
+    registerRoute: string;
 
-    registerUser(formData): Observable<any> {
-        return this.http.post(API_ROUTES.registerRoutes.newUser, formData)
-          .map(this._hhs.extractData)
-          .catch(this._hhs.errorHandler);
+    constructor(private http: Http, private _hhs: HttpHelperService) {
+        this.registerRoute = API_ROUTES.baseUrl + API_ROUTES.registerRoutes.newUser;
     }
 
+    registerUser(formData): Observable<any> {
+        return this.http.post(this.registerRoute, formData)
+            .map(this._hhs.extractData)
+            .catch(this._hhs.errorHandler);
+    }
 }
