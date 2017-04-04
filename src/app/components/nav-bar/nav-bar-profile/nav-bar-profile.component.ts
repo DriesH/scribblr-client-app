@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-nav-bar-profile',
+  selector: 'scrblr-nav-bar-profile',
   templateUrl: './nav-bar-profile.component.html',
   styleUrls: ['./nav-bar-profile.component.scss']
 })
