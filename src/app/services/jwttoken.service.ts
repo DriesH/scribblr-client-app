@@ -5,7 +5,7 @@ export class JWTTokenService {
 
     constructor() { }
 
-    public storeToken(token): Promise<any> {
+    public setToken(token): Promise<any> {
         localStorage.removeItem('_token');
 
         return new Promise((resolve, reject) => {
@@ -18,6 +18,12 @@ export class JWTTokenService {
                 console.log('Error in storing token.');
                 reject(Error);
             }
+        });
+    }
+
+    public getToken(token): Promise<any> {
+        return new Promise((resolve, reject) => {
+            localStorage.getItem('_token');
         });
     }
 }
