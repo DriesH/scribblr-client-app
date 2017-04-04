@@ -15,10 +15,13 @@ import { BodyMovinBackgroundComponent } from './components/body-movin-background
 import { RegisterService } from './services/register.service';
 import { HttpHelperService } from './services/http-helper.service';
 import { JWTTokenService } from './services/jwttoken.service';
+import { AuthService } from './services/auth.service';
 
 // import { StoreModule } from '@ngrx/store';
 
 import { APP_ROUTES } from './_routes/app.routes';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
 
 
 
@@ -31,7 +34,9 @@ import { APP_ROUTES } from './_routes/app.routes';
         UrlSanitizerPipe,
         RegistrationPageComponent,
         RegistrationFormComponent,
-        BodyMovinBackgroundComponent
+        BodyMovinBackgroundComponent,
+        LoginPageComponent,
+        LoginFormComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +48,8 @@ import { APP_ROUTES } from './_routes/app.routes';
     providers: [
         RegisterService,
         HttpHelperService,
-        JWTTokenService
+        JWTTokenService,
+        AuthService
     ],
     bootstrap: [ AppComponent ]
 })

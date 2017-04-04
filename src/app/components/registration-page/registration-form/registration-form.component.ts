@@ -26,7 +26,7 @@ export class RegistrationFormComponent implements OnInit {
 
     private onRegister(formModel) {
         this._rs.registerUser(formModel).subscribe(res => {
-            this._jwt.storeToken(res.token)
+            this._jwt.setToken(res.token)
                 .then(success => {
                     if (this.hasError) {
                         this.hasError = false;

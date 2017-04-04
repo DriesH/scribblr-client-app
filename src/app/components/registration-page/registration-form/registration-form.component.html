@@ -1,4 +1,4 @@
-<form class="scrblr-form" (ngSubmit)="onRegister(formModel)" #heroForm="ngForm">
+<form class="scrblr-form" (ngSubmit)="onRegister(formModel)" #registerForm="ngForm">
     <div class="form-input-group">
         <label for="fullname">Fullname</label>
         <input type="text" id="fullname" name="fullname" #fullname="ngModel" [(ngModel)]="formModel.fullname" required>
