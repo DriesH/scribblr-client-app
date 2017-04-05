@@ -7,23 +7,30 @@ export class JWTTokenService {
 
     public setToken(token): Promise<any> {
         localStorage.removeItem('_token');
+        localStorage.setItem('_token', token);
 
         return new Promise((resolve, reject) => {
-            localStorage.setItem('_token', token);
-
             if (localStorage.getItem('_token')) {
-                console.log('Success in storing token.');
+                console.log('Success storing token.');
                 resolve('success');
             } else {
-                console.log('Error in storing token.');
+                console.log('Error storing token.');
                 reject(Error);
             }
         });
     }
 
-    public getToken(token): Promise<any> {
+    public getToken(): Promise<any> {
+        let _token = localStorage.getItem('_token');
+
         return new Promise((resolve, reject) => {
-            localStorage.getItem('_token');
+            if (_token) {
+                console.log('Success getting token.');
+                resolve(_token);
+            } else {
+                console.log('Error getting token.');
+                reject(Error);
+            }
         });
     }
 }

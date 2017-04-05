@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RegisterService } from '../../../services/register.service';
-import { HttpHelperService } from '../../../services/http-helper.service';
 import { JWTTokenService } from '../../../services/jwttoken.service';
 
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'scrblr-registration-form',
