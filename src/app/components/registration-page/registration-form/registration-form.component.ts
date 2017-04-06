@@ -23,20 +23,23 @@ export class RegistrationFormComponent implements OnInit {
     ngOnInit() {
     }
 
-    private onRegister(formModel) {
-        this._rs.registerUser(formModel).subscribe(res => {
-            this._jwt.setToken(res.token)
-                .then(success => {
-                    if (this.hasError) {
-                        this.hasError = false;
-                    }
+    onRegister(formModel) {
+        this._rs.registerUser(formModel)
+            .subscribe(res => {
+                this._jwt.setToken(res.token)
+                    .then(success => {
+                        if (this.hasError) {
+                            this.hasError = false;
+                        }
 
-                    this.router.navigate(['/home']);
-                })
-                .catch(error => {
-                    this.onError(error);
-                });
-        });
+                        this.router.navigate(['/home']);
+                    })
+                    .catch(error => {
+                        this.onError(error);
+                    });
+            }, error => {
+                this.onError(error);
+            });
     }
 
     private onError(error) {

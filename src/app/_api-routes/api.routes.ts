@@ -5,5 +5,6 @@ export const API_ROUTES = {
     },
     loginRoutes: {
         loginUser: '/login'
-    }
+    },
+    getUserRoute: '/user'
 };

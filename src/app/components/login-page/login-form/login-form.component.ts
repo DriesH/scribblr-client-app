@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { JWTTokenService } from '../../../services/jwttoken.service';
 
+import { User } from '../../../models/user';
+
+import { Store } from '@ngrx/store';
+import * as userActions from '../../../ngrx-state/actions/current-user.action';
+
 @Component({
     selector: 'scrblr-login-form',
     templateUrl: './login-form.component.html',
@@ -17,7 +22,8 @@ export class LoginFormComponent implements OnInit {
 
     constructor(private _auth: AuthService,
         private _jwt: JWTTokenService,
-        private router: Router) { }
+        private router: Router,
+        private store: Store<any>) { }
 
     ngOnInit() {
     }
@@ -25,7 +31,9 @@ export class LoginFormComponent implements OnInit {
     onLogin(formData) {
         this._auth.authenticateUser(formData)
             .subscribe(res => {
-                 this._jwt.setToken(res.token)
+                this.addUserToState(res.user);
+
+                this._jwt.setToken(res.user.JWTToken)
                     .then(success => {
                         if (this.hasError) {
                             this.hasError = false;
@@ -36,11 +44,18 @@ export class LoginFormComponent implements OnInit {
                     .catch(error => {
                         this.onError(error);
                     });
+            }, error => {
+                this.onError(error);
             });
     }
 
+    private addUserToState(user: User) {
+        this.store.dispatch({ type: userActions.ActionTypes.SUCCES_LOGIN, payload: user });
+    }
+
+    // TODO: move this to a state in ngrx.
     private onError(error) {
         this.hasError = true;
-        this.errorMessage = 'error'; // TODO: just for testing.
+        this.errorMessage = 'error';
     }
 }

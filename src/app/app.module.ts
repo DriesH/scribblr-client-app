@@ -17,11 +17,14 @@ import { HttpHelperService } from './services/http-helper.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { AuthService } from './services/auth.service';
 
-// import { StoreModule } from '@ngrx/store';
-
 import { APP_ROUTES } from './_routes/app.routes';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
+
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { currentUser } from './ngrx-state/reducers/current-user.reducer';
 
 
 
@@ -42,8 +45,9 @@ import { LoginFormComponent } from './components/login-page/login-form/login-for
         BrowserModule,
         FormsModule,
         HttpModule,
-        APP_ROUTES
-        // StoreModule disabled for now.
+        APP_ROUTES,
+        StoreModule.provideStore(currentUser),
+        StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
     providers: [
         RegisterService,

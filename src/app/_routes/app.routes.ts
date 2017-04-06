@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomePageComponent } from '../components/home-page/home-page.component';
 import { RegistrationPageComponent } from '../components/registration-page/registration-page.component';
+import { LoginPageComponent } from '../components/login-page/login-page.component';
+
 
 const ROUTES: Routes = [
     // redirection route.
@@ -18,6 +20,12 @@ const ROUTES: Routes = [
         path: 'register',
         component: RegistrationPageComponent
         // TODO: add a route guard.
+    },
+
+    {
+        path: 'login',
+        component: LoginPageComponent
+
     }
 ];
 

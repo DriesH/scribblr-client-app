@@ -7,7 +7,7 @@ export interface User {
     street_name: string;
     house_number: string;
     city: string;
-    postal_code: number;
+    postal_code: string;
     country: string;
     JWTToken: string;
 }
