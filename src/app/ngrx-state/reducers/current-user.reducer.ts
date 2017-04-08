@@ -25,14 +25,12 @@ export const initialState: State = {
     }
 };
 
-export function currentUser (state = initialState, action: Action) {
-    switch (action.payload) {
-        case userActions.ActionTypes.SUCCES_LOGIN: {
+export function CurrentUserReducer (state = initialState, action: Action) {
+    switch (action.type) {
+        case userActions.ActionTypes.SUCCESS_LOGIN:
             return Object.assign({}, state, action.payload);
-        }
 
-        default: {
+        default:
             return state;
-        }
     }
 };

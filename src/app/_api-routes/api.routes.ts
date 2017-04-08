@@ -1,10 +1,11 @@
 export const API_ROUTES = {
     baseUrl: 'http://scribblr-dev.local/api',
     registerRoutes: {
-        newUser: '/register'
+        newUser: '/auth/register'
     },
     loginRoutes: {
-        loginUser: '/login'
+        loginUser: '/auth/login'
     },
-    getUserRoute: '/user'
+    getUserRoute: '/auth/user',
+    logoutUser: '/auth/logout'
 };

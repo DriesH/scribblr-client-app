@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Http } from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -30,17 +29,4 @@ export class AuthService {
             .map(this._hhs.extractData)
             .catch(this._hhs.errorHandler);
     }
-
-    getUserData(token): Observable<any> {
-        let _headers = new Headers();
-        let headers;
-
-        _headers.append('Authorization', 'Bearer ' + token);
-        headers = new RequestOptions({ headers: _headers });
-
-        return this.http.get(this.userRoute, headers)
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
-    }
-
 }

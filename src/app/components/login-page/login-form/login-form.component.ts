@@ -50,7 +50,7 @@ export class LoginFormComponent implements OnInit {
     }
 
     private addUserToState(user: User) {
-        this.store.dispatch({ type: userActions.ActionTypes.SUCCES_LOGIN, payload: user });
+        this.store.dispatch({ type: userActions.ActionTypes.SUCCESS_LOGIN, payload: user });
     }
 
     // TODO: move this to a state in ngrx.
