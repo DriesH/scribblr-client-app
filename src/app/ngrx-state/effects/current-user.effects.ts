@@ -38,10 +38,12 @@ export class CurrentUserEffect {
 
         console.log(user);
 
-        const payload: Object = {
+        const payload = {
             isAuth: true,
-            user
+            user: user[0]
         };
+
+        console.log(payload);
 
         return (new userActions.SuccessfullLogin(payload));
     }

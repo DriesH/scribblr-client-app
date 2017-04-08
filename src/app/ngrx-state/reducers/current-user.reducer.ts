@@ -20,8 +20,7 @@ export const initialState: State = {
         house_number: '',
         city: '',
         postal_code: '',
-        country: '',
-        JWTToken: '',
+        country: ''
     }
 };
 

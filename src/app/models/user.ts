@@ -9,5 +9,4 @@ export interface User {
     city: string;
     postal_code: string;
     country: string;
-    JWTToken: string;
 }
