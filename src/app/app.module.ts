@@ -55,7 +55,7 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
         FormsModule,
         HttpModule,
         APP_ROUTES,
-        StoreModule.provideStore({currentUser: CurrentUserReducer}),
+        StoreModule.provideStore({CURRENT_USER: CurrentUserReducer}),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],

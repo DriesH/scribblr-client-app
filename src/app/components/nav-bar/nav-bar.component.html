@@ -1,3 +1,12 @@
 <nav>
-    <scrblr-nav-bar-profile></scrblr-nav-bar-profile>
+    <div class="link">
+        <a routerLink="/">Home</a>
+    </div>
+
+    <div class="link" *ngIf="!CURRENT_USER.isAuth">
+        <a routerLink="/register">Register</a>
+        <a routerLink="/login">Login</a>
+    </div>
+
+    <scrblr-nav-bar-profile *ngIf="CURRENT_USER.isAuth" [currentUser]="CURRENT_USER.user"></scrblr-nav-bar-profile>
 </nav>

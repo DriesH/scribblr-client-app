@@ -8,6 +8,9 @@ import { HttpHelperService } from './http-helper.service';
 
 import { API_ROUTES } from '../_api-routes/api.routes';
 
+import { Store } from '@ngrx/store';
+import * as userActions from '../ngrx-state/actions/current-user.action';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -18,15 +21,37 @@ export class AuthService {
 
     loginRoute: string;
     userRoute: string;
+    _token: string;
 
-    constructor(private http: Http, private _hhs: HttpHelperService) {
+    CURRENT_USER;
+
+    constructor(private http: Http, private _hhs: HttpHelperService, private store: Store<any>) {
         this.loginRoute = API_ROUTES.baseUrl + API_ROUTES.loginRoutes.loginUser;
         this.userRoute = API_ROUTES.baseUrl + API_ROUTES.getUserRoute;
+
+        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
+            this.CURRENT_USER = CURRENT_USER;
+        });
+
     }
 
     authenticateUser(formData): Observable<any> {
         return this.http.post(this.loginRoute, formData)
             .map(this._hhs.extractData)
             .catch(this._hhs.errorHandler);
+    }
+
+    getUser() {
+        if (this.CURRENT_USER.isAuth) {
+            return;
+        }
+
+        try {
+            this._token = localStorage.getItem('_token');
+            console.log(new userActions.TokenIsPresent(this._token));
+            this.store.dispatch(new userActions.TokenIsPresent(this._token));
+        } catch (e) {
+            console.log('No token set in localStorage.');
+        }
     }
 }

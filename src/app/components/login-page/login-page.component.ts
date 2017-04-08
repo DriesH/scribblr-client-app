@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../../services/auth.service';
+
 @Component({
     selector: 'scrblr-login-page',
     templateUrl: './login-page.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-    constructor() { }
+    constructor(private auth: AuthService) { }
 
     ngOnInit() {
+        this.auth.getUser();
     }
 
 }
