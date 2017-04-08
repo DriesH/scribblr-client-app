@@ -30,6 +30,9 @@ import { HttpHelperService } from './services/http-helper.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { AuthService } from './services/auth.service';
 
+/* Guards */
+import { AuthGuard } from './guards/auth.guard';
+
 /* Reducers and effects */
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
@@ -63,7 +66,8 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
         RegisterService,
         HttpHelperService,
         JWTTokenService,
-        AuthService
+        AuthService,
+        AuthGuard
     ],
     bootstrap: [ AppComponent ]
 })

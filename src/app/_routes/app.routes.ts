@@ -5,6 +5,7 @@ import { HomePageComponent } from '../components/home-page/home-page.component';
 import { RegistrationPageComponent } from '../components/registration-page/registration-page.component';
 import { LoginPageComponent } from '../components/login-page/login-page.component';
 
+import { AuthGuard } from '../guards/auth.guard';
 
 const ROUTES: Routes = [
     // redirection route.
@@ -24,7 +25,8 @@ const ROUTES: Routes = [
 
     {
         path: 'login',
-        component: LoginPageComponent
+        component: LoginPageComponent,
+        canActivate: [ AuthGuard ]
 
     }
 ];
