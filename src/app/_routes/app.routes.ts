@@ -28,6 +28,11 @@ const ROUTES: Routes = [
         component: LoginPageComponent,
         canActivate: [ AuthGuard ]
 
+    },
+
+    {
+        path: '**',
+        redirectTo: 'home'
     }
 ];
 

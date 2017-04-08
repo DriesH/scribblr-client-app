@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,10 +11,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegistrationPageComponent implements OnInit {
 
-    constructor(private auth: AuthService) { }
+    constructor(private auth: AuthService, private store: Store<any>) {
+    }
 
     ngOnInit() {
-        this.auth.getUser();
+        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
+            this.auth.getUser();
+        });
     }
 
 }

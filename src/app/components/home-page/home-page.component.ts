@@ -14,6 +14,8 @@ export class HomePageComponent implements OnInit {
     constructor(private auth: AuthService, private store: Store<any>) { }
 
     ngOnInit() {
-        this.auth.getUser();
+        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
+            this.auth.getUser();
+        });
     }
 }
