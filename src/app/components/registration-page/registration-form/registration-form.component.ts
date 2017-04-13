@@ -50,8 +50,6 @@ export class RegistrationFormComponent implements OnInit {
     showPassword() {
         this.isShowingPassword = !this.isShowingPassword;
 
-        console.log(this.passwordInput); // undefined
-
         if (this.isShowingPassword) {
             this.passwordInput.nativeElement.type = 'text';
         } else {

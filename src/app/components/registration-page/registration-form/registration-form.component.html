@@ -26,14 +26,14 @@
     <div class="register-step__container" *ngIf="currentStep===2">
         <div class="register-step-title__container">
             <h1 class="title register-title">
-                And what's your email address?
+                So you are {{ formModel.fullname | capitalize }}! What's your email address?
             </h1>
         </div>
 
         <div class="register-input-field-button__container">
             <div class="form-input-group" *ngIf="currentStep===2">
                 <label for="email">Email</label>
-                <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required>
+                <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required autofocus>
                 <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                     Email is required
                 </div>
@@ -56,7 +56,7 @@
                 <label for="password">Password</label>
                 <div class="password-input-group">
                     <img (click)="showPassword()" src="/assets/icons/eye.svg" alt="icon of an eye">
-                    <input #passwordInput type="password" id="password" name="password"  #password="ngModel" [(ngModel)]="formModel.password" required>
+                    <input #passwordInput type="password" id="password" name="password"  #password="ngModel" [(ngModel)]="formModel.password" required autofocus>
                 </div>
                 <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
                     Password is required

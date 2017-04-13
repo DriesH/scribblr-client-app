@@ -40,6 +40,7 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         RegistrationFormComponent,
         BodyMovinBackgroundComponent,
         LoginPageComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        CapitalizePipe
     ],
     imports: [
         BrowserModule,
