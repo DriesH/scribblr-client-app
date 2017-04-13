@@ -25,7 +25,11 @@ export class RegistrationFormComponent implements OnInit {
 
     @ViewChild('passwordInput') passwordInput: any;
 
-    formModel: any = {};
+    formModel = {
+        fullname: '',
+        email: '',
+        password: ''
+    };
     hasError = false;
     errorMessage = '';
 
@@ -39,8 +43,29 @@ export class RegistrationFormComponent implements OnInit {
     ngOnInit() {
     }
 
-    nextStep() {
-        this.currentStep++;
+    nextStep(e) {
+        e.preventDefault();
+
+        switch (this.currentStep) {
+            case 1:
+                if (this.formModel.fullname !== '') {
+                    this.currentStep++;
+                }
+                break;
+
+            case 2:
+                if (this.formModel.email !== '') {
+                    this.currentStep++;
+                }
+                break;
+            case 3:
+                if (this.formModel.password !== '') {
+                    this.currentStep++;
+                }
+                break;
+            default:
+                this.currentStep++;
+        }
     }
 
     changeToStep(step) {
