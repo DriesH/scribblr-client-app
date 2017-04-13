@@ -34,6 +34,10 @@
     margin: 5vh auto 0;
 }
 
+.register-name-color {
+    color: $register-color-four;
+}
+
 .form-input-group {
     font-family: 'Montserrat', 'Arial', sans-serif;
     font-weight: 300;
@@ -78,21 +82,33 @@
 .password-input-group {
     position: relative;
 
-    img {
+    svg {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         right: 20px;
         width: 10%;
         cursor: pointer;
-        opacity: 0.7;
-        transition: all 0.2s ease-in-out;
+        // opacity: 0.7;
 
-        &:hover {
-            opacity: 1;
+        .password-hide {
+            opacity: 0.5;
+            transition: all 0.2s ease-in-out;
+            fill: $register-color-one;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .password-show {
+            transition: all 0.2s ease-in-out;
+            fill: $register-color-four;
         }
     }
 }
+
+
 
 .bullet-indicator__container {
     display: flex;
