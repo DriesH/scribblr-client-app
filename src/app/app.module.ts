@@ -1,5 +1,6 @@
 /* Angular 2 stuffs */
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -37,8 +38,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
-
-
+/* Bodymovin' & Lottie module */
+import { LottieAnimationViewModule } from 'lottie-angular2';
 
 @NgModule({
     declarations: [
@@ -57,10 +58,12 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
         BrowserModule,
         FormsModule,
         HttpModule,
+        BrowserAnimationsModule,
         APP_ROUTES,
         StoreModule.provideStore({CURRENT_USER: CurrentUserReducer}),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
-        StoreDevtoolsModule.instrumentOnlyWithExtension()
+        StoreDevtoolsModule.instrumentOnlyWithExtension(),
+        LottieAnimationViewModule.forRoot()
     ],
     providers: [
         RegisterService,

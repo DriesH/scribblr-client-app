@@ -1,0 +1,131 @@
+@import '../../../../scss/colors/colors';
+
+#register-form {
+    z-index: 30;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+}
+
+#next-button,
+#submit-button {
+    align-self: flex-end;
+    margin-top: 40px;
+}
+
+.register-step__container {
+    // width: 430px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-step-title__container {
+    h1 {
+        color: $register-color-one;
+    }
+}
+
+.register-input-field-button__container {
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh auto 0;
+}
+
+.form-input-group {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 430px;
+    margin: auto;
+
+    label {
+        color: $register-color-one;
+        width: 430px;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        border-radius: 5px;
+        border: 1px solid $register-color-two;
+        background: none;
+        padding: 10px 20px;
+        transition: 0.2s border ease-in-out;
+        width: 430px;
+        height: 80px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        border: 1px solid $register-color-four;
+    }
+
+    input[type="text"]:focus + label,
+    input[type="password"]:focus + label {
+        color: #FFF;
+    }
+}
+
+.password-input-group {
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        width: 10%;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.bullet-indicator__container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100px;
+    margin: 20vh auto 0;
+}
+
+.bullet-indicator {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $register-color-two;
+    box-sizing: border-box;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.active {
+        background-color: $register-color-four !important;
+        animation: insideOutColorChange 0.1s ease-in-out;
+    }
+}
+
+@keyframes insideOutColorChange {
+    0% {
+        border: 10px solid $register-color-two;
+    }
+
+    100% {
+        border: 0 solid $register-color-two;
+    }
+}

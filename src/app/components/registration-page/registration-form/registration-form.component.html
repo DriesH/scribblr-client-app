@@ -1,27 +1,77 @@
-<form class="scrblr-form" (ngSubmit)="onRegister(formModel)" #registerForm="ngForm">
-    <div class="form-input-group">
-        <label for="fullname">Fullname</label>
-        <input type="text" id="fullname" name="fullname" #fullname="ngModel" [(ngModel)]="formModel.fullname" required>
-        <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">
-          Fullname is required
+<form id="register-form" class="scrblr-form" (ngSubmit)="onRegister(formModel)" #registerForm="ngForm">
+
+    <div class="register-step__container" *ngIf="currentStep===1">
+
+        <div class="register-step-title__container">
+            <h1 class="title register-title">
+                Hey there stranger! What's your name?
+            </h1>
         </div>
+
+        <div class="register-input-field-button__container">
+            <div class="form-input-group">
+                <label for="fullname">Your name</label>
+                <input type="text" id="fullname" name="fullname" #fullname="ngModel" [(ngModel)]="formModel.fullname" required autofocus>
+                <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">
+                    Fullname is required
+                </div>
+            </div>
+
+            <button (click)="nextStep()" id="next-button" class="btn btn-primary btn-color-register-colors">Next step!</button>
+        </div>
+
     </div>
 
-    <div class="form-input-group">
-        <label for="email">Email</label>
-        <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required>
-        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-          email is required
+
+    <div class="register-step__container" *ngIf="currentStep===2">
+        <div class="register-step-title__container">
+            <h1 class="title register-title">
+                And what's your email address?
+            </h1>
         </div>
+
+        <div class="register-input-field-button__container">
+            <div class="form-input-group" *ngIf="currentStep===2">
+                <label for="email">Email</label>
+                <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required>
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    Email is required
+                </div>
+            </div>
+
+            <button (click)="nextStep()" id="next-button" class="btn btn-primary btn-color-register-colors">Next step!</button>
+        </div>
+
     </div>
 
-    <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password"  #password="ngModel" [(ngModel)]="formModel.password" required>
-        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-          password is required
+    <div class="register-step__container" *ngIf="currentStep===3">
+        <div class="register-step-title__container">
+            <h1 class="title register-title">
+                Let's lock it down with a password!
+            </h1>
         </div>
+
+        <div class="register-input-field-button__container">
+            <div class="form-input-group">
+                <label for="password">Password</label>
+                <div class="password-input-group">
+                    <img (click)="showPassword()" src="/assets/icons/eye.svg" alt="icon of an eye">
+                    <input #passwordInput type="password" id="password" name="password"  #password="ngModel" [(ngModel)]="formModel.password" required>
+                </div>
+                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                    Password is required
+                </div>
+            </div>
+
+            <button id="submit-button" class="btn btn-primary btn-color-register-colors" type="submit">Almost done!</button>
+        </div>
+
     </div>
 
-    <button type="submit">Register</button>
 </form>
+
+<div class="bullet-indicator__container">
+    <span (click)="changeToStep(1)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===1 }"></span>
+    <span (click)="changeToStep(2)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===2 }"></span>
+    <span (click)="changeToStep(3)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===3 }"></span>
+</div>

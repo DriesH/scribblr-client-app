@@ -7,7 +7,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyMovinBackgroundComponent implements OnInit {
 
-    constructor() { }
+    public lottieConfig: Object;
+    private anim: any;
+    private animationSpeed = 1;
+
+    constructor() {
+        this.lottieConfig = {
+            path: 'assets/json-data/paint_drop_anim.json',
+            autoplay: true,
+            loop: false
+        };
+    }
+
+    handleAnimation(anim: any) {
+        this.anim = anim;
+    }
+
+    stop() {
+        this.anim.stop();
+    }
+
+    play() {
+        this.anim.play();
+    }
+
+    pause() {
+        this.anim.pause();
+    }
+
+    setSpeed(speed: number) {
+        this.animationSpeed = speed;
+        this.anim.setSpeed(speed);
+    }
+
 
     ngOnInit() {
     }

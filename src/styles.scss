@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */;
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/normalize-scss/sass/normalize';
+@import './scss/titles/titles';
+@import './scss/colors/colors';
+@import './scss/navigation_elements/navigation_elements';
+@import './scss/buttons/buttons';
+
 body {
     margin: 0;
     padding: 0;
