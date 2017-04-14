@@ -5,13 +5,13 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-top: 5vh;
+    margin-top: 20vh;
 }
 
 #next-button,
 #submit-button {
     align-self: flex-end;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .register-step__container {
@@ -19,6 +19,15 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+}
+
+.register-step-image__container {
+    width: 50%;
+    height: 250px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .register-step-title__container {
@@ -108,14 +117,14 @@
     }
 }
 
-
-
 .bullet-indicator__container {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 100px;
-    margin: 20vh auto 0;
+    margin: 10vh auto 0;
+    position: relative;
+    z-index: 30;
 }
 
 .bullet-indicator {

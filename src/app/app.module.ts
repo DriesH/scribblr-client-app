@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarProfileComponent } from './components/nav-bar/nav-bar-profile/nav-bar-profile.component';
-import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { RegistrationFormComponent } from './components/registration-page/registration-form/registration-form.component';
 import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
@@ -34,13 +33,16 @@ import { AuthService } from './services/auth.service';
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
 
+/* Pipes */
+import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+
 /* Reducers and effects */
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
-import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
     declarations: [

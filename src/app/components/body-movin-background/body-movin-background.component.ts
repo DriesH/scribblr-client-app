@@ -13,7 +13,7 @@ export class BodyMovinBackgroundComponent implements OnInit {
 
     constructor() {
         this.lottieConfig = {
-            path: 'assets/json-data/paint_drop_anim.json',
+            path: 'assets/json-data/background-anim.json',
             autoplay: true,
             loop: false
         };
