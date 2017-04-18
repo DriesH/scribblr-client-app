@@ -52,7 +52,6 @@ export class RegistrationFormComponent implements OnInit {
                     this.currentStep++;
                 }
                 break;
-
             case 2:
                 if (this.formModel.email !== '') {
                     this.currentStep++;
@@ -69,7 +68,25 @@ export class RegistrationFormComponent implements OnInit {
     }
 
     changeToStep(step) {
-        this.currentStep = step;
+        switch (this.currentStep) {
+            case 1:
+                if (this.formModel.fullname !== '') {
+                    this.currentStep = step;
+                }
+                break;
+            case 2:
+                if (this.formModel.fullname !== '') {
+                    this.currentStep = step;
+                }
+                break;
+            case 3:
+                if (this.formModel.fullname !== '') {
+                    this.currentStep = step;
+                }
+                break;
+            default:
+                this.currentStep = 1;
+        }
     }
 
     showPassword() {
@@ -103,6 +120,6 @@ export class RegistrationFormComponent implements OnInit {
 
     private onError(error) {
         this.hasError = true;
-        this.errorMessage = 'error'; // TODO: just for testing.
+        this.errorMessage = error; // TODO: just for testing.
     }
 }

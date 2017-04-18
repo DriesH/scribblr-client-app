@@ -48,18 +48,15 @@ export class AuthService {
 
     getUser() {
         if (this.CURRENT_USER.isAuth) {
-            console.log(this.CURRENT_USER.isAuth);
             this.router.navigate(['/home']);
             return;
         }
 
-        console.log(this.CURRENT_USER.isAuth);
-
-
         try {
             this._token = localStorage.getItem('_token');
-            console.log(new userActions.TokenIsPresent(this._token));
-            this.store.dispatch(new userActions.TokenIsPresent(this._token));
+            if (this._token) {
+                this.store.dispatch(new userActions.TokenIsPresent(this._token));
+            }
         } catch (e) {
             console.log('No token set in localStorage.');
         }

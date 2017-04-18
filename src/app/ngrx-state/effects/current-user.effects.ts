@@ -48,6 +48,13 @@ export class CurrentUserEffect {
         return (new userActions.SuccessfullLogin(payload));
     }
 
+    private removeToken() {
+        console.log('removing token');
+        return Observable.of(localStorage.removeItem('_token'));
+    }
+
+    // This effect authenticates the user when he/her has a
+    // JWT Token in the localStorage. If it fails it throws an error.
     /* tslint:disable-next-line:member-ordering */
     @Effect()
     loginWithToken$: Observable<Action> = this.actions$
@@ -56,8 +63,15 @@ export class CurrentUserEffect {
         .switchMap(token => this.makeHeaders(token))
         .switchMap(headers => this.http.get(this.userRoute, headers)
             .map(res => this.extractUser(res))
-            .catch(() => Observable.of(new userActions.ErrorLogin({}))
-        ));
+            .catch(() => Observable.of(new userActions.ErrorLogin({}))));
+
+    // Remove the token from the localStorage on fail.
+    /* tslint:disable-next-line:member-ordering */
+    @Effect({ dispatch: false })
+    removeOldToken$: Observable<any> = this.actions$
+        .ofType(userActions.ActionTypes.ERROR_LOGIN)
+        .map(toPayload)
+        .switchMap(() => this.removeToken());
 
     constructor(private actions$: Actions, private http: Http) {
         this.userRoute = API_ROUTES.baseUrl + API_ROUTES.getUserRoute;
