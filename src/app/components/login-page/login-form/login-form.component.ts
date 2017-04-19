@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../../services/auth.service';
@@ -16,9 +16,13 @@ import * as userActions from '../../../ngrx-state/actions/current-user.action';
 })
 export class LoginFormComponent implements OnInit {
 
+    @ViewChild('passwordInput') passwordInput: any;
+
     formModel: any = {};
     hasError = false;
     errorMessage = '';
+
+    isShowingPassword = false;
 
     constructor(private _auth: AuthService,
         private _jwt: JWTTokenService,
@@ -26,6 +30,16 @@ export class LoginFormComponent implements OnInit {
         private store: Store<any>) { }
 
     ngOnInit() {
+    }
+
+    showPassword() {
+        this.isShowingPassword = !this.isShowingPassword;
+
+        if (this.isShowingPassword) {
+            this.passwordInput.nativeElement.type = 'text';
+        } else {
+            this.passwordInput.nativeElement.type = 'password';
+        }
     }
 
     onLogin(formData) {
