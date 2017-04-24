@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+
 import {
     trigger,
     state,
@@ -8,9 +8,6 @@ import {
     transition
 } from '@angular/animations';
 
-
-import { RegisterService } from '../../../services/register.service';
-import { JWTTokenService } from '../../../services/jwttoken.service';
 
 
 @Component({
@@ -25,22 +22,24 @@ export class RegistrationFormComponent implements OnInit {
 
     @ViewChild('passwordInput') passwordInput: any;
 
+    @Output() registerEvent: EventEmitter<Object> = new EventEmitter();
+
     formModel = {
         fullname: '',
         email: '',
         password: ''
     };
-    hasError = false;
-    errorMessage = '';
 
     currentStep = 1;
     isShowingPassword = false;
 
-    constructor(private _rs: RegisterService,
-        private _jwt: JWTTokenService,
-        private router: Router) { }
+    constructor() { }
 
     ngOnInit() {
+    }
+
+    onRegister() {
+        this.registerEvent.emit(this.formModel); 
     }
 
     nextStep(e) {
@@ -97,29 +96,5 @@ export class RegistrationFormComponent implements OnInit {
         } else {
             this.passwordInput.nativeElement.type = 'password';
         }
-    }
-
-    onRegister(formModel) {
-        this._rs.registerUser(formModel)
-            .subscribe(res => {
-                this._jwt.setToken(res.token)
-                    .then(success => {
-                        if (this.hasError) {
-                            this.hasError = false;
-                        }
-
-                        this.router.navigate(['/home']);
-                    })
-                    .catch(error => {
-                        this.onError(error);
-                    });
-            }, error => {
-                this.onError(error);
-            });
-    }
-
-    private onError(error) {
-        this.hasError = true;
-        this.errorMessage = error; // TODO: just for testing.
     }
 }
