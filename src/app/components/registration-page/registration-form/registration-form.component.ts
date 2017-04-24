@@ -39,7 +39,7 @@ export class RegistrationFormComponent implements OnInit {
     }
 
     onRegister() {
-        this.registerEvent.emit(this.formModel); 
+        this.registerEvent.emit(this.formModel);
     }
 
     nextStep(e) {
