@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from '../components/home-page/home-page.component';
 import { RegistrationPageComponent } from '../components/registration-page/registration-page.component';
 import { LoginPageComponent } from '../components/login-page/login-page.component';
+import { ApplicationRootComponent } from '../components/application/application-root/application-root.component';
 
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -28,6 +29,12 @@ const ROUTES: Routes = [
         component: LoginPageComponent,
         canActivate: [ AuthGuard ]
 
+    },
+
+    {
+        path: 'application',
+        component: ApplicationRootComponent,
+        canActivate: [ AuthGuard ]
     },
 
     {

@@ -29,9 +29,11 @@ import { ApplicationRootComponent } from './components/application/application-r
 import { AppNavigationComponent } from './components/application/app-navigation/app-navigation.component';
 import { ChildOverviewRootComponent } from './components/application/child-overview-root/child-overview-root.component';
 import { QuoteOverviewRootComponent } from './components/application/quote-overview-root/quote-overview-root.component';
-import { AchievmentOverviewRootComponent } from './components/application/achievment-overview-root/achievment-overview-root.component';
+import { AchievementOverviewRootComponent } from './components/application/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from './components/application/book-overview-root/book-overview-root.component';
-
+import { ChildComponentComponent } from './components/application/child-overview-root/child-component/child-component.component';
+import { QuoteComponentComponent } from './components/application/quote-overview-root/quote-component/quote-component.component';
+import { AchievementComponentComponent } from './components/application/achievement-overview-root/achievement-component/achievement-component.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -54,6 +56,8 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -71,8 +75,11 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         AppNavigationComponent,
         ChildOverviewRootComponent,
         QuoteOverviewRootComponent,
-        AchievmentOverviewRootComponent,
-        BookOverviewRootComponent
+        AchievementOverviewRootComponent,
+        BookOverviewRootComponent,
+        ChildComponentComponent,
+        QuoteComponentComponent,
+        AchievementComponentComponent
     ],
     imports: [
         BrowserModule,
