@@ -21,7 +21,6 @@ export class ChildService {
         private _hhs: HttpHelperService,
         private _headers: HttpHeaderService) {
             this.token = localStorage.getItem('_token');
-            console.log(this.token);
         }
 
     // POST
@@ -46,7 +45,6 @@ export class ChildService {
 
     // GET
     getAllChildren(): Observable<any> {
-        console.log(this.token);
         this._headers.setOptions(this.token);
 
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.index,
@@ -68,17 +66,18 @@ export class ChildService {
     deleteChild(shortId): Observable<any> {
         this._headers.setOptions(this.token);
 
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.deleteChild(shortId),
+        return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.child.deleteChild(shortId),
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
             .catch(this._hhs.errorHandler);
     }
 
     // PUT
-    editChild(shortId): Observable<any> {
+    editChild(shortId, data): Observable<any> {
         this._headers.setOptions(this.token);
 
-        return this.http.get(API_ROUTES.application.child.editChild(shortId),
+        return this.http.put(API_ROUTES.application.child.editChild(shortId),
+            data,
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
             .catch(this._hhs.errorHandler);

@@ -29,15 +29,19 @@ export const API_ROUTES = {
             }
         },
         quotes: {
+            index: applicationPrefix + 'quotes',
             newQuote: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/quotes/new';
             },
-            getAllQuotes: (shortId) => {
+            getQuote: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/quotes';
             },
-            deletQuote: (childShortId, QuoteShortId) => {
-                return applicationPrefix + 'children/' + childShortId + '/quotes/' + QuoteShortId + '/delete';
-            }
+            deleteQuote: (childShortId, quoteShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
+            },
+            // editQuote: () => {
+            //     return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
+            // }
         }
     }
 

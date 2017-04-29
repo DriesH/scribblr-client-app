@@ -44,6 +44,7 @@ import { HttpHeaderService } from './services/http-header.service';
 
 /* Application services */
 import { ChildService } from './services/application-services/child.service';
+import { QuoteService } from './services/application-services/quote.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -100,6 +101,7 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         AuthService,
         AuthGuard,
         ChildService,
+        QuoteService,
         HttpHeaderService
     ],
     bootstrap: [ AppComponent ]

@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-quote-component',
+  selector: 'scrblr-quote-component',
   templateUrl: './quote-component.component.html',
   styleUrls: ['./quote-component.component.scss']
 })
 export class QuoteComponentComponent implements OnInit {
+
+  @Input('quoteData') quoteData;
 
   constructor() { }
 

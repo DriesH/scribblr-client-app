@@ -8,7 +8,6 @@ export class HttpHeaderService {
     constructor() { }
 
     setOptions(token) {
-        console.log(token);
         let headers = new Headers();
 
         headers.append('Authorization', 'Bearer ' + token);
