@@ -1,102 +1,49 @@
 <form id="register-form" class="scrblr-form" (ngSubmit)="onRegister(formModel)" #registerForm="ngForm">
 
-    <div class="register-step__container" *ngIf="currentStep===1">
-
-        <div class="register-step-image__container">
-            <img class="scribbie-the-tigger full" src="/assets/scribbie-the-tiger/full-tiger-happy.svg" alt="scribbie the tiger">
-        </div>
-
-        <div class="register-step-title__container">
-            <h1 class="title register-title">
-                Hey there! What's your name?
-            </h1>
-        </div>
-
-        <div class="register-input-field-button__container">
-            <div class="form-input-group">
-                <label for="fullname">Your name</label>
-                <input type="text" id="fullname" name="fullname" #fullname="ngModel" [(ngModel)]="formModel.fullname" required autofocus>
-                <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">
-                    Fullname is required
-                </div>
-            </div>
-
-            <button (click)="nextStep($event)" id="next-button" class="btn btn-primary btn-color-register-colors">Next step!</button>
-        </div>
-
+    <div id="register-logo">
+        <img src="/assets/logos/logo-medium.png" alt="scribblr logo">
     </div>
 
-
-    <div class="register-step__container" *ngIf="currentStep===2">
-
-        <div class="register-step-image__container">
-            <img class="scribbie-the-tigger full" src="/assets/scribbie-the-tiger/head-tiger-wink.svg" alt="scribbie the tiger">
-        </div>
-
-        <div class="register-step-title__container">
-            <h1 class="title register-title">
-                So you are <span class="register-name-color">{{ formModel.fullname | capitalize }}</span>! What's your email
-                address?
-            </h1>
-        </div>
-
-        <div class="register-input-field-button__container">
-            <div class="form-input-group" *ngIf="currentStep===2">
-                <label for="email">Your email</label>
-                <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required autofocus>
-                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                    Email is required
-                </div>
+    <div class="register-input-field__container">
+        <div class="form-input-group">
+            <label for="fullname">Your name</label>
+            <input type="text" id="fullname" name="fullname" #fullname="ngModel" [(ngModel)]="formModel.fullname" required autofocus>
+            <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">
+                Fullname is required
             </div>
-
-            <button (click)="nextStep($event)" id="next-button" class="btn btn-primary btn-color-register-colors">Next step!</button>
         </div>
-
     </div>
 
-    <div class="register-step__container" *ngIf="currentStep===3">
-
-        <div class="register-step-image__container">
-            <img class="scribbie-the-tigger full" src="/assets/scribbie-the-tiger/head-tiger-password.svg" alt="scribbie the tiger">
-        </div>
-
-
-        <div class="register-step-title__container">
-            <h1 class="title register-title">
-                Let's lock it down with a password!
-            </h1>
-        </div>
-
-        <div class="register-input-field-button__container">
-            <div class="form-input-group">
-                <label for="password">Set your password</label>
-                <div class="password-input-group">
-                    <svg (click)="showPassword()" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                        <g>
-                            <path [ngClass]="{ 'password-hide': !isShowingPassword, 'password-show': isShowingPassword }" d="M256,103.4c-97.8,0-186.5,53.5-252,140.5c-5.3,7.1-5.3,17.1,0,24.2c65.5,87,154.2,140.6,252,140.6
-		s186.5-53.5,252-140.5c5.3-7.1,5.3-17.1,0-24.2C442.5,156.9,353.8,103.4,256,103.4z M263,363.5C198.1,367.5,144.5,314,148.5,249
-		c3.4-53.6,46.8-97.1,100.4-100.4c64.9-4.1,118.6,49.4,114.5,114.5C360,316.5,316.5,360,263,363.5z M259.8,313.8
-		c-35,2.2-63.9-26.6-61.6-61.6c1.8-28.9,25.2-52.3,54.1-54.1c35-2.2,63.9,26.6,61.6,61.6C312,288.7,288.6,312,259.8,313.8z" />
-                        </g>
-                    </svg>
-                    <input #passwordInput type="password" id="password" name="password" #password="ngModel" [(ngModel)]="formModel.password"
-                        required autofocus>
-                </div>
-                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                    Password is required
-                </div>
+    <div class="register-input-field__container">
+        <div class="form-input-group">
+            <label for="email">Your email</label>
+            <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required autofocus>
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Email is required
             </div>
-
-            <button id="submit-button" class="btn btn-primary btn-color-register-colors" type="submit">Register!</button>
         </div>
-
     </div>
 
+    <div class="register-input-field__container">
+        <div class="form-input-group">
+            <label for="password">Set your password</label>
+            <div class="password-input-group">
+                <svg (click)="showPassword()" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                        <path [ngClass]="{ 'password-hide': !isShowingPassword, 'password-show': isShowingPassword }" d="M256,103.4c-97.8,0-186.5,53.5-252,140.5c-5.3,7.1-5.3,17.1,0,24.2c65.5,87,154.2,140.6,252,140.6
+    s186.5-53.5,252-140.5c5.3-7.1,5.3-17.1,0-24.2C442.5,156.9,353.8,103.4,256,103.4z M263,363.5C198.1,367.5,144.5,314,148.5,249
+    c3.4-53.6,46.8-97.1,100.4-100.4c64.9-4.1,118.6,49.4,114.5,114.5C360,316.5,316.5,360,263,363.5z M259.8,313.8
+    c-35,2.2-63.9-26.6-61.6-61.6c1.8-28.9,25.2-52.3,54.1-54.1c35-2.2,63.9,26.6,61.6,61.6C312,288.7,288.6,312,259.8,313.8z" />
+                    </g>
+                </svg>
+                <input #passwordInput type="password" id="password" name="password" #password="ngModel" [(ngModel)]="formModel.password"
+                    required autofocus>
+            </div>
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required
+            </div>
+        </div>
+    </div>
+    <button id="submit-button" class="btn btn-primary btn-color-register-colors" type="submit">Register!</button>
 </form>
-
-<div class="bullet-indicator__container">
-    <span (click)="changeToStep(1)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===1 }"></span>
-    <span (click)="changeToStep(2)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===2 }"></span>
-    <span (click)="changeToStep(3)" class="bullet-indicator" [ngClass]="{ 'active': currentStep===3 }"></span>
-</div>

@@ -24,6 +24,15 @@ import { BodyMovinBackgroundComponent } from './components/body-movin-background
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
 
+/* Application components */
+import { ApplicationRootComponent } from './components/application/application-root/application-root.component';
+import { AppNavigationComponent } from './components/application/app-navigation/app-navigation.component';
+import { ChildOverviewRootComponent } from './components/application/child-overview-root/child-overview-root.component';
+import { QuoteOverviewRootComponent } from './components/application/quote-overview-root/quote-overview-root.component';
+import { AchievmentOverviewRootComponent } from './components/application/achievment-overview-root/achievment-overview-root.component';
+import { BookOverviewRootComponent } from './components/application/book-overview-root/book-overview-root.component';
+
+
 /* Services */
 import { RegisterService } from './services/register.service';
 import { HttpHelperService } from './services/http-helper.service';
@@ -43,7 +52,7 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
-import { RegistrationOverviewComponent } from './components/registration-page/registration-overview/registration-overview.component';
+
 
 @NgModule({
     declarations: [
@@ -58,7 +67,12 @@ import { RegistrationOverviewComponent } from './components/registration-page/re
         LoginPageComponent,
         LoginFormComponent,
         CapitalizePipe,
-        RegistrationOverviewComponent
+        ApplicationRootComponent,
+        AppNavigationComponent,
+        ChildOverviewRootComponent,
+        QuoteOverviewRootComponent,
+        AchievmentOverviewRootComponent,
+        BookOverviewRootComponent
     ],
     imports: [
         BrowserModule,

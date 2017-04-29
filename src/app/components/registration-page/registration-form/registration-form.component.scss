@@ -1,46 +1,30 @@
 @import '../../../../scss/colors/colors';
 
 #register-form {
-    z-index: 30;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-top: 20vh;
-}
-
-#next-button,
-#submit-button {
-    align-self: flex-end;
-    margin-top: 25px;
-}
-
-.register-step__container {
-    // width: 430px;
-    margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.register-step-image__container {
-    width: 50%;
-    height: 250px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+#submit-button {
+    align-self: center;
+    margin-top: 75px;
+}
+
+#register-logo {
+    align-self: center;
+    margin-top: 200px;
+    margin-bottom: 150px;
+
+    img {
+        width: 350px;
+    }
 }
 
 .register-step-title__container {
     h1 {
         color: $register-color-one;
     }
-}
-
-.register-input-field-button__container {
-    width: 430px;
-    display: flex;
-    flex-direction: column;
-    margin: 5vh auto 0;
 }
 
 .register-name-color {
@@ -55,7 +39,7 @@
     align-content: center;
     flex-direction: column;
     width: 430px;
-    margin: auto;
+    margin: 0 auto 25px;
 
     label {
         color: $register-color-one;
@@ -113,43 +97,5 @@
             transition: all 0.2s ease-in-out;
             fill: $register-color-four;
         }
-    }
-}
-
-.bullet-indicator__container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100px;
-    margin: 10vh auto 0;
-    position: relative;
-    z-index: 30;
-}
-
-.bullet-indicator {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: $register-color-two;
-    box-sizing: border-box;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    &.active {
-        background-color: $register-color-four !important;
-        animation: insideOutColorChange 0.1s ease-in-out;
-    }
-}
-
-@keyframes insideOutColorChange {
-    0% {
-        border: 10px solid $register-color-two;
-    }
-
-    100% {
-        border: 0 solid $register-color-two;
     }
 }

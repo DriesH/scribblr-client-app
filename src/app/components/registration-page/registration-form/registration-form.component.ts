@@ -1,15 +1,5 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
-import {
-    trigger,
-    state,
-    style,
-    animate,
-    transition
-} from '@angular/animations';
-
-
-
 @Component({
     selector: 'scrblr-registration-form',
     templateUrl: './registration-form.component.html',
@@ -30,7 +20,6 @@ export class RegistrationFormComponent implements OnInit {
         password: ''
     };
 
-    currentStep = 1;
     isShowingPassword = false;
 
     constructor() { }
@@ -40,52 +29,6 @@ export class RegistrationFormComponent implements OnInit {
 
     onRegister() {
         this.registerEvent.emit(this.formModel);
-    }
-
-    nextStep(e) {
-        e.preventDefault();
-
-        switch (this.currentStep) {
-            case 1:
-                if (this.formModel.fullname !== '') {
-                    this.currentStep++;
-                }
-                break;
-            case 2:
-                if (this.formModel.email !== '') {
-                    this.currentStep++;
-                }
-                break;
-            case 3:
-                if (this.formModel.password !== '') {
-                    this.currentStep++;
-                }
-                break;
-            default:
-                this.currentStep++;
-        }
-    }
-
-    changeToStep(step) {
-        switch (this.currentStep) {
-            case 1:
-                if (this.formModel.fullname !== '') {
-                    this.currentStep = step;
-                }
-                break;
-            case 2:
-                if (this.formModel.fullname !== '') {
-                    this.currentStep = step;
-                }
-                break;
-            case 3:
-                if (this.formModel.fullname !== '') {
-                    this.currentStep = step;
-                }
-                break;
-            default:
-                this.currentStep = 1;
-        }
     }
 
     showPassword() {
