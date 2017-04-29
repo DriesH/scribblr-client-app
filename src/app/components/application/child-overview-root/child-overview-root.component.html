@@ -1,5 +1,3 @@
-<p>
-  child-overview-root works!
-</p>
-
-<scrblr-child-component></scrblr-child-component>
+<div *ngFor="let child of children">
+    <scrblr-child-component [childData]="child"></scrblr-child-component>
+</div>

@@ -40,6 +40,10 @@ import { RegisterService } from './services/register.service';
 import { HttpHelperService } from './services/http-helper.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { AuthService } from './services/auth.service';
+import { HttpHeaderService } from './services/http-header.service';
+
+/* Application services */
+import { ChildService } from './services/application-services/child.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -54,9 +58,6 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
-
-
-
 
 @NgModule({
     declarations: [
@@ -97,7 +98,9 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         HttpHelperService,
         JWTTokenService,
         AuthService,
-        AuthGuard
+        AuthGuard,
+        ChildService,
+        HttpHeaderService
     ],
     bootstrap: [ AppComponent ]
 })

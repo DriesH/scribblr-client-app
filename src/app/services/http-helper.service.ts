@@ -15,7 +15,7 @@ export class HttpHelperService {
     }
 
     public errorHandler(res: Response | any) {
-        let errMessage = res.json();
+        let errMessage = res.status;
         return Observable.throw(errMessage);
     }
 }
