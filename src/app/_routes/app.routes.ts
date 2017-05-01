@@ -11,9 +11,6 @@ import { QuoteOverviewRootComponent } from '../components/application/quote-over
 import { AchievementOverviewRootComponent } from '../components/application/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from '../components/application/book-overview-root/book-overview-root.component';
 
-
-
-
 import { AuthGuard } from '../guards/auth.guard';
 
 const ROUTES: Routes = [

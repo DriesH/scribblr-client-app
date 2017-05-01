@@ -9,18 +9,17 @@ export class AuthGuard implements CanActivate {
 
     CURRENT_USER;
 
-    constructor(private store: Store<any> ) {  }
-
-    private isAuth() {
-        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
+    constructor(private store: Store<any> ) {
+        store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             this.CURRENT_USER = CURRENT_USER;
         });
+    }
 
+    private isAuth() {
         if (this.CURRENT_USER.isAuth) {
-            return false;
+            return true;
         }
-
-        return true;
+        return false;
     }
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {

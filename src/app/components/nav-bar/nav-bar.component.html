@@ -8,8 +8,7 @@
         <a routerLink="/login">Login</a>
     </div>
 
-    <div class="link" *ngIf="CURRENT_USER.isAuth">
-        <scrblr-nav-bar-profile [currentUser]="CURRENT_USER.user"></scrblr-nav-bar-profile>
-        <a routerLink="/application/children">Application</a>
-    </div>
+
+    <scrblr-nav-bar-profile [currentUser]="CURRENT_USER.user"></scrblr-nav-bar-profile>
+
 </nav>
