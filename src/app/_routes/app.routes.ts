@@ -63,10 +63,10 @@ const ROUTES: Routes = [
         ]
     },
 
-    {
-        path: '**',
-        redirectTo: 'home'
-    }
+    // {
+    //     path: '**',
+    //     redirectTo: 'home'
+    // }
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

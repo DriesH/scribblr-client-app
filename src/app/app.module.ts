@@ -31,9 +31,9 @@ import { ChildOverviewRootComponent } from './components/application/child-overv
 import { QuoteOverviewRootComponent } from './components/application/quote-overview-root/quote-overview-root.component';
 import { AchievementOverviewRootComponent } from './components/application/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from './components/application/book-overview-root/book-overview-root.component';
-import { ChildComponentComponent } from './components/application/child-overview-root/child-component/child-component.component';
-import { QuoteComponentComponent } from './components/application/quote-overview-root/quote-component/quote-component.component';
-import { AchievementComponentComponent } from './components/application/achievement-overview-root/achievement-component/achievement-component.component';
+import { ChildComponent } from './components/application/child-overview-root/child/child.component';
+import { QuoteComponent } from './components/application/quote-overview-root/quote/quote.component';
+import { AchievementComponent } from './components/application/achievement-overview-root/achievement/achievement.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -79,9 +79,9 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         QuoteOverviewRootComponent,
         AchievementOverviewRootComponent,
         BookOverviewRootComponent,
-        ChildComponentComponent,
-        QuoteComponentComponent,
-        AchievementComponentComponent
+        ChildComponent,
+        QuoteComponent,
+        AchievementComponent
     ],
     imports: [
         BrowserModule,
