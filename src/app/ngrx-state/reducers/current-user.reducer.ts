@@ -11,16 +11,16 @@ export interface State {
 export const initialState: State = {
     isAuth: false,
     user: {
-        id: 0,
-        short_id: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        street_name: '',
-        house_number: '',
-        city: '',
-        postal_code: '',
-        country: ''
+        id: null,
+        short_id: null,
+        first_name: null,
+        last_name: null,
+        email: null,
+        street_name: null,
+        house_number: null,
+        city: null,
+        postal_code: null,
+        country: null
     }
 };
 

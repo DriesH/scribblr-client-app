@@ -57,6 +57,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
+import { ChildReducer } from './ngrx-state/reducers/child.reducer';
+
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
 
@@ -89,7 +91,7 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         HttpModule,
         BrowserAnimationsModule,
         APP_ROUTES,
-        StoreModule.provideStore({CURRENT_USER: CurrentUserReducer}),
+        StoreModule.provideStore({ CURRENT_USER: CurrentUserReducer, CURRENT_CHILDREN: ChildReducer }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         LottieAnimationViewModule.forRoot()

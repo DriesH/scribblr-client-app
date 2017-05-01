@@ -24,4 +24,5 @@ export class TokenIsPresent {
 
 export type Actions
   = SuccessfullLogin
+  | ErrorLogin
   | TokenIsPresent;

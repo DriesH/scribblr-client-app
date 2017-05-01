@@ -1,1 +1,7 @@
-{{ childData.first_name }}
+<div class="child-container">
+    <h1 class="child-name">{{ childData.first_name }}</h1>
+    <ul class="child-information">
+        <li>{{ childData.date_of_birth | date }}</li>
+        <li>{{ childData.gender }}</li>
+    </ul>
+</div>

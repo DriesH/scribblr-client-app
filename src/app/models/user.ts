@@ -1,12 +1,12 @@
 export interface User {
-    id: number;
-    first_name: string;
-    last_name: string;
-    short_id: string;
-    email: string;
-    street_name: string;
-    house_number: string;
-    city: string;
-    postal_code: string;
-    country: string;
+    id: Number;
+    first_name: String;
+    last_name: String;
+    short_id: String;
+    email: String;
+    street_name: String;
+    house_number: String;
+    city: String;
+    postal_code: String;
+    country: String;
 }
