@@ -3,7 +3,7 @@
     "node_modules/codelyzer"
   ],
   "rules": {
-    "callable-types": true,
+    "callable-types": false,
     "class-name": true,
     "comment-format": [
       true,
@@ -53,6 +53,7 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
+    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
@@ -63,7 +64,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "prefer-const": true,
+    "prefer-const": false,
     "quotemark": [
       true,
       "single"

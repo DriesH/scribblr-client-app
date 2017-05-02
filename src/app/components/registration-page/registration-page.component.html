@@ -1,3 +1,8 @@
-<scrblr-registration-form></scrblr-registration-form>
-<scrblr-body-movin-background></scrblr-body-movin-background>
-<h1>Registration page</h1>
+<div class="register-page__container">
+    <div class="register-form__container">
+        <scrblr-registration-form (registerEvent)="onRegister($event)"></scrblr-registration-form>
+        <a id="return-to-homepage" class="return-link" routerLink="/home"><i class="fa fa-chevron-left"></i>&nbsp;Go back</a>
+    </div>
+    <div class="register-page__background">
+    </div>
+</div>

@@ -1,0 +1,11 @@
+@import '../colors/colors';
+
+.return-link {
+    text-decoration: none;
+    color: $main-color-link;
+
+    &:hover {
+        text-decoration: underline;
+        color: $main-color-link-hover;
+    }
+}
