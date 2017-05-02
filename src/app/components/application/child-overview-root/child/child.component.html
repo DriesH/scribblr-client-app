@@ -1,7 +1,21 @@
-<div class="child-container">
-    <h1 class="child-name">{{ childData.first_name }}</h1>
-    <ul class="child-information">
-        <li>{{ childData.date_of_birth | date }}</li>
-        <li>{{ childData.gender }}</li>
-    </ul>
+<div class="master-container">
+    <div class="child-image-containter">
+        <img src="/assets/child-head-test/de-ronny.png" alt="" class="child-image">
+        <div class="image-long-divider"></div>
+        <div class="image-short-divider"></div>
+        <div class="image-short-divider"></div>
+    </div>
+    <div class="child-container">
+        <h1 class="child-name">{{ childData.first_name }}</h1>
+        <ul class="child-information">
+            <li>{{ childData.first_name }} {{ childData.last_name}}</li>
+            <li>{{ childData.date_of_birth | date }}</li>
+            <li *ngIf="childData.gender === 'Female'"><i class="fa fa-venus"></i></li>
+            <li *ngIf="childData.gender === 'Male'"><i class="fa fa-mars"></i></li>
+        </ul>
+    </div>
 </div>
+
+
+
+

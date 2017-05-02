@@ -32,14 +32,14 @@ const ROUTES: Routes = [
     {
         path: 'login',
         component: LoginPageComponent,
-        canActivate: [ AuthGuard ]
+        // canActivate: [ AuthGuard ]
 
     },
 
     {
         path: 'application',
         component: ApplicationRootComponent,
-        canActivate: [ AuthGuard ],
+        // canActivate: [ AuthGuard ],
         children: [
             {
                 path: 'children',
