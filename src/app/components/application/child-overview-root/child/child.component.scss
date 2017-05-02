@@ -1,8 +1,11 @@
-.master-container {
+.child-card {
     text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .child-container {
+    // media queries for width
     width: 300px;
     height: 400px;
     background: white;
@@ -20,6 +23,7 @@
 .child-information {
     list-style: none;
     padding: 0;
+
     li {
         padding: 5px;
     }
@@ -28,28 +32,37 @@
 .child-image {
     width: 75px;
     height: auto;
-    border: 3px #fff solid;
+    border: 3px #FFF solid;
     border-radius: 50%;
 }
 
-.image-long-divider {
+.child-line {
+    display: block;
+    background: white;
     width: 5px;
-    height: 30px;
-    background-color: #fff;
-    margin-bottom: 5px;
-    border-radius: 20%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 25px;
+    margin: auto;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 25px;
+    margin-top: -6px;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        width: 5px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    &::before {
+        bottom: -9px;
+    }
+
+    &::after {
+        bottom: -17px;
+    }
 }
-
-.image-short-divider {
-    width: 5px;
-    height: 5px;
-    background-color: #fff;
-    border-radius: 50%;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-

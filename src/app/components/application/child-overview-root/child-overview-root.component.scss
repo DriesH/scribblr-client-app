@@ -1,5 +1,8 @@
-.child-card {
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
+.child-container {
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 600px;
+    padding: 50px;
 }
