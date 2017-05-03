@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChildNavigationComponent implements OnInit {
 
-  @Input('data') data;
+  @Input('children') children;
 
   constructor() { }
 
