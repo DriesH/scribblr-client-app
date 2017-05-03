@@ -1,8 +1,3 @@
-.quote-container {
-    padding: 50px;
-    display: flex;
-}
-
 .navigation {
     list-style: none;
     padding: 10px;
@@ -10,16 +5,17 @@
     margin: auto;
     display: flex;
     justify-content: center;
+
     li {
         a {
             display: block;
             padding: 10px;
-            margin: 0 10px 0 10px;
+            margin: 0 10px;
             cursor: pointer;
             text-decoration: none;
             color: white;
             opacity: 0.6;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.0);
+            border-bottom: 2px solid rgba(0, 0, 0, 0);
             transition: all 0.25s ease-in-out;
 
             :last-child {
@@ -49,36 +45,4 @@
     height: auto;
     border: 3px #FFF solid;
     border-radius: 50%;
-}
-
-#drop-zone:hover {
-    cursor: pointer;
-    border-color: #fff;
-    color: #fff;
-}
-
-#editableImage {
-    max-height: 200px;
-}
-
-.upload-drop-zone {
-  height: 200px;
-  border-width: 2px;
-  margin-bottom: 20px;
-  color: #ccc;
-  border-style: dashed;
-  border-color: #ccc;
-  line-height: 200px;
-  text-align: center;
-  width: 80vw;
-  margin: 0 auto;
-}
-
-.upload-drop-zone.drop {
-  color: #222;
-  border-color: #222;
-}
-
-.hidden {
-    display: none;
 }

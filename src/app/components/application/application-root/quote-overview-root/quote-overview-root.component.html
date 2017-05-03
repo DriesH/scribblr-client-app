@@ -1,0 +1,17 @@
+<scrblr-child-navigation [data]=""></scrblr-child-navigation>
+
+<router-outlet></router-outlet>
+
+<div class="upload-image">
+    <div class="upload-drop-zone" id="drop-zone" (click)="openDialog()" (change)="fileChange(this)">
+        <img class='hidden' id='editableImage' #editableImage [src]="imgData"/>
+        <input type="file" name="image" class="hidden" #fileUpload>
+        <span class="upload-span">Just drag and drop files here</span>
+        <span class="upload-span">---OR---</span>
+        <span class="upload-span"><button type="button" name="button" (click)="openDialog()">Choose file</button></span>
+    </div>
+</div>
+
+<div class="quote-container" #quoteContainer>
+    <scrblr-quote *ngFor="let quote of quotes" [quoteData]="quote"></scrblr-quote>
+</div>

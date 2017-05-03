@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
-import { QuoteService } from '../../../services/application-services/quote.service';
+import { ActivatedRoute } from '@angular/router';
 
-import { APP_CONFIG } from '../../../_config/app.config';
+import { QuoteService } from '../../../../services/application-services/quote.service';
+
+import { APP_CONFIG } from '../../../../_config/app.config';
 
 declare var Aviary: any;
 
@@ -22,19 +24,20 @@ export class QuoteOverviewRootComponent implements OnInit {
     imgData;
     csdkImageEditor;
 
-    constructor(private _qs: QuoteService) { }
+    constructor(private _qs: QuoteService, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this._qs.getAllQuotes()
-        .subscribe(res => {
-            this.quotes = res.quotes;
-        }, error => {
-            switch (error) {
-                case 401: {
-                    console.log('unauthorized');
+            .subscribe(res => {
+                this.quotes = res.quotes;
+            }, error => {
+                switch (error) {
+                    case 401: {
+                        console.log('unauthorized');
+                    }
                 }
-            }
-        });
+            });
+
 
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,

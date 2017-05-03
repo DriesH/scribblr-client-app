@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
-import { ChildService } from '../../../services/application-services/child.service';
+import { ChildService } from '../../../../services/application-services/child.service';
 
 import { Store } from '@ngrx/store';
 
-import * as childActions from '../../../ngrx-state/actions/child.action';
+import * as childActions from '../../../../ngrx-state/actions/child.action';
 
 @Component({
   selector: 'scrblr-child-overview-root',

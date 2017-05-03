@@ -6,10 +6,15 @@ import { RegistrationPageComponent } from '../components/registration-page/regis
 import { LoginPageComponent } from '../components/login-page/login-page.component';
 import { ApplicationRootComponent } from '../components/application/application-root/application-root.component';
 
-import { ChildOverviewRootComponent } from '../components/application/child-overview-root/child-overview-root.component';
-import { QuoteOverviewRootComponent } from '../components/application/quote-overview-root/quote-overview-root.component';
-import { AchievementOverviewRootComponent } from '../components/application/achievement-overview-root/achievement-overview-root.component';
-import { BookOverviewRootComponent } from '../components/application/book-overview-root/book-overview-root.component';
+// Application root components
+import { ChildOverviewRootComponent } from '../components/application/application-root/child-overview-root/child-overview-root.component';
+import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
+import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
+import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
+
+// Quote root component children
+import { QuoteContainerComponent } from '../components/application/application-root/quote-overview-root/quote-container/quote-container.component';
+
 
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -52,6 +57,12 @@ const ROUTES: Routes = [
             {
                 path: 'scribbles',
                 component: QuoteOverviewRootComponent,
+                children: [
+                    {
+                        path: ':shortId',
+                        component: QuoteContainerComponent
+                    }
+                ]
             },
             {
                 path: 'books',
