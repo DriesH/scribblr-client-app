@@ -1,7 +1,7 @@
 let applicationPrefix = '/application/';
 
 export const API_ROUTES = {
-    baseUrl: 'http://scribblr-dev.local/api',
+    baseUrl: 'https://scribblr-dev.local/api',
     registerRoutes: {
         newUser: '/auth/register'
     },
