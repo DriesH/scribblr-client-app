@@ -6,6 +6,7 @@
     <li><a class="" routerLink="children"    routerLinkActive="link-is-active"><img src="/assets/child-head-test/de-ronny.png" alt="" class="child-image"></a></li>
     <li><a class="" routerLink="children"    routerLinkActive="link-is-active"><img src="/assets/child-head-test/de-ronny.png" alt="" class="child-image"></a></li>
 </ul>
+
 <div class="upload-image">
     <div class="upload-drop-zone" id="drop-zone" (click)="openDialog()" (change)="fileChange(this)">
         <img class='hidden' id='editableImage' #editableImage [src]="imgData"/>
@@ -15,6 +16,7 @@
         <span class="upload-span"><button type="button" name="button" (click)="openDialog()">Choose file</button></span>
     </div>
 </div>
+
 <div class="quote-container" #quoteContainer>
     <scrblr-quote *ngFor="let quote of quotes" [quoteData]="quote"></scrblr-quote>
 </div>

@@ -1,5 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+
 import { QuoteService } from '../../../services/application-services/quote.service';
+
+import { APP_CONFIG } from '../../../_config/app.config';
+
+declare var Aviary: any;
+
+// TODO: Clean up.
 
 @Component({
     selector: 'scrblr-quote-overview-root',
@@ -13,6 +20,7 @@ export class QuoteOverviewRootComponent implements OnInit {
 
     quotes;
     imgData;
+    csdkImageEditor;
 
     constructor(private _qs: QuoteService) { }
 
@@ -27,6 +35,21 @@ export class QuoteOverviewRootComponent implements OnInit {
                 }
             }
         });
+
+        this.csdkImageEditor = new Aviary.Feather({
+            apiKey: APP_CONFIG.apiKeyAviary,
+            theme: 'minimum',
+            onSave: (imageID, newURL) => {
+                this.imgData = newURL;
+                this.csdkImageEditor.close();
+            },
+            onError: function (errorObj) {
+                console.log(errorObj.code);
+                console.log(errorObj.message);
+                console.log(errorObj.args);
+            }
+        });
+
     }
 
     openDialog() {
@@ -40,18 +63,15 @@ export class QuoteOverviewRootComponent implements OnInit {
     readURL(input) {
         if (input.files && input.files[0]) {
             let reader = new FileReader();
-            let that = this;
-            reader.onload = function (e:any) {
-                that.imgData = e.target.result;
+            reader.onload =  (e: any) => {
+                this.imgData = e.target.result;
 
-                // console.log(e.target.result);
-                // that.editableImage.nativeElement.setElementAttribute('src', e.target.result).hide();
-                // let currentImage = $('#editable-image')[0];
-                // that.csdkImageEditor.launch({
-                //     image: currentImage.id,
-                //     url: e.target.result
-                // });
-            }
+                let currentImage = this.editableImage.nativeElement;
+                this.csdkImageEditor.launch({
+                    image: currentImage.id,
+                    url: e.target.result
+                });
+            };
 
             reader.readAsDataURL(input.files[0]);
         }
