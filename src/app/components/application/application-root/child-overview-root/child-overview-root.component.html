@@ -1,39 +1,8 @@
 <div class="child-container" #childContainer>
     <scrblr-child *ngFor="let child of children" [childData]="child"></scrblr-child>
-
-    <button type="button" name="button" class="show-overlay-button" (click)='showNewChildOverlay()'>Add new child</button>
-
-    <div class="new-child-overlay" *ngIf="showOverlay">
-        <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild(formModel)" #newChildForm="ngForm">
-
-            <div class="form-input-group">
-                <label for="firstName">First name</label>
-                <input type="text" #firstName="ngModel" name="firstName" [(ngModel)]="formModel.first_name" required>
-            </div>
-
-            <div class="form-input-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" #lastName="ngModel" name="lastName" [(ngModel)]="formModel.last_name">
-            </div>
-
-            <div class="form-input-group">
-                <label for="gender">Gender</label>
-                <input type="radio" #gender="ngModel" [(ngModel)]="formModel.gender"  name="gender" value="Male" id="Male">
-                <label for="Male">Male</label>
-                <input type="radio" #gender="ngModel" [(ngModel)]="formModel.gender"  name="gender" value="Female" id="Female">
-                <label for="Female">Female</label>
-                <input type="radio" #gender="ngModel" [(ngModel)]="formModel.gender"  name="gender" value="Other" id="Other">
-                <label for="Other">Other</label>
-            </div>
-
-            <div class="form-input-group">
-                <label for="lastName">Date of birth</label>
-                <input type="date" #dateOfBirth="ngModel" name="dateOfBirth" [(ngModel)]="formModel.date_of_birth">
-            </div>
-
-            <button id="submit-button" class="btn btn-primary" type="submit">Add child</button>
-        </form>
-    </div>
-
 </div>
+
+<router-outlet></router-outlet>
+
+<a type="button" name="button" routerLink="new">Add new child</a>
 

@@ -1,0 +1,46 @@
+<div class="modal-container">
+    <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild(childForm)">
+        <div class="form-input-group">
+            <label for="firstName">First name</label>
+            <input type="text" name="firstName" [(ngModel)]="childForm.first_name" #firstName="ngModel" required>
+        </div>
+
+        <div [hidden]="firstName.valid || firstName.pristine">
+            <p>first name is required</p>
+        </div>
+
+        <div class="form-input-group">
+            <label for="lastName">Last Name</label>
+            <input type="text"  name="lastName" [(ngModel)]="childForm.last_name" #lastName="ngModel" required>
+        </div>
+
+        <div [hidden]="lastName.valid || lastName.pristine">
+            <p>Last name is required</p>
+        </div>
+
+        <div class="form-input-group">
+            <label for="gender">Gender</label>
+            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Male" id="Male" #gender="ngModel" required>
+            <label for="Male">Male</label>
+            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Female" id="Female" #gender="ngModel" required>
+            <label for="Female">Female</label>
+            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Other" id="Other" #gender="ngModel" required>
+            <label for="Other">Other</label>
+        </div>
+
+        <div [hidden]="gender.valid || gender.pristine">
+            <p>Gender is required</p>
+        </div>
+
+        <div class="form-input-group">
+            <label for="lastName">Date of birth</label>
+            <input type="date" name="dateOfBirth" [(ngModel)]="childForm.date_of_birth" #dateOfBirth="ngModel" required>
+        </div>
+
+        <div [hidden]="dateOfBirth.valid || dateOfBirth.pristine">
+            <p>Date of birth is required</p>
+        </div>
+
+        <button id="submit-button" class="btn btn-primary" type="submit">Add child</button>
+    </form>
+</div>

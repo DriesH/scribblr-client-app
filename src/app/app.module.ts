@@ -63,6 +63,7 @@ import { ChildReducer } from './ngrx-state/reducers/child.reducer';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
+import { ChildAddModalComponent } from './components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         QuoteComponent,
         AchievementComponent,
         ChildNavigationComponent,
-        QuoteContainerComponent
+        QuoteContainerComponent,
+        ChildAddModalComponent
     ],
     imports: [
         BrowserModule,
