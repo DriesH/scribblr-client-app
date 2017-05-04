@@ -6,6 +6,7 @@ import { QuoteService } from '../../../../services/application-services/quote.se
 import { ChildService } from '../../../../services/application-services/child.service';
 
 import { APP_CONFIG } from '../../../../_config/app.config';
+import { Http } from '@angular/http';
 
 declare var Aviary: any;
 
@@ -26,7 +27,7 @@ export class QuoteOverviewRootComponent implements OnInit {
     csdkImageEditor;
     children;
 
-    constructor(private _qs: QuoteService, private _cs: ChildService, private route: ActivatedRoute) { }
+    constructor(private _qs: QuoteService, private _cs: ChildService, private route: ActivatedRoute, private http: Http) { }
 
     ngOnInit() {
         this._qs.getAllQuotes()
@@ -55,15 +56,30 @@ export class QuoteOverviewRootComponent implements OnInit {
 
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
-            theme: 'minimum',
-            // tools: [
-            //     'all',
-            //
-            //
-            // ],
+            tools: [
+                'text',
+                'orientation',
+                'crop',
+                'frames',
+                'enhance',
+                'effects',
+                'focus',
+                'vignette',
+                'redeye',
+                'sharpness',
+                'colorsplash',
+            ],
             onSave: (imageID, newURL) => {
                 this.imgData = newURL;
                 this.csdkImageEditor.close();
+                console.log(newURL);
+                this.http.post('https://scribblr-dev.local/api/make-quote', {link:newURL})
+                .subscribe(res => {
+                    console.log(res);
+                },
+                error => {
+                    console.log(error);
+                });
             },
             onError: function (errorObj) {
                 console.log(errorObj.code);
