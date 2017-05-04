@@ -10,6 +10,15 @@
     left: 0;
     right: 0;
 
+    .close-modal {
+        text-decoration: none;
+        color: white;
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
     form {
         padding: 50px;
         border-radius: 5px;
