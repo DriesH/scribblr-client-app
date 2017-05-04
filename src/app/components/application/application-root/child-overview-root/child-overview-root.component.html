@@ -8,12 +8,12 @@
 
             <div class="form-input-group">
                 <label for="firstName">First name</label>
-                <input type="text" #firstName="ngModel" name="firstName" [(ngModel)]="formModel.firstName" required>
+                <input type="text" #firstName="ngModel" name="firstName" [(ngModel)]="formModel.first_name" required>
             </div>
 
             <div class="form-input-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" #lastName="ngModel" name="lastName" [(ngModel)]="formModel.lastName">
+                <input type="text" #lastName="ngModel" name="lastName" [(ngModel)]="formModel.last_name">
             </div>
 
             <div class="form-input-group">
@@ -28,7 +28,7 @@
 
             <div class="form-input-group">
                 <label for="lastName">Date of birth</label>
-                <input type="date" #dateOfBirth="ngModel" name="dateOfBirth" [(ngModel)]="formModel.dateOfBirth">
+                <input type="date" #dateOfBirth="ngModel" name="dateOfBirth" [(ngModel)]="formModel.date_of_birth">
             </div>
 
             <button id="submit-button" class="btn btn-primary" type="submit">Add child</button>

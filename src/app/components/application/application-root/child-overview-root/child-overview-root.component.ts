@@ -18,10 +18,10 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
     @ViewChild('childContainer') childContainer: ElementRef;
 
     formModel = {
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         gender: '',
-        dateOfBirth: ''
+        date_of_birth: ''
     };
 
     children;
@@ -49,8 +49,13 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
         this.showOverlay = true;
     }
 
-    addNewChild(formModel) {
-        console.log(this.formModel);
+    addNewChild(formData) {
+        this._cs.newChild(formData)
+            .subscribe(res => {
+                console.log(res);
+            }, error => {
+                console.log(error);
+            });
     }
 
     ngAfterViewInit() {

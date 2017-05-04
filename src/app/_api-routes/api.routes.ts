@@ -14,7 +14,7 @@ export const API_ROUTES = {
     application: {
         child: {
             index: applicationPrefix + 'children',
-            newChild: applicationPrefix + 'new',
+            newChild: applicationPrefix + 'children/new',
             getChild: (shortId) => {
                 return applicationPrefix + 'children/' + shortId;
             },
