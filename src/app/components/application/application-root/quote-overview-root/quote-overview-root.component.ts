@@ -56,6 +56,11 @@ export class QuoteOverviewRootComponent implements OnInit {
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
             theme: 'minimum',
+            // tools: [
+            //     'all',
+            //
+            //
+            // ],
             onSave: (imageID, newURL) => {
                 this.imgData = newURL;
                 this.csdkImageEditor.close();
