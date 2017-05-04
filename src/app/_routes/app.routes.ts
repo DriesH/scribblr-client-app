@@ -9,12 +9,17 @@ import { ApplicationRootComponent } from '../components/application/application-
 // Application root components
 import { ChildOverviewRootComponent } from '../components/application/application-root/child-overview-root/child-overview-root.component';
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
+// tslint:disable-next-line:max-line-length
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
 
 // Quote root component children
+// tslint:disable-next-line:max-line-length
 import { QuoteContainerComponent } from '../components/application/application-root/quote-overview-root/quote-container/quote-container.component';
 
+// Child root component children
+// tslint:disable-next-line:max-line-length
+import { ChildAddModalComponent } from '../components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -49,6 +54,12 @@ const ROUTES: Routes = [
             {
                 path: 'children',
                 component: ChildOverviewRootComponent,
+                children: [
+                    {
+                        path: 'new',
+                        component: ChildAddModalComponent
+                    }
+                ]
             },
             {
                 path: 'achievement',

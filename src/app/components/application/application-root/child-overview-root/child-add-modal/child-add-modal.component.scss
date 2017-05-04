@@ -1,0 +1,29 @@
+/*        OVERLAY:     */
+.modal-container {
+    width: 100%;
+    min-height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    form {
+        padding: 50px;
+        border-radius: 5px;
+        color: #000;
+        background-color: #FFF;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.show-overlay-button {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}

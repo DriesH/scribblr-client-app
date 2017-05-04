@@ -6,8 +6,6 @@ import { Store } from '@ngrx/store';
 
 import * as childActions from '../../../../ngrx-state/actions/child.action';
 
-import {NgForm} from '@angular/forms';
-
 @Component({
   selector: 'scrblr-child-overview-root',
   templateUrl: './child-overview-root.component.html',
@@ -16,13 +14,6 @@ import {NgForm} from '@angular/forms';
 export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
 
     @ViewChild('childContainer') childContainer: ElementRef;
-
-    formModel = {
-        first_name: '',
-        last_name: '',
-        gender: '',
-        date_of_birth: ''
-    };
 
     children;
     showOverlay = false;
@@ -47,15 +38,6 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
 
     showNewChildOverlay() {
         this.showOverlay = true;
-    }
-
-    addNewChild(formData) {
-        this._cs.newChild(formData)
-            .subscribe(res => {
-                console.log(res);
-            }, error => {
-                console.log(error);
-            });
     }
 
     ngAfterViewInit() {
