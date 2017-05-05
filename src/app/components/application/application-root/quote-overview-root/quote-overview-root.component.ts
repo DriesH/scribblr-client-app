@@ -73,12 +73,20 @@ export class QuoteOverviewRootComponent implements OnInit {
                 this.imgData = newURL;
                 this.csdkImageEditor.close();
                 console.log(newURL);
-                this.http.post('https://scribblr-dev.local/api/make-quote', {link:newURL})
+                this._qs.newQuote(
+                    'zpBffGlq',
+                    {
+                        link: newURL
+                    }
+                )
                 .subscribe(res => {
                     console.log(res);
-                },
-                error => {
-                    console.log(error);
+                }, error => {
+                    switch (error) {
+                        case 401: {
+                            console.log('unauthorized');
+                        }
+                    }
                 });
             },
             onError: function (errorObj) {
