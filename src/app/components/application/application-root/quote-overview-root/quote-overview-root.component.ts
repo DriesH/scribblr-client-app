@@ -6,11 +6,8 @@ import { QuoteService } from '../../../../services/application-services/quote.se
 import { ChildService } from '../../../../services/application-services/child.service';
 
 import { APP_CONFIG } from '../../../../_config/app.config';
-import { Http } from '@angular/http';
 
 declare var Aviary: any;
-
-// TODO: Clean up.
 
 @Component({
     selector: 'scrblr-quote-overview-root',
@@ -22,80 +19,74 @@ export class QuoteOverviewRootComponent implements OnInit {
     @ViewChild('fileUpload') fileUpload: ElementRef;
     @ViewChild('editableImage') editableImage: ElementRef;
 
-    quotes;
-    imgData;
+    quotes; // todo model quote
+    imgData: string;
     csdkImageEditor;
     children;
 
-    constructor(private _qs: QuoteService, private _cs: ChildService, private route: ActivatedRoute, private http: Http) { }
+    constructor(
+        private _qs: QuoteService,
+        private _cs: ChildService,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
         this._qs.getAllQuotes()
-        .subscribe(res => {
-            this.quotes = res.quotes;
-        }, error => {
-            switch (error) {
-                case 401: {
-                    console.log('unauthorized');
+            .subscribe(res => {
+                this.quotes = res.quotes;
+            }, error => {
+                switch (error) {
+                    case 401: {
+                        console.log('unauthorized');
+                    }
                 }
-            }
-        });
+            });
 
         this._cs.getAllChildren()
-        .subscribe(res => {
-            this.children = res.children;
-            console.log('received children');
-        }, error => {
-            switch (error) {
-                case 401: {
-                    console.log('unauthorized');
+            .subscribe(res => {
+                this.children = res.children;
+                console.log('received children');
+            }, error => {
+                switch (error) {
+                    case 401: {
+                        console.log('unauthorized');
+                    }
                 }
-            }
-        });
-
+            });
 
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
-            tools: [
-                'text',
-                'orientation',
-                'crop',
-                'frames',
-                'enhance',
-                'effects',
-                'focus',
-                'vignette',
-                'redeye',
-                'sharpness',
-                'colorsplash',
-            ],
-            onSave: (imageID, newURL) => {
-                this.imgData = newURL;
-                this.csdkImageEditor.close();
-                console.log(newURL);
-                this._qs.newQuote(
-                    'zpBffGlq',
-                    {
-                        link: newURL
-                    }
-                )
-                .subscribe(res => {
-                    console.log(res);
-                }, error => {
-                    switch (error) {
-                        case 401: {
-                            console.log('unauthorized');
-                        }
-                    }
-                });
-            },
-            onError: function (errorObj) {
-                console.log(errorObj.code);
-                console.log(errorObj.message);
-                console.log(errorObj.args);
-            }
+            tools: APP_CONFIG.aviarySettings,
+            onSave: this.saveToAviary,
+            onError: this.errorSavingToAviary
         });
+    }
 
+    saveToAviary(imageID, newURL) {
+        let data = {
+            link: newURL,
+            short_id: ''
+        };
+
+        this.imgData = newURL;
+
+        this._qs.newQuote(data.short_id, data)
+            .subscribe(res => {
+                console.log(res);
+            }, error => {
+                switch (error) {
+                    case 401: {
+                        console.log('unauthorized');
+                    }
+                }
+            });
+
+        this.csdkImageEditor.close();
+    }
+
+    errorSavingToAviary(errorObj) {
+        console.log(errorObj.code);
+        console.log(errorObj.message);
+        console.log(errorObj.args);
     }
 
     openDialog() {
