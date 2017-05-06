@@ -29,8 +29,8 @@ export class QuoteOverviewRootComponent implements OnInit {
         private _cs: ChildService,
         private route: ActivatedRoute) { }
 
-    ngOnInit() {
-        this._qs.getAllQuotes()
+        ngOnInit() {
+            this._qs.getAllQuotes()
             .subscribe(res => {
                 this.quotes = res.quotes;
             }, error => {
@@ -41,7 +41,7 @@ export class QuoteOverviewRootComponent implements OnInit {
                 }
             });
 
-        this._cs.getAllChildren()
+            this._cs.getAllChildren()
             .subscribe(res => {
                 this.children = res.children;
                 console.log('received children');
@@ -53,23 +53,24 @@ export class QuoteOverviewRootComponent implements OnInit {
                 }
             });
 
-        this.csdkImageEditor = new Aviary.Feather({
-            apiKey: APP_CONFIG.apiKeyAviary,
-            tools: APP_CONFIG.aviarySettings,
-            onSave: this.saveToAviary,
-            onError: this.errorSavingToAviary
-        });
-    }
+            this.csdkImageEditor = new Aviary.Feather({
+                apiKey: APP_CONFIG.apiKeyAviary,
+                tools: APP_CONFIG.aviarySettings,
+                onSave: this.saveToAviary.bind(this),
+                onError: this.errorSavingToAviary,
+                onClose: this.onAviaryClose.bind(this)
+            });
+        }
 
-    saveToAviary(imageID, newURL) {
-        let data = {
-            link: newURL,
-            short_id: ''
-        };
+        saveToAviary(imageID, newURL) {
+            let data = {
+                link: newURL,
+                short_id: ''
+            };
 
-        this.imgData = newURL;
+            this.imgData = newURL;
 
-        this._qs.newQuote(data.short_id, data)
+            this._qs.newQuote(data.short_id, data)
             .subscribe(res => {
                 console.log(res);
             }, error => {
@@ -80,38 +81,49 @@ export class QuoteOverviewRootComponent implements OnInit {
                 }
             });
 
-        this.csdkImageEditor.close();
-    }
+            this.resetFileInput();
+            this.csdkImageEditor.close();
+        }
 
-    errorSavingToAviary(errorObj) {
-        console.log(errorObj.code);
-        console.log(errorObj.message);
-        console.log(errorObj.args);
-    }
+        errorSavingToAviary(errorObj) {
+            this.resetFileInput();
+            console.log(errorObj.code);
+            console.log(errorObj.message);
+            console.log(errorObj.args);
+        }
 
-    openDialog() {
-        this.fileUpload.nativeElement.click();
-    }
+        openDialog() {
+            this.fileUpload.nativeElement.click();
+        }
 
-    fileChange(file) {
-        this.readURL(this.fileUpload.nativeElement);
-    }
+        fileChange(file) {
+            console.log(this.fileUpload.nativeElement.files);
+            this.readURL(this.fileUpload.nativeElement);
+        }
 
-    readURL(input) {
-        if (input.files && input.files[0]) {
-            let reader = new FileReader();
-            reader.onload =  (e: any) => {
-                this.imgData = e.target.result;
+        readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload =  (e: any) => {
+                    this.imgData = e.target.result;
 
-                let currentImage = this.editableImage.nativeElement;
-                this.csdkImageEditor.launch({
-                    image: currentImage.id,
-                    url: e.target.result
-                });
-            };
+                    let currentImage = this.editableImage.nativeElement;
+                    this.csdkImageEditor.launch({
+                        image: currentImage.id,
+                        url: e.target.result
+                    });
+                };
 
-            reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        onAviaryClose(isDirty) {
+            this.resetFileInput();
+            console.log(isDirty);
+        }
+
+        resetFileInput() {
+            this.fileUpload.nativeElement.value = "";
         }
     }
-
-}

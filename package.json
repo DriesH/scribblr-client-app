@@ -42,6 +42,7 @@
     "@ngrx/store-devtools": "^3.2.4",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "angular2-dropzone-wrapper": "^2.0.3",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
