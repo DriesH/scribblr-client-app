@@ -1,7 +1,12 @@
 <form id="login-form" class="scrblr-form" (ngSubmit)="onLogin(formModel)" #loginForm="ngForm">
-    <div class="login-controls__container">
-      
 
+    <div class="logo">
+        <a routerLink="home">
+            <img src="/assets/logos/logo-svg.svg" alt="scribblr logo">
+        </a>
+    </div>
+
+    <div class="login-controls__container">
         <div class="login-input-field-button__container">
             <div class="form-input-group">
                 <label for="email">Your email</label>
