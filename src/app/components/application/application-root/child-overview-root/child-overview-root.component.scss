@@ -1,9 +1,13 @@
 .child-container {
     display: flex;
-    flex-direction: row;
-    overflow-y: hidden;
-    overflow-x: auto;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 600px;
+    width: 50%;
+    margin: auto;
     padding: 50px;
+
 }
 

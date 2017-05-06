@@ -6,11 +6,6 @@
     flex-direction: column;
 }
 
-#submit-button {
-    align-self: center;
-    margin-top: 75px;
-}
-
 .register-step-title__container {
     h1 {
         color: $register-color-one;
@@ -19,73 +14,4 @@
 
 .register-name-color {
     color: $register-color-four;
-}
-
-.form-input-group {
-    font-family: 'Montserrat', 'Arial', sans-serif;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    width: 430px;
-    margin: 0 auto 25px;
-
-    label {
-        color: $register-color-one;
-        width: 430px;
-        margin-bottom: 10px;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        border-radius: 5px;
-        border: 1px solid $register-color-two;
-        background: none;
-        padding: 10px 20px;
-        transition: 0.2s border ease-in-out;
-        width: 430px;
-        height: 80px;
-        box-sizing: border-box;
-        font-size: 20px;
-    }
-
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-        outline: none;
-        border: 1px solid $register-color-four;
-    }
-
-    input[type="text"]:focus + label,
-    input[type="password"]:focus + label {
-        color: #FFF;
-    }
-}
-
-.password-input-group {
-    position: relative;
-
-    svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 20px;
-        width: 10%;
-        cursor: pointer;
-
-        .password-hide {
-            opacity: 0.5;
-            transition: all 0.2s ease-in-out;
-            fill: $register-color-one;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-
-        .password-show {
-            transition: all 0.2s ease-in-out;
-            fill: $register-color-four;
-        }
-    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ChildService } from '../../../../../services/application-services/child.service';
 
@@ -22,7 +23,10 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
 
     body: NodeListOf<HTMLBodyElement>;
 
-    constructor(private _cs: ChildService, private store: Store<any>) { }
+    constructor(
+        private _cs: ChildService,
+        private store: Store<any>,
+        private router: Router) { }
 
     ngOnInit() {
         this.body = document.getElementsByTagName('body');
@@ -42,8 +46,15 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
             });
     }
 
+    closeModal(event) {
+        this.router.navigate(['/application/children']);
+    }
+
+
     private dispatchNewChildToStore(newChild) {
         this.store.dispatch(new childActions.NewChild(newChild));
     }
+
+
 
 }

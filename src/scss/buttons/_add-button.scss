@@ -1,0 +1,14 @@
+.add-btn {
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
+    text-align: center;
+    border-radius: 50%;
+    background: #59C9A5;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.3);
+    }
+}
