@@ -66,6 +66,15 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 import { ChildAddModalComponent } from './components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
+/* DROPZONE */
+import { DropzoneModule } from 'angular2-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
+const DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  maxFilesize: 50,
+  acceptedFiles: 'image/*'
+};
+
 
 @NgModule({
     declarations: [
@@ -103,7 +112,8 @@ import { ChildAddModalComponent } from './components/application/application-roo
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
-        LottieAnimationViewModule.forRoot()
+        LottieAnimationViewModule.forRoot(),
+        DropzoneModule.forRoot(DROPZONE_CONFIG),
     ],
     providers: [
         RegisterService,
