@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { ChildService } from '../../../../services/application-services/child.service';
 
@@ -11,7 +11,7 @@ import * as childActions from '../../../../ngrx-state/actions/child.action';
   templateUrl: './child-overview-root.component.html',
   styleUrls: ['./child-overview-root.component.scss']
 })
-export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
+export class ChildOverviewRootComponent implements OnInit {
 
     @ViewChild('childContainer') childContainer: ElementRef;
 
@@ -39,32 +39,6 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
 
     showNewChildOverlay() {
         this.showOverlay = true;
-    }
-
-    ngAfterViewInit() {
-        this.addEventListeners();
-    }
-
-    private addEventListeners() {
-        this.childContainer.nativeElement.addEventListener('mousewheel', this.scrollHorizontal.bind(this));
-    }
-
-    private scrollHorizontal(event) {
-        if (event.deltaY < 0) {
-            this.childContainer.nativeElement.scrollLeft += 100;
-            // let counter = 1;
-            // let interval = setInterval(() => {
-            //     this.childContainer.nativeElement.scrollLeft += 10 * counter;
-            //     counter ++;
-            //     if ( counter >= 25) {
-            //         clearInterval(interval);
-            //     }
-            // }, 30 / counter);
-
-        } else {
-            this.childContainer.nativeElement.scrollLeft -= 100;
-        }
-
     }
 
     private dispatchChildrenToState(childrenResponse) {
