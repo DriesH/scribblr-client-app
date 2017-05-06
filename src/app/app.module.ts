@@ -60,6 +60,7 @@ import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 
 import { ChildReducer } from './ngrx-state/reducers/child.reducer';
+import { ChildEffect } from './ngrx-state/effects/child.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
@@ -100,6 +101,7 @@ import { ChildAddModalComponent } from './components/application/application-roo
         APP_ROUTES,
         StoreModule.provideStore({ CURRENT_USER: CurrentUserReducer, CURRENT_CHILDREN: ChildReducer }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
+        EffectsModule.runAfterBootstrap(ChildEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         LottieAnimationViewModule.forRoot()
     ],

@@ -24,7 +24,7 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
             this.CURRENT_CHILDREN = CURRENT_CHILDREN;
-
+            console.log('the state changed');
             // check if there are children in the state
             if (this.CURRENT_CHILDREN.children <= 0) {
                 this._cs.getAllChildren().subscribe(
@@ -32,6 +32,7 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
                     error => this.errorHandler(error));
             } else {
                 this.children = this.CURRENT_CHILDREN.children;
+                console.log(this.children);
             }
         });
     }
@@ -67,6 +68,11 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     private dispatchChildrenToState(childrenResponse) {
+        if (childrenResponse.children.length <= 0) {
+            this.children = [];
+            return;
+        }
+
         this.children = childrenResponse.children;
         this.store.dispatch(new childActions.SuccessfullDownloadChildren(this.children));
     }
@@ -78,6 +84,4 @@ export class ChildOverviewRootComponent implements OnInit, AfterViewInit {
             }
         }
     }
-
-
 }

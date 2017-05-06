@@ -2,6 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ChildService } from '../../../../../services/application-services/child.service';
 
+import { Store } from '@ngrx/store';
+
+import * as childActions from '../../../../../ngrx-state/actions/child.action';
+
 @Component({
   selector: 'scrblr-child-add-modal',
   templateUrl: './child-add-modal.component.html',
@@ -18,7 +22,7 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
 
     body: NodeListOf<HTMLBodyElement>;
 
-    constructor(private _cs: ChildService) { }
+    constructor(private _cs: ChildService, private store: Store<any>) { }
 
     ngOnInit() {
         this.body = document.getElementsByTagName('body');
@@ -30,13 +34,16 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
     }
 
     addNewChild(formData) {
-        console.log(formData);
         this._cs.newChild(formData)
             .subscribe(res => {
-                console.log(res);
+                this.dispatchNewChildToStore(res);
             }, error => {
                 console.log(error);
             });
+    }
+
+    private dispatchNewChildToStore(newChild) {
+        this.store.dispatch(new childActions.NewChild(newChild));
     }
 
 }
