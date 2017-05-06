@@ -71,8 +71,14 @@ import { DropzoneModule } from 'angular2-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
+  server: 'https://www.google.com',
   maxFilesize: 50,
-  acceptedFiles: 'image/*'
+  acceptedFiles: 'image/*',
+  createImageThumbnails: false,
+  uploadMultiple: false,
+  clickable : true,
+  maxFiles: 1,
+  autoProcessQueue: false,
 };
 
 
