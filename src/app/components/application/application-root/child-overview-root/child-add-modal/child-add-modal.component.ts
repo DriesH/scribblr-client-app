@@ -9,6 +9,8 @@ import * as childActions from '../../../../../ngrx-state/actions/child.action';
 
 import { HeaderOptions } from '../../../../../models/header-options';
 
+import { Child } from '../../../../../models/child';
+
 @Component({
     selector: 'scrblr-child-add-modal',
     templateUrl: './child-add-modal.component.html',
@@ -56,7 +58,8 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
 
         this._cs.newChild(this.childFormData, this.headers)
             .subscribe(res => {
-                this.dispatchNewChildToStore(res);
+                this.dispatchNewChildToStore(res.child);
+                console.log(res.child);
             }, error => {
                 console.log(error);
             });
@@ -71,7 +74,7 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
         this.router.navigate(['/application/children']);
     }
 
-    private dispatchNewChildToStore(newChild) {
+    private dispatchNewChildToStore(newChild: Child) {
         this.store.dispatch(new childActions.NewChild(newChild));
     }
 }

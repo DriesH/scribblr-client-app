@@ -22,5 +22,4 @@ export class HttpHeaderService {
 
         return new RequestOptions({ headers: headers });
     }
-
 }

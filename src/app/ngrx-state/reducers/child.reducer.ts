@@ -19,7 +19,7 @@ export function ChildReducer(state = initialState, action: Action) {
 
         case childActions.ActionTypes.ADD_CHILD:
             const newChild = action.payload;
-            return Object.assign({}, state, state.children.push(newChild.child));
+            return Object.assign({}, state, state.children.push(newChild));
 
         default:
             return state;
