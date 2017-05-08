@@ -1,22 +1,33 @@
 .navigation {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    bottom: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    width: 50px;
     list-style: none;
     padding: 10px;
-    width: 200px;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     li {
+        text-align: center;
+
         a {
             display: block;
-            padding: 10px;
-            margin: 0 10px;
+            width: 16px;
+            height: 20px;
+            margin: 10px;
+            padding: 0 10px;
             cursor: pointer;
             text-decoration: none;
             color: rgba(255, 255, 255, 0.8);
-            opacity: 0.6;
-            border-bottom: 2px solid rgba(0, 0, 0, 0);
-            transition: all 0.25s ease-in-out;
+            opacity: 0.8;
+            border-right: 1px solid rgba(#F42767, 1);
+            transition: all 100ms ease-in-out;
 
             :last-child {
                 margin-right: 0;
@@ -24,7 +35,7 @@
 
             &:hover {
                 opacity: 1;
-                border-bottom: 2px solid orangered;
+                border-right: 6px solid rgba(#F42767, 1);
             }
         }
     }
@@ -33,5 +44,5 @@
 .link-is-active {
     opacity: 1 !important;
     color: rgba(255, 255, 255, 1) !important;
-    border-bottom: 2px orangered solid !important;
+    border-right: 6px rgba(#F42767, 1) solid !important;
 }

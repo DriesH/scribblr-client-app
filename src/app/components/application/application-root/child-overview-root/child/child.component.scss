@@ -10,6 +10,16 @@
     justify-content: space-around;
     align-items: center;
     font-family: 'Roboto', 'Arial', sans-serif;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(46, 46, 46, 0.6);
+    }
+
+    &:hover .child-image {
+        width: 180px;
+    }
 }
 
 .child-name {
@@ -31,4 +41,5 @@
     border-radius: 50%;
     margin: auto;
     border: 2px solid white;
+    transition: all 150ms ease-in-out;
 }
