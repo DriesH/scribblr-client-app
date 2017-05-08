@@ -1,28 +1,15 @@
 .child-card {
-    margin: auto;
+    margin-right: 10px;
     margin-bottom: 10px;
-    width: 550px;
-    height: 200px;
-    background-image: -webkit-linear-gradient(bottom left, rgb(173,230,251) 0%, rgb(94,148,229) 100%);
-    background-image: -moz-linear-gradient(bottom left, rgb(173,230,251) 0%, rgb(94,148,229) 100%);
-    background-image: -o-linear-gradient(bottom left, rgb(173,230,251) 0%, rgb(94,148,229) 100%);
-    background-image: linear-gradient(to top right, rgb(173,230,251) 0%, rgb(94,148,229) 100%);
-    border-radius: 5px;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    height: 350px;
+    background: rgba(46, 46, 46, 0.2);
     padding: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-.child-info-container {
-    width: 75%;
-}
-
-.child-image-container {
-    width: 25%;
 }
 
 .child-name {
@@ -42,5 +29,6 @@
     width: 150px;
     height: auto;
     border-radius: 50%;
-    margin-left: 25px;
+    margin: auto;
+    border: 2px solid white;
 }

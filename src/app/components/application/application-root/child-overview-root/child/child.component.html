@@ -1,6 +1,6 @@
 <div class="child-card">
     <div class="child-image-containter">
-        <img src="/assets/child-head-test/de-ronny.png" alt="" class="child-image">
+        <img [src]="pictureUrl" class="child-image">
     </div>
     <div class="child-info-container">
         <h1 class="child-name">{{ childData.first_name }}&nbsp;&nbsp;<span class="child-age">&nbsp;-&nbsp;{{ childData.date_of_birth | date }}</span></h1>

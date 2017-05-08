@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 
 import * as childActions from '../../../../ngrx-state/actions/child.action';
 
+import { Child } from '../../../../models/child';
+
 @Component({
   selector: 'scrblr-child-overview-root',
   templateUrl: './child-overview-root.component.html',
@@ -15,7 +17,7 @@ export class ChildOverviewRootComponent implements OnInit {
 
     @ViewChild('childContainer') childContainer: ElementRef;
 
-    children;
+    children: Array<Child>;
     showOverlay = false;
     CURRENT_CHILDREN; // from state.
 
@@ -24,7 +26,7 @@ export class ChildOverviewRootComponent implements OnInit {
     ngOnInit() {
         this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
             this.CURRENT_CHILDREN = CURRENT_CHILDREN;
-            console.log('the state changed');
+
             // check if there are children in the state
             if (this.CURRENT_CHILDREN.children <= 0) {
                 this._cs.getAllChildren().subscribe(
@@ -32,7 +34,6 @@ export class ChildOverviewRootComponent implements OnInit {
                     error => this.errorHandler(error));
             } else {
                 this.children = this.CURRENT_CHILDREN.children;
-                console.log(this.children);
             }
         });
     }
@@ -51,10 +52,11 @@ export class ChildOverviewRootComponent implements OnInit {
         this.store.dispatch(new childActions.SuccessfullDownloadChildren(this.children));
     }
 
+    // TODO: Make seperate error handler.
     private errorHandler(error) {
         switch (error) {
             case 401: {
-                console.log('unauthorized');
+                console.log('Unauthorized');
             }
         }
     }

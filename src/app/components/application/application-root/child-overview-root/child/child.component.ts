@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Child } from '../../../../../models/child';
+
 @Component({
   selector: 'scrblr-child',
   templateUrl: './child.component.html',
@@ -7,11 +9,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
 
-  @Input('childData') childData;
+    @Input('childData') childData: Child;
 
-  constructor() { }
+    pictureUrl: String;
 
-  ngOnInit() {
-  }
+    constructor() { }
 
+    ngOnInit() {
+        if (this.childData.thumbnail_url_id) {
+            this.pictureUrl = 'https://scribblr-dev.local/api/application/children/'
+                + this.childData.short_id +
+                '/thumbnail/'
+                + this.childData.thumbnail_url_id;
+        } else {
+            this.pictureUrl = '/assets/child-head-test/de-ronny.png';
+        }
+    }
 }

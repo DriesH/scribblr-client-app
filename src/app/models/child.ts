@@ -9,4 +9,5 @@ export interface Child {
     updated_at: String;
     deleted_at: String;
     user_id: Number;
+    thumbnail_url_id: String;
 }

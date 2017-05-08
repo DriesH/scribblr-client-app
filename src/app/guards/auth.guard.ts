@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
 
     CURRENT_USER;
 
-    constructor(private store: Store<any> ) {
+    constructor(private store: Store<any>) {
         store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             this.CURRENT_USER = CURRENT_USER;
         });

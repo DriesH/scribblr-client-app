@@ -13,7 +13,7 @@
             margin: 0 10px;
             cursor: pointer;
             text-decoration: none;
-            color: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 0.8);
             opacity: 0.6;
             border-bottom: 2px solid rgba(0, 0, 0, 0);
             transition: all 0.25s ease-in-out;
@@ -32,6 +32,6 @@
 
 .link-is-active {
     opacity: 1 !important;
-    color: rgba(0, 0, 0, 1) !important;
+    color: rgba(255, 255, 255, 1) !important;
     border-bottom: 2px orangered solid !important;
 }

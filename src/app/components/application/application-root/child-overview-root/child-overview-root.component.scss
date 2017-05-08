@@ -1,7 +1,8 @@
 .child-container {
     display: flex;
     justify-content: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
     height: 600px;
