@@ -67,7 +67,7 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
 
     imageAdded(e) {
         let files: FileList = e.srcElement.files;
-        this.childFormData.append('files', files[0], files[0].name);
+        this.childFormData.append('thumbnail', files[0], files[0].name);
     }
 
     closeModal(e) {
