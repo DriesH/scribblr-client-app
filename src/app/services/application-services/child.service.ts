@@ -11,6 +11,8 @@ import 'rxjs/add/observable/throw';
 
 import { API_ROUTES } from '../../_api-routes/api.routes';
 
+import { HeaderOptions } from '../../models/header-options';
+
 @Injectable()
 export class ChildService {
 
@@ -24,9 +26,9 @@ export class ChildService {
         }
 
     // POST
-    newChild(data): Observable<any> {
+    newChild(data, headers: Array<HeaderOptions>): Observable<any> {
 
-        this._headers.setOptions(this.token);
+        this._headers.setOptions(this.token, headers);
 
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.newChild,
             data,

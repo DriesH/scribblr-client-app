@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ChildService } from '../../../../../services/application-services/child.service';
@@ -7,12 +7,17 @@ import { Store } from '@ngrx/store';
 
 import * as childActions from '../../../../../ngrx-state/actions/child.action';
 
+import { HeaderOptions } from '../../../../../models/header-options';
+
 @Component({
-  selector: 'scrblr-child-add-modal',
-  templateUrl: './child-add-modal.component.html',
-  styleUrls: ['./child-add-modal.component.scss']
+    selector: 'scrblr-child-add-modal',
+    templateUrl: './child-add-modal.component.html',
+    styleUrls: ['./child-add-modal.component.scss']
 })
 export class ChildAddModalComponent implements OnInit, OnDestroy {
+
+    @ViewChild('newChildForm') newChildForm: ElementRef;
+    @ViewChild('image') image: ElementRef;
 
     childForm = {
         first_name: null,
@@ -20,6 +25,12 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
         date_of_birth: null,
         gender: null
     };
+
+    childFormData: FormData = new FormData();
+
+    headers: Array<HeaderOptions> = [
+        { prop: 'Content-Type', value: 'multipart/form-data' }
+    ];
 
     body: NodeListOf<HTMLBodyElement>;
 
@@ -37,8 +48,13 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
         this.body[0].className = '';
     }
 
-    addNewChild(formData) {
-        this._cs.newChild(formData)
+    addNewChild() {
+        this.childFormData.append('first_name',    this.childForm.first_name);
+        this.childFormData.append('last_name',     this.childForm.last_name);
+        this.childFormData.append('date_of_birth', this.childForm.date_of_birth);
+        this.childFormData.append('gender',        this.childForm.gender);
+
+        this._cs.newChild(this.childFormData, this.headers)
             .subscribe(res => {
                 this.dispatchNewChildToStore(res);
             }, error => {
@@ -46,15 +62,16 @@ export class ChildAddModalComponent implements OnInit, OnDestroy {
             });
     }
 
-    closeModal(event) {
-        this.router.navigate(['/application/children']);
+    imageAdded(e) {
+        let files: FileList = e.srcElement.files;
+        this.childFormData.append('files', files[0], files[0].name);
     }
 
+    closeModal(e) {
+        this.router.navigate(['/application/children']);
+    }
 
     private dispatchNewChildToStore(newChild) {
         this.store.dispatch(new childActions.NewChild(newChild));
     }
-
-
-
 }

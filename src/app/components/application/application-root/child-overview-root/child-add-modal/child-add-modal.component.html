@@ -3,7 +3,7 @@
         <a routerLink="../" class="close-modal">
             <img src="/assets/icons/cross.svg">
         </a>
-        <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild(childForm)">
+        <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild()" #newChildForm>
             <!--<div class="modal-header-img">
                 <img src="/assets/modal/header-1.jpg" alt="header image">
             </div>-->
@@ -56,7 +56,7 @@
             </div>
 
             <div>
-                <input type="file" accept="image/*">
+                <input type="file" accept="image/*" name="image" (change)="imageAdded($event)" #image>
             </div>
 
             <button type="submit">Add child</button>
