@@ -9,11 +9,10 @@
 @import './scss/logo/logo';
 @import './scss/forms/forms';
 
-
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #000;
 
     &.no-scrolling {

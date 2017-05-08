@@ -1,49 +1,65 @@
 <div class="modal-container">
-    <a routerLink="../" class="close-modal">
-        <i class="fa fa-times fa-lg"></i>
-    </a>
-    <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild(childForm)">
-        <div class="form-input-group">
-            <label for="firstName">First name</label>
-            <input type="text" name="firstName" [(ngModel)]="childForm.first_name" #firstName="ngModel" required>
-        </div>
+    <div class="modal">
+        <a routerLink="../" class="close-modal">
+            <img src="/assets/icons/cross.svg">
+        </a>
+        <form id="new-child-form" class="scrblr-form" (ngSubmit)="addNewChild(childForm)">
+            <!--<div class="modal-header-img">
+                <img src="/assets/modal/header-1.jpg" alt="header image">
+            </div>-->
 
-        <div [hidden]="firstName.valid || firstName.pristine">
-            <p>first name is required</p>
-        </div>
+            <div class="form-input-group">
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" [(ngModel)]="childForm.first_name" #firstName="ngModel" required>
+            </div>
 
-        <div class="form-input-group">
-            <label for="lastName">Last Name</label>
-            <input type="text"  name="lastName" [(ngModel)]="childForm.last_name" #lastName="ngModel" required>
-        </div>
+            <div [hidden]="firstName.valid || firstName.pristine">
+                <p>first name is required</p>
+            </div>
 
-        <div [hidden]="lastName.valid || lastName.pristine">
-            <p>Last name is required</p>
-        </div>
+            <div class="form-input-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" [(ngModel)]="childForm.last_name" #lastName="ngModel" required>
+            </div>
 
-        <div class="form-input-group">
-            <label for="gender">Gender</label>
-            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Male" id="Male" #gender="ngModel" required>
-            <label for="Male"><i class="fa fa-mars"></i>&nbsp;Boy</label>
-            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Female" id="Female" #gender="ngModel" required>
-            <label for="Female"><i class="fa fa-venus"></i>&nbsp;Girl</label>
-            <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Other" id="Other" #gender="ngModel" required>
-            <label for="Other"><i class="fa fa-trans"></i>&nbsp;Other</label>
-        </div>
+            <div [hidden]="lastName.valid || lastName.pristine">
+                <p>Last name is required</p>
+            </div>
 
-        <div [hidden]="gender.valid || gender.pristine">
-            <p>Gender is required</p>
-        </div>
 
-        <div class="form-input-group">
-            <label for="lastName">Date of birth</label>
-            <input type="date" name="dateOfBirth" [(ngModel)]="childForm.date_of_birth" #dateOfBirth="ngModel" required>
-        </div>
+            <div class="form-input-group radio">
+                <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Male" id="Male" #gender="ngModel" required>
+                <label for="Male"><i class="fa fa-mars"></i>&nbsp;Boy</label>
+            </div>
 
-        <div [hidden]="dateOfBirth.valid || dateOfBirth.pristine">
-            <p>Date of birth is required</p>
-        </div>
+            <div class="form-input-group radio">
+                <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Female" id="Female" #gender="ngModel" required>
+                <label for="Female"><i class="fa fa-venus"></i>&nbsp;Girl</label>
+            </div>
 
-        <button class="btn btn-primary btn-color-register-colors" type="submit">Add child</button>
-    </form>
+            <div class="form-input-group radio">
+                <input type="radio" [(ngModel)]="childForm.gender" name="gender" value="Other" id="Other" #gender="ngModel" required>
+                <label for="Other"><i class="fa fa-trans"></i>&nbsp;Other</label>
+            </div>
+
+            <div [hidden]="gender.valid || gender.pristine">
+                <p>Gender is required</p>
+            </div>
+
+            <div class="form-input-group">
+                <label for="lastName">Date of birth</label>
+                <input type="date" name="dateOfBirth" [(ngModel)]="childForm.date_of_birth" #dateOfBirth="ngModel" required>
+            </div>
+
+            <div [hidden]="dateOfBirth.valid || dateOfBirth.pristine">
+                <p>Date of birth is required</p>
+            </div>
+
+            <div>
+                <input type="file" accept="image/*">
+            </div>
+
+            <button type="submit">Add child</button>
+        </form>
+    </div>
 </div>

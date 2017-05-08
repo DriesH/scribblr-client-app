@@ -69,6 +69,7 @@ import { ChildAddModalComponent } from './components/application/application-roo
 /* DROPZONE */
 import { DropzoneModule } from 'angular2-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
+import { ApplicationHeaderComponent } from './components/application/application-root/application-header/application-header.component';
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
   server: 'https://www.google.com',
@@ -106,7 +107,8 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
         AchievementComponent,
         ChildNavigationComponent,
         QuoteContainerComponent,
-        ChildAddModalComponent
+        ChildAddModalComponent,
+        ApplicationHeaderComponent
     ],
     imports: [
         BrowserModule,

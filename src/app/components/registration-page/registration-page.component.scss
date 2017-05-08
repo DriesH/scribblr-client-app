@@ -14,6 +14,10 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     background: white;
     z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .register-page__background {
@@ -26,10 +30,4 @@
     background-repeat: no-repeat;
     background-position: center;
     z-index: 0;
-}
-
-#return-to-homepage {
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
 }
