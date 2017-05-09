@@ -5,8 +5,12 @@
     width: 100%;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #application-body {
-    padding-left: 150px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }

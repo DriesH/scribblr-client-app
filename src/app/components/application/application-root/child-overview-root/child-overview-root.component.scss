@@ -1,14 +1,13 @@
 .child-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
     height: 600px;
-    width: 100%;
+    width: 1060px;
     margin: auto;
-    padding: 50px;
     box-sizing: border-box;
 }
 

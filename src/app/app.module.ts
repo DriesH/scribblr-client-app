@@ -66,7 +66,11 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 import { ChildAddModalComponent } from './components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
+
+
 import { ApplicationHeaderComponent } from './components/application/application-root/application-header/application-header.component';
+import { ChildAgePipe } from './pipes/child-age.pipe';
+
 
 @NgModule({
     declarations: [
@@ -93,7 +97,8 @@ import { ApplicationHeaderComponent } from './components/application/application
         ChildNavigationComponent,
         QuoteContainerComponent,
         ChildAddModalComponent,
-        ApplicationHeaderComponent
+        ApplicationHeaderComponent,
+        ChildAgePipe
     ],
     imports: [
         BrowserModule,
