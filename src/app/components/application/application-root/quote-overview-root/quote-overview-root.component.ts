@@ -34,27 +34,27 @@ export class QuoteOverviewRootComponent implements OnInit {
 
         ngOnInit() {
             this._qs.getAllQuotes()
-            .subscribe(res => {
-                this.quotes = res.quotes;
-            }, error => {
-                switch (error) {
-                    case 401: {
-                        console.log('unauthorized');
+                .subscribe(res => {
+                    this.quotes = res.quotes;
+                }, error => {
+                    switch (error) {
+                        case 401: {
+                            console.log('unauthorized');
+                        }
                     }
-                }
-            });
+                });
 
             this._cs.getAllChildren()
-            .subscribe(res => {
-                this.children = res.children;
-                console.log('received children');
-            }, error => {
-                switch (error) {
-                    case 401: {
-                        console.log('unauthorized');
+                .subscribe(res => {
+                    this.children = res.children;
+                    console.log('received children');
+                }, error => {
+                    switch (error) {
+                        case 401: {
+                            console.log('unauthorized');
+                        }
                     }
-                }
-            });
+                });
 
             this.csdkImageEditor = new Aviary.Feather({
                 apiKey: APP_CONFIG.apiKeyAviary,
@@ -64,18 +64,12 @@ export class QuoteOverviewRootComponent implements OnInit {
                 onClose: this.onAviaryClose.bind(this)
             });
 
-            let myDropzone = new Dropzone("#dropzeun", {
-              url: 'https://www.google.com',
-              maxFilesize: 50,
-              acceptedFiles: 'image/*',
-              createImageThumbnails: false,
-              uploadMultiple: false,
-              clickable : true,
-              maxFiles: 1,
-              autoProcessQueue: false,
-            });
+            this.myDropzone = new Dropzone('#dropzone', {
+                url: 'www.google.be',
+                init: () => {
 
-            console.log(myDropzone);
+                }
+            });
         }
 
         saveToAviary(imageID, newURL) {
