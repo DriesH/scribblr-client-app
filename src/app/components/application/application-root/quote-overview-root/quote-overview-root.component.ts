@@ -8,6 +8,7 @@ import { ChildService } from '../../../../services/application-services/child.se
 import { APP_CONFIG } from '../../../../_config/app.config';
 
 declare var Aviary: any;
+declare var Dropzone: any;
 
 @Component({
     selector: 'scrblr-quote-overview-root',
@@ -18,11 +19,13 @@ export class QuoteOverviewRootComponent implements OnInit {
 
     @ViewChild('fileUpload') fileUpload: ElementRef;
     @ViewChild('editableImage') editableImage: ElementRef;
+    @ViewChild('dropzoneInput') dropzoneInput: ElementRef;
 
     quotes; // todo model quote
     imgData: string;
     csdkImageEditor;
     children;
+    myDropzone;
 
     constructor(
         private _qs: QuoteService,
@@ -60,6 +63,19 @@ export class QuoteOverviewRootComponent implements OnInit {
                 onError: this.errorSavingToAviary,
                 onClose: this.onAviaryClose.bind(this)
             });
+
+            let myDropzone = new Dropzone("#dropzeun", {
+              url: 'https://www.google.com',
+              maxFilesize: 50,
+              acceptedFiles: 'image/*',
+              createImageThumbnails: false,
+              uploadMultiple: false,
+              clickable : true,
+              maxFiles: 1,
+              autoProcessQueue: false,
+            });
+
+            console.log(myDropzone);
         }
 
         saveToAviary(imageID, newURL) {
@@ -126,4 +142,16 @@ export class QuoteOverviewRootComponent implements OnInit {
         resetFileInput() {
             this.fileUpload.nativeElement.value = "";
         }
+
+        DROPZONE_CONFIG = {
+          // Change this to your upload POST address:
+          server: 'https://www.google.com',
+          maxFilesize: 50,
+          acceptedFiles: 'image/*',
+          createImageThumbnails: false,
+          uploadMultiple: false,
+          clickable : true,
+          maxFiles: 1,
+          autoProcessQueue: false,
+        };
     }
