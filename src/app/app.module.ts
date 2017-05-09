@@ -66,10 +66,11 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 import { ChildAddModalComponent } from './components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
-
-
 import { ApplicationHeaderComponent } from './components/application/application-root/application-header/application-header.component';
 import { ChildAgePipe } from './pipes/child-age.pipe';
+import { DropUploadComponent } from './components/application/application-root/quote-overview-root/drop-upload/drop-upload.component';
+
+import { FileUploadModule } from "ng2-file-upload"
 
 
 @NgModule({
@@ -98,13 +99,15 @@ import { ChildAgePipe } from './pipes/child-age.pipe';
         QuoteContainerComponent,
         ChildAddModalComponent,
         ApplicationHeaderComponent,
-        ChildAgePipe
+        ChildAgePipe,
+        DropUploadComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         BrowserAnimationsModule,
+        FileUploadModule,
         APP_ROUTES,
         StoreModule.provideStore({ CURRENT_USER: CurrentUserReducer, CURRENT_CHILDREN: ChildReducer }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),

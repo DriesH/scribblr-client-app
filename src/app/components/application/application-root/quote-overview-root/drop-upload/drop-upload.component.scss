@@ -1,0 +1,15 @@
+.my-drop-zone {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &.file-over {
+        opacity: 1 !important;
+    }
+}
+
