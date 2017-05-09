@@ -3,7 +3,8 @@
         <img [src]="pictureUrl" class="child-image">
     </div>
     <div class="child-info-container">
-        <h1 class="child-name">{{ childData.first_name }}&nbsp;&nbsp;<span class="child-age">&nbsp;-&nbsp;{{ childData.date_of_birth | date }}</span></h1>
+        <h1 class="child-name">{{ childData.first_name }}</h1>
+        <h3 class="child-age">{{ childData.date_of_birth | childAge }}</h3>
     </div>
 </div>
 

@@ -1,10 +1,10 @@
 .child-card {
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-bottom: 10px;
     width: 350px;
     height: 350px;
     background: rgba(46, 46, 46, 0.2);
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -22,11 +22,15 @@
     }
 }
 
+.child-name,
+.child-age {
+    text-align: center;
+    margin: 0;
+    color: white;
+}
+
 .child-name {
     font-weight: 400;
-    margin: 0;
-    padding: 0 30px;
-    color: white;
     font-size: 30px;
 }
 
