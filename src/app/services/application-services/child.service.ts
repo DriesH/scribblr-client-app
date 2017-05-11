@@ -26,7 +26,7 @@ export class ChildService {
         }
 
     // POST
-    newChild(data, headers: Array<HeaderOptions>): Observable<any> {
+    newChild(data, headers?: Array<HeaderOptions>): Observable<any> {
 
         this._headers.setOptions(this.token, headers);
 

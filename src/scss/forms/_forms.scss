@@ -5,13 +5,12 @@
 }
 
 .form-input-group {
-    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-family: 'Montserrat', 'Arial', sans-serif !important;
     font-weight: 300;
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    width: 100%;
     margin: 0 auto 25px;
 
     label {
@@ -21,10 +20,11 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="date"] {
         border-radius: 5px;
         border: 1px solid $register-color-two;
-        background: none;
+        background: white;
         padding: 10px 20px;
         transition: 0.2s border ease-in-out;
         width: 430px;
@@ -34,7 +34,8 @@
     }
 
     input[type="text"]:focus,
-    input[type="password"]:focus {
+    input[type="password"]:focus,
+    input[type="date"]:focus {
         outline: none;
         border: 1px solid $register-color-four;
     }
@@ -42,6 +43,18 @@
     input[type="text"]:focus + label,
     input[type="password"]:focus + label {
         color: #FFF;
+    }
+
+    select {
+        border-radius: 5px;
+        border: 1px solid $register-color-two;
+        background: white;
+        padding: 10px 20px;
+        transition: 0.2s border ease-in-out;
+        width: 430px;
+        height: 80px;
+        box-sizing: border-box;
+        font-size: 20px;
     }
 
     &.radio {

@@ -7,7 +7,13 @@
                 <img src="/assets/logos/logo-svg.svg" alt="logo">
             </a>
         </div>
-        <router-outlet></router-outlet>
+
+        <div class="application-body--content">
+            <router-outlet></router-outlet>
+            <scrblr-new-child *ngIf="applicationUI.addingNewChild"></scrblr-new-child>
+        </div>
+
+
     </div>
 </div>
 

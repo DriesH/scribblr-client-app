@@ -66,22 +66,11 @@ const ROUTES: Routes = [
                 ]
             },
             {
-                path: 'children',
-                component: ChildrenOverviewRootComponent,
-                children: [
-                    {
-                        path: 'new',
-                        component: NewChildComponent
-                    }
-                ]
-            },
-            {
                 path: 'books',
                 component: BookOverviewRootComponent,
             }
         ]
-    },
-
+    }
     // {
     //     path: '**',
     //     redirectTo: 'home'

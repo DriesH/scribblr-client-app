@@ -15,13 +15,17 @@ export class ApplicationRootComponent implements OnInit {
 
     children;
     currentUser;
+    applicationUI;
 
     constructor(private _cs: ChildService, private store: Store<any>) { }
 
     ngOnInit() {
-
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             this.currentUser = CURRENT_USER;
+        });
+
+        this.store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
+            this.applicationUI = APPLICATION_UI;
         });
 
         this._cs.getAllChildren()

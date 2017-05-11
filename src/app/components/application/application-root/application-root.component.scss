@@ -25,3 +25,8 @@
         width: 200px;
     }
 }
+
+.application-body--content {
+    position: relative;
+    height: calc(100% - 100px);
+}

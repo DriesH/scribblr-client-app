@@ -68,8 +68,12 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 import { ChildReducer } from './ngrx-state/reducers/child.reducer';
 import { ChildEffect } from './ngrx-state/effects/child.effects';
 
+import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
+
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
+
+import { ImageCropperComponent } from 'ng2-img-cropper';
 
 
 @NgModule({
@@ -97,7 +101,8 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         DropUploadComponent,
         SideBarComponent,
         ChildrenOverviewRootComponent,
-        NewChildComponent
+        NewChildComponent,
+        ImageCropperComponent
     ],
     imports: [
         BrowserModule,
@@ -106,7 +111,11 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         BrowserAnimationsModule,
         FileUploadModule,
         APP_ROUTES,
-        StoreModule.provideStore({ CURRENT_USER: CurrentUserReducer, CURRENT_CHILDREN: ChildReducer }),
+        StoreModule.provideStore({
+            CURRENT_USER: CurrentUserReducer,
+            CURRENT_CHILDREN: ChildReducer,
+            APPLICATION_UI: ApplicationUIReducer
+        }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
