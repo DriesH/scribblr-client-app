@@ -38,6 +38,9 @@ import { ChildNavigationComponent } from './components/application/application-r
 import { QuoteContainerComponent } from './components/application/application-root/quote-overview-root/quote-container/quote-container.component';
 import { DropUploadComponent } from './components/application/application-root/quote-overview-root/drop-upload/drop-upload.component';
 import { SideBarComponent } from './components/application/application-root/side-bar/side-bar.component';
+import { ChildrenOverviewRootComponent } from './components/application/application-root/children-overview-root/children-overview-root.component';
+import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
+
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -69,8 +72,6 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 
 
-
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -94,7 +95,9 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         QuoteContainerComponent,
         ChildAgePipe,
         DropUploadComponent,
-        SideBarComponent
+        SideBarComponent,
+        ChildrenOverviewRootComponent,
+        NewChildComponent
     ],
     imports: [
         BrowserModule,

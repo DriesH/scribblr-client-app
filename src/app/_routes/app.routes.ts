@@ -16,6 +16,11 @@ import { BookOverviewRootComponent } from '../components/application/application
 // tslint:disable-next-line:max-line-length
 import { QuoteContainerComponent } from '../components/application/application-root/quote-overview-root/quote-container/quote-container.component';
 
+// Quote root component children
+import { ChildrenOverviewRootComponent } from '../components/application/application-root/children-overview-root/children-overview-root.component';
+import { NewChildComponent } from '../components/application/application-root/children-overview-root/new-child/new-child.component';
+
+
 import { AuthGuard } from '../guards/auth.guard';
 
 const ROUTES: Routes = [
@@ -57,6 +62,16 @@ const ROUTES: Routes = [
                     {
                         path: ':shortId',
                         component: QuoteContainerComponent
+                    }
+                ]
+            },
+            {
+                path: 'children',
+                component: ChildrenOverviewRootComponent,
+                children: [
+                    {
+                        path: 'new',
+                        component: NewChildComponent
                     }
                 ]
             },

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'scrblr-side-bar',
   templateUrl: './side-bar.component.html',
@@ -8,8 +10,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SideBarComponent implements OnInit {
 
     @Input('children') children;
+    @Input('currentUser') currentUser;
 
-    constructor() { }
+    constructor(private store: Store<any>) { }
 
     ngOnInit() {
     }

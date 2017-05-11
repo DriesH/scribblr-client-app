@@ -14,10 +14,16 @@ import * as ChildActions from '../../../ngrx-state/actions/child.action';
 export class ApplicationRootComponent implements OnInit {
 
     children;
+    currentUser;
 
     constructor(private _cs: ChildService, private store: Store<any>) { }
 
     ngOnInit() {
+
+        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
+            this.currentUser = CURRENT_USER;
+        });
+
         this._cs.getAllChildren()
             .subscribe(
                 res => this.dispatchChildrenToStore(res.children),

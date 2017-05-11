@@ -6,7 +6,7 @@
                 <img src="/assets/icons/sidebar-icons/cog-wheel-icon.svg" alt="cogwheel">
             </span>
         </div>
-        <p>Hannah Montana</p>
+        <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
     </div>
 
     <hr class="sidebar--separator">
@@ -30,18 +30,22 @@
     <hr class="sidebar--separator">
 
     <ul class="sidebar--children">
-        <li class="child-avatar" *ngFor="let child of children">
-            <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
-            <div>
-                <p class="fullname">{{ child.full_name }}</p>
-                <p class="age">{{ child.date_of_birth | childAge }}</p>
-            </div>
-        </li>
-        <li class="new-child">
-            <a routerLink="">
-                <span>+</span>
+        <li *ngFor="let child of children">
+            <a class="child-avatar" routerLink="">
+                <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
+                <div>
+                    <p class="fullname">{{ child.full_name }}</p>
+                    <p class="age">{{ child.date_of_birth | childAge }}</p>
+                </div>
             </a>
-            <p>New child</p>
+        </li>
+        <li>
+            <a class="new-child" routerLink="children/new">
+                <span class="circle">
+                    +
+                </span>
+                <p>New child</p>
+            </a>
         </li>
     </ul>
 </div>
