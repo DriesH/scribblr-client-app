@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+/* Other modules */
+import { FileUploadModule } from 'ng2-file-upload';
+
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -26,16 +29,15 @@ import { LoginFormComponent } from './components/login-page/login-form/login-for
 
 /* Application components */
 import { ApplicationRootComponent } from './components/application/application-root/application-root.component';
-import { AppNavigationComponent } from './components/application/application-root/app-navigation/app-navigation.component';
-import { ChildOverviewRootComponent } from './components/application/application-root/child-overview-root/child-overview-root.component';
 import { QuoteOverviewRootComponent } from './components/application/application-root/quote-overview-root/quote-overview-root.component';
 import { AchievementOverviewRootComponent } from './components/application/application-root/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from './components/application/application-root/book-overview-root/book-overview-root.component';
-import { ChildComponent } from './components/application/application-root/child-overview-root/child/child.component';
 import { QuoteComponent } from './components/application/application-root/quote-overview-root/quote/quote.component';
 import { AchievementComponent } from './components/application/application-root/achievement-overview-root/achievement/achievement.component';
 import { ChildNavigationComponent } from './components/application/application-root/quote-overview-root/child-navigation/child-navigation.component';
 import { QuoteContainerComponent } from './components/application/application-root/quote-overview-root/quote-container/quote-container.component';
+import { DropUploadComponent } from './components/application/application-root/quote-overview-root/drop-upload/drop-upload.component';
+import { SideBarComponent } from './components/application/application-root/side-bar/side-bar.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -54,6 +56,7 @@ import { AuthGuard } from './guards/auth.guard';
 /* Pipes */
 import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { ChildAgePipe } from './pipes/child-age.pipe';
 
 /* Reducers and effects */
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
@@ -64,13 +67,8 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 
 /* Bodymovin' & Lottie module */
 import { LottieAnimationViewModule } from 'lottie-angular2';
-import { ChildAddModalComponent } from './components/application/application-root/child-overview-root/child-add-modal/child-add-modal.component';
 
-import { ApplicationHeaderComponent } from './components/application/application-root/application-header/application-header.component';
-import { ChildAgePipe } from './pipes/child-age.pipe';
-import { DropUploadComponent } from './components/application/application-root/quote-overview-root/drop-upload/drop-upload.component';
 
-import { FileUploadModule } from "ng2-file-upload"
 
 
 @NgModule({
@@ -87,20 +85,15 @@ import { FileUploadModule } from "ng2-file-upload"
         LoginFormComponent,
         CapitalizePipe,
         ApplicationRootComponent,
-        AppNavigationComponent,
-        ChildOverviewRootComponent,
         QuoteOverviewRootComponent,
         AchievementOverviewRootComponent,
         BookOverviewRootComponent,
-        ChildComponent,
         QuoteComponent,
         AchievementComponent,
-        ChildNavigationComponent,
         QuoteContainerComponent,
-        ChildAddModalComponent,
-        ApplicationHeaderComponent,
         ChildAgePipe,
-        DropUploadComponent
+        DropUploadComponent,
+        SideBarComponent
     ],
     imports: [
         BrowserModule,
