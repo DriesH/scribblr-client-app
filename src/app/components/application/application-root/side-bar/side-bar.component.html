@@ -1,3 +1,47 @@
-<p>
-  side-bar works!
-</p>
+<div id="sidebar" class="sidebar">
+    <div class="sidebar--header">
+        <div class="sidebar--avatar">
+            <img src="/assets/avatar.png" alt="">
+            <span class="sidebar--avatar-options">
+                <img src="/assets/icons/sidebar-icons/cog-wheel-icon.svg" alt="cogwheel">
+            </span>
+        </div>
+        <p>Hannah Montana</p>
+    </div>
+
+    <hr class="sidebar--separator">
+
+    <ul class="sidebar--toolbox">
+        <li class="sidebar--toolbox-link">
+            <img src="/assets/icons/sidebar-icons/book-icon.svg" alt="book">
+            <a routerLink="">Books</a>
+        </li>
+        <li class="sidebar--toolbox-link">
+            <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="book">
+            <a routerLink="">Achievements</a>
+        </li>
+        <li class="sidebar--toolbox-link">
+            <img src="/assets/icons/sidebar-icons/message-icon.svg" alt="book">
+            <a routerLink="">Messages</a>
+            <!--NOTIFICATION POP UP-->
+        </li>
+    </ul>
+
+    <hr class="sidebar--separator">
+
+    <ul class="sidebar--children">
+        <li class="child-avatar" *ngFor="let child of children">
+            <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
+            <div>
+                <p class="fullname">{{ child.full_name }}</p>
+                <p class="age">{{ child.date_of_birth | childAge }}</p>
+            </div>
+        </li>
+        <li class="new-child">
+            <a routerLink="">
+                <span>+</span>
+            </a>
+            <p>New child</p>
+        </li>
+    </ul>
+</div>

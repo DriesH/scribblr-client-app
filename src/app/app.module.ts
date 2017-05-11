@@ -89,6 +89,7 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
         AchievementOverviewRootComponent,
         BookOverviewRootComponent,
         QuoteComponent,
+        ChildNavigationComponent,
         AchievementComponent,
         QuoteContainerComponent,
         ChildAgePipe,

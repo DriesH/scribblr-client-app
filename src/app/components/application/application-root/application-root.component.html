@@ -1,5 +1,12 @@
 <div id="application-root">
+    <scrblr-side-bar [children]="children"></scrblr-side-bar>
+
     <div id="application-body">
+        <div class="application-body--header">
+            <a routerLink="/home">
+                <img src="/assets/logos/logo-svg.svg" alt="logo">
+            </a>
+        </div>
         <router-outlet></router-outlet>
     </div>
 </div>

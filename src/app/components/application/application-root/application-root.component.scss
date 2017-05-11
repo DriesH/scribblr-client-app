@@ -1,16 +1,27 @@
 #application-root {
-    background: url(/assets/application-landing-page/background.jpg);
-    background-size: cover;
-    background-position: center;
     width: 100%;
-    min-height: 100vh;
+    max-height: 100vh;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background: #DEE0E3;
 }
 
 #application-body {
     justify-content: center;
     align-items: center;
-    margin: auto;
+    width: 100%;
+}
+
+.application-body--header {
+    background: white;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 200px;
+    }
 }
