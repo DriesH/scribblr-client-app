@@ -16,5 +16,8 @@ export function dataURItoBlob(dataURI) {
             ia[i] = byteString.charCodeAt(i);
         }
 
-        return new Blob([ia], { type: mimeString });
+        return {
+            image: new Blob([ia], { type: mimeString }),
+            ext: mimeString
+        };
 }

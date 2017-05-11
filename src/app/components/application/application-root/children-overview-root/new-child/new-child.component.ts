@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import {
-//   trigger,
-//   state,
-//   style,
-//   animate,
-//   transition
-// } from '@angular/animations';
 
 import { Store } from '@ngrx/store';
 
@@ -21,16 +14,7 @@ import { dataURItoBlob } from '../../../../../classes/base64toblob';
   selector: 'scrblr-new-child',
   templateUrl: './new-child.component.html',
   styleUrls: ['./new-child.component.scss'],
-  // animations: [
-  //   trigger('heroState', [
-  //     transition('* => in', [
-  //       style({ opacity: '1' }),
-  //       animate(100)]),
-  //     transition('in => *', [
-  //       style({ opacity: '0' }),
-  //       animate(100)])
-  //   ])
-  // ]
+
 })
 export class NewChildComponent implements OnInit {
 
@@ -63,17 +47,25 @@ export class NewChildComponent implements OnInit {
     }
 
     addNewChild() {
+        let img = dataURItoBlob(this.imageData.image);
+        let ext = img.ext.split('/')[1];
+
         this.childData.append('full_name', this.childModel.full_name);
         this.childData.append('gender', this.childModel.gender);
         this.childData.append('date_of_birth', this.childModel.date_of_birth);
-        this.childData.append('avatar', dataURItoBlob(this.imageData.image));
+        this.childData.append('avatar', img.image, 'avatar.' + ext);
 
-        this._cs.newChild(this.childData)
-            .subscribe(res => {
-              console.log(res);
-            }, error => {
+        this._cs.newChild(this.childData).subscribe(
+            res => this.dispatchNewChild(res),
+            error => this.errorHandler(error));
+    }
 
-            });
+    dispatchNewChild(newChild) {
+
+    }
+
+    errorHandler(error) {
+
     }
 
 }

@@ -14,11 +14,11 @@
 
                 <div class="form-input-group">
                     <label for="gender">Gender</label>
-                    <select id="gender" name="gender">
+                    <select id="gender" name="gender" [(ngModel)]="childModel.gender">
                         <option disabled value="">Select a gender...</option>
-                        <option value="Boy">Boy</option>
-                        <option value="Girl">Girl</option>
-                        <option value="Other">Other</option>
+                        <option [value]="'Male'">Boy</option>
+                        <option [value]="'Female'">Girl</option>
+                        <option [value]="'Other'">Other</option>
                     </select>
                 </div>
 
