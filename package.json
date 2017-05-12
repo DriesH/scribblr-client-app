@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "4.1.1",
+    "@angular/animations": "^4.1.1",
     "@angular/common": "4.1.1",
     "@angular/compiler": "4.1.1",
     "@angular/compiler-cli": "4.1.1",
@@ -33,10 +33,12 @@
     "ng-click-outside": "2.3.3",
     "ng2-file-upload": "1.2.1",
     "ng2-img-cropper": "^0.8.8",
+    "ngx-perfect-scrollbar": "^4.0.0",
     "normalize-scss": "6.0.0",
     "reselect": "3.0.0",
     "rxjs": "5.3.1",
     "typescript": "2.3.2",
+    "web-animations-js": "^2.2.5",
     "zone.js": "0.8.10"
   },
   "devDependencies": {
@@ -45,7 +47,6 @@
     "@ngrx/store-devtools": "^3.2.4",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "angular2-dropzone-wrapper": "^2.0.3",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",

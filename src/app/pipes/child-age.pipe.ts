@@ -13,6 +13,9 @@ export class ChildAgePipe implements PipeTransform {
 
         if (age === 1) {
             return age + ' year old';
+        } else if (age < 1) {
+            // do stuff
+            return age + ' year old';
         }
         return age + ' years old';
     }

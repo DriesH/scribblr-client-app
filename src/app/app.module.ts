@@ -75,6 +75,16 @@ import { LottieAnimationViewModule } from 'lottie-angular2';
 
 import { ImageCropperComponent } from 'ng2-img-cropper';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+    suppressScrollX: true,
+    minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
+    maxScrollbarLength: 150,
+    wheelPropagation: false,
+    swipePropagation: false
+};
 
 @NgModule({
     declarations: [
@@ -118,6 +128,7 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
         }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
+        PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         LottieAnimationViewModule.forRoot(),
     ],

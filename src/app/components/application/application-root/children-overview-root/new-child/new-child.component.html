@@ -4,17 +4,18 @@
     </span>
 
     <h1>Add a new child!</h1>
+
     <form (ngSubmit)="addNewChild()">
         <div class="form-content">
             <div class="form-left">
                 <div class="form-input-group">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="childModel.full_name" autofocus>
+                    <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="childModel.full_name" autofocus required>
                 </div>
 
                 <div class="form-input-group">
                     <label for="gender">Gender</label>
-                    <select id="gender" name="gender" [(ngModel)]="childModel.gender">
+                    <select id="gender" name="gender" [(ngModel)]="childModel.gender" required>
                         <option disabled value="">Select a gender...</option>
                         <option [value]="'Male'">Boy</option>
                         <option [value]="'Female'">Girl</option>
@@ -24,17 +25,22 @@
 
                 <div class="form-input-group">
                     <label for="date-of-birth">Date of birth</label>
-                    <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth">
+                    <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth" required>
                 </div>
-            </div>
 
-            <div class="form-right">
-                <img-cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+                <div class="form-avatar-upload">
+                    <div class="dropzone" *ngIf="!image.src">
+                        <label for="avatar-upload">Upload an avatar</label>
+                        <input id="avatar-upload" name="avatar" type="file" (change)="fileChangeListener($event)">
+                    </div>
+
+                    <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-color-register-colors">Add!</button>
             </div>
         </div>
 
 
-
-        <button type="submit" class="btn btn-primary btn-color-register-colors">Add new child</button>
     </form>
 </div>

@@ -19,11 +19,11 @@ import * as childActions from '../actions/child.action';
 export class ChildEffect {
 
     /* tslint:disable-next-line:member-ordering */
-    @Effect({ dispatch: false })
-    closeChildAddModal$: Observable<boolean> = this.actions$
-        .ofType(childActions.ActionTypes.ADD_CHILD)
-        .map(toPayload)
-        .switchMap(() => this.router.navigate(['/application/children']));
+    // @Effect({ dispatch: false })
+    // closeChildAddModal$: Observable<boolean> = this.actions$
+    //     .ofType(childActions.ActionTypes.ADD_CHILD)
+    //     .map(toPayload)
+    //     .switchMap(() => this.router.navigate(['/application/children']));
 
     constructor(private actions$: Actions, private router: Router) { }
 }

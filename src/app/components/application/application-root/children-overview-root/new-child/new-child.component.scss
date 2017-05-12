@@ -4,19 +4,27 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 100px 0 0;
+    padding: 50px 0 0;
     box-sizing: border-box;
     overflow: auto;
+    background: #DEE0E3;
 
     h1 {
         font-family: 'Poppins', 'Arial', 'Helvetica', sans-serif;
         color: #2D3338;
         text-align: center;
         margin: 0;
+        font-size: 4em;
+        letter-spacing: -3px;
+    }
+
+    .center {
+        margin-top: 25px;
+        text-align: center;
     }
 
     .form-content {
-        width: 80%;
+        width: 55%;
         display: flex;
         flex-direction: row;
         align-content: center;
@@ -28,15 +36,20 @@
             flex-direction: column;
             align-content: center;
             justify-content: center;
+            width: 75%;
         }
 
         .form-right {
-            width: 500px;
+            width: 25%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
+    }
+
+    .form-avatar-upload {
+        margin: auto;
     }
 
     form {
@@ -62,5 +75,19 @@
         img {
             width: 100%;
         }
+    }
+}
+
+.dropzone {
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    label {
+        color: #545E68;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

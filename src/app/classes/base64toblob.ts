@@ -4,7 +4,7 @@ export function dataURItoBlob(dataURI) {
         if (dataURI.split(',')[0].indexOf('base64') >= 0) {
             byteString = atob(dataURI.split(',')[1]);
         } else {
-            byteString = unescape(dataURI.split(',')[1]);
+            byteString = decodeURI(dataURI.split(',')[1]);
         }
 
         // separate out the mime component

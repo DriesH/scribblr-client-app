@@ -30,3 +30,44 @@
     position: relative;
     height: calc(100% - 100px);
 }
+
+.application-body--quick-quote {
+    margin: auto;
+    padding: 15% 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    label {
+        color: #2D3338;
+        font-family: 'Poppins';
+        font-size: 60px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        letter-spacing: -2px;
+    }
+
+    img { // CHECK NOG ZEKER IS LATER!! FIXME:
+        width: 60px;
+        margin-right: 10px;
+        // transform: translateY(-20px);
+    }
+
+    input {
+        color: #2D3338;
+        font-size: 32px;
+        width: 100%;
+        border: none;
+        background: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        padding: 15px 10px;
+        // transition: all 200ms;
+
+        &:focus {
+            border-bottom: 2px solid rgba(#5e94e5, 0.7);
+            outline: none;
+        }
+    }
+}

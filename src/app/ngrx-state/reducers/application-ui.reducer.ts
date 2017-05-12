@@ -7,7 +7,7 @@ export interface State {
 };
 
 export const initialState: State = {
-    addingNewChild: true
+    addingNewChild: false
 };
 
 export function ApplicationUIReducer(state = initialState, action: Action) {

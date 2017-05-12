@@ -17,35 +17,40 @@
             <a routerLink="">Books</a>
         </li>
         <li class="sidebar--toolbox-link">
-            <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="book">
+            <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="achievements">
             <a routerLink="">Achievements</a>
         </li>
         <li class="sidebar--toolbox-link">
-            <img src="/assets/icons/sidebar-icons/message-icon.svg" alt="book">
-            <a routerLink="">Messages</a>
+            <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">
+            <a routerLink="">News</a>
             <!--NOTIFICATION POP UP-->
         </li>
     </ul>
 
     <hr class="sidebar--separator">
 
-    <ul class="sidebar--children">
-        <li *ngFor="let child of children">
-            <a class="child-avatar" routerLink="">
-                <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
-                <div>
-                    <p class="fullname">{{ child.full_name }}</p>
-                    <p class="age">{{ child.date_of_birth | childAge }}</p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a class="new-child" (click)="addChild()">
-                <span class="circle">
-                    +
-                </span>
-                <p>New child</p>
-            </a>
-        </li>
-    </ul>
+    <div class="test-wrap">
+        <div class="scroll-wrap" perfect-scrollbar>
+            <ul class="sidebar--children">
+                <li>
+                    <a class="new-child" (click)="addChild()">
+                    <span class="circle">
+                        +
+                    </span>
+                    <p>New child</p>
+                </a>
+                </li>
+                <li *ngFor="let child of children">
+                    <a class="child-avatar">
+                    <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
+                    <div>
+                        <p class="fullname">{{ child.full_name }}</p>
+                        <p class="age">{{ child.date_of_birth | childAge }}</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </div>

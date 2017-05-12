@@ -26,6 +26,9 @@ export const API_ROUTES = {
             },
             editChild: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/edit';
+            },
+            getAvatar: (shortId, avatarURLId) => {
+                return applicationPrefix + 'children/' + shortId + '/avatar/' + avatarURLId;
             }
         },
         quotes: {
