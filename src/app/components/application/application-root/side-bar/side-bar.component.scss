@@ -100,12 +100,13 @@
         height: calc(100vh - 380px);
     }
 
+    // FIXME: FIX THIS ///////////////////
     .test-wrap {
         position: relative;
         overflow: hidden;
     }
 
-    .test-wrap:after {
+    .test-wrap::after {
         content: '';
         display: block;
         width: 80%;
@@ -118,6 +119,7 @@
         border-radius: 50%;
         transform: translateX(-50%);
     }
+    /////////////////////////////////////
 
     .sidebar--children {
         margin: 0;

@@ -1,0 +1,8 @@
+.btn-color-main {
+    color: #FFF;
+    background: $main-color-four;
+
+    &:hover {
+        background: lighten($main-color-four, 5%);
+    }
+}

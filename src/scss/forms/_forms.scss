@@ -1,7 +1,26 @@
 .scrblr-form {
+    z-index: 30;
     position: relative;
     display: flex;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.row {
+        flex-direction: row;
+    }
+}
+
+.form-controls__container {
+    margin: 8vh auto 0;
+    display: flex;
     flex-direction: column;
+    width: 430px;
+
+    .form-input-group:first-child {
+        margin-bottom: 30px;
+    }
 }
 
 .form-input-group {
@@ -14,7 +33,7 @@
     margin: 0 auto 25px;
 
     label {
-        color: $register-color-one;
+        color: $main-color-one;
         width: 100%;
         margin-bottom: 10px;
     }
@@ -23,7 +42,7 @@
     input[type="password"],
     input[type="date"] {
         border-radius: 5px;
-        border: 1px solid $register-color-two;
+        border: 1px solid $main-color-two;
         background: white;
         padding: 10px 20px;
         transition: 0.2s border ease-in-out;
@@ -37,7 +56,7 @@
     input[type="password"]:focus,
     input[type="date"]:focus {
         outline: none;
-        border: 1px solid $register-color-four;
+        border: 1px solid $main-color-four;
     }
 
     input[type="text"]:focus + label,
@@ -47,7 +66,7 @@
 
     select {
         border-radius: 5px;
-        border: 1px solid $register-color-two;
+        border: 1px solid $main-color-two;
         background: white;
         padding: 10px 20px;
         transition: 0.2s border ease-in-out;
@@ -76,7 +95,7 @@
         .password-hide {
             opacity: 0.5;
             transition: all 0.2s ease-in-out;
-            fill: $register-color-one;
+            fill: $main-color-one;
 
             &:hover {
                 opacity: 1;
@@ -85,7 +104,7 @@
 
         .password-show {
             transition: all 0.2s ease-in-out;
-            fill: $register-color-four;
+            fill: $main-color-four;
         }
     }
 }

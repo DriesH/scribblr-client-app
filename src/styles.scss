@@ -1,13 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+// Normalize stylesheet
 @import '../node_modules/normalize-scss/sass/normalize';
-@import './scss/titles/titles';
+// Base styling
+@import './scss/fonts/fonts';
 @import './scss/colors/colors';
-@import './scss/navigation_elements/navigation_elements';
+// Elements styling
+@import './scss/titles/titles';
 @import './scss/buttons/buttons';
 @import './scss/links/links';
+@import './scss/navigation_elements/navigation_elements';
 @import './scss/aviary/aviary';
 @import './scss/logo/logo';
 @import './scss/forms/forms';
+// Scrollbars styling
 @import './scss/scrollbar/scrollbar.css';
 
 body {
