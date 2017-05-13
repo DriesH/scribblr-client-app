@@ -11,7 +11,7 @@ import * as ApplicationUIActions from '../../../../ngrx-state/actions/applicatio
 })
 export class SideBarComponent implements OnInit {
 
-    @Input('children') children;
+    @Input('children') children = null;
     @Input('currentUser') currentUser;
 
     constructor(private store: Store<any>) { }

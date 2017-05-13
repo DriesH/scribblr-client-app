@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { ChildService } from '../../../services/application-services/child.service';
 
 import { Store } from '@ngrx/store';
@@ -45,7 +47,11 @@ export class ApplicationRootComponent implements OnInit {
     currentUser;
     applicationUI;
 
-    constructor(private _cs: ChildService, private store: Store<any>) { }
+    constructor(
+        private _cs: ChildService,
+        private store: Store<any>,
+        private router: Router,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
@@ -64,6 +70,11 @@ export class ApplicationRootComponent implements OnInit {
         this.store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
             console.log('My state changed in APPLICATION_UI');
             this.applicationUI = APPLICATION_UI;
+        });
+
+        this.router.events.subscribe(event => {
+            let e: any = event;
+            console.log(e.url);
         });
 
         this._cs.getAllChildren()

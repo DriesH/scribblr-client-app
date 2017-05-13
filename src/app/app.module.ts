@@ -40,6 +40,7 @@ import { DropUploadComponent } from './components/application/application-root/q
 import { SideBarComponent } from './components/application/application-root/side-bar/side-bar.component';
 import { ChildrenOverviewRootComponent } from './components/application/application-root/children-overview-root/children-overview-root.component';
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
+import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 
 
 /* Services */
@@ -112,7 +113,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SideBarComponent,
         ChildrenOverviewRootComponent,
         NewChildComponent,
-        ImageCropperComponent
+        ImageCropperComponent,
+        NewsOverviewRootComponent
     ],
     imports: [
         BrowserModule,

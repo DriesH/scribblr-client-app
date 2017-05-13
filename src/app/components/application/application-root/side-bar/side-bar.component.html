@@ -12,17 +12,20 @@
     <hr class="sidebar--separator">
 
     <ul class="sidebar--toolbox">
-        <li class="sidebar--toolbox-link">
-            <img src="/assets/icons/sidebar-icons/book-icon.svg" alt="book">
-            <a routerLink="">Books</a>
+        <li>
+            <a routerLink="books" class="sidebar--toolbox-link">
+                <img src="/assets/icons/sidebar-icons/book-icon.svg" alt="book">Books
+            </a>
         </li>
-        <li class="sidebar--toolbox-link">
-            <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="achievements">
-            <a routerLink="">Achievements</a>
+        <li>
+            <a routerLink="achievements" class="sidebar--toolbox-link">
+                <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="achievements">Achievements
+            </a>
         </li>
-        <li class="sidebar--toolbox-link">
-            <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">
-            <a routerLink="">News</a>
+        <li>
+            <a routerLink="news"class="sidebar--toolbox-link">
+                <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">News
+            </a>
             <!--NOTIFICATION POP UP-->
         </li>
     </ul>
@@ -34,20 +37,23 @@
             <ul class="sidebar--children">
                 <li>
                     <a class="new-child" (click)="addChild()">
-                    <span class="circle">
-                        +
-                    </span>
-                    <p>New child</p>
-                </a>
+                        <span class="circle">
+                            +
+                        </span>
+                        <p>New child</p>
+                    </a>
+                </li>
+                <li *ngIf="children.length <= 0">
+                    <span class="sidebar--children-loading"></span>
                 </li>
                 <li *ngFor="let child of children">
                     <a class="child-avatar">
-                    <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
-                    <div>
-                        <p class="fullname">{{ child.full_name }}</p>
-                        <p class="age">{{ child.date_of_birth | childAge }}</p>
-                    </div>
-                </a>
+                        <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
+                        <div>
+                            <p class="fullname">{{ child.full_name }}</p>
+                            <p class="age">{{ child.date_of_birth | childAge }}</p>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>

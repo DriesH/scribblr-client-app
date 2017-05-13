@@ -20,6 +20,8 @@ import { QuoteContainerComponent } from '../components/application/application-r
 import { ChildrenOverviewRootComponent } from '../components/application/application-root/children-overview-root/children-overview-root.component';
 import { NewChildComponent } from '../components/application/application-root/children-overview-root/new-child/new-child.component';
 
+// News
+import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
 
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -52,7 +54,7 @@ const ROUTES: Routes = [
         // canActivate: [ AuthGuard ],
         children: [
             {
-                path: 'achievement',
+                path: 'achievements',
                 component: AchievementOverviewRootComponent,
             },
             {
@@ -64,6 +66,10 @@ const ROUTES: Routes = [
                         component: QuoteContainerComponent
                     }
                 ]
+            },
+            {
+                path: 'news',
+                component: NewsOverviewRootComponent
             },
             {
                 path: 'books',
