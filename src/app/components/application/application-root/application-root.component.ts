@@ -47,6 +47,8 @@ export class ApplicationRootComponent implements OnInit {
     currentUser;
     applicationUI;
 
+    currentUrl: String;
+
     constructor(
         private _cs: ChildService,
         private store: Store<any>,
@@ -74,7 +76,7 @@ export class ApplicationRootComponent implements OnInit {
 
         this.router.events.subscribe(event => {
             let e: any = event;
-            console.log(e.url);
+            this.currentUrl = e.url;
         });
 
         this._cs.getAllChildren()
