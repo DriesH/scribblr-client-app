@@ -26,6 +26,7 @@ import { RegistrationFormComponent } from './components/registration-page/regist
 import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
+import { FormErrorComponent } from './components/form-error/form-error.component';
 
 /* Application components */
 import { ApplicationRootComponent } from './components/application/application-root/application-root.component';
@@ -42,13 +43,13 @@ import { ChildrenOverviewRootComponent } from './components/application/applicat
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 
-
 /* Services */
 import { RegisterService } from './services/register.service';
 import { HttpHelperService } from './services/http-helper.service';
 import { JWTTokenService } from './services/jwttoken.service';
 import { AuthService } from './services/auth.service';
 import { HttpHeaderService } from './services/http-header.service';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 /* Application services */
 import { ChildService } from './services/application-services/child.service';
@@ -114,7 +115,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ChildrenOverviewRootComponent,
         NewChildComponent,
         ImageCropperComponent,
-        NewsOverviewRootComponent
+        NewsOverviewRootComponent,
+        FormErrorComponent
     ],
     imports: [
         BrowserModule,
@@ -142,7 +144,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         AuthGuard,
         ChildService,
         QuoteService,
-        HttpHeaderService
+        HttpHeaderService,
+        ErrorHandlerService
     ],
     bootstrap: [ AppComponent ]
 })
