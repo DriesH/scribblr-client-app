@@ -44,6 +44,7 @@ export class NewChildComponent implements OnInit {
         this.cropperSettings.canvasWidth = 400;
         this.cropperSettings.canvasHeight = 400;
         this.cropperSettings.noFileInput = true;
+        this.cropperSettings.rounded = true;
 
         this.imageData = {};
     }
