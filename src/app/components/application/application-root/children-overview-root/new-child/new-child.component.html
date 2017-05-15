@@ -17,7 +17,7 @@
                 <div class="form-input-group">
                     <label for="gender">Gender</label>
                     <select id="gender" name="gender" [(ngModel)]="childModel.gender" required>
-                        <option disabled value="">Select a gender...</option>
+                        <option [value]="null" disabled>Select a gender...</option>
                         <option [value]="'Male'">Boy</option>
                         <option [value]="'Female'">Girl</option>
                         <option [value]="'Other'">Other</option>

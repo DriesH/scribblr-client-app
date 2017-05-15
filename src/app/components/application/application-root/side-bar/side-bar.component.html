@@ -53,7 +53,8 @@
                 </li>
                 <li *ngFor="let child of children">
                     <a class="child-avatar">
-                        <img src="/assets/child-head-test/de-ronny.png" alt="de ronny">
+
+                        <img [src]="'https://scribblr-dev.local/application/children/' + child.short_id + '/avatar/' + child.avatar_url_id" alt="de ronny">
                         <div>
                             <p class="fullname">{{ child.full_name }}</p>
                             <p class="age">{{ child.date_of_birth | childAge }}</p>
