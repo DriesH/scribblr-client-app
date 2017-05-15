@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ChildService } from '../../../services/application-services/child.service';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 import { Store } from '@ngrx/store';
 
@@ -53,7 +54,8 @@ export class ApplicationRootComponent implements OnInit {
         private _cs: ChildService,
         private store: Store<any>,
         private router: Router,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private _ehs: ErrorHandlerService) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
@@ -82,7 +84,7 @@ export class ApplicationRootComponent implements OnInit {
         this._cs.getAllChildren()
             .subscribe(
                 res => this.dispatchChildrenToStore(res.children),
-                error => this.errorHandler(error));
+                error => this._ehs.handler(error));
     }
 
     dispatchChildrenToStore(children) {

@@ -7,6 +7,7 @@ import * as ApplicationUIActions from '../../../../../ngrx-state/actions/applica
 import * as ChildActions from '../../../../../ngrx-state/actions/child.action';
 
 import { ChildService } from '../../../../../services/application-services/child.service';
+import { ErrorHandlerService } from '../../../../../services/error-handler.service';
 
 import { CropperSettings } from 'ng2-img-cropper';
 
@@ -35,7 +36,11 @@ export class NewChildComponent implements OnInit {
     childData: FormData = new FormData();
     image: any = new Image();
 
-    constructor(private store: Store<any>, private _cs: ChildService) {
+    constructor(
+        private store: Store<any>,
+        private _cs: ChildService,
+        private _ehs: ErrorHandlerService) {
+
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.width = 600;
         this.cropperSettings.height = 600;
@@ -107,16 +112,11 @@ export class NewChildComponent implements OnInit {
 
         this._cs.newChild(this.childData).subscribe(
             res => this.dispatchNewChild(res.child),
-            error => this.errorHandler(error));
+            error => this._ehs.handler(error));
     }
 
     dispatchNewChild(newChild) {
         this.store.dispatch(new ChildActions.NewChild(newChild));
         this.closeModal();
     }
-
-    errorHandler(error) {
-        console.log(error);
-    }
-
 }
