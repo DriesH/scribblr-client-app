@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 
 interface Achievement {
     title: String;
-    content: String;
+    description: String;
     points: Number;
-    imageSrc: String;
+    image: String;
 };
 
 
