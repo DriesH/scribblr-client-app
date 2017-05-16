@@ -59,13 +59,11 @@ const ROUTES: Routes = [
             },
             {
                 path: 'scribbles',
-                component: QuoteOverviewRootComponent,
-                children: [
-                    {
-                        path: ':shortId',
-                        component: QuoteContainerComponent
-                    }
-                ]
+                component: QuoteOverviewRootComponent
+            },
+            {
+                path: 'scribbles/:short_id',
+                component: QuoteOverviewRootComponent
             },
             {
                 path: 'news',

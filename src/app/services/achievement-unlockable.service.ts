@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 export class AchievementUnlockableService {
     constructor() { }
 
+    public unlock(achievement) {
 
+    }
 
 }

@@ -3,7 +3,6 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { QuoteService } from '../../../../services/application-services/quote.service';
-import { ChildService } from '../../../../services/application-services/child.service';
 
 import { APP_CONFIG } from '../../../../_config/app.config';
 
@@ -16,43 +15,23 @@ declare var Aviary: any;
 })
 export class QuoteOverviewRootComponent implements OnInit {
 
-    @ViewChild('fileUpload') fileUpload: ElementRef;
+    @ViewChild('fileUpload')    fileUpload: ElementRef;
     @ViewChild('editableImage') editableImage: ElementRef;
     @ViewChild('dropzoneInput') dropzoneInput: ElementRef;
 
     quotes; // todo model quote
-    imgData: string;
+    imgData: String;
     csdkImageEditor;
-    children;
     myDropzone;
 
     constructor(
         private _qs: QuoteService,
-        private _cs: ChildService,
         private route: ActivatedRoute) { }
 
     ngOnInit() {
         this._qs.getAllQuotes()
             .subscribe(res => {
                 this.quotes = res.quotes;
-            }, error => {
-                switch (error) {
-                    case 401: {
-                        console.log('unauthorized');
-                    }
-                }
-            });
-
-        this._cs.getAllChildren()
-            .subscribe(res => {
-                this.children = res.children;
-                console.log('received children');
-            }, error => {
-                switch (error) {
-                    case 401: {
-                        console.log('unauthorized');
-                    }
-                }
             });
 
         this.csdkImageEditor = new Aviary.Feather({
@@ -77,15 +56,9 @@ export class QuoteOverviewRootComponent implements OnInit {
         this.imgData = newURL;
 
         this._qs.newQuote(data.short_id, data)
-        .subscribe(res => {
-            console.log(res);
-        }, error => {
-            switch (error) {
-                case 401: {
-                    console.log('unauthorized');
-                }
-            }
-        });
+            .subscribe(res => {
+                console.log(res);
+            });
 
         this.resetFileInput();
         this.csdkImageEditor.close();
