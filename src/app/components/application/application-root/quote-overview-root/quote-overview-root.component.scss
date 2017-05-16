@@ -1,5 +1,13 @@
-.quote-container {
-    padding: 50px;
-    display: flex;
+.grid {
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
+.grid-sizer { width: 33.333%; }
+.grid-item { width: 25%; }
+
+.quote-block {
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+}

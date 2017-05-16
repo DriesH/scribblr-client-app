@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,17 +7,19 @@ import { QuoteService } from '../../../../services/application-services/quote.se
 import { APP_CONFIG } from '../../../../_config/app.config';
 
 declare var Aviary: any;
+declare var Masonry: any;
 
 @Component({
     selector: 'scrblr-quote-overview-root',
     templateUrl: './quote-overview-root.component.html',
     styleUrls: ['./quote-overview-root.component.scss']
 })
-export class QuoteOverviewRootComponent implements OnInit {
+export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     @ViewChild('fileUpload')    fileUpload: ElementRef;
     @ViewChild('editableImage') editableImage: ElementRef;
     @ViewChild('dropzoneInput') dropzoneInput: ElementRef;
+    @ViewChild('quoteContainer') quoteContainer: ElementRef;
 
     quotes; // todo model quote
     imgData: String;
@@ -39,8 +41,6 @@ export class QuoteOverviewRootComponent implements OnInit {
                 });
         });
 
-
-
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
             tools: APP_CONFIG.aviarySettings,
@@ -48,6 +48,20 @@ export class QuoteOverviewRootComponent implements OnInit {
             onError: this.errorSavingToAviary,
             onClose: this.onAviaryClose.bind(this)
         });
+    }
+
+    ngAfterViewInit() {
+
+        setTimeout(() => {
+            let msnry = new Masonry(this.quoteContainer.nativeElement, {
+                columnWidth: '.grid-sizer',
+                itemSelector: '.grid-item',
+                percentPosition: true
+            });
+            console.log(msnry);
+        }, 2000);
+
+
     }
 
     fileOverBase(e) {

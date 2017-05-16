@@ -2,6 +2,13 @@
 
 <scrblr-drop-upload></scrblr-drop-upload>
 
-<div class="quote-container" #quoteContainer>
-    <scrblr-quote *ngFor="let quote of quotes" [quoteData]="quote"></scrblr-quote>
+<div class="grid" id="gridboi" #quoteContainer>
+    <!--<scrblr-quote *ngFor="let quote of quotes" [quoteData]="quote"></scrblr-quote>-->
+
+    <div class="grid-sizer"></div>
+
+    <div *ngFor="let quote of quotes" class="grid-item quote-block">
+        {{quote.quote }}
+    </div>
+
 </div>
