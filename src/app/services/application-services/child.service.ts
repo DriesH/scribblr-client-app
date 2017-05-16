@@ -27,12 +27,9 @@ export class ChildService {
 
     // POST
     newChild(data, headers?: Array<HeaderOptions>): Observable<any> {
-
-        this._headers.setOptions(this.token, headers);
-
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.newChild,
             data,
-            this._headers.setOptions(this.token))
+            this._headers.setOptions(this.token, headers))
             .map(this._hhs.extractData)
             .catch(this._hhs.errorHandler);
     }
@@ -47,8 +44,6 @@ export class ChildService {
 
     // GET
     getAllChildren(): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.index,
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
@@ -56,8 +51,6 @@ export class ChildService {
     }
 
     getChild(shortId): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.getChild(shortId),
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
@@ -66,8 +59,6 @@ export class ChildService {
 
     // DELETE
     deleteChild(shortId): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.child.deleteChild(shortId),
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
@@ -76,8 +67,6 @@ export class ChildService {
 
     // PUT
     editChild(shortId, data): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.put(API_ROUTES.application.child.editChild(shortId),
             data,
             this._headers.setOptions(this.token))

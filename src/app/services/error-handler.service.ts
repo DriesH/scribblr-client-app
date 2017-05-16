@@ -26,9 +26,11 @@ export class ErrorHandlerService {
 
     constructor(
         private store: Store<any>,
-        private _ns: NotificationsService) { }
+        private _ns: NotificationsService) {
+            this.initService(store);
+         }
 
-    initService(store: Store<any>) {
+    private initService(store: Store<any>) {
         store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
             this.UI_STATE$ = APPLICATION_UI;
 

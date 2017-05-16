@@ -45,6 +45,9 @@ export const API_ROUTES = {
             // editQuote: () => {
             //     return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
             // }
+        },
+        achievement: {
+            index: applicationPrefix + 'achievements'
         }
     }
 

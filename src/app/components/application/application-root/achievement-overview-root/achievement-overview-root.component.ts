@@ -41,6 +41,10 @@ export class AchievementOverviewRootComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        
+
     }
+
+
 
 }

@@ -59,8 +59,7 @@ export class NewChildComponent implements OnInit {
 
     constructor(
         private store: Store<any>,
-        private _cs: ChildService,
-        private _ehs: ErrorHandlerService) {
+        private _cs: ChildService) {
 
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.width = 600;
@@ -155,9 +154,7 @@ export class NewChildComponent implements OnInit {
             this.childData.append('avatar', img.image, 'avatar.' + ext);
         }
 
-        this._cs.newChild(this.childData).subscribe(
-            res => this.dispatchNewChild(res.child),
-            error => this._ehs.handler(error));
+        this._cs.newChild(this.childData).subscribe(res => this.dispatchNewChild(res.child));
     }
 
     dispatchNewChild(newChild) {

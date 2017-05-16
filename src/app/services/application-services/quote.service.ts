@@ -25,9 +25,6 @@ export class QuoteService {
 
     // POST
     newQuote(childShortId, data): Observable<any> {
-
-        this._headers.setOptions(this.token);
-
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.quotes.newQuote(childShortId),
             data,
             this._headers.setOptions(this.token))
@@ -37,8 +34,6 @@ export class QuoteService {
 
     // GET
     getAllQuotes(): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.index,
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
@@ -46,8 +41,6 @@ export class QuoteService {
     }
 
     getQuote(childShortId): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.getQuote(childShortId),
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)
@@ -56,8 +49,6 @@ export class QuoteService {
 
     // DELETE
     deleteQuote(childShortId, quoteShortId): Observable<any> {
-        this._headers.setOptions(this.token);
-
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.deleteQuote(childShortId, quoteShortId),
             this._headers.setOptions(this.token))
             .map(this._hhs.extractData)

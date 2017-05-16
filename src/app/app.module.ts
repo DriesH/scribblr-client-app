@@ -55,6 +55,8 @@ import { ErrorHandlerService } from './services/error-handler.service';
 /* Application services */
 import { ChildService } from './services/application-services/child.service';
 import { QuoteService } from './services/application-services/quote.service';
+import { AchievementService } from './services/application-services/achievement.service';
+import { AchievementUnlockableService } from './services/achievement-unlockable.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -147,7 +149,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ChildService,
         QuoteService,
         HttpHeaderService,
-        ErrorHandlerService
+        ErrorHandlerService,
+        AchievementService,
+        AchievementUnlockableService
     ],
     bootstrap: [ AppComponent ]
 })
