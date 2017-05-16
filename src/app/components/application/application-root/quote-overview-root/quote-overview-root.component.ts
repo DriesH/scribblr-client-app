@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { QuoteService } from '../../../../services/application-services/quote.service';
 
@@ -26,9 +26,10 @@ export class QuoteOverviewRootComponent implements OnInit {
 
     constructor(
         private _qs: QuoteService,
-        private route: ActivatedRoute) { }
+        private router: Router) { }
 
     ngOnInit() {
+        
         this._qs.getAllQuotes()
             .subscribe(res => {
                 this.quotes = res.quotes;

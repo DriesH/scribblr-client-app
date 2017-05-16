@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -49,8 +49,10 @@ export class ApplicationRootComponent implements OnInit {
     children;
     currentUser;
     applicationUI;
-    currentUrl: String;
+    currentRoute: String;
     _config = NotificationConfig;
+
+    @ViewChild('quickQuote') quickQuote: ElementRef;
 
     constructor(
         private _cs: ChildService,
@@ -79,7 +81,7 @@ export class ApplicationRootComponent implements OnInit {
 
         this.router.events.subscribe(event => {
             let e: any = event;
-            this.currentUrl = e.url;
+            this.currentRoute = e.url;
         });
 
         this._cs.getAllChildren()
