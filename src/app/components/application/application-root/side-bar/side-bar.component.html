@@ -55,7 +55,7 @@
                     <a class="child-avatar">
 
                         <img *ngIf="child.avatar_url_id" [src]="'https://scribblr-dev.local/api/application/children/' + child.short_id + '/avatar/' + child.avatar_url_id">
-                        <img *ngIf="!child.avatar_url_id" [src]="'https://scribblr-dev.local/api/application/children/avatar/' + child.gender" [alt]="child.gender">
+                        <img *ngIf="!child.avatar_url_id" [src]="'/assets/default-avatars/' + child.gender + '.svg'" [alt]="child.gender">
                         <div>
                             <p class="fullname">{{ child.full_name }}</p>
                             <p class="age">{{ child.date_of_birth | childAge }}</p>
