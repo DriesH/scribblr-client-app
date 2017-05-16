@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+interface Achievement {
+    title: String;
+    content: String;
+    points: Number;
+    imageSrc: String;
+};
+
 
 @Component({
   selector: 'scrblr-achievement',
@@ -7,9 +15,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AchievementComponent implements OnInit {
 
-  constructor() { }
+    @Input() achievementData: Achievement;
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+    }
 
 }

@@ -1,2 +1,9 @@
-achievement-component works!
+<div class="achievement-block">
+    <img [src]="achievementData.imageSrc" class="achievement-image">
+    <div class="achievement-text">
+        <h1>{{ achievementData.title }}</h1>
+        <p>{{ achievementData.content }}</p>
+    </div>
+    <span class="points">{{ achievementData.points }}</span>
+</div>
 
