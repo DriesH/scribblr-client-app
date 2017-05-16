@@ -1,4 +1,5 @@
-.achievement-block {
+.achievement--block {
+    display: flex;
     width: 80%;
     height: 150px;
     background-color: #FFF;
@@ -10,36 +11,36 @@
     margin-bottom: 20px;
 }
 
-.achievement-image {
-    width: 140px;
+.achievement--image {
     height: auto;
     border-radius: 50%;
-    margin-left: 5px;
-    margin-top: 5px;
-    float: left;
 }
 
-.achievement-text {
-    float: left;
+.achievement--text {
     margin-left: 20px;
+    margin-right: 20px;
     width: calc(100% - 200px);
+    text-overflow: ellipsis;
 
     h1 {
-        margin-bottom: 0;
         margin-top: 5px;
+        margin-bottom: 0;
     }
 
     p {
         margin-top: 10px;
+        margin-bottom: 0;
         color: rgba(0, 0, 0, 0.6);
     }
 }
 
-.points {
+.achievement--points {
     height: 50px;
     width: 50px;
+    line-height: 50px;
     background-color: #2DD6B5;
     border-radius: 50%;
     text-align: center;
     color: white;
+    align-self: flex-end;
 }
