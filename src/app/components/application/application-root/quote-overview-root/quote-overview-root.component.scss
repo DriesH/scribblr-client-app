@@ -4,7 +4,11 @@
 }
 
 .grid-sizer { width: 33.333%; }
-.grid-item { width: 25%; }
+
+.grid-item {
+    width: 25%;
+    margin-bottom: 10px;
+}
 
 .quote-block {
     padding: 20px;

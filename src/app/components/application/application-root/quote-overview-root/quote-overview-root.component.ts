@@ -56,7 +56,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             let msnry = new Masonry(this.quoteContainer.nativeElement, {
                 columnWidth: '.grid-sizer',
                 itemSelector: '.grid-item',
-                percentPosition: true
+                percentPosition: true,
             });
             console.log(msnry);
         }, 2000);
