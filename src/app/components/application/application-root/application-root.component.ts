@@ -5,6 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ChildService } from '../../../services/application-services/child.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 
+import { NotificationConfig } from './notifications/config';
+
+
 import { Store } from '@ngrx/store';
 
 import * as ChildActions from '../../../ngrx-state/actions/child.action';
@@ -47,8 +50,8 @@ export class ApplicationRootComponent implements OnInit {
     children;
     currentUser;
     applicationUI;
-
     currentUrl: String;
+    _config = NotificationConfig;
 
     constructor(
         private _cs: ChildService,

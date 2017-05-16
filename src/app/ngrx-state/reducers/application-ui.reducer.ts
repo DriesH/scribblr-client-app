@@ -4,12 +4,18 @@ import * as ApplicationActions from '../actions/application-ui.action';
 
 export interface State {
     addingNewChild: Boolean;
-    errorMessage: {};
+    error: {
+        type: String;
+        msg: String;
+    };
 };
 
 export const initialState: State = {
     addingNewChild: false,
-    errorMessage: {}
+    error: {
+        type: null,
+        msg: null
+    }
 };
 
 export function ApplicationUIReducer(state = initialState, action: Action) {
@@ -19,6 +25,16 @@ export function ApplicationUIReducer(state = initialState, action: Action) {
 
         case ApplicationActions.ActionTypes.NEW_ERROR_MESSAGE:
             return Object.assign({}, state, action.payload);
+
+        case ApplicationActions.ActionTypes.CLEAR_ERROR_STATE:
+            let resetError = {
+                error: {
+                    type: null,
+                    msg: null
+                }
+            };
+
+            return Object.assign({}, state, resetError);
 
         default:
             return state;

@@ -5,41 +5,59 @@
 
     <h1>Add a new child!</h1>
 
-    <form (ngSubmit)="addNewChild()">
+    <form (ngSubmit)="addNewChild()" #newChildForm="ngForm">
         <div class="form-content">
             <div class="form-left">
                 <div class="form-input-group">
-                    <label for="name">Name</label>
+                    <label for="name">Name<span style="color:red">*</span></label>
                     <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="childModel.full_name" autofocus required>
-                    <scrblr-form-error [message]="'test'"></scrblr-form-error>
+
+                    <scrblr-form-error
+                        *ngIf="name.errors && (name.dirty || name.touched)"
+                        [message]="validationMsg.name.not_valid">
+                    </scrblr-form-error>
                 </div>
 
                 <div class="form-input-group">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender" [(ngModel)]="childModel.gender" required>
+                    <label for="gender">Gender<span style="color:red">*</span></label>
+                    <select id="gender" name="gender" #gender="ngModel" [(ngModel)]="childModel.gender" required>
                         <option [value]="null" disabled>Select a gender...</option>
                         <option [value]="'Male'">Boy</option>
                         <option [value]="'Female'">Girl</option>
                         <option [value]="'Other'">Other</option>
                     </select>
+
+                    <scrblr-form-error
+                        *ngIf="gender.errors && (gender.dirty || gender.touched)"
+                        [message]="validationMsg.gender.not_valid">
+                    </scrblr-form-error>
                 </div>
 
                 <div class="form-input-group">
-                    <label for="date-of-birth">Date of birth</label>
+                    <label for="date-of-birth">Date of birth<span style="color:red">*</span></label>
                     <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth"
                         required>
+
+                    <scrblr-form-error
+                        *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)"
+                        [message]="validationMsg.date_of_birth.not_valid">
+                    </scrblr-form-error>
                 </div>
 
                 <div class="form-avatar-upload">
                     <div class="dropzone" *ngIf="!image.src">
                         <label for="avatar-upload">Upload an avatar</label>
-                        <input id="avatar-upload" name="avatar" type="file" (change)="fileChangeListener($event)">
+                        <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera">
                     </div>
 
                     <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+
+                    <scrblr-form-error *ngIf="avatarError"
+                        [message]="validationMsg.avatar.not_valid">
+                    </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main">Add!</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">Add!</button>
             </div>
         </div>
 

@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 /* Other modules */
 import { FileUploadModule } from 'ng2-file-upload';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -135,6 +136,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         LottieAnimationViewModule.forRoot(),
+        SimpleNotificationsModule.forRoot()
     ],
     providers: [
         RegisterService,

@@ -16,9 +16,9 @@ import { dataURItoBlob } from '../../../../../classes/base64toblob';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 
 @Component({
-  selector: 'scrblr-new-child',
-  templateUrl: './new-child.component.html',
-  styleUrls: ['./new-child.component.scss'],
+    selector: 'scrblr-new-child',
+    templateUrl: './new-child.component.html',
+    styleUrls: ['./new-child.component.scss'],
 
 })
 export class NewChildComponent implements OnInit {
@@ -35,6 +35,27 @@ export class NewChildComponent implements OnInit {
 
     childData: FormData = new FormData();
     image: any = new Image();
+
+    avatarError = false;
+
+    validationMsg = {
+        name: {
+            required: 'Name is required',
+            not_valid: 'Name is not valid'
+        },
+        gender: {
+            required: 'Gender is required',
+            not_valid: 'Gender is not valid'
+        },
+        date_of_birth: {
+            required: 'Age is required',
+            not_valid: 'Age is not valid'
+        },
+        avatar: {
+            required: null,
+            not_valid: 'Picture is not valid'
+        }
+    };
 
     constructor(
         private store: Store<any>,
@@ -81,16 +102,40 @@ export class NewChildComponent implements OnInit {
 
     fileChangeListener($event) {
         let file: File = $event.target.files[0];
-        let myReader: FileReader = new FileReader();
-        myReader.onloadend = (loadEvent: any) => {
-            this.image.src = loadEvent.target.result;
-            this.cropper.setImage(this.image);
-        };
+        this.checkMIMEType(file, success => {
+            this.avatarError = false;
+            let myReader: FileReader = new FileReader();
+            myReader.onloadend = (loadEvent: any) => {
+                this.image.src = loadEvent.target.result;
+                this.cropper.setImage(this.image);
+            };
 
-        myReader.readAsDataURL(file);
+            myReader.readAsDataURL(file);
+        }, error => {
+            this.avatarError = true;
+        });
+    }
+
+    private checkMIMEType(file, done, error) {
+        switch (file.type) {
+            case 'image/png':
+                done();
+                break;
+            case 'image/jpeg':
+            case 'image/jpg':
+                done();
+                break;
+            default:
+                error();
+                break;
+        }
     }
 
     addNewChild() {
+        if (this.avatarError) {
+            return;
+        }
+
         let img;
         let ext;
 

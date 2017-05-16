@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as ApplicationUIActions from '../ngrx-state/actions/application-ui.action';
 
+import { NotificationsService } from 'angular2-notifications';
+
 interface Error {
     success: Boolean;
     error_type: String;
@@ -20,10 +22,24 @@ const errorTypes = {
 @Injectable()
 export class ErrorHandlerService {
 
-    constructor(private store: Store<any>) { }
+    UI_STATE$: any;
+
+    constructor(
+        private store: Store<any>,
+        private _ns: NotificationsService) { }
+
+    initService(store: Store<any>) {
+        store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
+            this.UI_STATE$ = APPLICATION_UI;
+
+            if (this.UI_STATE$) {
+
+            }
+        });
+    }
 
     // Delegate errors to function handlers.
-    handler(error: Error) {
+    public handler(error: Error) {
         switch (error.error_type) {
             case errorTypes.MODEL_NOT_FOUND:
                 this.modelNotFound(error.error_message);
@@ -34,27 +50,52 @@ export class ErrorHandlerService {
                 break;
 
             case errorTypes.VALIDATION:
-                this.validation(error.error_message);
+                this.validation(error);
                 break;
         }
     }
 
-    // Handler for model not found errors.
-    modelNotFound(errorMsg) {
+    // clear error from state.
+    public clearError() {
+        this.store.dispatch(new ApplicationUIActions.ClearErrors({}));
+    }
 
+    // Handler for model not found errors.
+    private modelNotFound(errorMsg) {
+        // Contents for alert box.
+        const _errorMsg = {
+            title: 'Not found!',
+            msg: 'We couldn\'t seem to find your kiddo... Maybe they\'re playing hide\'n\'seek again...',
+            _msg: errorMsg
+        };
+
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
+
+        // Contents for ui state.
+        const _error = {
+            error: {
+                type: 'model_not_found',
+                msg: errorMsg
+            }
+        };
+
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
     }
 
     // Handler for image not found errors.
-    imageNotFound(errorMsg) {
+    private imageNotFound(errorMsg) {
 
     }
 
     // Handler for validation errors.
-    validation(errorMsg) {
-        const _errorMsg = {
-            msg: errorMsg,
+    private validation(error: Error) {
+        const _error = {
+            error: {
+                type: 'validation',
+                msg: error.error_message
+            }
         };
 
-        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_errorMsg));
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
     }
 }
