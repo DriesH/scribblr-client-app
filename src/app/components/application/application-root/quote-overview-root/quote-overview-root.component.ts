@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { QuoteService } from '../../../../services/application-services/quote.service';
 
@@ -26,14 +26,20 @@ export class QuoteOverviewRootComponent implements OnInit {
 
     constructor(
         private _qs: QuoteService,
-        private router: Router) { }
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
-        
-        this._qs.getAllQuotes()
-            .subscribe(res => {
-                this.quotes = res.quotes;
-            });
+        this.route.params.subscribe(params => {
+            let shortId = params.short_id;
+            this.quotes = [];
+
+            this._qs.getQuote(shortId)
+                .subscribe(res => {
+                    this.quotes = res.quotes;
+                });
+        });
+
+
 
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
