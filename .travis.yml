@@ -1,0 +1,26 @@
+#.travis.yml
+sudo: required
+
+language: node_js
+node_js:
+  - "6.10.3"
+  - "7.10.0"
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+    - development
+
+before_script:
+  - npm install -g @angular/cli
+  - npm install
+
+script:
+  - ng build --prod -aot -op dist
+  - cp -r dist/* main/static
+  - cd main
+  - docker build -t driesheyninck/scribblr-main .
+  - docker run -d -p 127.0.0.1:8080:4567 driesheyninck/scribblr-main npm run start

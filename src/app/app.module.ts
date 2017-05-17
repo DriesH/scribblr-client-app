@@ -24,7 +24,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarProfileComponent } from './components/nav-bar/nav-bar-profile/nav-bar-profile.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { RegistrationFormComponent } from './components/registration-page/registration-form/registration-form.component';
-import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
+// import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
@@ -74,9 +74,10 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
 /* Bodymovin' & Lottie module */
-import { LottieAnimationViewModule } from 'lottie-angular2';
+// import { LottieAnimationViewModule } from 'lottie-angular2';
 
-import { ImageCropperComponent } from 'ng2-img-cropper';
+// import { ImageCropperComponent } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ng2-img-cropper';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -98,7 +99,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         UrlSanitizerPipe,
         RegistrationPageComponent,
         RegistrationFormComponent,
-        BodyMovinBackgroundComponent,
+        // BodyMovinBackgroundComponent,
         LoginPageComponent,
         LoginFormComponent,
         CapitalizePipe,
@@ -113,7 +114,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SideBarComponent,
         ChildrenOverviewRootComponent,
         NewChildComponent,
-        ImageCropperComponent,
         NewsOverviewRootComponent,
         FormErrorComponent
     ],
@@ -123,6 +123,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         HttpModule,
         BrowserAnimationsModule,
         FileUploadModule,
+        ImageCropperModule,
         APP_ROUTES,
         StoreModule.provideStore({
             CURRENT_USER: CurrentUserReducer,
@@ -133,7 +134,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         EffectsModule.runAfterBootstrap(ChildEffect),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
-        LottieAnimationViewModule.forRoot(),
+        // LottieAnimationViewModule.forRoot(),
         SimpleNotificationsModule.forRoot()
     ],
     providers: [
