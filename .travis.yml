@@ -28,10 +28,14 @@ script:
   - docker run -d -p 127.0.0.1:8080:4567 driesheyninck/scribblr-main npm run start
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "development" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push driesh/scribblrmain;
-    fi
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - export REPO=driesh/scribblrmain
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - cd main
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
 
 notifications:
   slack: scribblr-team:1GpFYzcSsRza8KOJdY0xuMuh
