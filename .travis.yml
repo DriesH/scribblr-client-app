@@ -26,3 +26,6 @@ script:
   - cd main
   - docker build -t driesheyninck/scribblr-main .
   - docker run -d -p 127.0.0.1:8080:4567 driesheyninck/scribblr-main npm run start
+
+notifications:
+  slack: scribblr-team:1GpFYzcSsRza8KOJdY0xuMuh
