@@ -13,10 +13,73 @@
         <!--google font-->
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Montserrat:400,700|Poppins:700|Roboto:300,400,500,700" rel="stylesheet">
         <!--font awesome-->
-        <script src="https://use.fontawesome.com/33b4341e0e.js"></script>
+        <link href="/assets/css/font-awesome/fa.min.css" rel="stylesheet">
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .loading-screen {
+                width: 100vw;
+                height: 100vh;
+                background-color: #D2D3D6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .loading-screen--logo {
+                width: 500px;
+                height: auto;
+                display: inline-block;
+                margin-bottom: 100px;
+            }
+
+            .loading-spinner {
+                border: 4px solid rgba(255, 255, 255, 0.5);
+                display: block;
+                width: 50px;
+                height: 50px;
+                position: relative;
+                border-radius: 50%;
+            }
+
+            .loading-spinner::after {
+                content: '';
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                position: absolute;
+                top: -4px;
+                left: -4px;
+                right: 0;
+                bottom: 0;
+                border: 4px solid transparent;
+                border-top-color: #5E94E5;
+                animation: spinning 1000ms linear infinite;
+            }
+
+            @keyframes spinning {
+                0% {
+                    transform: rotateZ(0deg);
+                }
+
+                100% {
+                    transform: rotateZ(360deg);
+                }
+            }
+        </style>
     </head>
     <body>
-        <scrblr-root>Loading...</scrblr-root>
+        <scrblr-root>
+            <div class="loading-screen">
+                <img class="loading-screen--logo" src="/assets/logos/logo-svg.svg" alt="scribblr-logo">
+                <span class="loading-spinner"></span>
+            </div>
+        </scrblr-root>
 
         <script src="/assets/js/masonry.js"></script>
         <script src="https://dme0ih8comzn4.cloudfront.net/imaging/v3/editor.js"></script>

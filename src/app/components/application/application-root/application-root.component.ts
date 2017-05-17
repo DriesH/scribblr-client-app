@@ -6,10 +6,11 @@ import { ChildService } from '../../../services/application-services/child.servi
 
 import { NotificationConfig } from './notifications/config';
 
-
 import { Store } from '@ngrx/store';
 
 import * as ChildActions from '../../../ngrx-state/actions/child.action';
+
+import { EasterEggService } from '../../../services/easter-egg/easter-egg.service';
 
 import {
     trigger,
@@ -23,6 +24,7 @@ import {
     selector: 'scrblr-application-root',
     templateUrl: './application-root.component.html',
     styleUrls: ['./application-root.component.scss'],
+    providers: [ EasterEggService ],
     animations: [
         trigger('fadeIn', [
             state('*',
@@ -58,7 +60,8 @@ export class ApplicationRootComponent implements OnInit {
         private _cs: ChildService,
         private store: Store<any>,
         private router: Router,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private _ees: EasterEggService) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
@@ -86,14 +89,16 @@ export class ApplicationRootComponent implements OnInit {
 
         this._cs.getAllChildren()
             .subscribe(res => this.dispatchChildrenToStore(res.children));
+
+        // this.attachListeners();
     }
+
+    // attachListeners() {
+    //     window.addEventListener('keydown', this._ees.easterEgg);
+    // }
 
     dispatchChildrenToStore(children) {
         this.children = children;
         this.store.dispatch(new ChildActions.SuccessfullDownloadChildren(children));
-    }
-
-    errorHandler(error) {
-
     }
 }

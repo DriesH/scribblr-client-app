@@ -59,7 +59,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
             percentPosition: true,
-            stagger: 30
+            stagger: 20
         });
 
         console.log(msnry);
