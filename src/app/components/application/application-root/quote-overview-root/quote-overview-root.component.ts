@@ -16,9 +16,9 @@ declare var Masonry: any;
 })
 export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('fileUpload')    fileUpload: ElementRef;
-    @ViewChild('editableImage') editableImage: ElementRef;
-    @ViewChild('dropzoneInput') dropzoneInput: ElementRef;
+    @ViewChild('fileUpload')     fileUpload: ElementRef;
+    @ViewChild('editableImage')  editableImage: ElementRef;
+    @ViewChild('dropzoneInput')  dropzoneInput: ElementRef;
     @ViewChild('quoteContainer') quoteContainer: ElementRef;
 
     quotes; // todo model quote
@@ -52,16 +52,17 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
 
-        setTimeout(() => {
-            let msnry = new Masonry(this.quoteContainer.nativeElement, {
-                columnWidth: '.grid-sizer',
-                itemSelector: '.grid-item',
-                percentPosition: true,
-            });
-            console.log(msnry);
-        }, 2000);
+    }
 
+    initMasonry() {
+        let msnry = new Masonry(this.quoteContainer.nativeElement, {
+            columnWidth: '.grid-sizer',
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            stagger: 30
+        });
 
+        console.log(msnry);
     }
 
     fileOverBase(e) {

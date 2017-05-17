@@ -26,6 +26,7 @@ export class HttpHelperService {
 
     public errorHandler(res: Response | any) {
         let body = res.json();
+        console.log(this._ehs);
         this._ehs.handler(body);
         return Observable.throw(body);
     }

@@ -1,9 +1,21 @@
-.quote-card {
-    border-radius: 5px;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 1);
-    background: white;
-}
-
 .grid-item {
     width: 20%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.quote-block {
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .grid-item {
+        width: 33%;
+    }
 }

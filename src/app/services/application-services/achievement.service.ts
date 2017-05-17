@@ -28,8 +28,8 @@ export class AchievementService {
     // GET
     getAllAchievements(): Observable<any> {
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.achievement.index, this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
     }
 
 }

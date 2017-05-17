@@ -30,39 +30,39 @@ export class ChildService {
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.newChild,
             data,
             this._headers.setOptions(this.token, headers))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 
     uploadChildImage(shortId, data): Observable<any> {
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.uploadChildImage(shortId),
             data,
             this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 
     // GET
     getAllChildren(): Observable<any> {
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.index,
             this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 
     getChild(shortId): Observable<any> {
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.getChild(shortId),
             this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 
     // DELETE
     deleteChild(shortId): Observable<any> {
         return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.child.deleteChild(shortId),
             this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 
     // PUT
@@ -70,7 +70,7 @@ export class ChildService {
         return this.http.put(API_ROUTES.application.child.editChild(shortId),
             data,
             this._headers.setOptions(this.token))
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
     }
 }

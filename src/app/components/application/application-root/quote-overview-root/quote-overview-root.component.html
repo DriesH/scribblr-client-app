@@ -3,12 +3,12 @@
 <scrblr-drop-upload></scrblr-drop-upload>
 
 <div class="grid" id="gridboi" #quoteContainer>
-    <!--<scrblr-quote *ngFor="let quote of quotes" [quoteData]="quote"></scrblr-quote>-->
+    <scrblr-quote
+        *ngFor="let quote of quotes; let last = last"
+        [last]="last"
+        [quoteData]="quote"
+        (reachedLast)="initMasonry()">
+    </scrblr-quote>
 
     <div class="grid-sizer"></div>
-
-    <div *ngFor="let quote of quotes" class="grid-item quote-block">
-        {{quote.quote }}
-    </div>
-
 </div>

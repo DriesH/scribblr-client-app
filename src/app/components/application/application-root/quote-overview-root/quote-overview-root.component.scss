@@ -1,17 +1,22 @@
 .grid {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 100%;
 }
 
-.grid-sizer { width: 33.333%; }
-
-.grid-item {
-    width: 25%;
-    margin-bottom: 10px;
+.grid::after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
-.quote-block {
-    padding: 20px;
-    background: white;
-    border-radius: 5px;
+.grid-sizer {
+    width: 20%;
 }
+
+@media screen and (max-width: 768px) {
+    .grid-sizer {
+        width: 33%;
+    }
+}
+
+
