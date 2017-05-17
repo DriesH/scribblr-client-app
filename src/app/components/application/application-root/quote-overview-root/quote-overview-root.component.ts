@@ -6,6 +6,8 @@ import { QuoteService } from '../../../../services/application-services/quote.se
 
 import { APP_CONFIG } from '../../../../_config/app.config';
 
+import { dataURItoBlob } from '../../../../classes/base64toblob';
+
 declare var Aviary: any;
 declare var Masonry: any;
 
@@ -25,6 +27,19 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     imgData: String;
     csdkImageEditor;
     myDropzone;
+    msnry;
+
+    childShortId: String;
+
+    showModalAddQuote = false;
+
+    quoteModel = {
+        quote: null,
+        story: null,
+        link: 'http://searchengineland.com/figz/wp-content/seloads/2015/12/google-amp-fast-speed-travel-ss-1920.jpg'
+    };
+    quoteData: FormData = new FormData();
+
 
     constructor(
         private _qs: QuoteService,
@@ -32,10 +47,10 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            let shortId = params.short_id;
+            this.childShortId = params.short_id;
             this.quotes = [];
 
-            this._qs.getQuote(shortId)
+            this._qs.getQuote(this.childShortId)
                 .subscribe(res => {
                     this.quotes = res.quotes;
                 });
@@ -55,14 +70,20 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     initMasonry() {
-        let msnry = new Masonry(this.quoteContainer.nativeElement, {
+        console.log('initMasonry');
+        this.msnry = new Masonry(this.quoteContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
             percentPosition: true,
-            stagger: 20
+            stagger: 20,
+            initLayout: false
         });
+        this.reloadMasonry();
+    }
 
-        console.log(msnry);
+    reloadMasonry() {
+        console.log('reloadMasonry');
+        this.msnry.layout();
     }
 
     fileOverBase(e) {
@@ -125,6 +146,19 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     resetFileInput() {
-        this.fileUpload.nativeElement.value = "";
+        this.fileUpload.nativeElement.value = '';
+    }
+
+    showQuoteModal() {
+        this.showModalAddQuote = !this.showModalAddQuote;
+    }
+
+    addNewQuote() {
+        this.quoteData.append('quote', this.quoteModel.quote);
+        this.quoteData.append('story', this.quoteModel.story);
+        this.quoteData.append('link', this.quoteModel.link);
+
+        this._qs.newQuote(this.childShortId, this.quoteData).subscribe(res => console.log(res));
+
     }
 }

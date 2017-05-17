@@ -12,6 +12,11 @@
     padding: 15px;
     background-color: white;
     border-radius: 5px;
+
+    img {
+        width: 100%;
+        display: inline-block;
+    }
 }
 
 @media screen and (max-width: 768px) {

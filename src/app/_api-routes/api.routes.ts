@@ -42,6 +42,12 @@ export const API_ROUTES = {
             deleteQuote: (childShortId, quoteShortId) => {
                 return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
             },
+            imageOriginal: (childShortId, quoteShortId, img_original_url_id) => {
+                return applicationPrefix + childShortId + '/quotes/' + quoteShortId + '/img-original/' + img_original_url_id;
+            },
+            imageBaked: (childShortId, quoteShortId, img_baked_url_id) => {
+                return applicationPrefix + childShortId + '/quotes/' + quoteShortId + '/img-baked/' + img_baked_url_id;
+            }
             // editQuote: () => {
             //     return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
             // }
