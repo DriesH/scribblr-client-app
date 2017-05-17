@@ -21,6 +21,7 @@ before_script:
 
 script:
   - ng build --prod -aot -op dist
+  - mkdir main/static
   - cp -r dist/* main/static
   - cd main
   - docker build -t driesheyninck/scribblr-main .
