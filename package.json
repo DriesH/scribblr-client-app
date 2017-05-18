@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "baan": "ng build -prod -aot -op dist",
     "ssl": "ng serve --ssl true --ssl-key C:\\xampp\\apache\\conf\\ssl.key\\server.key --ssl-cert C:\\xampp\\apache\\conf\\ssl.crt\\server.crt"
   },
   "private": true,
