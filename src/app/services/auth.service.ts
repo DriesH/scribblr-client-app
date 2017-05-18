@@ -32,8 +32,8 @@ export class AuthService {
         private store: Store<any>,
         private router: Router) {
 
-            this.loginRoute = API_ROUTES.baseUrl + API_ROUTES.loginRoutes.loginUser;
-            this.userRoute = API_ROUTES.baseUrl + API_ROUTES.getUserRoute;
+            this.loginRoute = API_ROUTES.baseUrl() + API_ROUTES.loginRoutes.loginUser;
+            this.userRoute = API_ROUTES.baseUrl() + API_ROUTES.getUserRoute;
 
             this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
                 this.CURRENT_USER = CURRENT_USER;

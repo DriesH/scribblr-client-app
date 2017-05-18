@@ -27,7 +27,7 @@ export class ChildService {
 
     // POST
     newChild(data, headers?: Array<HeaderOptions>): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.newChild,
+        return this.http.post(API_ROUTES.baseUrl() + API_ROUTES.application.child.newChild,
             data,
             this._headers.setOptions(this.token, headers))
                 .map(res => this._hhs.extractData(res))
@@ -35,7 +35,7 @@ export class ChildService {
     }
 
     uploadChildImage(shortId, data): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.uploadChildImage(shortId),
+        return this.http.post(API_ROUTES.baseUrl() + API_ROUTES.application.child.uploadChildImage(shortId),
             data,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
@@ -44,14 +44,14 @@ export class ChildService {
 
     // GET
     getAllChildren(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.index,
+        return this.http.get(API_ROUTES.baseUrl() + API_ROUTES.application.child.index,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
     }
 
     getChild(shortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.child.getChild(shortId),
+        return this.http.get(API_ROUTES.baseUrl() + API_ROUTES.application.child.getChild(shortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
@@ -59,7 +59,7 @@ export class ChildService {
 
     // DELETE
     deleteChild(shortId): Observable<any> {
-        return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.child.deleteChild(shortId),
+        return this.http.delete(API_ROUTES.baseUrl() + API_ROUTES.application.child.deleteChild(shortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

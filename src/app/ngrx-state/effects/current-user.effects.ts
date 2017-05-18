@@ -74,6 +74,6 @@ export class CurrentUserEffect {
         .switchMap(() => this.removeToken());
 
     constructor(private actions$: Actions, private http: Http) {
-        this.userRoute = API_ROUTES.baseUrl + API_ROUTES.getUserRoute;
+        this.userRoute = API_ROUTES.baseUrl() + API_ROUTES.getUserRoute;
     }
 }
