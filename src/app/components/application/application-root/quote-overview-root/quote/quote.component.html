@@ -1,23 +1,13 @@
 <div class="grid-item">
     <div class="quote-block">
-
-        <!--<img [src]="quoteData.lqip" *ngIf="!imageHasBeenLoaded" (load)="imageLoadedFn()">
-
-        <img [hidden]="!imageHasBeenLoaded"
-            [src]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"
-            alt="test image"
-            (load)="imageLoadedFn()">-->
-
         <img
             [src]="quoteData.lqip"
             [lazyLoad]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"
             [scrollTarget]="scrollContainer"
             [offset]="1600"
             (load)="imageLoadedFn()">
-             <!---->
 
         <h2>{{ quoteData.quote }}</h2>
         <p>{{ quoteData.story }}</p>
-        <span>{{ quoteData.id }}</span>
     </div>
 </div>

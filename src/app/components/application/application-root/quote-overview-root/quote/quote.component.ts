@@ -52,10 +52,6 @@ export class QuoteComponent implements OnInit {
     }
 
     imageLoadedFn() {
-        console.log('imageLoadedFn');
-        setTimeout(() => {
-            this.imageHasBeenLoaded = true;
-        }, 400);
         this.imageLoaded.emit(true);
     }
 }
