@@ -28,7 +28,7 @@ script:
   - docker run -d -p 127.0.0.1:8080:4567 driesheyninck/scribblr-main npm run start
 
 after_success:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker login --email=$HEROKU_EMAIL --username=$HEROKU_USERNAME --password=$HEROKU_TOKEN registry.heroku.com
   - export REPO=driesh/scribblrmain
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - cd main
