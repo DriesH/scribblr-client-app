@@ -70,7 +70,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     initMasonry() {
-        console.log('initMasonry');
+        // console.log('initMasonry');
         this.msnry = new Masonry(this.quoteContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
@@ -82,7 +82,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     reloadMasonry() {
-        console.log('reloadMasonry');
+        // console.log('reloadMasonry');
         this.msnry.layout();
     }
 

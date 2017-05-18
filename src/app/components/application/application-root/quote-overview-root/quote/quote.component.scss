@@ -9,13 +9,24 @@
     width: 96.5%;
     margin: auto;
     box-sizing: border-box;
-    padding: 15px;
     background-color: white;
     border-radius: 5px;
 
     img {
         width: 100%;
         display: inline-block;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    h2 {
+        padding: 0 15px;
+        margin: 15px 0;
+    }
+
+    p {
+        padding: 0 15px 30px;
+        margin: 15px 0 0;
     }
 }
 
