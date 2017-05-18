@@ -1,0 +1,93 @@
+<div id="new-quote-overlay">
+    <a class="close-cross" routerLink="../">
+        <img src="/assets/icons/cross.svg">
+    </a>
+    <h1>Hello</h1>
+
+    <button (click)="startAviary()">Start</button>
+
+    <div class="new-quote--container">
+        <form (ngSubmit)="addNewChild()" #newChildForm="ngForm">
+            <div class="form-input-group">
+                <label for="name">Quote<span style="color:red">*</span></label>
+                <input type="text"
+                    name="quote"
+                    id="quote"
+                    #quote="ngModel"
+                    [(ngModel)]="quoteModel.quote"
+                    (keyup)="updateCanvas()"
+                    (change)="updateCanvas()"
+                    autofocus
+                    required
+                >
+
+                <!-- TODO: Fix message-->
+                <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)"></scrblr-form-error>
+            </div>
+
+            <div class="form-input-group">
+                <label for="name">Story<span style="color:red">*</span></label>
+                <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
+
+                <!-- TODO: Fix message-->
+                <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"></scrblr-form-error>
+            </div>
+
+            <div class="form-input-group">
+                <label for="gender">Font</label>
+                <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvas()" required>
+                    <option [value]="'Calibri'">Calibri</option>
+                    <option [value]="'Arial'">Arial</option>
+                    <option [value]="'Papyrus'">Papyrus</option>
+                    <option [value]="'Comic Sans MS'">Comic Sans</option>
+                    <option [value]="'Impact'">Impact</option>
+
+                </select>
+
+                <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"></scrblr-form-error>
+            </div>
+
+
+        </form>
+
+        <div class="new-quote-preview--container">
+            <div class="canvas--container">
+                <canvas id="preview-canvas" class="canvas-style" #previewCanvas></canvas>
+            </div>
+
+            <div class="preset-picker" *ngIf="presetPickerActive">
+                <div class="preset">
+                    <a (click)="changeImage($event)">
+                        <img src="/assets/preset-imgs/mountains.jpg" alt="mountains">
+                    </a>
+                </div>
+                <div class="preset">
+                    <a (click)="changeImage($event)">
+                        <img src="/assets/preset-imgs/paint.jpg" alt="paint">
+                    </a>
+                </div>
+                <div class="preset">
+                    <a (click)="changeImage($event)">
+                        <img src="/assets/preset-imgs/pencils.jpg" alt="pencils">
+                    </a>
+                </div>
+                <div class="preset">
+                    <a (click)="changeImage($event)">
+                        <img src="/assets/preset-imgs/school_desk.jpg" alt="school_desk">
+                    </a>
+                </div>
+            </div>
+
+            <div id="dropzone" [hidden]="presetPickerActive" #dropzone>
+
+            </div>
+
+            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas()">
+
+            <button class="btn btn btn-primary btn-color-main" (click)="toggleImageMode()">
+                <span *ngIf="presetPickerActive">{{ buttonMessage.your_own }}</span>
+                <span *ngIf="!presetPickerActive">{{ buttonMessage.preset }}</span>
+            </button>
+        </div>
+    </div>
+</div>

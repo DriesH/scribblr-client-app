@@ -42,6 +42,7 @@ import { SideBarComponent } from './components/application/application-root/side
 import { ChildrenOverviewRootComponent } from './components/application/application-root/children-overview-root/children-overview-root.component';
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
+import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -116,7 +117,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ChildrenOverviewRootComponent,
         NewChildComponent,
         NewsOverviewRootComponent,
-        FormErrorComponent
+        FormErrorComponent,
+        NewQuoteComponent
     ],
     imports: [
         BrowserModule,
