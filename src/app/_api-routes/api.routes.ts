@@ -3,12 +3,7 @@ let applicationPrefix = '/application/';
 import { environment } from '../../environments/environment';
 
 export const API_ROUTES = {
-    baseUrl: () => {
-        if (environment.production) {
-            return 'https://jorenvh.webhosting.be/api';
-        }
-        return 'https://scribblr-dev.local/api';
-    },
+    baseUrl: environment.baseUrl,
     registerRoutes: {
         newUser: '/auth/register'
     },

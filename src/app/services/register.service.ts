@@ -18,7 +18,7 @@ export class RegisterService {
     registerRoute: string;
 
     constructor(private http: Http, private _hhs: HttpHelperService) {
-        this.registerRoute = API_ROUTES.baseUrl() + API_ROUTES.registerRoutes.newUser;
+        this.registerRoute = API_ROUTES.baseUrl + API_ROUTES.registerRoutes.newUser;
     }
 
     registerUser(formData): Observable<any> {
