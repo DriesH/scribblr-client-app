@@ -9,6 +9,10 @@ import { HttpModule } from '@angular/http';
 import { FileUploadModule } from 'ng2-file-upload';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { ImageCropperModule } from 'ng2-img-cropper';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -25,7 +29,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarProfileComponent } from './components/nav-bar/nav-bar-profile/nav-bar-profile.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { RegistrationFormComponent } from './components/registration-page/registration-form/registration-form.component';
-// import { BodyMovinBackgroundComponent } from './components/body-movin-background/body-movin-background.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
@@ -43,6 +46,7 @@ import { ChildrenOverviewRootComponent } from './components/application/applicat
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
+import { QuoteModalComponent } from './components/application/application-root/quote-overview-root/quote-modal/quote-modal.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -75,15 +79,6 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
-/* Bodymovin' & Lottie module */
-// import { LottieAnimationViewModule } from 'lottie-angular2';
-
-// import { ImageCropperComponent } from 'ng2-img-cropper';
-import { ImageCropperModule } from 'ng2-img-cropper';
-
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
     minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
@@ -101,7 +96,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         UrlSanitizerPipe,
         RegistrationPageComponent,
         RegistrationFormComponent,
-        // BodyMovinBackgroundComponent,
         LoginPageComponent,
         LoginFormComponent,
         CapitalizePipe,
@@ -118,7 +112,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewChildComponent,
         NewsOverviewRootComponent,
         FormErrorComponent,
-        NewQuoteComponent
+        NewQuoteComponent,
+        QuoteModalComponent
     ],
     imports: [
         BrowserModule,
@@ -138,7 +133,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         EffectsModule.runAfterBootstrap(ChildEffect),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
-        // LottieAnimationViewModule.forRoot(),
         SimpleNotificationsModule.forRoot()
     ],
     providers: [

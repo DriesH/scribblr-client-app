@@ -1,4 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { QuoteService } from '../../../../../services/application-services/quote.service';
 
 import { dataURItoBlob } from '../../../../../classes/base64toblob';
 
@@ -16,6 +19,11 @@ declare var Aviary: any;
 })
 export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
+    @ViewChild('presetImg') presetImg: ElementRef;
+    @ViewChild('userImg') userImg: ElementRef;
+    @ViewChild('previewCanvas') previewCanvas: ElementRef;
+    @ViewChild('dropzone') dropzone: ElementRef;
+
     csdkImageEditor;
 
     c; // canvas
@@ -28,18 +36,25 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         selectedPreset: '/assets/preset-imgs/horses.jpg'
     };
 
+    defaultPreset = '/assets/preset-imgs/horses.jpg';
+
     presetPickerActive = true;
+
     buttonMessage = {
         your_own: 'Upload your own image!',
         preset: 'Select a preset image!',
     };
 
-    @ViewChild('presetImg') presetImg: ElementRef;
-    @ViewChild('userImg') userImg: ElementRef;
-    @ViewChild('previewCanvas') previewCanvas: ElementRef;
-    @ViewChild('dropzone') dropzone: ElementRef;
+    quoteData: FormData = new FormData();
 
-    constructor(private _dz: DropzoneService) { }
+    aviaryLink = null;
+    presetId = this.quoteModel.selectedPreset;
+    childShortId: String;
+
+    constructor(
+        private _dz: DropzoneService,
+        private _qs: QuoteService,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.csdkImageEditor = new Aviary.Feather({
@@ -49,10 +64,16 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             onError: this.errorSavingToAviary,
             onClose: this.onAviaryClose.bind(this)
         });
+
+        this.route.parent.params.subscribe(params => {
+            console.log('params: ', params);
+            this.childShortId = params.short_id;
+        });
+
     }
 
     ngAfterViewInit() {
-        this.initCanvas(this.presetImg.nativeElement);
+        this.initCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
     }
 
     ngOnDestroy() {
@@ -61,44 +82,134 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    initCanvas(img) {
-        console.log(img);
-        this.c = this.previewCanvas.nativeElement;
-        this.ctx = this.c.getContext('2d');
-        this.c.width = img.width;
-        this.c.height = img.height;
-        this.ctx.drawImage(img, 0, 0);
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-        this.ctx.fillRect(0, 0, this.c.width, this.c.height);
-
-
-        if (this.quoteModel.quote !== null) {
-            this.updateCanvas();
-        }
-
-        console.log('canvas has been initialized');
-    }
-
-    updateCanvas() {
-        console.log('updateCanvas');
-
-        if (this.presetImg) {
-            this.ctx.drawImage(this.presetImg.nativeElement, 0, 0);
+    updateCanvasOnKeyup() {
+        if (this.presetPickerActive) {
+            this.updateCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
         } else {
-            this.ctx.drawImage(this.userImg.nativeElement, 0, 0);
+            this.updateCanvas(this.userImg.nativeElement, this.previewCanvas.nativeElement, '40');
+        }
+    }
+
+    updateCanvasOnChange() {
+        if (this.presetPickerActive) {
+            this.updateCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
+        } else {
+            this.updateCanvas(this.userImg.nativeElement, this.previewCanvas.nativeElement, '40');
+        }
+    }
+
+    /**
+     * Initialize the canvas.
+     * @param img : HTMLImageElement
+     * @param c : HTMLCanvasElement
+     * @param overlayOpacity : String *format: ('00'->'99')
+     */
+    initCanvas(img: HTMLImageElement, c: HTMLCanvasElement, overlayOpacity: String) {
+        // Get canvas context
+        const ctx = c.getContext('2d');
+
+        // Set the canvas width and height.
+        c.width = img.width;
+        c.height = img.height;
+
+        // Draw the image to the canvas.
+        ctx.drawImage(img, 0, 0);
+
+        // Draw a black overlay with an opacity.
+        ctx.fillStyle = `rgba(0, 0, 0, 0.${ overlayOpacity })`;
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        if ( this.quoteModel.quote !== null ) {
+            this.updateCanvas(img, c, overlayOpacity);
+        }
+    }
+
+    /**
+     * Update the canvas.
+     * @param img : HTMLImageElement
+     * @param c : HTMLCanvasElement
+     * @param overlayOpacity : String
+     */
+    updateCanvas(img: HTMLImageElement, c: HTMLCanvasElement, overlayOpacity: String) {
+        const ctx = c.getContext('2d');
+        let fontSize;
+
+        // Set the canvas width and height.
+        c.width = img.width;
+        c.height = img.height;
+
+        // Redraw the image.
+        ctx.drawImage(img, 0, 0);
+
+        // Redraw the overlay.
+        ctx.fillStyle = `rgba(0, 0, 0, 0.${overlayOpacity})`;
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        fontSize = c.width / 20;
+
+        // Set the font.
+        ctx.font = `${ fontSize }px ` + this.quoteModel.font;
+
+        // Align the text.
+        ctx.textAlign = 'center';
+
+        // Set the text color.
+        ctx.fillStyle = 'white';
+
+        const text = this.getLines(ctx, this.quoteModel.quote, c.width - 150);
+
+        // Draw the text in the middle.
+        text.forEach((item, key) => {
+            let translationY = (text.length - 1) * 25;
+
+            ctx.fillText(item, c.width / 2, ((c.height / 2) + (50 * key)) - translationY);
+        });
+    }
+
+    /**
+     * Change the preset image.
+     * @param e: Event
+     */
+    changeImage(e) {
+        e.preventDefault();
+        console.log('changeImage');
+        this.quoteModel.selectedPreset = e.srcElement.currentSrc;
+    }
+
+    /**
+     * Clear the canvas
+     */
+    clearCanvas(c: HTMLCanvasElement) {
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, c.width, c.height);
+    }
+
+    /**
+     * Changes the modus for the user.
+     * Preset images selector or upload your own.
+     */
+    toggleImageMode() {
+        this.presetPickerActive = !this.presetPickerActive;
+        this.quoteModel.selectedPreset = null;
+        this.clearCanvas(this.previewCanvas.nativeElement);
+
+        if (!this.presetPickerActive) {
+            this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
+        } else {
+            this.quoteModel.selectedPreset = this.defaultPreset;
+            this.initCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
         }
 
 
-
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-        this.ctx.fillRect(0, 0, this.c.width, this.c.height);
-        this.ctx.font = '50px ' + this.quoteModel.font;
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillText(this.quoteModel.quote, this.c.width / 2, this.c.height / 2);
     }
 
-
+    /**
+     * Line wrapping for canvas.
+     * @param ctx: CanvasContext
+     * @param text: String
+     * @param maxWidth: Number
+     */
     getLines(ctx, text, maxWidth) {
         let words = text.split(' ');
         let lines = [];
@@ -118,31 +229,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         return lines;
     }
 
-
-
-
-    changeImage(e) {
-        e.preventDefault();
-        console.log('changeImage');
-        this.quoteModel.selectedPreset = e.srcElement.currentSrc;
-    }
-
-    clearCanvas() {
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillRect(0, 0, this.c.width, this.c.height);
-    }
-
-    toggleImageMode() {
-        this.presetPickerActive = !this.presetPickerActive;
-        this.quoteModel.selectedPreset = null;
-        this.clearCanvas();
-
-        if (!this.presetPickerActive) {
-            this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
-        }
-
-    }
-
+    /**
+     * Start the photo-editor
+     * @param e: Event
+     */
     startAviary(e) {
         console.log(e);
 
@@ -152,11 +242,16 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log('startAviary');
     }
 
+    /**
+     * Save the image to S3 bucket.
+     * @param imageID: String
+     * @param newURL; String
+     */
     saveToAviary(imageID, newURL) {
         console.log('newURL: ', newURL);
         console.log('imageID: ', imageID);
 
-        // this.userImg.nativeElement.src = newURL;
+
 
         let img = new Image();
 
@@ -164,16 +259,39 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         img.setAttribute('crossOrigin', 'anonymous');
 
         img.onload = () => {
-            this.initCanvas(img);
+            this.initCanvas(img, this.previewCanvas.nativeElement, '40');
         };
 
         this.csdkImageEditor.close();
     }
 
+    /**
+     * Error when saving to aviary.
+     * @param errorObj: Object
+     */
     errorSavingToAviary(errorObj) {
         console.log('erroooor');
     }
 
+    /**
+     * Fired when aviary closes.
+     * @param isDirty: Boolean
+     */
     onAviaryClose(isDirty) {
+    }
+
+    addNewQuote(c: HTMLCanvasElement) {
+        this.quoteData.append('quote',        this.quoteModel.quote);
+        this.quoteData.append('story',        this.quoteModel.story);
+        this.quoteData.append('font_type',    this.quoteModel.font);
+        this.quoteData.append('preset',       this.presetId);
+        this.quoteData.append('img_original', this.aviaryLink);
+
+        c.toBlob(blob => {
+            this.quoteData.append('img_baked', blob, 'baked_img.jpg');
+            this._qs.newQuote(this.childShortId , this.quoteData).subscribe(res => console.log('res: ', res));
+
+        }, 'image/jpeg', 0.65);
+
     }
 }

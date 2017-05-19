@@ -4,7 +4,7 @@
     </a>
 
     <div class="new-quote--container">
-        <form (ngSubmit)="addNewChild()" #newChildForm="ngForm">
+        <form (ngSubmit)="addNewQuote(previewCanvas)" #newChildForm="ngForm">
             <div class="form-input-group">
                 <label for="name">Quote<span style="color:red">*</span></label>
                 <input type="text"
@@ -12,8 +12,8 @@
                     id="quote"
                     #quote="ngModel"
                     [(ngModel)]="quoteModel.quote"
-                    (keyup)="updateCanvas()"
-                    (change)="updateCanvas()"
+                    (keyup)="updateCanvasOnKeyup()"
+                    (change)="updateCanvasOnChange()"
                     autofocus
                     required
                 >
@@ -32,7 +32,7 @@
 
             <div class="form-input-group">
                 <label for="gender">Font</label>
-                <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvas()" required>
+                <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
                     <option [value]="'Calibri'">Calibri</option>
                     <option [value]="'Arial'">Arial</option>
                     <option [value]="'Papyrus'">Papyrus</option>
@@ -44,6 +44,7 @@
                 <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"></scrblr-form-error>
             </div>
 
+            <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">New</button>
 
         </form>
 
@@ -75,12 +76,12 @@
                 </li>
             </ul>
 
-            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg)" *ngIf="presetPickerActive">
+            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive">
 
             <div id="dropzone" [hidden]="presetPickerActive" #dropzone></div>
             <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous">
 
-            <button class="btn btn btn-primary btn-color-main" (click)="toggleImageMode()">
+            <button class="btn btn-primary" (click)="toggleImageMode()">
                 <span *ngIf="presetPickerActive">{{ buttonMessage.your_own }}</span>
                 <span *ngIf="!presetPickerActive">{{ buttonMessage.preset }}</span>
             </button>
