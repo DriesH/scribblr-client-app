@@ -26,9 +26,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     csdkImageEditor;
 
-    c; // canvas
-    ctx; // canvas context
-
     quoteModel = {
         story: null,
         quote: null,
@@ -48,7 +45,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     quoteData: FormData = new FormData();
 
     aviaryLink = null;
-    presetId = this.quoteModel.selectedPreset;
+    presetId = '1';
     childShortId: String;
 
     constructor(
@@ -66,7 +63,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         });
 
         this.route.parent.params.subscribe(params => {
-            console.log('params: ', params);
             this.childShortId = params.short_id;
         });
 
@@ -284,8 +280,12 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         this.quoteData.append('quote',        this.quoteModel.quote);
         this.quoteData.append('story',        this.quoteModel.story);
         this.quoteData.append('font_type',    this.quoteModel.font);
-        this.quoteData.append('preset',       this.presetId);
-        this.quoteData.append('img_original', this.aviaryLink);
+
+        if (this.presetPickerActive) {
+            this.quoteData.append('preset', this.presetId);
+        } else {
+            this.quoteData.append('img_original', this.aviaryLink);
+        }
 
         c.toBlob(blob => {
             this.quoteData.append('img_baked', blob, 'baked_img.jpg');

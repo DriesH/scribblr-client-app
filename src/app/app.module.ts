@@ -69,6 +69,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { ChildAgePipe } from './pipes/child-age.pipe';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 /* Reducers and effects */
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
@@ -113,7 +114,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewsOverviewRootComponent,
         FormErrorComponent,
         NewQuoteComponent,
-        QuoteModalComponent
+        QuoteModalComponent,
+        EllipsisPipe
     ],
     imports: [
         BrowserModule,

@@ -7,7 +7,7 @@
             [offset]="1600"
             (load)="imageLoadedFn()">
 
-        <h2>{{ quoteData.quote }}</h2>
+        <h2>{{ quoteData.quote | ellipsis: 40 }}</h2>
         <p>{{ quoteData.story }}</p>
     </div>
 </div>
