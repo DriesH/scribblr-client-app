@@ -24,6 +24,8 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     msnry;
     childShortId: String;
 
+    loading = true;
+
     constructor(
         private _qs: QuoteService,
         private route: ActivatedRoute,
@@ -33,9 +35,11 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
         this.route.params.subscribe(params => {
             this.childShortId = params.short_id;
             this.quotes = [];
+            this.loading = true;
 
             this._qs.getQuote(this.childShortId)
                 .subscribe(res => {
+                    this.loading = false;
                     this.quotes = res.quotes;
                 });
         });

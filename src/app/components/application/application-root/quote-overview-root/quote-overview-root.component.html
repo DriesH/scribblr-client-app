@@ -1,8 +1,6 @@
 <router-outlet></router-outlet>
 
-<!--<scrblr-drop-upload></scrblr-drop-upload>-->
-
-<div class="grid" id="gridboi" #quoteContainer perfect-scrollbar>
+<div class="grid" id="gridboi" #quoteContainer perfect-scrollbar *ngIf="quotes">
     <scrblr-quote
         *ngFor="let quote of quotes; let last = last"
         [last]="last"
@@ -15,21 +13,15 @@
     <div class="grid-sizer"></div>
 </div>
 
-<div *ngIf="showModalAddQuote" class="modal--container">
-    <form (ngSubmit)="addNewQuote()" class="modal" #newQuoteForm="ngForm">
+<div class="no-quotes" *ngIf="quotes.length <= 0">
+    <h1 class="title">
+        <img src="/assets/icons/quotes.svg" alt="quotes">
+        Start by adding quotes!
+    </h1>
+</div>
 
-        <div class="form-input-group">
-            <label for="name">Quote<span style="color:red">*</span></label>
-            <input type="text" name="quote" id="quote" #quote="ngModel" [(ngModel)]="quoteModel.quote" autofocus required>
-        </div>
-
-        <div class="form-input-group">
-            <label for="name">Story<span style="color:red">*</span></label>
-            <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">Add</button>
-    </form>
+<div class="loading" *ngIf="loading">
+    <span></span>
 </div>
 
 <a routerLink="new" class="floating-btn right add-btn" id="addBtn">+</a>

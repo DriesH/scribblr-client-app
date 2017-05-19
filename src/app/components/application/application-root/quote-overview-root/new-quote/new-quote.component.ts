@@ -253,12 +253,12 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log('newURL: ', newURL);
         console.log('imageID: ', imageID);
 
-
-
         let img = new Image();
 
         img.src = newURL;
         img.setAttribute('crossOrigin', 'anonymous');
+
+        this.aviaryLink = newURL;
 
         img.onload = () => {
             this.initCanvas(img, this.previewCanvas.nativeElement, '40');

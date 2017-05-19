@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 import * as ApplicationUIActions from '../ngrx-state/actions/application-ui.action';
 
@@ -27,7 +29,8 @@ export class ErrorHandlerService {
 
     constructor(
         private store: Store<any>,
-        private _ns: NotificationsService) {
+        private _ns: NotificationsService,
+        private router: Router) {
             this.initService(store);
         }
 
@@ -86,6 +89,8 @@ export class ErrorHandlerService {
         };
 
         this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
+
+        this.router.navigate(['application']);
     }
 
     // Handler for image not found errors.
