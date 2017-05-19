@@ -80,6 +80,8 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
+import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
+
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
     minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
@@ -129,7 +131,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         StoreModule.provideStore({
             CURRENT_USER: CurrentUserReducer,
             CURRENT_CHILDREN: ChildReducer,
-            APPLICATION_UI: ApplicationUIReducer
+            APPLICATION_UI: ApplicationUIReducer,
+            QUOTES: QuoteReducer
         }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),

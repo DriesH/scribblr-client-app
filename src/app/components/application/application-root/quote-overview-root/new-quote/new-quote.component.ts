@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
@@ -8,6 +8,10 @@ import { dataURItoBlob } from '../../../../../classes/base64toblob';
 import { APP_CONFIG } from '../../../../../_config/app.config';
 
 import { DropzoneService } from '../../../../../services/dropzone.service';
+
+import { Store } from '@ngrx/store';
+
+import * as quoteActions from '../../../../../ngrx-state/actions/quote.action';
 
 declare var Aviary: any;
 
@@ -51,7 +55,9 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     constructor(
         private _dz: DropzoneService,
         private _qs: QuoteService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private router: Router,
+        private store: Store<any>) { }
 
     ngOnInit() {
         this.csdkImageEditor = new Aviary.Feather({
@@ -289,9 +295,15 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         c.toBlob(blob => {
             this.quoteData.append('img_baked', blob, 'baked_img.jpg');
-            this._qs.newQuote(this.childShortId , this.quoteData).subscribe(res => console.log('res: ', res));
-
+            this._qs.newQuote(this.childShortId , this.quoteData)
+                .subscribe(res => this.dispatchNewQuote(res.quote));
         }, 'image/jpeg', 0.65);
 
+    }
+
+    dispatchNewQuote(newQuote) {
+        this.store.dispatch(new quoteActions.NewQuote({ newQuote: newQuote }));
+
+        this.router.navigate(['application', 'scribbles', this.childShortId]);
     }
 }

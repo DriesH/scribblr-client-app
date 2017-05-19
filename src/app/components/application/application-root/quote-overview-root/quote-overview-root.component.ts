@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { QuoteService } from '../../../../services/application-services/quote.service';
 
+import { Store } from '@ngrx/store';
+
 declare var Masonry: any;
 
 @Component({
@@ -24,7 +26,8 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     constructor(
         private _qs: QuoteService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private store: Store<any>) { }
 
     ngOnInit() {
         this.route.params.subscribe(params => {
@@ -35,6 +38,14 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
                 .subscribe(res => {
                     this.quotes = res.quotes;
                 });
+        });
+
+        this.store.select('QUOTES').subscribe(QUOTES => {
+            let q: any = QUOTES;
+
+            if (q.newQuote !== {}) {
+                this.quotes.push(q.newQuote);
+            }
         });
     }
 
