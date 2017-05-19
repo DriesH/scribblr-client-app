@@ -33,7 +33,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.childShortId = params.short_id;
+            this.childShortId = params.short_id_child;
             this.quotes = [];
             this.loading = true;
 

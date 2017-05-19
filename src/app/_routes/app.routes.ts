@@ -9,6 +9,8 @@ import { ApplicationRootComponent } from '../components/application/application-
 // Application root components
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
+import { QuoteModalComponent } from '../components/application/application-root/quote-overview-root/quote-modal/quote-modal.component';
+
 // tslint:disable-next-line:max-line-length
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
@@ -59,12 +61,16 @@ const ROUTES: Routes = [
                 component: QuoteOverviewRootComponent
             },
             {
-                path: 'scribbles/:short_id',
+                path: 'scribbles/:short_id_child',
                 component: QuoteOverviewRootComponent,
                 children: [
                     {
                         path: 'new',
                         component: NewQuoteComponent
+                    },
+                    {
+                        path: 'quote/:short_id_quote',
+                        component: QuoteModalComponent
                     }
                 ]
             },

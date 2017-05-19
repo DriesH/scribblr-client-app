@@ -69,7 +69,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         });
 
         this.route.parent.params.subscribe(params => {
-            this.childShortId = params.short_id;
+            this.childShortId = params.short_id_child;
         });
 
     }
