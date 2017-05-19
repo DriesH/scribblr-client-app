@@ -16,7 +16,8 @@ interface Error {
 const errorTypes = {
     MODEL_NOT_FOUND: 'model_not_found',
     IMAGE_NOT_FOUND: 'image_not_found',
-    VALIDATION: 'validation'
+    VALIDATION: 'validation',
+    NOT_AUTHENTICATED: 'not_authenticated'
 };
 
 @Injectable()
@@ -28,7 +29,7 @@ export class ErrorHandlerService {
         private store: Store<any>,
         private _ns: NotificationsService) {
             this.initService(store);
-         }
+        }
 
     private initService(store: Store<any>) {
         store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
@@ -44,15 +45,18 @@ export class ErrorHandlerService {
     public handler(error: Error) {
         switch (error.error_type) {
             case errorTypes.MODEL_NOT_FOUND:
-                this.modelNotFound(error.error_message);
+                this.modelNotFound(error);
                 break;
 
             case errorTypes.IMAGE_NOT_FOUND:
-                this.imageNotFound(error.error_message);
+                this.imageNotFound(error);
                 break;
 
             case errorTypes.VALIDATION:
                 this.validation(error);
+                break;
+            case errorTypes.NOT_AUTHENTICATED:
+                this.notAuth(error);
                 break;
         }
     }
@@ -63,12 +67,12 @@ export class ErrorHandlerService {
     }
 
     // Handler for model not found errors.
-    private modelNotFound(errorMsg) {
+    private modelNotFound(error: Error) {
         // Contents for alert box.
         const _errorMsg = {
             title: 'Not found!',
             msg: 'We couldn\'t seem to find your kiddo... Maybe they\'re playing hide\'n\'seek again...',
-            _msg: errorMsg
+            _msg: error.error_message
         };
 
         this._ns.error(_errorMsg.title, _errorMsg.msg);
@@ -76,8 +80,8 @@ export class ErrorHandlerService {
         // Contents for ui state.
         const _error = {
             error: {
-                type: 'model_not_found',
-                msg: errorMsg
+                type: errorTypes.MODEL_NOT_FOUND,
+                msg: error.error_message
             }
         };
 
@@ -85,15 +89,53 @@ export class ErrorHandlerService {
     }
 
     // Handler for image not found errors.
-    private imageNotFound(errorMsg) {
+    private imageNotFound(error: Error) {
+        // // Contents for alert box.
+        // const _errorMsg = {
+        //     title: 'Not found!',
+        //     msg: 'We couldn\'t seem to find your kiddo... Maybe they\'re playing hide\'n\'seek again...',
+        //     _msg: error.error_message
+        // };
 
+        // this._ns.error(_errorMsg.title, _errorMsg.msg);
+
+        // Contents for ui state.
+        const _error = {
+            error: {
+                type: errorTypes.IMAGE_NOT_FOUND,
+                msg: error.error_message
+            }
+        };
+
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
     }
 
     // Handler for validation errors.
     private validation(error: Error) {
         const _error = {
             error: {
-                type: 'validation',
+                type: errorTypes.VALIDATION,
+                msg: error.error_message
+            }
+        };
+
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
+    }
+
+    private notAuth(error: Error) {
+        // Contents for alert box.
+        const _errorMsg = {
+            title: 'Login error!',
+            msg: 'Hmmm... That doesn\'t seem right...',
+            _msg: error.error_message
+        };
+
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
+
+        // Contents for ui state.
+        const _error = {
+            error: {
+                type: errorTypes.NOT_AUTHENTICATED,
                 msg: error.error_message
             }
         };

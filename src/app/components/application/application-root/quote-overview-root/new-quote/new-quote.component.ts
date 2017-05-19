@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 import { dataURItoBlob } from '../../../../../classes/base64toblob';
 
@@ -14,7 +14,7 @@ declare var Aviary: any;
   styleUrls: ['./new-quote.component.scss'],
   providers: [ DropzoneService ]
 })
-export class NewQuoteComponent implements OnInit, OnDestroy {
+export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     csdkImageEditor;
 
@@ -35,6 +35,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
     };
 
     @ViewChild('presetImg') presetImg: ElementRef;
+    @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
 
@@ -48,9 +49,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
             onError: this.errorSavingToAviary,
             onClose: this.onAviaryClose.bind(this)
         });
+    }
 
-        this.initCanvas();
-
+    ngAfterViewInit() {
+        this.initCanvas(this.presetImg.nativeElement);
     }
 
     ngOnDestroy() {
@@ -59,12 +61,13 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
         }
     }
 
-    initCanvas() {
+    initCanvas(img) {
+        console.log(img);
         this.c = this.previewCanvas.nativeElement;
         this.ctx = this.c.getContext('2d');
-        this.c.width = this.presetImg.nativeElement.width;
-        this.c.height = this.presetImg.nativeElement.height;
-        this.ctx.drawImage(this.presetImg.nativeElement, 0, 0);
+        this.c.width = img.width;
+        this.c.height = img.height;
+        this.ctx.drawImage(img, 0, 0);
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
         this.ctx.fillRect(0, 0, this.c.width, this.c.height);
 
@@ -78,7 +81,15 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
 
     updateCanvas() {
         console.log('updateCanvas');
-        this.ctx.drawImage(this.presetImg.nativeElement, 0, 0);
+
+        if (this.presetImg) {
+            this.ctx.drawImage(this.presetImg.nativeElement, 0, 0);
+        } else {
+            this.ctx.drawImage(this.userImg.nativeElement, 0, 0);
+        }
+
+
+
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
         this.ctx.fillRect(0, 0, this.c.width, this.c.height);
         this.ctx.font = '50px ' + this.quoteModel.font;
@@ -86,6 +97,29 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
         this.ctx.fillStyle = 'white';
         this.ctx.fillText(this.quoteModel.quote, this.c.width / 2, this.c.height / 2);
     }
+
+
+    getLines(ctx, text, maxWidth) {
+        let words = text.split(' ');
+        let lines = [];
+        let currentLine = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+            let word = words[i];
+            let width = ctx.measureText(currentLine + ' ' + word).width;
+            if (width < maxWidth) {
+                currentLine += ' ' + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+
+
 
     changeImage(e) {
         e.preventDefault();
@@ -104,21 +138,35 @@ export class NewQuoteComponent implements OnInit, OnDestroy {
         this.clearCanvas();
 
         if (!this.presetPickerActive) {
-            this._dz.init(this.dropzone.nativeElement, this.presetImg.nativeElement);
+            this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
         }
 
     }
 
-    startAviary() {
+    startAviary(e) {
+        console.log(e);
+
         this.csdkImageEditor.launch({
-            image: this.presetImg.nativeElement.id
+            image: this.userImg.nativeElement.id
         });
-        console.log('hello');
+        console.log('startAviary');
     }
 
     saveToAviary(imageID, newURL) {
         console.log('newURL: ', newURL);
         console.log('imageID: ', imageID);
+
+        // this.userImg.nativeElement.src = newURL;
+
+        let img = new Image();
+
+        img.src = newURL;
+        img.setAttribute('crossOrigin', 'anonymous');
+
+        img.onload = () => {
+            this.initCanvas(img);
+        };
+
         this.csdkImageEditor.close();
     }
 

@@ -2,9 +2,6 @@
     <a class="close-cross" routerLink="../">
         <img src="/assets/icons/cross.svg">
     </a>
-    <h1>Hello</h1>
-
-    <button (click)="startAviary()">Start</button>
 
     <div class="new-quote--container">
         <form (ngSubmit)="addNewChild()" #newChildForm="ngForm">
@@ -55,34 +52,33 @@
                 <canvas id="preview-canvas" class="canvas-style" #previewCanvas></canvas>
             </div>
 
-            <div class="preset-picker" *ngIf="presetPickerActive">
-                <div class="preset">
+            <ul class="preset-picker" *ngIf="presetPickerActive">
+                <li class="preset">
                     <a (click)="changeImage($event)">
                         <img src="/assets/preset-imgs/mountains.jpg" alt="mountains">
                     </a>
-                </div>
-                <div class="preset">
+                </li>
+                <li class="preset">
                     <a (click)="changeImage($event)">
                         <img src="/assets/preset-imgs/paint.jpg" alt="paint">
                     </a>
-                </div>
-                <div class="preset">
+                </li>
+                <li class="preset">
                     <a (click)="changeImage($event)">
                         <img src="/assets/preset-imgs/pencils.jpg" alt="pencils">
                     </a>
-                </div>
-                <div class="preset">
+                </li>
+                <li class="preset">
                     <a (click)="changeImage($event)">
                         <img src="/assets/preset-imgs/school_desk.jpg" alt="school_desk">
                     </a>
-                </div>
-            </div>
+                </li>
+            </ul>
 
-            <div id="dropzone" [hidden]="presetPickerActive" #dropzone>
+            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg)" *ngIf="presetPickerActive">
 
-            </div>
-
-            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas()">
+            <div id="dropzone" [hidden]="presetPickerActive" #dropzone></div>
+            <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous">
 
             <button class="btn btn btn-primary btn-color-main" (click)="toggleImageMode()">
                 <span *ngIf="presetPickerActive">{{ buttonMessage.your_own }}</span>
