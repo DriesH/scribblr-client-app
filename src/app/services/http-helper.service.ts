@@ -25,9 +25,23 @@ export class HttpHelperService {
     }
 
     public errorHandler(res: Response | any) {
-        let body = res.json();
-        console.log(this._ehs);
-        this._ehs.handler(body);
+        let body;
+
+        if (res.status === 500) {
+            this._ehs.handler({
+                success: false,
+                error_type: 'internal_server',
+                error_message: 'something went wrong on the server',
+                errors: [],
+                old_input: null
+             });
+        } else {
+
+            body = res.json();
+            console.log(this._ehs);
+            this._ehs.handler(body);
+        }
+
         return Observable.throw(body);
     }
 }

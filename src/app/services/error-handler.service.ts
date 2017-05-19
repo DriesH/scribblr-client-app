@@ -19,7 +19,8 @@ const errorTypes = {
     MODEL_NOT_FOUND: 'model_not_found',
     IMAGE_NOT_FOUND: 'image_not_found',
     VALIDATION: 'validation',
-    NOT_AUTHENTICATED: 'not_authenticated'
+    NOT_AUTHENTICATED: 'not_authenticated',
+    SERVER_ERROR: 'internal_server'
 };
 
 @Injectable()
@@ -46,6 +47,7 @@ export class ErrorHandlerService {
 
     // Delegate errors to function handlers.
     public handler(error: Error) {
+        console.log(error);
         switch (error.error_type) {
             case errorTypes.MODEL_NOT_FOUND:
                 this.modelNotFound(error);
@@ -60,6 +62,9 @@ export class ErrorHandlerService {
                 break;
             case errorTypes.NOT_AUTHENTICATED:
                 this.notAuth(error);
+                break;
+            case errorTypes.SERVER_ERROR:
+                this.serverError(error);
                 break;
         }
     }
@@ -132,6 +137,27 @@ export class ErrorHandlerService {
         const _errorMsg = {
             title: 'Login error!',
             msg: 'Hmmm... That doesn\'t seem right...',
+            _msg: error.error_message
+        };
+
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
+
+        // Contents for ui state.
+        const _error = {
+            error: {
+                type: errorTypes.NOT_AUTHENTICATED,
+                msg: error.error_message
+            }
+        };
+
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
+    }
+
+    private serverError(error: Error) {
+        // Contents for alert box.
+        const _errorMsg = {
+            title: 'Server error!',
+            msg: 'Hmmm... The server has exploded or something... Give us some time! We\'re fixing it!',
             _msg: error.error_message
         };
 

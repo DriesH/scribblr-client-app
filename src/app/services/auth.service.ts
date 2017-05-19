@@ -48,7 +48,7 @@ export class AuthService {
 
     getUser() {
         if (this.CURRENT_USER.isAuth) {
-            this.router.navigate(['/home']);
+            // this.router.navigate(['/home']);
             return true;
         }
 
