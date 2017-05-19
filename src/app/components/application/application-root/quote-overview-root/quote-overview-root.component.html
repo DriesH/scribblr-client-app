@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<div class="grid" id="gridboi" #quoteContainer perfect-scrollbar *ngIf="quotes">
+<div class="grid" id="gridboi" #quoteContainer perfect-scrollbar [hidden]="quotes.length <= 0">
     <scrblr-quote
         *ngFor="let quote of quotes; let last = last"
         [last]="last"

@@ -50,7 +50,7 @@ const ROUTES: Routes = [
     {
         path: 'application',
         component: ApplicationRootComponent,
-        // canActivate: [ AuthGuard ],
+        canActivate: [ AuthGuard ],
         children: [
             {
                 path: 'achievements',

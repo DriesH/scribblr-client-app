@@ -49,16 +49,20 @@ export class AuthService {
     getUser() {
         if (this.CURRENT_USER.isAuth) {
             this.router.navigate(['/home']);
-            return;
+            return true;
         }
 
-        try {
-            this._token = localStorage.getItem('_token');
-            if (this._token) {
-                this.store.dispatch(new userActions.TokenIsPresent(this._token));
-            }
-        } catch (e) {
-            console.log('No token set in localStorage.');
+        this._token = localStorage.getItem('_token');
+
+        if (this._token !== null) {
+            console.log('test get user true');
+            this.store.dispatch(new userActions.TokenIsPresent(this._token));
+            return true;
+        } else {
+            console.log('test get user false');
+
+            return false;
         }
+
     }
 }
