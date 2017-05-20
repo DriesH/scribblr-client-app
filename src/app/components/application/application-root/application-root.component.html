@@ -6,6 +6,8 @@
             <a routerLink="/home">
                 <img src="/assets/logos/logo-svg.svg" alt="logo">
             </a>
+
+            <a class="account-link" (click)="logout()">Logout</a>
         </div>
 
         <div class="application-body--content" [ngClass]="{ 'mountain-bg': currentRoute === '/application' }">

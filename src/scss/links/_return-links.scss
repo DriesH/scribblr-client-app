@@ -9,3 +9,14 @@
         color: $main-color-link-hover;
     }
 }
+
+.account-link {
+    text-decoration: none;
+    color: $main-color-link;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: $main-color-link-hover;
+    }
+}

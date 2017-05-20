@@ -90,12 +90,7 @@ export class ApplicationRootComponent implements OnInit {
         this._cs.getAllChildren()
             .subscribe(res => this.dispatchChildrenToStore(res.children));
 
-        // this.attachListeners();
     }
-
-    // attachListeners() {
-    //     window.addEventListener('keydown', this._ees.easterEgg);
-    // }
 
     dispatchChildrenToStore(children) {
         this.children = children;
