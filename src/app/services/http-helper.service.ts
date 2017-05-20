@@ -12,7 +12,9 @@ export class HttpHelperService {
 
     constructor(
         private _ehs: ErrorHandlerService,
-        private _aus: AchievementUnlockableService) { }
+        private _aus: AchievementUnlockableService) {
+            console.log('constructor: ', _ehs);
+        }
 
     public extractData(res: Response) {
         let body = res.json();
@@ -27,6 +29,8 @@ export class HttpHelperService {
     public errorHandler(res: Response | any) {
         let body;
 
+        console.log('lijn 32: ', this._ehs);
+
         if (res.status === 500) {
             this._ehs.handler({
                 success: false,
@@ -36,9 +40,8 @@ export class HttpHelperService {
                 old_input: null
              });
         } else {
-
             body = res.json();
-            console.log(this._ehs);
+            console.log('lijn 40:', this._ehs);
             this._ehs.handler(body);
         }
 

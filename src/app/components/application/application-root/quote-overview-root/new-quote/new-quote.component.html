@@ -18,30 +18,32 @@
                     required
                 >
 
-                <!-- TODO: Fix message-->
-                <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)"></scrblr-form-error>
+                <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)"
+                    [model]="quote"
+                    [modelName]="'Quote'">
+                </scrblr-form-error>
             </div>
 
             <div class="form-input-group">
                 <label for="name">Story<span style="color:red">*</span></label>
                 <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
 
-                <!-- TODO: Fix message-->
-                <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"></scrblr-form-error>
+                <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"
+                    [model]="story"
+                    [modelName]="'Story'">
+                </scrblr-form-error>
             </div>
 
             <div class="form-input-group">
                 <label for="gender">Font</label>
                 <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
-                    <option [value]="'Calibri'">Calibri</option>
-                    <option [value]="'Arial'">Arial</option>
-                    <option [value]="'Papyrus'">Papyrus</option>
-                    <option [value]="'Comic Sans MS'">Comic Sans</option>
-                    <option [value]="'Impact'">Impact</option>
-
+                    <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
                 </select>
 
-                <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"></scrblr-form-error>
+                <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"
+                    [model]="font"
+                    [modelName]="'Font'">
+                </scrblr-form-error>
             </div>
 
             <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">New</button>

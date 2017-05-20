@@ -47,6 +47,12 @@ export class QuoteService {
                 .catch(err => this._hhs.errorHandler(err));
     }
 
+    getFonts(): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.fonts, this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
     // DELETE
     deleteQuote(childShortId, quoteShortId): Observable<any> {
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.deleteQuote(childShortId, quoteShortId),
@@ -55,7 +61,12 @@ export class QuoteService {
                 .catch(err => this._hhs.errorHandler(err));
     }
 
-    // PUT
-    // TODO:
+    // UPDATE
+    updateQuote(childShortId, quoteShortId): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.quotes.updateQuote(childShortId, quoteShortId),
+            this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
 
 }

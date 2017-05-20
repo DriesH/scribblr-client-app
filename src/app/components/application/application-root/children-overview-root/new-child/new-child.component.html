@@ -14,7 +14,7 @@
 
                     <scrblr-form-error
                         *ngIf="name.errors && (name.dirty || name.touched)"
-                        [message]="validationMsg.name.not_valid">
+                        [model]="name" [modelName]="'Name'">
                     </scrblr-form-error>
                 </div>
 
@@ -29,8 +29,9 @@
 
                     <scrblr-form-error
                         *ngIf="gender.errors && (gender.dirty || gender.touched)"
-                        [message]="validationMsg.gender.not_valid">
+                        [model]="gender" [modelName]="'Gender'">
                     </scrblr-form-error>
+
                 </div>
 
                 <div class="form-input-group">
@@ -40,7 +41,7 @@
 
                     <scrblr-form-error
                         *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)"
-                        [message]="validationMsg.date_of_birth.not_valid">
+                        [model]="dateOfBirth" [modelName]="'Date of Birth'">
                     </scrblr-form-error>
                 </div>
 
@@ -53,7 +54,7 @@
                     <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
 
                     <scrblr-form-error *ngIf="avatarError"
-                        [message]="validationMsg.avatar.not_valid">
+                        [model]="story" [modelName]="'Story'">
                     </scrblr-form-error>
                 </div>
 

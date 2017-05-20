@@ -12,7 +12,7 @@ export const API_ROUTES = {
     },
     getUserRoute: '/auth/user',
     logoutUser: '/auth/logout',
-
+    fonts: applicationPrefix + 'fonts',
     application: {
         child: {
             index: applicationPrefix + 'children',
@@ -49,10 +49,10 @@ export const API_ROUTES = {
             },
             imageBaked: (childShortId, quoteShortId, img_baked_url_id) => {
                 return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/img-baked/' + img_baked_url_id;
+            },
+            updateQuote: (childShortId, quoteShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId;
             }
-            // editQuote: () => {
-            //     return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
-            // }
         },
         achievement: {
             index: applicationPrefix + 'achievements'

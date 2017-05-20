@@ -7,12 +7,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormErrorComponent implements OnInit {
 
-    @Input('message') message: String;
-    @Input('type') type;
+    @Input('model') model;
+    @Input('modelName') modelName;
+
+    private message;
 
     constructor() { }
 
     ngOnInit() {
+        this.setMessage(this.model.errors);
+    }
+
+    private setMessage(errors) {
+        console.log((errors.required !== null));
+
+        if ((errors.required !== null)) {
+            this.message = this.modelName + ' is required';
+        }
+
     }
 
 }

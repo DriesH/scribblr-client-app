@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../services/auth.service';
 
+import { Options } from 'angular2-notifications';
+
 @Component({
     selector: 'scrblr-login-page',
     templateUrl: './login-page.component.html',
@@ -11,8 +13,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-    constructor(private auth: AuthService, private store: Store<any>) {
-    }
+    _config: Options = {
+        position: ['top', 'left'],
+        timeOut: 4000,
+        animate: 'fromRight'
+    };
+
+
+    constructor(private auth: AuthService, private store: Store<any>) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {

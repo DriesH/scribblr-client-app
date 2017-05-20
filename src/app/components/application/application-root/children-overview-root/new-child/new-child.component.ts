@@ -38,25 +38,6 @@ export class NewChildComponent implements OnInit {
 
     avatarError = false;
 
-    validationMsg = {
-        name: {
-            required: 'Name is required',
-            not_valid: 'Name is not valid'
-        },
-        gender: {
-            required: 'Gender is required',
-            not_valid: 'Gender is not valid'
-        },
-        date_of_birth: {
-            required: 'Age is required',
-            not_valid: 'Age is not valid'
-        },
-        avatar: {
-            required: null,
-            not_valid: 'Picture is not valid'
-        }
-    };
-
     constructor(
         private store: Store<any>,
         private _cs: ChildService) {

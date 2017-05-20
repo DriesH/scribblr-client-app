@@ -42,8 +42,8 @@ export class AuthService {
 
     authenticateUser(formData): Observable<any> {
         return this.http.post(this.loginRoute, formData)
-            .map(this._hhs.extractData)
-            .catch(this._hhs.errorHandler);
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
     }
 
     getUser() {

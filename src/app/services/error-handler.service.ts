@@ -60,9 +60,12 @@ export class ErrorHandlerService {
             case errorTypes.VALIDATION:
                 this.validation(error);
                 break;
+
             case errorTypes.NOT_AUTHENTICATED:
+                console.log('login');
                 this.notAuth(error);
                 break;
+
             case errorTypes.SERVER_ERROR:
                 this.serverError(error);
                 break;
@@ -136,7 +139,7 @@ export class ErrorHandlerService {
         // Contents for alert box.
         const _errorMsg = {
             title: 'Login error!',
-            msg: 'Hmmm... That doesn\'t seem right...',
+            msg: 'Hmmm... You sure those credentials are correct? It seems we can\'t find you...',
             _msg: error.error_message
         };
 

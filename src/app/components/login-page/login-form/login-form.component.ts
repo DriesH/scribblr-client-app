@@ -9,6 +9,7 @@ import { User } from '../../../models/user';
 import { Store } from '@ngrx/store';
 import * as userActions from '../../../ngrx-state/actions/current-user.action';
 
+
 @Component({
     selector: 'scrblr-login-form',
     templateUrl: './login-form.component.html',
@@ -23,6 +24,8 @@ export class LoginFormComponent implements OnInit {
     errorMessage = '';
 
     isShowingPassword = false;
+
+
 
     constructor(private _auth: AuthService,
         private _jwt: JWTTokenService,
@@ -56,20 +59,12 @@ export class LoginFormComponent implements OnInit {
                         this.router.navigate(['/home']);
                     })
                     .catch(error => {
-                        this.onError(error);
+                        console.log(error);
                     });
-            }, error => {
-                this.onError(error);
             });
     }
 
     private addUserToState(user: User) {
         this.store.dispatch(new userActions.SuccessfullLogin(user));
-    }
-
-    // TODO: move this to a state in ngrx.
-    private onError(error) {
-        this.hasError = true;
-        this.errorMessage = 'error';
     }
 }

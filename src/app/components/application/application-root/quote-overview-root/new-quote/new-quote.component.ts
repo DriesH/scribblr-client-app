@@ -37,6 +37,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         selectedPreset: '/assets/preset-imgs/horses.jpg'
     };
 
+    fonts: Array<String>;
+
     defaultPreset = '/assets/preset-imgs/horses.jpg';
 
     presetPickerActive = true;
@@ -60,6 +62,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         private store: Store<any>) { }
 
     ngOnInit() {
+        this._qs.getFonts().subscribe(res => this.fonts = res.fonts);
+
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
             tools: APP_CONFIG.aviarySettings,

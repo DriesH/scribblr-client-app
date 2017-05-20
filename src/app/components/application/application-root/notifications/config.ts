@@ -5,4 +5,3 @@ export const NotificationConfig: Options = {
     timeOut: 4000,
     animate: 'fromRight'
 };
-
