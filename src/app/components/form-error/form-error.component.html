@@ -1,3 +1,4 @@
 <div class="form-error--container">
-    <p class="form-error--message">{{ message }}</p>
+    <p class="form-error--message" *ngIf="message.required">{{ message.required }}</p>
+    <p class="form-error--message" *ngIf="message.email">{{ message.email }}</p>
 </div>

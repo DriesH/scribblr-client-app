@@ -10,7 +10,10 @@ export class FormErrorComponent implements OnInit {
     @Input('model') model;
     @Input('modelName') modelName;
 
-    private message;
+    private message = {
+        email: null,
+        required: null,
+    };
 
     constructor() { }
 
@@ -19,12 +22,14 @@ export class FormErrorComponent implements OnInit {
     }
 
     private setMessage(errors) {
-        console.log((errors.required !== null));
 
-        if ((errors.required !== null)) {
-            this.message = this.modelName + ' is required';
+        if ((errors.required !== null) || (errors.required !== undefined)) {
+            this.message.required = this.modelName + ' is required.';
         }
 
+        if ((errors.email !== undefined)) {
+            this.message.email = 'That\'s not a valid email address.';
+        }
     }
 
 }

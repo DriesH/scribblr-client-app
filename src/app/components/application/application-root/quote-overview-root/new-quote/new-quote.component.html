@@ -1,4 +1,4 @@
-<div id="new-quote-overlay">
+<div id="new-quote-overlay" #dropzone>
     <a class="close-cross" routerLink="../">
         <img src="/assets/icons/cross.svg">
     </a>
@@ -52,41 +52,44 @@
 
         <div class="new-quote-preview--container">
             <div class="canvas--container">
+                <div class="loading-spinner--container" *ngIf="canvasLoading">
+                    <span class="loading-spinner"></span>
+                    <p>Loading...</p>
+                </div>
                 <canvas id="preview-canvas" class="canvas-style" #previewCanvas></canvas>
             </div>
 
-            <ul class="preset-picker" *ngIf="presetPickerActive">
-                <li class="preset">
-                    <a (click)="changeImage($event)">
-                        <img src="/assets/preset-imgs/mountains.jpg" alt="mountains">
-                    </a>
-                </li>
-                <li class="preset">
-                    <a (click)="changeImage($event)">
-                        <img src="/assets/preset-imgs/paint.jpg" alt="paint">
-                    </a>
-                </li>
-                <li class="preset">
-                    <a (click)="changeImage($event)">
-                        <img src="/assets/preset-imgs/pencils.jpg" alt="pencils">
-                    </a>
-                </li>
-                <li class="preset">
-                    <a (click)="changeImage($event)">
-                        <img src="/assets/preset-imgs/school_desk.jpg" alt="school_desk">
-                    </a>
+            <div class="switch--container">
+
+                <div class="switch-button-text" [ngClass]="{ 'selected' : presetPickerActive }">
+                    <p>Select a preset image.</p>
+                </div>
+
+                <label class="switch-btn">
+                    <input type="checkbox" (change)="toggleImageMode()">
+                    <div class="slider round"></div>
+                </label>
+
+                <div class="switch-button-text" [ngClass]="{ 'selected' : !presetPickerActive }">
+                    <p>Upload my own image.</p>
+                </div>
+
+            </div>
+
+            <ul class="preset-picker" *ngIf="presetPickerActive" perfect-scrollbar>
+                <li class="preset" *ngFor="let presetImg of presetImgs" (click)="changeImage($event, presetImg.id)">
+                    <img [src]="'/assets/preset-imgs/' + presetImg.name" alt="presetImg.name">
                 </li>
             </ul>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive">
 
-            <div id="dropzone" [hidden]="presetPickerActive" #dropzone></div>
+            <!--<div id="dropzone" [hidden]="presetPickerActive" #dropzone></div>-->
+
             <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous">
 
-            <button class="btn btn-primary" (click)="toggleImageMode()">
-                <span *ngIf="presetPickerActive">{{ buttonMessage.your_own }}</span>
-                <span *ngIf="!presetPickerActive">{{ buttonMessage.preset }}</span>
-            </button>
+
+
         </div>
     </div>
 </div>

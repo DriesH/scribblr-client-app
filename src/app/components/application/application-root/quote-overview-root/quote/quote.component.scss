@@ -15,8 +15,6 @@
     img {
         width: 100%;
         display: inline-block;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
     }
 
     h2 {
@@ -32,6 +30,22 @@
     p {
         padding: 0 15px 30px;
         margin: 15px 0 0;
+    }
+}
+
+.img-header {
+    max-height: 250px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    img {
+        width: 100%;
+        height: auto;
     }
 }
 

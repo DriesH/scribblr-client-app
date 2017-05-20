@@ -30,29 +30,27 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     csdkImageEditor;
 
+    defaultPreset;
+    presetId;
     quoteModel = {
         story: null,
         quote: null,
         font: 'Calibri',
-        selectedPreset: '/assets/preset-imgs/horses.jpg'
+        selectedPreset: '/assets/preset-imgs/guinea_pig.jpg'
     };
 
     fonts: Array<String>;
+    presetImgs;
 
-    defaultPreset = '/assets/preset-imgs/horses.jpg';
 
     presetPickerActive = true;
-
-    buttonMessage = {
-        your_own: 'Upload your own image!',
-        preset: 'Select a preset image!',
-    };
 
     quoteData: FormData = new FormData();
 
     aviaryLink = null;
-    presetId = '1';
     childShortId: String;
+
+    canvasLoading = false;
 
     constructor(
         private _dz: DropzoneService,
@@ -63,6 +61,12 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit() {
         this._qs.getFonts().subscribe(res => this.fonts = res.fonts);
+        this._qs.getPresetImg().subscribe(res => {
+            this.presetImgs = res.presets;
+            this.defaultPreset = '/assets/preset-imgs/' + res.presets[0].name;
+            this.presetId =  + res.presets[0].id;
+
+        });
 
         this.csdkImageEditor = new Aviary.Feather({
             apiKey: APP_CONFIG.apiKeyAviary,
@@ -118,6 +122,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         c.width = img.width;
         c.height = img.height;
 
+
         // Draw the image to the canvas.
         ctx.drawImage(img, 0, 0);
 
@@ -141,8 +146,17 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         let fontSize;
 
         // Set the canvas width and height.
-        c.width = img.width;
-        c.height = img.height;
+        if (img.width === 0 && img.height === 0) {
+            c.width = 1680;
+            c.height = 1050;
+        } else {
+            c.width = img.width;
+            c.height = img.height;
+        }
+
+
+
+
 
         // Redraw the image.
         ctx.drawImage(img, 0, 0);
@@ -176,10 +190,11 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
      * Change the preset image.
      * @param e: Event
      */
-    changeImage(e) {
+    changeImage(e, id) {
         e.preventDefault();
         console.log('changeImage');
         this.quoteModel.selectedPreset = e.srcElement.currentSrc;
+        this.presetId = id;
     }
 
     /**
@@ -187,8 +202,23 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
      */
     clearCanvas(c: HTMLCanvasElement) {
         const ctx = c.getContext('2d');
-        ctx.fillStyle = 'white';
+        let fontSize;
+        ctx.fillStyle = 'rgb(45,51,56)';
         ctx.fillRect(0, 0, c.width, c.height);
+
+        fontSize = c.width / 20;
+
+        // Set the font.
+        ctx.font = `${fontSize}px Calibri`;
+
+        // Align the text.
+        ctx.textAlign = 'center';
+
+        // Set the text color.
+        ctx.fillStyle = 'white';
+
+        ctx.fillText('Select an image on your computer', c.width / 2, (c.height / 2) - 25);
+        ctx.fillText('and drop it on the page!', c.width / 2, (c.height / 2) + 25);
     }
 
     /**
@@ -196,15 +226,21 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
      * Preset images selector or upload your own.
      */
     toggleImageMode() {
+
+
         this.presetPickerActive = !this.presetPickerActive;
+
         this.quoteModel.selectedPreset = null;
         this.clearCanvas(this.previewCanvas.nativeElement);
 
         if (!this.presetPickerActive) {
+            if (this.aviaryLink) {
+                this.saveToAviary('', this.aviaryLink);
+            }
+
             this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
         } else {
             this.quoteModel.selectedPreset = this.defaultPreset;
-            this.initCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
         }
 
 
@@ -256,6 +292,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     saveToAviary(imageID, newURL) {
         console.log('newURL: ', newURL);
         console.log('imageID: ', imageID);
+        this.canvasLoading = true;
 
         let img = new Image();
 
@@ -266,6 +303,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         img.onload = () => {
             this.initCanvas(img, this.previewCanvas.nativeElement, '40');
+            this.canvasLoading = false;
         };
 
         this.csdkImageEditor.close();

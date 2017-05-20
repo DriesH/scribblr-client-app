@@ -44,20 +44,36 @@ export class DropzoneService {
         e.preventDefault();
         console.log('dragstart', e);
 
-        e.target.style.background = 'black';
+        // e.target.style.background = 'black';
     }
 
     private dragLeave(e) {
         e.preventDefault();
         console.log('dragexit', e);
 
-        e.target.style.background = 'pink';
+        // e.target.style.background = 'pink';
     }
 
     private drop(e) {
         e.preventDefault();
-        console.log('drop', e.dataTransfer.files);
-        e.target.style.background = 'green';
+
+        if (e.dataTransfer.files.length === 0) {
+            return;
+        }
+
+        if (e.dataTransfer.files.length > 1) {
+            return;
+        }
+
+        if (e.dataTransfer.files[0].type !== 'image/jpg'
+            && e.dataTransfer.files[0].type !== 'image/png'
+            && e.dataTransfer.files[0].type !== 'image/jpeg') {
+                return;
+        }
+
+        if (e.dataTransfer.files[0].size > 10000000) {
+            return;
+        }
 
         const fr = new FileReader();
 

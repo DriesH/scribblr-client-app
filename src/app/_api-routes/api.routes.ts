@@ -12,7 +12,6 @@ export const API_ROUTES = {
     },
     getUserRoute: '/auth/user',
     logoutUser: '/auth/logout',
-    fonts: applicationPrefix + 'fonts',
     application: {
         child: {
             index: applicationPrefix + 'children',
@@ -34,6 +33,8 @@ export const API_ROUTES = {
             }
         },
         quotes: {
+            fonts: applicationPrefix + 'fonts',
+            presetImg: applicationPrefix + 'presets',
             index: applicationPrefix + 'quotes',
             newQuote: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/quotes/new';

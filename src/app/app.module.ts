@@ -11,6 +11,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { CustomFormsModule } from 'ng2-validation'
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
@@ -122,6 +123,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     imports: [
         BrowserModule,
         FormsModule,
+        CustomFormsModule,
         HttpModule,
         BrowserAnimationsModule,
         FileUploadModule,
