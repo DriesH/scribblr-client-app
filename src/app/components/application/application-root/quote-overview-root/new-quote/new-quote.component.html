@@ -4,51 +4,53 @@
     </a>
 
     <div class="new-quote--container">
-        <form (ngSubmit)="addNewQuote(previewCanvas)" #newChildForm="ngForm">
-            <div class="form-input-group">
-                <label for="name">Quote<span style="color:red">*</span></label>
-                <input type="text"
-                    name="quote"
-                    id="quote"
-                    #quote="ngModel"
-                    [(ngModel)]="quoteModel.quote"
-                    (keyup)="updateCanvasOnKeyup()"
-                    (change)="updateCanvasOnChange()"
-                    autofocus
-                    required
-                >
+        <div class="form--container">
+            <form (ngSubmit)="addNewQuote(previewCanvas)" #newChildForm="ngForm">
+                <div class="form-input-group">
+                    <label for="name">Quote<span style="color:red">*</span></label>
+                    <input type="text"
+                        name="quote"
+                        id="quote"
+                        #quote="ngModel"
+                        [(ngModel)]="quoteModel.quote"
+                        (keyup)="updateCanvasOnKeyup()"
+                        (change)="updateCanvasOnChange()"
+                        autofocus
+                        required
+                    >
 
-                <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)"
-                    [model]="quote"
-                    [modelName]="'Quote'">
-                </scrblr-form-error>
-            </div>
+                    <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)"
+                        [model]="quote"
+                        [modelName]="'Quote'">
+                    </scrblr-form-error>
+                </div>
 
-            <div class="form-input-group">
-                <label for="name">Story<span style="color:red">*</span></label>
-                <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
+                <div class="form-input-group">
+                    <label for="name">Story<span style="color:red">*</span></label>
+                    <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
 
-                <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"
-                    [model]="story"
-                    [modelName]="'Story'">
-                </scrblr-form-error>
-            </div>
+                    <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"
+                        [model]="story"
+                        [modelName]="'Story'">
+                    </scrblr-form-error>
+                </div>
 
-            <div class="form-input-group">
-                <label for="gender">Font</label>
-                <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
-                    <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
-                </select>
+                <div class="form-input-group">
+                    <label for="gender">Font</label>
+                    <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
+                        <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
+                    </select>
 
-                <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"
-                    [model]="font"
-                    [modelName]="'Font'">
-                </scrblr-form-error>
-            </div>
+                    <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"
+                        [model]="font"
+                        [modelName]="'Font'">
+                    </scrblr-form-error>
+                </div>
 
-            <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">New</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">New</button>
 
-        </form>
+            </form>
+        </div>
 
         <div class="new-quote-preview--container">
             <div class="canvas--container">
