@@ -21,7 +21,7 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     background: white;
     z-index: 20;
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -42,4 +42,10 @@
     position: absolute;
     bottom: 20px;
     left: 50px;
+}
+
+@media screen and (max-width: 480px) {
+    .login-form__container {
+        padding: 35px;
+    }
 }

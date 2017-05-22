@@ -14,10 +14,9 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     background: white;
     z-index: 20;
-    // display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
     overflow-y: auto;
 }
 
@@ -31,4 +30,10 @@
     background-repeat: no-repeat;
     background-position: center;
     z-index: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .register-form__container {
+        padding: 35px;
+    }
 }

@@ -1,9 +1,10 @@
 {
-    "name": "Ecohuis Tour",
+    "name": "Scribblr",
     "display": "standalone",
     "orientation": "portrait",
     "short_name": "Scribblr",
-    "background_color": "#5E94E5",
+    "background_color": "#FFF",
+    "theme_color": "#5E94E5",
     "description": "De officiële website van Scribblr.",
     "start_url": "./home",
     "icons": [
