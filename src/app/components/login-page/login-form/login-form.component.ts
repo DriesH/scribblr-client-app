@@ -13,7 +13,9 @@ import * as userActions from '../../../ngrx-state/actions/current-user.action';
 @Component({
     selector: 'scrblr-login-form',
     templateUrl: './login-form.component.html',
-    styleUrls: ['./login-form.component.scss']
+    styleUrls: [
+        './login-form.component.scss'
+    ]
 })
 export class LoginFormComponent implements OnInit {
 
