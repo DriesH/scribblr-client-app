@@ -29,6 +29,8 @@ export class FormErrorComponent implements OnInit {
 
         if ((errors.email !== undefined)) {
             this.message.email = 'That\'s not a valid email address.';
+
+            this.message.required = null;
         }
     }
 

@@ -154,10 +154,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             c.height = img.height;
         }
 
-
-
-
-
         // Redraw the image.
         ctx.drawImage(img, 0, 0);
 
@@ -180,7 +176,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         // Draw the text in the middle.
         text.forEach((item, key) => {
-            let translationY = (text.length - 1) * 25;
+            let translationY = (text.length - 1) * (fontSize / 2);
 
             ctx.fillText(item, c.width / 2, ((c.height / 2) + (50 * key)) - translationY);
         });
