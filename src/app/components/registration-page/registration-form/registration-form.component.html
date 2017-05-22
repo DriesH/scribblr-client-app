@@ -8,7 +8,7 @@
 
     <h2 class="form-title">Register</h2>
 
-    <p class="logo-undertext">Already have an account? <a routerLink="/register" class="link">Login</a></p>
+    <p class="logo-undertext">Already have an account? <a routerLink="/login" class="link">Login</a></p>
 
     <div class="form-controls__container">
         <div class="form-input-group">
@@ -38,8 +38,7 @@
                         <path [ngClass]="{ 'password-hide': !isShowingPassword, 'password-show': isShowingPassword }" d="M256,103.4c-97.8,0-186.5,53.5-252,140.5c-5.3,7.1-5.3,17.1,0,24.2c65.5,87,154.2,140.6,252,140.6 s186.5-53.5,252-140.5c5.3-7.1,5.3-17.1,0-24.2C442.5,156.9,353.8,103.4,256,103.4z M263,363.5C198.1,367.5,144.5,314,148.5,249 c3.4-53.6,46.8-97.1,100.4-100.4c64.9-4.1,118.6,49.4,114.5,114.5C360,316.5,316.5,360,263,363.5z M259.8,313.8 c-35,2.2-63.9-26.6-61.6-61.6c1.8-28.9,25.2-52.3,54.1-54.1c35-2.2,63.9,26.6,61.6,61.6C312,288.7,288.6,312,259.8,313.8z" />
                     </g>
                 </svg>
-                <input #passwordInput type="password" id="password" name="password" #password="ngModel" [(ngModel)]="formModel.password"
-                    required>
+                <input #passwordInput type="password" id="password" name="password" #password="ngModel" [(ngModel)]="formModel.password" required minlength="8">
             </div>
             <scrblr-form-error
                 *ngIf="password.errors && (password.touched)"
@@ -47,6 +46,6 @@
             </scrblr-form-error>
         </div>
 
-        <button class="btn btn-primary submit-button btn-color-main" type="submit">Register</button>
+        <button class="btn btn-primary submit-button btn-color-main" type="submit" [disabled]="!registerForm.valid">Register</button>
     </div>
 </form>
