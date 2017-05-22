@@ -14,13 +14,14 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     background: white;
     z-index: 20;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    overflow-y: auto;
 }
 
-.register-page__background {
+.register-page-background__container {
     position: relative;
     height: 100vh;
     width: 55%;
