@@ -14,7 +14,9 @@ import { Options } from 'angular2-notifications';
 @Component({
     selector: 'scrblr-registration-page',
     templateUrl: './registration-page.component.html',
-    styleUrls: ['./registration-page.component.scss']
+    styleUrls: [
+        './registration-page.component.scss', './register-mobile.scss'
+    ]
 })
 
 export class RegistrationPageComponent implements OnInit {

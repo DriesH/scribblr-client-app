@@ -9,9 +9,17 @@
         width: 335px;
     }
 
+    .form-title {
+        font-weight: 400;
+        color: #545E68;
+        margin: 0;
+        margin-top: 45px;
+        text-align: center;
+    }
+
     .logo-undertext {
         margin: 0;
-        margin-top: 30px;
+        margin-top: 15px;
         font-size: 14px;
         color: #545E68;
         font-family: Montserrat;
@@ -132,7 +140,7 @@
 
 @media screen and (max-width: 480px) {
     .submit-button {
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     .form-input-group input[type="text"],

@@ -20,3 +20,9 @@
         color: $main-color-link-hover;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .return-link {
+        margin-top: 50px;
+    }
+}
