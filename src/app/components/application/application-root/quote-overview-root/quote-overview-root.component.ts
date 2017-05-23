@@ -37,7 +37,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             this.quotes = [];
             this.loading = true;
 
-            this._qs.getQuote(this.childShortId)
+            this._qs.getPost(this.childShortId)
                 .subscribe(res => {
                     this.loading = false;
                     this.quotes = res.posts;

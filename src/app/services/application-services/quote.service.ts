@@ -24,8 +24,8 @@ export class QuoteService {
     }
 
     // POST
-    newQuote(childShortId, data): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.quotes.newQuote(childShortId),
+    newPost(childShortId, data): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.posts.newPost(childShortId),
             data,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
@@ -33,43 +33,43 @@ export class QuoteService {
     }
 
     // GET
-    getAllQuotes(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.index,
+    getAllPosts(): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.index,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
     }
 
-    getQuote(childShortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.getQuote(childShortId),
+    getPost(childShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.getPost(childShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
     }
 
     getFonts(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.fonts, this._headers.setOptions(this.token))
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.fonts, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
     getPresetImg(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.presetImg, this._headers.setOptions(this.token))
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.presetImg, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
     // DELETE
-    deleteQuote(childShortId, quoteShortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.quotes.deleteQuote(childShortId, quoteShortId),
+    deletePost(childShortId, postShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.deletePost(childShortId, postShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
     }
 
     // UPDATE
-    updateQuote(childShortId, quoteShortId): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.quotes.updateQuote(childShortId, quoteShortId),
+    updatePost(childShortId, postShortId): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.posts.updatePost(childShortId, postShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

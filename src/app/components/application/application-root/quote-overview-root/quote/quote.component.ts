@@ -40,11 +40,11 @@ export class QuoteComponent implements OnInit {
         }
     }
 
-    formatImageSrc(child_short_id, quote_short_id, img_original_url_id?, img_baked_url_id?): String {
+    formatImageSrc(child_short_id, post_short_id, img_original_url_id?, img_baked_url_id?): String {
         if (img_original_url_id) {
-            return API_ROUTES.baseUrl + API_ROUTES.application.quotes.imageOriginal(child_short_id, quote_short_id, img_original_url_id);
+            return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageOriginal(child_short_id, post_short_id, img_original_url_id);
         } else if (img_baked_url_id) {
-            return API_ROUTES.baseUrl + API_ROUTES.application.quotes.imageBaked(child_short_id, quote_short_id, img_baked_url_id);
+            return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageBaked(child_short_id, post_short_id, img_baked_url_id);
         } else {
             return null;
         }

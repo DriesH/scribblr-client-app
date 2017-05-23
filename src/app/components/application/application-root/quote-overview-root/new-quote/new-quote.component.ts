@@ -332,7 +332,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         c.toBlob(blob => {
             this.quoteData.append('img_baked', blob, 'baked_img.jpg');
-            this._qs.newQuote(this.childShortId , this.quoteData)
+            this._qs.newPost(this.childShortId , this.quoteData)
                 .subscribe(res => this.dispatchNewQuote(res.quote));
         }, 'image/jpeg', 0.65);
 

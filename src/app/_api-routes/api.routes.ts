@@ -32,27 +32,27 @@ export const API_ROUTES = {
                 return applicationPrefix + 'children/' + shortId + '/avatar/' + avatarURLId;
             }
         },
-        quotes: {
+        posts: {
             fonts: applicationPrefix + 'fonts',
             presetImg: applicationPrefix + 'presets',
-            index: applicationPrefix + 'quotes',
-            newQuote: (shortId) => {
-                return applicationPrefix + 'children/' + shortId + '/quotes/new';
+            index: applicationPrefix + 'posts',
+            newPost: (shortId) => {
+                return applicationPrefix + 'children/' + shortId + '/posts/new';
             },
-            getQuote: (shortId) => {
-                return applicationPrefix + 'children/' + shortId + '/quotes';
+            getPost: (shortId) => {
+                return applicationPrefix + 'children/' + shortId + '/posts';
             },
-            deleteQuote: (childShortId, quoteShortId) => {
-                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/delete';
+            deletePost: (childShortId, postShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/delete';
             },
-            imageOriginal: (childShortId, quoteShortId, img_original_url_id) => {
-                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/img-original/' + img_original_url_id;
+            imageOriginal: (childShortId, postShortId, img_original_url_id) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/img-original/' + img_original_url_id;
             },
-            imageBaked: (childShortId, quoteShortId, img_baked_url_id) => {
-                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId + '/img-baked/' + img_baked_url_id;
+            imageBaked: (childShortId, postShortId, img_baked_url_id) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/img-baked/' + img_baked_url_id;
             },
-            updateQuote: (childShortId, quoteShortId) => {
-                return applicationPrefix + 'children/' + childShortId + '/quotes/' + quoteShortId;
+            updatePost: (childShortId, postShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId;
             }
         },
         achievement: {
