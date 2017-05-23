@@ -1,6 +1,12 @@
 <router-outlet></router-outlet>
 
-<div class="grid" id="gridboi" #quoteContainer perfect-scrollbar [hidden]="quotes.length <= 0">
+<div class="add-button--container">
+    <a routerLink="new-quote" class="">add quote</a>
+    <span class="vertical-divider"></span>
+    <a routerLink="new-memory" class="">add memory</a>
+</div>
+
+<div class="grid" id="gridboi" #quoteContainer [hidden]="quotes.length <= 0">
     <scrblr-quote
         *ngFor="let quote of quotes; let last = last"
         [last]="last"
@@ -25,4 +31,3 @@
     <span></span>
 </div>
 
-<a routerLink="new" class="floating-btn right add-btn" id="addBtn">+</a>

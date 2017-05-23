@@ -3,22 +3,46 @@
 @import 'switch-button';
 
 .btn {
-    height: 80px;
-    width: 215px;
     box-sizing: border-box;
-    padding: 0 1.5em;
     font-family: 'Montserrat', 'Arial', sans-serif;
-    font-size: 20px;
     cursor: pointer;
-
-    &:hover {
-        cursor: pointer;
-    }
+    display: block;
+    text-decoration: none;
+    text-align: center;
 
     &.btn-primary {
+        padding: 0 1.5em;
+        height: 80px;
+        line-height: 80px;
+        width: 215px;
+        font-size: 20px;
         font-weight: 300;
         border-radius: 5px;
         border: none;
+        color: white;
+    }
+
+    &.btn-round {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+
+    &.btn-border {
+        font-weight: 300;
+        border-radius: 5px;
+        border: 2px solid $main-color-four;
+        color: $main-color-four;
+        font-size: 15px;
+        height: 35px;
+        width: 180px;
+        line-height: 35px;
+
+        &:hover {
+            color: white;
+            background-color: $main-color-four;
+        }
     }
 }
 

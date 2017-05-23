@@ -11,7 +11,10 @@ declare var Masonry: any;
 @Component({
     selector: 'scrblr-quote-overview-root',
     templateUrl: './quote-overview-root.component.html',
-    styleUrls: ['./quote-overview-root.component.scss']
+    styleUrls: [
+        './quote-overview-root.component.scss',
+        './quote-overview-root.media.scss'
+    ]
 })
 export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 

@@ -35,7 +35,7 @@ export const API_ROUTES = {
         posts: {
             fonts: applicationPrefix + 'fonts',
             presetImg: applicationPrefix + 'presets',
-            index: applicationPrefix + 'posts',
+            index: applicationPrefix + 'children/posts',
             newPost: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/posts/new';
             },

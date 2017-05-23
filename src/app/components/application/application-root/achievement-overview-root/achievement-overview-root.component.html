@@ -1,7 +1,9 @@
-<div class="achievement--container" perfect-scrollbar>
-<div class="" *ngFor="let category of achievementCategories | keys">
-    <h1>{{category.key}}</h1>
-
-    <scrblr-achievement *ngFor="let achievement of category.value" [achievementData]="achievement"></scrblr-achievement>
-</div>
+<div id="achievement--wrapper">
+    <div class="category--container" *ngFor="let category of achievementCategories | keys">
+        <h1><i [ngClass]="{ 'fa fa-user': category.key === 'Account', 'fa fa-child': category.key === 'Children', 'fa fa-quote-left': category.key === 'Scribbles'}"></i> {{category.key}}</h1>
+        <hr>
+        <div class="achievement--container">
+            <scrblr-achievement *ngFor="let achievement of category.value" [achievementData]="achievement"></scrblr-achievement>
+        </div>
+    </div>
 </div>

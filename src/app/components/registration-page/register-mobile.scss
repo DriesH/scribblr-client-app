@@ -21,3 +21,19 @@
         height: 0%;
     }
 }
+
+@media screen and (min-width: 481px) {
+     .register-form__container {
+        width: 65%;
+        height: auto;
+        box-shadow: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+     .register-form__container {
+        width: 55%;
+        height: auto;
+        box-shadow: none;
+    }
+}
