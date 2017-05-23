@@ -321,9 +321,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     addNewQuote(c: HTMLCanvasElement) {
-        this.quoteData.append('quote',        this.quoteModel.quote);
-        this.quoteData.append('story',        this.quoteModel.story);
-        this.quoteData.append('font_type',    this.quoteModel.font);
+        this.quoteData.append('quote', this.quoteModel.quote);
+        this.quoteData.append('font_type', this.quoteModel.font);
 
         if (this.presetPickerActive) {
             this.quoteData.append('preset', this.presetId);
