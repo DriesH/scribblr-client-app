@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
                             this.hasError = false;
                         }
 
-                        this.router.navigate(['/home']);
+                        this.router.navigate(['/application']);
                     })
                     .catch(error => {
                         console.log(error);

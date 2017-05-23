@@ -96,4 +96,9 @@ export class ApplicationRootComponent implements OnInit {
         this.children = children;
         this.store.dispatch(new ChildActions.SuccessfullDownloadChildren(children));
     }
+
+    logout() {
+        localStorage.removeItem('_token');
+        window.location.reload();
+    }
 }
