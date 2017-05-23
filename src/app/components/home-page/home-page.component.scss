@@ -1,18 +1,90 @@
 @import '../../../scss/colors/colors';
 
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
 #wrapper {
     overflow-x: hidden;
 }
 
-.hero-image {
+#intro {
     position: relative;
-    height: 500px;
-    width: 100%;
+    height: 934px;
+    display: flex;
 }
 
-.section-1 {
+.hero-img--container {
+    margin-left: 140px;
+    margin-top: -167px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1, h2, h3, p {
+        color: white;
+    }
+
+    h1 {
+        font-size: 72px;
+    }
+
+    p {
+        text-align: right;
+        margin-top: -25px;
+        font-size: 36px;
+        font-family: 'Open Sans';
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+}
+
+.hero-image {
+    position: absolute;
+    height: 934px;
+    width: 100%;
+    transform: skewY(-8deg);
+    background-color: pink;
+    transform-origin: 0;
+    overflow: hidden;
+    // background-image: -moz-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+    // background-image: -webkit-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+    // background-image: -ms-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+    // background-image: linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+    background-image: url(/assets/header/background-header-gradient.png);
+    background-size: cover;
+}
+
+.section {
     height: 500px;
-    background: $main-color-four;
+    background: white;
+    position: relative;
+
+    .books {
+        position: absolute;
+        display: flex;
+        width: 850px;
+        flex-wrap: wrap;
+        transform: rotate(-8deg);
+        top: -500px;
+        right: 0;
+    }
+
+    .book img {
+        box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
+    }
+
+    .book:nth-child(even) {
+        margin-top: -15px;
+        margin-left: 10px;
+    }
+
+    .book:nth-child(odd) {
+        margin-top: 10px;
+    }
 }
 
 .section-2 {
