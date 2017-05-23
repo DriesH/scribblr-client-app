@@ -40,7 +40,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             this._qs.getQuote(this.childShortId)
                 .subscribe(res => {
                     this.loading = false;
-                    this.quotes = res.quotes;
+                    this.quotes = res.posts;
                 });
         });
 
