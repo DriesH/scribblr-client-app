@@ -5,7 +5,7 @@
 
     <div class="new-quote--container">
         <div class="form--container">
-            <form (ngSubmit)="addNewQuote(previewCanvas)" #newChildForm="ngForm">
+            <form (ngSubmit)="addNewQuote(previewCanvas)" #newQuoteForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Quote<span style="color:red">*</span></label>
                     <input type="text"
@@ -26,17 +26,7 @@
                 </div>
 
                 <div class="form-input-group">
-                    <label for="name">Story<span style="color:red">*</span></label>
-                    <input type="text" name="story" id="story" #story="ngModel" [(ngModel)]="quoteModel.story" required>
-
-                    <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"
-                        [model]="story"
-                        [modelName]="'Story'">
-                    </scrblr-form-error>
-                </div>
-
-                <div class="form-input-group">
-                    <label for="gender">Font</label>
+                    <label for="font">Font</label>
                     <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
                         <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
                     </select>
@@ -47,7 +37,7 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">New</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">New</button>
 
             </form>
         </div>

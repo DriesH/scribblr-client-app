@@ -46,7 +46,8 @@ import { ChildrenOverviewRootComponent } from './components/application/applicat
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
-import { QuoteModalComponent } from './components/application/application-root/quote-overview-root/quote-modal/quote-modal.component';
+import { PostModalComponent } from './components/application/application-root/quote-overview-root/post-modal/post-modal.component';
+import { NewMemoryComponent } from './components/application/application-root/quote-overview-root/new-memory/new-memory.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -115,8 +116,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewsOverviewRootComponent,
         FormErrorComponent,
         NewQuoteComponent,
-        QuoteModalComponent,
-        EllipsisPipe
+        PostModalComponent,
+        EllipsisPipe,
+        NewMemoryComponent
     ],
     imports: [
         BrowserModule,

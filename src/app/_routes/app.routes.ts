@@ -9,7 +9,8 @@ import { ApplicationRootComponent } from '../components/application/application-
 // Application root components
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
-import { QuoteModalComponent } from '../components/application/application-root/quote-overview-root/quote-modal/quote-modal.component';
+import { NewMemoryComponent } from '../components/application/application-root/quote-overview-root/new-memory/new-memory.component';
+import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
 
 // tslint:disable-next-line:max-line-length
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
@@ -65,12 +66,16 @@ const ROUTES: Routes = [
                 component: QuoteOverviewRootComponent,
                 children: [
                     {
-                        path: 'new',
+                        path: 'new-quote',
                         component: NewQuoteComponent
                     },
                     {
                         path: 'quote/:short_id_quote',
-                        component: QuoteModalComponent
+                        component: PostModalComponent
+                    },
+                    {
+                        path: 'new-memory',
+                        component: NewMemoryComponent
                     }
                 ]
             },

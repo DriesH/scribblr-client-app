@@ -1,4 +1,4 @@
-<div class="grid-item">
+<div class="grid-item" (click)="clickedQuoteFn()" #quoteBlock>
     <div class="quote-block">
         <div class="img-header">
             <img [src]="quoteData.lqip" [lazyLoad]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"

@@ -33,7 +33,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     defaultPreset;
     presetId;
     quoteModel = {
-        story: null,
         quote: null,
         font: 'Calibri',
         selectedPreset: '/assets/preset-imgs/guinea_pig.jpg'
