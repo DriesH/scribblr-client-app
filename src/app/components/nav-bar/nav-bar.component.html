@@ -1,13 +1,13 @@
-<nav>
-    <div class="link">
-        <a routerLink="/">Home</a>
-    </div>
+<nav [ngClass]="{ 'scrolled' : !isTop }">
 
-    <div class="link" *ngIf="!CURRENT_USER.isAuth">
+    <a routerLink="/" class="homepage-logo">
+        <img src="/assets/logos/logo-svg.svg" alt="Scribblr logo">
+    </a>
+
+    <div class="nav-link" *ngIf="!CURRENT_USER.isAuth">
         <a routerLink="/register">Register</a>
         <a routerLink="/login">Login</a>
     </div>
-
 
     <scrblr-nav-bar-profile *ngIf="CURRENT_USER.isAuth" [currentUser]="CURRENT_USER.user"></scrblr-nav-bar-profile>
 

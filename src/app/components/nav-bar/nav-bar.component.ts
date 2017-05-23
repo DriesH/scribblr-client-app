@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -8,9 +8,11 @@ import { Store } from '@ngrx/store';
     styleUrls: ['./nav-bar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
 
     CURRENT_USER;
+
+    isTop = true;
 
     constructor(private store: Store<any>) { }
 
@@ -18,5 +20,27 @@ export class NavBarComponent implements OnInit {
          this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             this.CURRENT_USER = CURRENT_USER;
         });
+
+        this.attachEventListeners();
+    }
+
+    ngOnDestroy() {
+        this.removeEventListeners();
+    }
+
+    attachEventListeners() {
+        window.addEventListener('scroll', this.makeBgWhite.bind(this), false);
+    }
+
+    removeEventListeners() {
+        window.removeEventListener('scroll', this.makeBgWhite.bind(this), false);
+    }
+
+    makeBgWhite(e) {
+         if (window.scrollY === 0) {
+            this.isTop = true;
+        } else {
+            this.isTop = false;
+        }
     }
 }

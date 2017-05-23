@@ -1,0 +1,38 @@
+@import '../../../scss/colors/colors';
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+.hero-image {
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+
+.section-1 {
+    height: 500px;
+    background: $main-color-four;
+}
+
+.section-2 {
+    height: 500px;
+    background: oldlace;
+}
+
+.section-3 {
+    height: 500px;
+    background: tomato;
+}
+
+.Rectangle_2 {
+  background-image: -moz-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+  background-image: -webkit-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+  background-image: -ms-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 970px;
+  z-index: 5;
+}

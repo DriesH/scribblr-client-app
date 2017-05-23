@@ -18,4 +18,6 @@ export class HomePageComponent implements OnInit {
             this.auth.getUser();
         });
     }
+
+    
 }
