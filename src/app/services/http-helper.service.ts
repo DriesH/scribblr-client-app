@@ -27,19 +27,30 @@ export class HttpHelperService {
     public errorHandler(res: Response | any) {
         let body;
 
-        if (res.status === 500) {
-            this._ehs.handler({
-                success: false,
-                error_type: 'internal_server',
-                error_message: 'something went wrong on the server',
-                errors: [],
-                old_input: null
-             });
-        } else {
-            body = res.json();
-            this._ehs.handler(body);
+        switch (res.status) {
+            case 500:
+                this._ehs.handler({
+                    success: false,
+                    error_type: 'internal_server',
+                    error_message: 'something went wrong on the server',
+                    errors: [],
+                    old_input: null
+                });
+                break;
+            case 404:
+                this._ehs.handler({
+                    success: false,
+                    error_type: 'model_not_found',
+                    error_message: 'we didn\'t vind it',
+                    errors: [],
+                    old_input: null
+                });
+                break;
+            default:
+                body = res.json();
+                this._ehs.handler(body);
+                break;
         }
-
         return Observable.throw(body);
     }
 }
