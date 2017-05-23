@@ -1,3 +1,7 @@
-<div class="achievement--container">
-    <scrblr-achievement *ngFor="let achievement of achievements" [achievementData]="achievement"></scrblr-achievement>
+<div class="achievement--container" perfect-scrollbar>
+<div class="" *ngFor="let category of achievementCategories | keys">
+    <h1>{{category.key}}</h1>
+
+    <scrblr-achievement *ngFor="let achievement of category.value" [achievementData]="achievement"></scrblr-achievement>
+</div>
 </div>

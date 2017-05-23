@@ -82,6 +82,7 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
+import { KeysPipe } from './pipes/keys.pipe';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -118,7 +119,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewQuoteComponent,
         PostModalComponent,
         EllipsisPipe,
-        NewMemoryComponent
+        NewMemoryComponent,
+        KeysPipe
     ],
     imports: [
         BrowserModule,
