@@ -87,7 +87,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
     maxScrollbarLength: 150,
     wheelPropagation: false,
-    swipePropagation: false
+    swipePropagation: true
 };
 
 @NgModule({

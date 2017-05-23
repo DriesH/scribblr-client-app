@@ -6,13 +6,18 @@
         </a>
     </div>
 
+    <h2 class="form-title">Login</h2>
+
+    <p class="logo-undertext">Need a Scribblr account? <a routerLink="/register" class="link">Create an account</a></p>
+
     <div class="form-controls__container">
         <div class="form-input-group">
             <label for="email">Your email</label>
-            <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" required email>
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                Email is required
-            </div>
+            <input type="text" id="email" #email="ngModel" name="email" [(ngModel)]="formModel.email" email>
+            <scrblr-form-error
+                *ngIf="email.errors && (email.touched)"
+                [model]="email" [modelName]="'Email'">
+            </scrblr-form-error>
         </div>
 
         <div class="form-input-group">
@@ -27,11 +32,12 @@
                 <input #passwordInput type="password" id="password" name="password" #password="ngModel" [(ngModel)]="formModel.password"
                     required>
             </div>
-            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                Password is required
-            </div>
+            <scrblr-form-error
+                *ngIf="password.errors && (password.touched)"
+                [model]="password" [modelName]="'Password'">
+            </scrblr-form-error>
         </div>
 
-        <button class="btn btn-primary submit-button btn-color-main" type="submit" [disabled]="">Login</button>
+        <button class="btn btn-primary submit-button btn-color-main" type="submit" [disabled]="!loginForm.valid">Login</button>
     </div>
 </form>

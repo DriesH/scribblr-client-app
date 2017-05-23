@@ -9,7 +9,10 @@ import { Options } from 'angular2-notifications';
 @Component({
     selector: 'scrblr-login-page',
     templateUrl: './login-page.component.html',
-    styleUrls: ['./login-page.component.scss']
+    styleUrls: [
+        './login-page.component.scss',
+        './login-mobile.scss'
+    ]
 })
 export class LoginPageComponent implements OnInit {
 

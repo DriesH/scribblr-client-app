@@ -154,10 +154,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             c.height = img.height;
         }
 
-
-
-
-
         // Redraw the image.
         ctx.drawImage(img, 0, 0);
 
@@ -165,7 +161,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         ctx.fillStyle = `rgba(0, 0, 0, 0.${overlayOpacity})`;
         ctx.fillRect(0, 0, c.width, c.height);
 
-        fontSize = c.width / 20;
+        fontSize = c.height / 15;
 
         // Set the font.
         ctx.font = `${ fontSize }px ` + this.quoteModel.font;
@@ -176,13 +172,14 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         // Set the text color.
         ctx.fillStyle = 'white';
 
+        // Get the new lines from the text.
         const text = this.getLines(ctx, this.quoteModel.quote, c.width - 150);
 
         // Draw the text in the middle.
         text.forEach((item, key) => {
-            let translationY = (text.length - 1) * 25;
+            let translationY = (text.length - 1) * (fontSize / 2);
 
-            ctx.fillText(item, c.width / 2, ((c.height / 2) + (50 * key)) - translationY);
+            ctx.fillText(item, c.width / 2, ((c.height / 2) + (fontSize * key)) - translationY);
         });
     }
 

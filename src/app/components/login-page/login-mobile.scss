@@ -1,0 +1,23 @@
+@media screen and (max-width: 480px) {
+    .login-page__container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .login-page-background__container {
+        display: none;
+    }
+
+    .login-form__container {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .login-page-background__container {
+        width: 0%;
+        height: 0%;
+    }
+}

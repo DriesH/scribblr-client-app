@@ -5,6 +5,27 @@
     position: relative;
     display: flex;
 
+    .logo img {
+        width: 335px;
+    }
+
+    .form-title {
+        font-weight: 400;
+        color: #545E68;
+        margin: 0;
+        margin-top: 45px;
+        text-align: center;
+    }
+
+    .logo-undertext {
+        margin: 0;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #545E68;
+        font-family: Montserrat;
+        text-align: center;
+    }
+
     &.column {
         flex-direction: column;
     }
@@ -19,10 +40,6 @@
     display: flex;
     flex-direction: column;
     width: 430px;
-
-    .form-input-group:first-child {
-        margin-bottom: 30px;
-    }
 }
 
 .form-input-group {
@@ -33,7 +50,7 @@
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    margin: 0 auto 25px;
+    margin: 0 auto 40px;
 
     label {
         color: $main-color-one;
@@ -114,5 +131,24 @@
 
 .submit-button {
     align-self: center;
-    margin-top: 75px;
+    margin-top: 45px;
+}
+
+@media screen and (max-width: 480px) {
+    .submit-button {
+        margin-top: 15px;
+    }
+
+    .form-input-group input[type="text"],
+    .form-input-group input[type="password"],
+    .form-input-group input[type="date"],
+    .form-controls__container {
+        width: 100%;
+    }
+
+    .scrblr-form {
+        .logo img {
+            width: 225px;
+        }
+    }
 }
