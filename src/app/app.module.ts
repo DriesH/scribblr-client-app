@@ -41,7 +41,6 @@ import { AchievementOverviewRootComponent } from './components/application/appli
 import { BookOverviewRootComponent } from './components/application/application-root/book-overview-root/book-overview-root.component';
 import { QuoteComponent } from './components/application/application-root/quote-overview-root/quote/quote.component';
 import { AchievementComponent } from './components/application/application-root/achievement-overview-root/achievement/achievement.component';
-import { DropUploadComponent } from './components/application/application-root/quote-overview-root/drop-upload/drop-upload.component';
 import { SideBarComponent } from './components/application/application-root/side-bar/side-bar.component';
 import { ChildrenOverviewRootComponent } from './components/application/application-root/children-overview-root/children-overview-root.component';
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
@@ -110,7 +109,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         QuoteComponent,
         AchievementComponent,
         ChildAgePipe,
-        DropUploadComponent,
         SideBarComponent,
         ChildrenOverviewRootComponent,
         NewChildComponent,
