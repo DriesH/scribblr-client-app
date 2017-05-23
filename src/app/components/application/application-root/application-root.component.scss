@@ -32,6 +32,11 @@
         top: 50%;
         transform: translateY(-50%);
     }
+
+    #logout {
+        width: 30px;
+        opacity: 0.7;
+    }
 }
 
 .application-body--content {
@@ -67,17 +72,40 @@
         // transform: translateY(-20px);
     }
 
-    input {
+    .bottom-border-input {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    }
+
+    .quick-quote-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 80px;
+    }
+
+    input#quote {
         color: #2D3338;
         font-size: 32px;
-        width: 100%;
+        width: 90%;
         border: none;
         background: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        box-sizing: border-box;
+        // border-bottom: 1px solid rgba(0, 0, 0, 0.7);
         padding: 15px 10px;
         // transition: all 200ms;
 
         &:focus {
+            outline: none;
+        }
+
+        &:focus + .bottom-border-input{
             border-bottom: 2px solid rgba(#5e94e5, 0.7);
             outline: none;
         }
