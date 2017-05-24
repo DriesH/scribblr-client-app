@@ -13,15 +13,23 @@ import { Store } from '@ngrx/store';
 })
 export class BookOverviewRootComponent implements OnInit {
 
-    loadingPosts = true;
+    isLoadingPosts = false;
     loadingChildren = true;
 
-    posts = null;
-    children = null;
+    posts = [];
+    children = [];
 
     currentChildQuotes = null;
 
     currentPage = 1;
+    currentPageModel = this.currentPage;
+
+    maxPages = 10;
+
+    autoGenerateSuccess = false;
+
+    book = [];
+
 
     constructor(
         private _bs: BookService,
@@ -31,7 +39,6 @@ export class BookOverviewRootComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.loadingPosts = true;
         this.loadingChildren = true;
 
         this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
@@ -51,20 +58,32 @@ export class BookOverviewRootComponent implements OnInit {
             return;
         }
 
+        this.isLoadingPosts = true;
+
         this._qs.getPost(childShortId).subscribe(res => {
             this.posts = res.posts;
-            this.loadingPosts = false;
+            this.isLoadingPosts = false;
+
             this.currentChildQuotes = childShortId;
         });
     }
 
+    autoGenerate() {
+        this._bs.autoGenerateNewBook().subscribe(res => {
+            console.log(res);
+            this.book = res.book;
+            this.autoGenerateSuccess = true;
+        });
+    }
+
     nextPage() {
-        if (this.currentPage >= 20) {
-            this.currentPage = 20;
+        if (this.currentPage >= this.maxPages) {
+            this.currentPage = this.maxPages;
             return;
         }
 
         this.currentPage++;
+        this.currentPageModel = this.currentPage;
     }
 
     previousPage() {
@@ -74,6 +93,7 @@ export class BookOverviewRootComponent implements OnInit {
         }
 
         this.currentPage--;
+        this.currentPageModel = this.currentPage;
     }
 
 }

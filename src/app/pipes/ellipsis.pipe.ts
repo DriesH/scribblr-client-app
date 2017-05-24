@@ -5,6 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EllipsisPipe implements PipeTransform {
     transform(val, args) {
+        if (val === null) {
+            return;
+        }
+
         if (val === undefined) {
             return val;
         }
