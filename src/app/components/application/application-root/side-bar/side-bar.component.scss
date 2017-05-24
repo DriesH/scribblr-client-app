@@ -1,5 +1,7 @@
+@import '../../../../../scss/colors/colors';
+
 #sidebar {
-    background: #2D3338;
+    background: $main-color-four;
     width: 200px;
     max-height: 100%;
     min-height: 100vh;
@@ -8,8 +10,6 @@
     position: fixed;
     top: 0;
     left: 0;
-
-
 }
 
 .sidebar {
@@ -45,7 +45,7 @@
         align-items: center;
 
         p {
-            color: #D2D3D6;
+            color: white;
             margin-top: 10px;
         }
     }
@@ -162,7 +162,7 @@
         .child-avatar {
             height: 70px;
             cursor: pointer;
-            color: #D2D3D6;
+            color: white;
             padding: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -196,7 +196,7 @@
 
         .new-child {
             cursor: pointer;
-            color: #D2D3D6;
+            color: white;
             padding: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -209,11 +209,11 @@
             text-decoration: none;
 
             .circle {
-                border: 2px dotted #D2D3D6;
+                border: 2px dotted white;
                 border-radius: 50%;
                 width: 48px;
                 height: 48px;
-                color: #D2D3D6;
+                color: white;
                 text-decoration: none;
                 font-size: 20px;
                 text-align: center;
@@ -225,7 +225,6 @@
             p {
                 margin: 0 10px;
                 font-size: 0.8rem;
-                opacity: 0.8;
             }
 
             &:hover {

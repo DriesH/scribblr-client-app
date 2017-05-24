@@ -8,12 +8,15 @@
             <div class="hero-img--container">
                 <h1 class="title">Saving memories for later.</h1>
                 <p>A new way of sharing and remembering.</p>
-                <ul>
+                <ul class="header-button-group">
                     <li>
-                        <a href="home#section1">Information</a>
+                        <a href="home#section1" class="information">Information</a>
                     </li>
-                    <li>
-                        <a routerLink="register">Create an account.</a>
+                    <li *ngIf="!isLoggedIn">
+                        <a routerLink="/register" class="register">Create an account</a>
+                    </li>
+                    <li *ngIf="isLoggedIn">
+                        <a routerLink="/application" class="application">Go to the application</a>
                     </li>
                 </ul>
             </div>
@@ -22,19 +25,24 @@
     </header>
 
     <section class="section" id="section1">
+        <div class="section-background"></div>
         <div class="books">
-            <div class="book">
-                <img src="/assets/homepage/scribblr-book-blue.png" alt="book blue">
-            </div>
-            <div class="book">
-                <img src="/assets/homepage/scribblr-book-green.png" alt="bookgreen">
-            </div>
             <div class="book">
                 <img src="/assets/homepage/scribblr-book-orange.png" alt="book orange">
             </div>
             <div class="book">
+                <img src="/assets/homepage/scribblr-book-blue.png" alt="book blue">
+            </div>
+            <div class="book">
                 <img src="/assets/homepage/scribblr-book-purple.png" alt="book purple">
             </div>
+            <div class="book">
+                <img src="/assets/homepage/scribblr-book-green.png" alt="bookgreen">
+            </div>
+        </div>
+        <div class="section-content">
+            <h1 class="title">Lorem ipsum</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore doloremque nam rerum harum vel numquam ad quae ab possimus eveniet amet nostrum, sit quam, rem voluptatem nisi adipisci. Perspiciatis, velit.</p>
         </div>
     </section>
 
