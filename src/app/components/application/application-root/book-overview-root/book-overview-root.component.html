@@ -1,1 +1,35 @@
-book-overview-root works!
+<div id="book-editor">
+
+    <div id="book-preview">
+        <div class="book">
+            <div class="page-left"></div>
+            <div class="page-right"></div>
+        </div>
+    </div>
+
+    <div id="book-editor-information">
+        <span class="previous" (click)="previousPage()"><i class="fa-arrow-left"></i></span>
+
+        <div id="page-indicator">
+            <input type="text" name="page-number" [(ngModel)]="currentPage">
+            <span>of 20</span>
+        </div>
+
+        <span class="next" (click)="nextPage()"><i class="fa-arrow-right"></i></span>
+
+    </div>
+
+    <div id="selection-bar">
+        <span class="loading-spinner" *ngIf="loadingChildren"></span>
+
+        <ul *ngIf="!loadingChildren" class="children">
+            <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">{{ child.full_name }}</li>
+        </ul>
+
+        <ul *ngIf="!loadingPosts">
+            <li *ngFor="let post of posts">{{ post.short_id }}</li>
+        </ul>
+    </div>
+
+</div>
+

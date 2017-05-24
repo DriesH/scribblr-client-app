@@ -62,6 +62,7 @@ import { ChildService } from './services/application-services/child.service';
 import { QuoteService } from './services/application-services/quote.service';
 import { AchievementService } from './services/application-services/achievement.service';
 import { AchievementUnlockableService } from './services/achievement-unlockable.service';
+import { BookService } from './services/application-services/book.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -71,6 +72,7 @@ import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { ChildAgePipe } from './pipes/child-age.pipe';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { KeysPipe } from './pipes/keys.pipe';
 
 /* Reducers and effects */
 import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
@@ -82,8 +84,8 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
-import { KeysPipe } from './pipes/keys.pipe';
 
+/* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
     minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
@@ -155,7 +157,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         HttpHeaderService,
         ErrorHandlerService,
         AchievementService,
-        AchievementUnlockableService
+        AchievementUnlockableService,
+        BookService
     ],
     bootstrap: [ AppComponent ]
 })

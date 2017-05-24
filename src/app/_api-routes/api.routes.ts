@@ -35,7 +35,7 @@ export const API_ROUTES = {
         posts: {
             fonts: applicationPrefix + 'fonts',
             presetImg: applicationPrefix + 'presets',
-            index: applicationPrefix + 'children/posts',
+            index: applicationPrefix + 'posts',
             newPost: (shortId) => {
                 return applicationPrefix + 'children/' + shortId + '/posts/new';
             },
@@ -57,6 +57,17 @@ export const API_ROUTES = {
         },
         achievement: {
             index: applicationPrefix + 'achievements'
+        },
+        book: {
+            index: applicationPrefix + 'books',
+            generateNewBook: applicationPrefix + 'books/generate',
+            newBook: applicationPrefix + 'books/new',
+            getBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId;
+            },
+            deleteBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId + '/delete';
+            }
         }
     }
 

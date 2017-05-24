@@ -1,0 +1,141 @@
+@import '../../../../../scss/colors/colors';
+
+#book-editor {
+    background: #FAFAFA;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    position: relative;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+#book-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+
+    .book {
+        width: 80%;
+        padding: 2%;
+        background: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .page-left,
+    .page-right {
+        background: pink;
+        width: 50%;
+        padding-bottom: 50%;
+    }
+
+    .page-left {
+        margin-right: 2%;
+    }
+}
+
+#book-editor-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .previous,
+    .next {
+        font-size: 12;
+        cursor: pointer;
+    }
+
+    .previous {
+        margin-right: 10px;
+    }
+
+    .next {
+        margin-left: 10px;
+    }
+}
+
+#page-indicator {
+    text-align: center;
+
+    input {
+        width: 25px;
+        text-align: center;
+        padding: 0 5px;
+        border: 1px solid grey;
+        font-family: 'Open Sans';
+        font-size: 16px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
+
+#selection-bar {
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: $main-color-one;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.children {
+    list-style: none;
+    display: flex;
+    padding: 0;
+
+    .child-avatar {
+        width: 90px;
+        height: 90px;
+        background: pink;
+        border-radius: 50%;
+        line-height: 90px;
+        text-align: center;
+    }
+}
+
+.loading-spinner {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.loading-spinner::after {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    border: 2px solid transparent;
+    border-top-color: white;
+    animation: loadingAnimation 500ms linear infinite;
+}
+
+@keyframes animateIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
