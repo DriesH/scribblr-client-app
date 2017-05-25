@@ -25,8 +25,14 @@ export function BookReducer(state: any = initialState, action: Action) {
                 posts: action.payload
             });
 
-        
+        case bookActions.ActionTypes.UPDATE_BOOK_PAGE:
+            let book = state.book;
 
+            book[action.payload.pageIndex][action.payload.pageSide] = action.payload.newPageData;
+
+            return Object.assign({}, state, {
+                book: book
+            });
 
         default:
             return state;

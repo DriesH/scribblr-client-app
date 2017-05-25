@@ -4,9 +4,9 @@ import { QuoteService } from '../../../../../services/application-services/quote
 
 import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
-import { DragulaService } from 'ng2-dragula';
-
 import { Store } from '@ngrx/store';
+
+import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
   selector: 'scrblr-book-editor',
@@ -36,41 +36,21 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
 
     constructor(
         private _qs: QuoteService,
-        private dragulaService: DragulaService,
         private store: Store<any>
     ) {
-        dragulaService.drag.subscribe((value) => {
-            this.onDrag(value.slice(1));
-        });
-        dragulaService.drop.subscribe((value) => {
-            this.onDrop(value.slice(1));
-        });
-        dragulaService.over.subscribe((value) => {
-            this.onOver(value.slice(1));
-        });
-        dragulaService.out.subscribe((value) => {
-            this.onOut(value.slice(1));
-        });
+
     }
 
-    private onDrag(args) {
-        let [e, el] = args;
-        console.log('onDrag: ', e, el);
-    }
+    transferDataSuccess($event: any) {
+        console.log($event);
 
-    private onDrop(args) {
-        let [e, el] = args;
-        console.log('onDrop: ', e, el);
-    }
+        let dataEvent = {
+            pageIndex: this.currentPageModel - 1,
+            pageSide: 0,
+            newPageData: $event.dragData
+        };
 
-    private onOver(args) {
-        let [e, el, container] = args;
-        console.log('onOver ', e, el, container);
-    }
-
-    private onOut(args) {
-        let [e, el, container] = args;
-        console.log('onOut ', e, el, container);
+        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
     }
 
     ngOnInit() {
@@ -142,7 +122,7 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         book[currentPage - 1].forEach(post => {
             if (Object.keys(post).length !== 0 && post.constructor === Object) {
                 currentImages.push(
-                    API_ROUTES.baseUrl + this._postCfg.imageBaked(post.child.short_id, post.short_id, post.img_baked_url_id)
+                    API_ROUTES.baseUrl + this._postCfg.imageBaked(null, post.short_id, post.img_baked_url_id)
                 );
             }
         });

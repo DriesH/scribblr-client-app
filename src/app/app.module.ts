@@ -12,7 +12,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CustomFormsModule } from 'ng2-validation';
-import { DragulaModule } from 'ng2-dragula';
+import { DndModule } from 'ng2-dnd';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
@@ -142,7 +142,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FileUploadModule,
         ImageCropperModule,
         LazyLoadImageModule,
-        DragulaModule,
+        DndModule.forRoot(),
         APP_ROUTES,
         StoreModule.provideStore({
             CURRENT_USER: CurrentUserReducer,

@@ -1,20 +1,23 @@
 <div id="book-editor">
+    <div class="close-editor" (click)="closeEditor()">
+        <i class="fa fa-arrow-left"></i>
+    </div>
 
     <div id="book-preview">
-        <div class="book" *ngIf="isMemoryBoolean === false" data-is-memory="false">
-            <div class="page-left" [dragula]='"first-bag"'>
-                <scrblr-book-page [pageData]="post" [src]="currentImages[0]"></scrblr-book-page>
+        <div class="book" *ngIf="isMemoryBoolean === false">
+            <div class="page-left" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]"></scrblr-book-page>
             </div>
-            <div class="page-right" [dragula]='"first-bag"'>
-                <scrblr-book-page [pageData]="post" [src]="currentImages[1]"></scrblr-book-page>
+            <div class="page-right" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                <scrblr-book-page [pageData]="book[currentPageModel - 1][1]" [src]="currentImages[1]"></scrblr-book-page>
             </div>
         </div>
 
-        <div class="book" *ngIf="isMemoryBoolean === true" data-is-memory="true">
-            <div class="page-left" [dragula]='"first-bag"'>
-                <scrblr-book-page [pageData]="post" [src]="currentImages[0]"></scrblr-book-page>
+        <div class="book" *ngIf="isMemoryBoolean === true">
+            <div class="page-left" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]"></scrblr-book-page>
             </div>
-            <div class="page-right" [dragula]='"first-bag"'>
+            <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                 <p>{{ book[currentPageModel - 1][0].story }}</p>
             </div>
         </div>
@@ -44,9 +47,11 @@
 
         <span class="loading-spinner" *ngIf="isLoadingPosts"></span>
 
-        <div *ngIf="!isLoadingPosts" class="posts" [dragula]='"first-bag"' [dragulaModel]="posts">
+        <div *ngIf="!isLoadingPosts" class="posts">
             <div *ngIf="posts.length === 0">No memories for this child.</div>
-            <scrblr-book-page *ngFor="let post of posts" [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+            <div *ngFor="let post of posts" dnd-draggable [dragEnabled]="true" [dragData]="post">
+                <scrblr-book-page [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+            </div>
         </div>
     </div>
 

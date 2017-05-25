@@ -1,5 +1,13 @@
 @import '../../../../../../scss/colors/colors';
 
+.close-editor {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    cursor: pointer;
+    color: $main-color-four;
+}
+
 #book-editor {
     background: #FAFAFA;
     width: 100%;
