@@ -7,7 +7,6 @@
     box-sizing: border-box;
     overflow-y: auto;
     margin: 0 auto;
-
 }
 
 .category--container {
@@ -17,6 +16,10 @@
         border: 2px solid $main-color-one;
         border-bottom: transparent;
         margin-bottom: 15px;
+    }
+
+    i {
+        color: $main-color-four;
     }
 }
 

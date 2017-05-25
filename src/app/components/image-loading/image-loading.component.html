@@ -1,0 +1,5 @@
+<div class="placeholder" *ngIf="!loaded">
+    <span class="loading-spinner"></span>
+    <p class="loading-text">Loading...</p>
+</div>
+<img [hidden]="!loaded" (load)="doneLoading()" [src]="src" />

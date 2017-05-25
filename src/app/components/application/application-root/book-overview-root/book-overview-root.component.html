@@ -1,55 +1,29 @@
-<div id="book-editor">
-
-    <div style="position: absolute;">
-        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Generate</button>
+<div id="start-menu" *ngIf="!editorActive">
+    <div id="auto-generate-all-children" class="book-start-buttons--container">
+        <img src="/assets/book-editor/autogenerate-all-icon.svg">
+        <h1 class="title">Generate a book with all children</h1>
+        <p>You can still edit the book after we generated it for you.</p>
+        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
     </div>
 
-    <div *ngIf="autoGenerateSuccess">
-        <div id="book-preview">
-
-                <div class="book" *ngIf="book[currentPageModel - 1].length === 2">
-                    <div class="page-left">
-                        <img [src]="'https://scribblr-dev.local/api/application/children/aaaaaaaa/posts/' + book[currentPageModel - 1][0].short_id + '/img-baked/' + book[currentPageModel - 1][0].img_baked_url_id">
-                    </div>
-                    <div class="page-right"><img [src]="'https://scribblr-dev.local/api/application/children/aaaaaaaa/posts/' + book[currentPageModel - 1][1].short_id + '/img-baked/' + book[currentPageModel - 1][1].img_baked_url_id"></div>
-                </div>
-
-                <div class="book" *ngIf="book[currentPageModel - 1].length === 1">
-                    <div class="page-left"><img [src]="'https://scribblr-dev.local/api/application/children/aaaaaaaa/posts/' + book[currentPageModel - 1][0].short_id + '/img-baked/' + book[currentPageModel - 1][0].img_baked_url_id"></div>
-                    <div class="page-right"><p>{{ book[currentPageModel - 1][0].story }}</p></div>
-                </div>
-        </div>
-
-        <div id="book-editor-information">
-            <span class="previous" (click)="previousPage()"><i class="fa-arrow-left"></i></span>
-
-            <div id="page-indicator">
-                <span>{{ currentPageModel }}</span>
-                <span>of {{ maxPages }}</span>
-            </div>
-
-            <span class="next" (click)="nextPage()"><i class="fa-arrow-right"></i></span>
-
-        </div>
-
-        <div id="selection-bar">
-            <span class="loading-spinner" *ngIf="loadingChildren"></span>
-
-            <ul *ngIf="!loadingChildren" class="children">
-                <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">{{ child.full_name }}</li>
-            </ul>
-
-            <span class="divider"></span>
-
-            <span class="loading-spinner" *ngIf="isLoadingPosts"></span>
-
-            <ul *ngIf="!isLoadingPosts" class="posts">
-                <li *ngIf="posts.length === 0">No memories for this child.</li>
-                <li *ngFor="let post of posts" class="post">{{ post.short_id }}</li>
-            </ul>
-        </div>
-
+    <div id="auto-generate-one-child" class="book-start-buttons--container">
+        <img src="/assets/book-editor/autogenerate-one-child-icon.svg">
+        <h1 class="title">Generate a book of one child</h1>
+        <p>You can still edit the book after we generated it for you.</p>
+        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
     </div>
 
+    <div id="start-blank-book" class="book-start-buttons--container">
+        <img src="/assets/book-editor/start-blank-book-icon.svg">
+        <h1 class="title">Start from a blank book</h1>
+        <p>If you like to do things yourself!</p>
+        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
+    </div>
 </div>
+
+<div *ngIf="editorActive && !isLoadingPosts && !isLoadingChildren">
+    <scrblr-book-editor [bookData]="book" [children]="children" [posts]="posts" [isLoadingPosts]="isLoadingPosts" (closeEditor)="closeEditor()"></scrblr-book-editor>
+</div>
+
+
 

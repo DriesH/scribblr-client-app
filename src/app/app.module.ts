@@ -84,6 +84,8 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
+import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
+import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -122,7 +124,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PostModalComponent,
         EllipsisPipe,
         NewMemoryComponent,
-        KeysPipe
+        KeysPipe,
+        ImageLoadingComponent,
+        BookEditorComponent,
     ],
     imports: [
         BrowserModule,

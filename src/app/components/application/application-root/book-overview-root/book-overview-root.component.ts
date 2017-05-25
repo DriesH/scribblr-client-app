@@ -4,6 +4,8 @@ import { BookService } from '../../../../services/application-services/book.serv
 import { QuoteService } from '../../../../services/application-services/quote.service';
 import { ChildService } from '../../../../services/application-services/child.service';
 
+import { API_ROUTES } from '../../../../_api-routes/api.routes';
+
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -13,23 +15,26 @@ import { Store } from '@ngrx/store';
 })
 export class BookOverviewRootComponent implements OnInit {
 
+    _postCfg = API_ROUTES.application.posts;
+
+    editorActive = false;
     isLoadingPosts = false;
-    loadingChildren = true;
+    isLoadingChildren = false;
 
     posts = [];
     children = [];
 
-    currentChildQuotes = null;
-
-    currentPage = 1;
-    currentPageModel = this.currentPage;
-
-    maxPages = 10;
+    currentChildQuotes = null; // short id of the current child that is showing quotes.
 
     autoGenerateSuccess = false;
 
     book = [];
 
+    currentImages = [];
+
+    childModel = {
+        shortId: null
+    };
 
     constructor(
         private _bs: BookService,
@@ -39,7 +44,7 @@ export class BookOverviewRootComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.loadingChildren = true;
+        this.isLoadingChildren = true;
 
         this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
             let cc: any = CURRENT_CHILDREN;
@@ -47,7 +52,7 @@ export class BookOverviewRootComponent implements OnInit {
             this.children = cc.children;
 
             if (this.children.length > 0) {
-                this.loadingChildren = false;
+                this.isLoadingChildren = false;
             }
 
         });
@@ -72,28 +77,16 @@ export class BookOverviewRootComponent implements OnInit {
         this._bs.autoGenerateNewBook().subscribe(res => {
             console.log(res);
             this.book = res.book;
+
             this.autoGenerateSuccess = true;
+            this.editorActive = true;
         });
+
+        this.getQuotes(this.children[0].short_id);
     }
 
-    nextPage() {
-        if (this.currentPage >= this.maxPages) {
-            this.currentPage = this.maxPages;
-            return;
-        }
-
-        this.currentPage++;
-        this.currentPageModel = this.currentPage;
-    }
-
-    previousPage() {
-        if (this.currentPage <= 1) {
-            this.currentPage = 1;
-            return;
-        }
-
-        this.currentPage--;
-        this.currentPageModel = this.currentPage;
+    closeEditor() {
+        this.editorActive = false;
     }
 
 }

@@ -1,0 +1,58 @@
+<div id="book-editor">
+    
+
+    <div id="book-preview">
+        <div class="book" *ngIf="isMemoryBoolean === false">
+            <div class="page-left">
+                <scrblr-image-loading [src]="currentImages[0]"></scrblr-image-loading>
+            </div>
+            <div class="page-right">
+                <scrblr-image-loading [src]="currentImages[1]"></scrblr-image-loading>
+            </div>
+        </div>
+
+        <div class="book" *ngIf="isMemoryBoolean === true">
+            <div class="page-left">
+                <scrblr-image-loading [src]="currentImages[0]"></scrblr-image-loading>
+            </div>
+            <div class="page-right">
+                <p>{{ bookData[currentPageModel - 1][0].story }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="book-editor-information">
+        <span class="previous" (click)="previousPage()"><i class="fa fa-arrow-left"></i></span>
+
+        <div id="page-indicator">
+            <span>{{ currentPageModel }}</span>
+            <span>of {{ maxPages }}</span>
+        </div>
+
+        <span class="next" (click)="nextPage()"><i class="fa fa-arrow-right"></i></span>
+
+    </div>
+
+    <div id="selection-bar">
+        <ul class="children">
+            <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">{{ child.full_name }}</li>
+        </ul>
+
+        <span class="divider"></span>
+
+        <span class="loading-spinner" *ngIf="isLoadingPosts"></span>
+
+        <ul *ngIf="!isLoadingPosts" class="posts">
+            <li *ngIf="posts.length === 0">No memories for this child.</li>
+            <li *ngFor="let post of posts" class="post">
+                <div class="small-thumbnail">
+                  <img [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)">
+                </div>
+
+                <span class="big-thumbnail">
+                    <img [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)">
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
