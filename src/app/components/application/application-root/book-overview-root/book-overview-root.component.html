@@ -15,14 +15,14 @@
 
     <div id="start-blank-book" class="book-start-buttons--container">
         <img src="/assets/book-editor/start-blank-book-icon.svg">
-        <h1 class="title">Start from a blank book</h1>
+        <h1 class="title">Start from a blank canvas</h1>
         <p>If you like to do things yourself!</p>
         <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
     </div>
 </div>
 
 <div *ngIf="editorActive && !isLoadingPosts && !isLoadingChildren">
-    <scrblr-book-editor [bookData]="book" [children]="children" [posts]="posts" [isLoadingPosts]="isLoadingPosts" (closeEditor)="closeEditor()"></scrblr-book-editor>
+    <scrblr-book-editor [isLoadingPosts]="isLoadingPosts" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
 </div>
 
 

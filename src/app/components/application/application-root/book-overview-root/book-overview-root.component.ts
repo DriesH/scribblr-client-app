@@ -8,6 +8,8 @@ import { API_ROUTES } from '../../../../_api-routes/api.routes';
 
 import { Store } from '@ngrx/store';
 
+import * as BookActions from '../../../../ngrx-state/actions/book.action';
+
 @Component({
     selector: 'scrblr-book-overview-root',
     templateUrl: './book-overview-root.component.html',
@@ -21,20 +23,17 @@ export class BookOverviewRootComponent implements OnInit {
     isLoadingPosts = false;
     isLoadingChildren = false;
 
-    posts = [];
-    children = [];
-
     currentChildQuotes = null; // short id of the current child that is showing quotes.
 
     autoGenerateSuccess = false;
-
-    book = [];
 
     currentImages = [];
 
     childModel = {
         shortId: null
     };
+
+    children;
 
     constructor(
         private _bs: BookService,
@@ -66,7 +65,8 @@ export class BookOverviewRootComponent implements OnInit {
         this.isLoadingPosts = true;
 
         this._qs.getPost(childShortId).subscribe(res => {
-            this.posts = res.posts;
+            this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+
             this.isLoadingPosts = false;
 
             this.currentChildQuotes = childShortId;
@@ -75,8 +75,8 @@ export class BookOverviewRootComponent implements OnInit {
 
     autoGenerate() {
         this._bs.autoGenerateNewBook().subscribe(res => {
-            console.log(res);
-            this.book = res.book;
+
+            this.store.dispatch(new BookActions.BookDataReceived(res.book));
 
             this.autoGenerateSuccess = true;
             this.editorActive = true;

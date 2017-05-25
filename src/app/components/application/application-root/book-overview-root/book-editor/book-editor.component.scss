@@ -56,6 +56,7 @@
     .next {
         font-size: 12;
         cursor: pointer;
+        color: $main-color-four;
     }
 
     .previous {
@@ -70,17 +71,8 @@
 #page-indicator {
     text-align: center;
 
-    input {
-        width: 25px;
-        text-align: center;
-        padding: 0 5px;
-        border: 1px solid grey;
-        font-family: 'Open Sans';
-        font-size: 16px;
-    }
-
-    input:focus {
-        outline: none;
+    span {
+        font-weight: bold;
     }
 }
 
@@ -95,6 +87,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 0 35px;
+    box-sizing: border-box;
 
     .divider {
         width: 1px;
@@ -114,10 +108,29 @@
     .child-avatar {
         width: 90px;
         height: 90px;
-        background: pink;
-        border-radius: 50%;
-        line-height: 90px;
         text-align: center;
+        position: relative;
+        margin-right: 25px;
+
+        p {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            color: white;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    .child-avatar:last-child {
+        margin-right: 0;
     }
 }
 
@@ -131,41 +144,10 @@
         width: 90px;
         height: 90px;
         position: relative;
+        margin-right: 15px;
 
-        .small-thumbnail {
-            height: 100%;
+        img {
             width: 100%;
-            background: pink;
-            border-radius: 5px;
-            line-height: 90px;
-            text-align: center;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 5px;
-
-            img {
-                height: 150%;
-            }
-        }
-
-        .small-thumbnail:hover .big-thumbnail {
-            display: block;
-        }
-
-        .big-thumbnail {
-            position: absolute;
-            top: -275px;
-            width: 350px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #FAFAFA;
-            display: none;
-
-            img {
-                width: 100%;
-            }
         }
     }
 

@@ -1,22 +1,21 @@
 <div id="book-editor">
-    
 
     <div id="book-preview">
-        <div class="book" *ngIf="isMemoryBoolean === false">
-            <div class="page-left">
-                <scrblr-image-loading [src]="currentImages[0]"></scrblr-image-loading>
+        <div class="book" *ngIf="isMemoryBoolean === false" data-is-memory="false">
+            <div class="page-left" [dragula]='"first-bag"'>
+                <scrblr-book-page [pageData]="post" [src]="currentImages[0]"></scrblr-book-page>
             </div>
-            <div class="page-right">
-                <scrblr-image-loading [src]="currentImages[1]"></scrblr-image-loading>
+            <div class="page-right" [dragula]='"first-bag"'>
+                <scrblr-book-page [pageData]="post" [src]="currentImages[1]"></scrblr-book-page>
             </div>
         </div>
 
-        <div class="book" *ngIf="isMemoryBoolean === true">
-            <div class="page-left">
-                <scrblr-image-loading [src]="currentImages[0]"></scrblr-image-loading>
+        <div class="book" *ngIf="isMemoryBoolean === true" data-is-memory="true">
+            <div class="page-left" [dragula]='"first-bag"'>
+                <scrblr-book-page [pageData]="post" [src]="currentImages[0]"></scrblr-book-page>
             </div>
-            <div class="page-right">
-                <p>{{ bookData[currentPageModel - 1][0].story }}</p>
+            <div class="page-right" [dragula]='"first-bag"'>
+                <p>{{ book[currentPageModel - 1][0].story }}</p>
             </div>
         </div>
     </div>
@@ -26,7 +25,7 @@
 
         <div id="page-indicator">
             <span>{{ currentPageModel }}</span>
-            <span>of {{ maxPages }}</span>
+            <span class="max-pages">of {{ maxPages }}</span>
         </div>
 
         <span class="next" (click)="nextPage()"><i class="fa fa-arrow-right"></i></span>
@@ -35,24 +34,20 @@
 
     <div id="selection-bar">
         <ul class="children">
-            <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">{{ child.full_name }}</li>
+            <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">
+                <img src="/assets/default-avatars/Male.svg">
+                <p>{{ child.full_name }}</p>
+            </li>
         </ul>
 
         <span class="divider"></span>
 
         <span class="loading-spinner" *ngIf="isLoadingPosts"></span>
 
-        <ul *ngIf="!isLoadingPosts" class="posts">
-            <li *ngIf="posts.length === 0">No memories for this child.</li>
-            <li *ngFor="let post of posts" class="post">
-                <div class="small-thumbnail">
-                  <img [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)">
-                </div>
-
-                <span class="big-thumbnail">
-                    <img [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)">
-                </span>
-            </li>
-        </ul>
+        <div *ngIf="!isLoadingPosts" class="posts" [dragula]='"first-bag"' [dragulaModel]="posts">
+            <div *ngIf="posts.length === 0">No memories for this child.</div>
+            <scrblr-book-page *ngFor="let post of posts" [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+        </div>
     </div>
+
 </div>

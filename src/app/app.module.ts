@@ -11,7 +11,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { CustomFormsModule } from 'ng2-validation'
+import { CustomFormsModule } from 'ng2-validation';
+import { DragulaModule } from 'ng2-dragula';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
@@ -48,6 +49,9 @@ import { NewsOverviewRootComponent } from './components/application/application-
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { PostModalComponent } from './components/application/application-root/quote-overview-root/post-modal/post-modal.component';
 import { NewMemoryComponent } from './components/application/application-root/quote-overview-root/new-memory/new-memory.component';
+import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
+import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
+import { BookPageComponent } from './components/application/application-root/book-overview-root/book-page/book-page.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -84,8 +88,8 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
 
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
-import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
-import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
+
+import { BookReducer } from './ngrx-state/reducers/book.reducer';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -127,6 +131,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         KeysPipe,
         ImageLoadingComponent,
         BookEditorComponent,
+        BookPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -137,12 +142,14 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FileUploadModule,
         ImageCropperModule,
         LazyLoadImageModule,
+        DragulaModule,
         APP_ROUTES,
         StoreModule.provideStore({
             CURRENT_USER: CurrentUserReducer,
             CURRENT_CHILDREN: ChildReducer,
             APPLICATION_UI: ApplicationUIReducer,
-            QUOTES: QuoteReducer
+            QUOTES: QuoteReducer,
+            BOOK: BookReducer
         }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
