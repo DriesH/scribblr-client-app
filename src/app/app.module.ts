@@ -90,6 +90,7 @@ import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reduc
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
+import { BookTutorialComponent } from './components/application/application-root/book-overview-root/book-tutorial/book-tutorial.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -132,6 +133,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ImageLoadingComponent,
         BookEditorComponent,
         BookPageComponent,
+        BookTutorialComponent,
     ],
     imports: [
         BrowserModule,

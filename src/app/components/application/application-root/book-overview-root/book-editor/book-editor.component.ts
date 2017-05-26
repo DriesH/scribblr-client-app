@@ -42,14 +42,29 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     }
 
     transferDataSuccess($event: any) {
-        console.log($event);
+        console.log($event.mouseEvent.target.parentElement.parentElement.className);
 
-        let dataEvent = {
-            pageIndex: this.currentPageModel - 1,
-            pageSide: 0,
-            newPageData: $event.dragData
-        };
+        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
+        let dataEvent = {};
 
+
+        if (pageSideName.indexOf('page-left') !== -1) {
+            dataEvent = {
+                pageIndex: this.currentPageModel - 1,
+                pageSide: 0,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory
+            };
+        } else {
+            dataEvent = {
+                pageIndex: this.currentPageModel - 1,
+                pageSide: 1,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory
+            };
+        }
+
+        console.log(dataEvent);
         this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
     }
 
@@ -122,8 +137,10 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         book[currentPage - 1].forEach(post => {
             if (Object.keys(post).length !== 0 && post.constructor === Object) {
                 currentImages.push(
-                    API_ROUTES.baseUrl + this._postCfg.imageBaked(null, post.short_id, post.img_baked_url_id)
+                    API_ROUTES.baseUrl + this._postCfg.imageBaked(post.child.short_id, post.short_id, post.img_baked_url_id)
                 );
+            } else {
+                currentImages.push(null);
             }
         });
 
@@ -134,18 +151,19 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         return API_ROUTES.baseUrl + this._postCfg.imageBaked(childShortId, quoteShortId, imgBakedUrlId);
     }
 
-    isMemory(book, currentPage) {
-        let returnVal;
+    isMemory(book, currentPageNumber) {
+        let i = 0;
 
-        book[currentPage - 1].forEach(post => {
-            if (Object.keys(post).length === 0 && post.constructor === Object) {
-                returnVal = true;
+        for (i = 0; i < 2; i++) {
+            if (book[currentPageNumber - 1][i].is_memory === 1) {
+                console.log('boolean is memory', true);
+                return true;
             } else {
-                returnVal = false;
+                console.log('boolean is memory', false);
+                return false;
             }
-        });
+        }
 
-        return returnVal;
     }
 
     closeEditor() {

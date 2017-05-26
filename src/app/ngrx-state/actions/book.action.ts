@@ -1,7 +1,10 @@
 export const ActionTypes = {
     BOOK_DATA_RECEIVED: '[Book] Received book data',
     POSTS_DATA_RECEIVED: '[Book] Received posts data',
-    UPDATE_BOOK_PAGE: '[Book] Update page of book'
+    UPDATE_BOOK_PAGE: '[Book] Update page of book',
+    REMOVE_FROM_BOOK: '[Book] Remove page from book',
+    REMOVE_FROM_POST_LIST: '[Book] Remove page from post list',
+    ADD_TO_POST_LIST: '[Book] Add page to post list'
 };
 
 export class BookDataReceived {
@@ -22,6 +25,28 @@ export class UpdateBookPage {
     constructor(public payload: Object) { }
 }
 
+export class RemoveFromBook {
+    type = ActionTypes.REMOVE_FROM_BOOK;
+
+    constructor(public payload: Object) { }
+}
+
+export class RemoveFromPostList {
+    type = ActionTypes.REMOVE_FROM_POST_LIST;
+
+    constructor(public payload: Object) { }
+}
+
+export class AddToPostList {
+    type = ActionTypes.ADD_TO_POST_LIST;
+
+    constructor(public payload: Object) { }
+}
+
 export type Actions
     = BookDataReceived
-    | PostsDataReceived;
+    | PostsDataReceived
+    | UpdateBookPage
+    | RemoveFromBook
+    | RemoveFromPostList
+    | AddToPostList;

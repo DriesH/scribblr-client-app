@@ -11,18 +11,32 @@ export class BookPageComponent implements OnInit, OnChanges {
     @Input('pageData') pageData;
 
     loaded = false;
+    isEmpty = false;
 
     constructor() {
     }
 
     ngOnInit() {
+        if (this.src === null) {
+            this.isEmpty = true;
+        }
     }
 
     ngOnChanges(changes: any) {
+        if (this.src === null) {
+            this.isEmpty = true;
+        } else {
+            this.isEmpty = false;
+        }
         this.loaded = false;
     }
 
     doneLoading() {
+        if (this.src === null) {
+            this.isEmpty = true;
+        } else {
+            this.isEmpty = false;
+        }
         this.loaded = true;
     }
 }

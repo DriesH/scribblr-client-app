@@ -65,7 +65,6 @@ export class BookOverviewRootComponent implements OnInit {
         this.isLoadingPosts = true;
 
         this._qs.getPost(childShortId).subscribe(res => {
-            this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
 
             this.isLoadingPosts = false;
 
@@ -77,12 +76,37 @@ export class BookOverviewRootComponent implements OnInit {
         this._bs.autoGenerateNewBook().subscribe(res => {
 
             this.store.dispatch(new BookActions.BookDataReceived(res.book));
+            this.store.dispatch(new BookActions.PostsDataReceived(res.left_over));
 
             this.autoGenerateSuccess = true;
             this.editorActive = true;
         });
 
         this.getQuotes(this.children[0].short_id);
+    }
+
+    startEmpty() {
+
+        let emptyBook = [
+            [{}, {}], // page 1 & 2
+            [{}, {}], // page 3 & 4
+            [{}, {}], // page 5 & 6
+            [{}, {}], // page 7 & 8
+            [{}, {}], // page 9 & 10
+            [{}, {}], // page 11 & 12
+            [{}, {}], // page 13 & 14
+            [{}, {}], // page 15 & 16
+            [{}, {}], // page 17 & 18
+            [{}, {}]  // page 19 & 20
+        ];
+
+        this._qs.getAllPosts().subscribe(res => {
+            this.store.dispatch(new BookActions.BookDataReceived(emptyBook));
+            this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+
+            this.editorActive = true;
+        });
+
     }
 
     closeEditor() {

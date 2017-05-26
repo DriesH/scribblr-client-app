@@ -17,6 +17,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    &.empty {
+        background: $main-color-two !important;
+    }
 }
 
 .loading-spinner {

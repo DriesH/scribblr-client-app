@@ -49,7 +49,7 @@
 
         <div *ngIf="!isLoadingPosts" class="posts">
             <div *ngIf="posts.length === 0">No memories for this child.</div>
-            <div *ngFor="let post of posts" dnd-draggable [dragEnabled]="true" [dragData]="post">
+            <div *ngFor="let post of posts" dnd-draggable [dragEnabled]="true" [dragData]="post" class="post">
                 <scrblr-book-page [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
             </div>
         </div>

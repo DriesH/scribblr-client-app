@@ -97,6 +97,7 @@
     align-items: center;
     padding: 0 35px;
     box-sizing: border-box;
+    overflow-y: auto;
 
     .divider {
         width: 1px;
@@ -160,7 +161,7 @@
     }
 
     .post:last-child {
-        margin-right: 0;
+        margin-right: 30px;
     }
 }
 
