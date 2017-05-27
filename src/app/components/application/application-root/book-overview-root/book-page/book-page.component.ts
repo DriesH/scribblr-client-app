@@ -9,6 +9,7 @@ export class BookPageComponent implements OnInit, OnChanges {
 
     @Input('src') src: String;
     @Input('pageData') pageData;
+    @Input('loadingColor') loadingColor;
 
     loaded = false;
     isEmpty = false;

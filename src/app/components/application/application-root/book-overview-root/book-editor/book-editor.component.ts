@@ -18,14 +18,16 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     @Input('isLoadingPosts') isLoadingPosts;
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
 
-    currentStep = 1;
-
     book;
     children;
     posts;
 
+    bookModel = {
+        color: '#4E84D5'
+    };
+
     _postCfg = API_ROUTES.application.posts;
-    currentPage = 1;
+    private currentPage = 0;
     currentPageModel = this.currentPage;
     currentChildQuotes = null; // short id of the current child that is showing quotes.
     maxPages = 10;
@@ -77,8 +79,10 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             this.book = b.book;
             this.posts = b.posts;
 
-            this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+            if (this.currentPageModel !== 0) {
+                this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
+                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+            }
         });
 
         this.store.select('CURRENT_CHILDREN').subscribe(CHILDREN => {
@@ -121,16 +125,19 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     }
 
     previousPage() {
-      if (this.currentPage <= 1) {
-          this.currentPage = 1;
-          return;
-      }
+        if (this.currentPage <= 0) {
+            this.currentPage = 0;
+            return;
+        }
 
-      this.currentPage--;
-      this.currentPageModel = this.currentPage;
+        this.currentPage--;
+        this.currentPageModel = this.currentPage;
 
-      this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-      this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+        if (this.currentPage !== 0) {
+            this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
+            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+        }
+
     }
 
     setCurrentImageArray(currentImages, book, currentPage) {

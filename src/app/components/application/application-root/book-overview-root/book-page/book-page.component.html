@@ -1,4 +1,4 @@
-<div class="placeholder" *ngIf="!loaded && !isEmpty">
+<div class="placeholder" [style.backgroundColor]="loadingColor" *ngIf="!loaded && !isEmpty">
     <span class="loading-spinner"></span>
     <p class="loading-text">Loading...</p>
 </div>

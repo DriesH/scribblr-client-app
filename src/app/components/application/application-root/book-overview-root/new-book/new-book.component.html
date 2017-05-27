@@ -1,27 +1,27 @@
 <div id="start-menu" *ngIf="!editorActive">
-  <div id="auto-generate-all-children" class="book-start-buttons--container">
-    <img src="/assets/book-editor/autogenerate-all-icon.svg">
-    <h1 class="title">Generate a book with all children</h1>
-    <p>You can still edit the book after we generated it for you.</p>
-    <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
-  </div>
+    <div id="auto-generate-all-children" class="book-start-buttons--container">
+        <img src="/assets/book-editor/autogenerate-all-icon.svg">
+        <h1 class="title">Generate a book with all children</h1>
+        <p>You can still edit the book after we generated it for you.</p>
+        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
+    </div>
 
-  <div id="auto-generate-one-child" class="book-start-buttons--container">
-    <img src="/assets/book-editor/autogenerate-one-child-icon.svg">
-    <h1 class="title">Generate a book of one child</h1>
-    <p>You can still edit the book after we generated it for you.</p>
-    <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
-  </div>
+    <div id="auto-generate-one-child" class="book-start-buttons--container">
+        <img src="/assets/book-editor/autogenerate-one-child-icon.svg">
+        <h1 class="title">Generate a book of one child</h1>
+        <p>You can still edit the book after we generated it for you.</p>
+        <button (click)="autoGenerate()" class="btn btn-primary btn-color-main">Start</button>
+    </div>
 
-  <div id="start-blank-book" class="book-start-buttons--container">
-    <img src="/assets/book-editor/start-blank-book-icon.svg">
-    <h1 class="title">Start from a blank canvas</h1>
-    <p>If you like to do things yourself!</p>
-    <button (click)="startEmpty()" class="btn btn-primary btn-color-main">Start</button>
-  </div>
+    <div id="start-blank-book" class="book-start-buttons--container">
+        <img src="/assets/book-editor/start-blank-book-icon.svg">
+        <h1 class="title">Start from a blank canvas</h1>
+        <p>If you like to do things yourself!</p>
+        <button (click)="startEmpty()" class="btn btn-primary btn-color-main">Start</button>
+    </div>
 </div>
 
 <div *ngIf="editorActive">
-  <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false"></scrblr-book-tutorial>
-  <scrblr-book-editor [isLoadingPosts]="isLoadingPosts" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
+    <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false"></scrblr-book-tutorial>
+    <scrblr-book-editor [isLoadingPosts]="isLoadingPosts" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
 </div>
