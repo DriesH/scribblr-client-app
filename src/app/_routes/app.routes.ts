@@ -1,4 +1,5 @@
 // router module and routes.
+// tslint:disable:max-line-length
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomePageComponent } from '../components/home-page/home-page.component';
@@ -8,21 +9,22 @@ import { ApplicationRootComponent } from '../components/application/application-
 
 // Application root components
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
-import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
-import { NewMemoryComponent } from '../components/application/application-root/quote-overview-root/new-memory/new-memory.component';
-import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
-
-// tslint:disable-next-line:max-line-length
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
 
-// Quote root component children
-import { ChildrenOverviewRootComponent } from '../components/application/application-root/children-overview-root/children-overview-root.component';
-import { NewChildComponent } from '../components/application/application-root/children-overview-root/new-child/new-child.component';
+// Quotes
+import { NewMemoryComponent } from '../components/application/application-root/quote-overview-root/new-memory/new-memory.component';
+import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
+import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
+
+// Book
+import { NewBookComponent } from '../components/application/application-root/book-overview-root/new-book/new-book.component';
+import { BookInspectorComponent } from '../components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
 
 // News
 import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
 
+// Guards
 import { AuthGuard } from '../guards/auth.guard';
 
 const ROUTES: Routes = [
@@ -86,6 +88,16 @@ const ROUTES: Routes = [
             {
                 path: 'books',
                 component: BookOverviewRootComponent,
+                children: [
+                    {
+                        path: 'new',
+                        component: NewBookComponent
+                    },
+                    {
+                        path: 'book/:short_id_book',
+                        component: BookInspectorComponent
+                    }
+                ]
             }
         ]
     }

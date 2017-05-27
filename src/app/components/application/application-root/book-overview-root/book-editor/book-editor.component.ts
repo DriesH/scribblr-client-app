@@ -18,6 +18,8 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     @Input('isLoadingPosts') isLoadingPosts;
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
 
+    currentStep = 1;
+
     book;
     children;
     posts;

@@ -29,6 +29,7 @@ export class BookTutorialComponent implements OnInit {
     closingTutorial = 'in';
 
     currentStep = 1;
+    maxStep = 3;
 
     images = [
         '/assets/child-head-test/de-ronny.png',
@@ -53,7 +54,11 @@ export class BookTutorialComponent implements OnInit {
     }
 
     nextStep() {
-        this.currentStep++;
+        if (this.currentStep >= this.maxStep) {
+            this.currentStep = this.maxStep;
+        } else {
+            this.currentStep++;
+        }
     }
 
     setStep(step) {

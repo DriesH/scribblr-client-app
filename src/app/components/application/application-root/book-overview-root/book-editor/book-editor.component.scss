@@ -37,6 +37,8 @@
     hr {
         height: 100%;
         margin: 0;
+        border-style: solid;
+        border-color: transparent #808080 transparent transparent;
     }
 
     .page-left,
@@ -57,7 +59,8 @@
 
     .page-right {
         p {
-            color: #808080;
+            font-weight: bold;
+            color: #101010;
             text-align: center;
         }
 
@@ -65,7 +68,6 @@
             color: $main-color-four;
         }
     }
-
 }
 
 #book-editor-information {
@@ -73,6 +75,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    user-select: none;
 
     .previous,
     .next {

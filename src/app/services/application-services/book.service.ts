@@ -1,3 +1,4 @@
+// tslint:disable:max-line-length
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpHelperService } from '../http-helper.service';
@@ -26,14 +27,29 @@ export class BookService {
     }
 
     // GET
-   autoGenerateNewBook(): Observable<any> {
+    autoGenerateNewBook(): Observable<any> {
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.generateNewBook, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
-    saveBook(bookShortId, bookData): Observable<any> {
+    autoGenerateNewBookForChild(childShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.generateNewBookForChild(childShortId), this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
+    // POST
+    saveBook(bookData): Observable<any> {
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.newBook,
+            bookData,
+            this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
+
+    saveBookForChild(childShortId, bookData): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.newBookForChild(childShortId),
             bookData,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))

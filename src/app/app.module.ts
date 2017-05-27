@@ -92,6 +92,8 @@ import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
 import { BookTutorialComponent } from './components/application/application-root/book-overview-root/book-tutorial/book-tutorial.component';
+import { NewBookComponent } from './components/application/application-root/book-overview-root/new-book/new-book.component';
+import { BookInspectorComponent } from './components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -135,6 +137,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         BookEditorComponent,
         BookPageComponent,
         BookTutorialComponent,
+        NewBookComponent,
+        BookInspectorComponent,
     ],
     imports: [
         BrowserModule,

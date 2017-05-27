@@ -61,7 +61,13 @@ export const API_ROUTES = {
         book: {
             index: applicationPrefix + 'books',
             generateNewBook: applicationPrefix + 'books/generate',
+            generateNewBookForChild: (childShortId) => {
+                return applicationPrefix + 'books/generate?c=' + childShortId;
+            },
             newBook: applicationPrefix + 'books/new',
+            newBookForChild: (childShortId) => {
+                return applicationPrefix + 'books/new?c=' + childShortId;
+            },
             getBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId;
             },
