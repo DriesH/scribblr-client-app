@@ -67,6 +67,7 @@ import { QuoteService } from './services/application-services/quote.service';
 import { AchievementService } from './services/application-services/achievement.service';
 import { AchievementUnlockableService } from './services/achievement-unlockable.service';
 import { BookService } from './services/application-services/book.service';
+import { TutorialService } from './services/application-services/tutorial.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -171,7 +172,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ErrorHandlerService,
         AchievementService,
         AchievementUnlockableService,
-        BookService
+        BookService,
+        TutorialService
     ],
     bootstrap: [ AppComponent ]
 })

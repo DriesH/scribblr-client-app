@@ -8,6 +8,7 @@
             <div class="page-left" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                 <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]"></scrblr-book-page>
             </div>
+            <hr>
             <div class="page-right" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                 <scrblr-book-page [pageData]="book[currentPageModel - 1][1]" [src]="currentImages[1]"></scrblr-book-page>
             </div>
@@ -17,7 +18,11 @@
             <div class="page-left" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                 <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]"></scrblr-book-page>
             </div>
+            <hr>
             <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                <div class="quote-icon">
+                    <i class="fa fa-quote-left fa-5x"></i>
+                </div>
                 <p>{{ book[currentPageModel - 1][0].story }}</p>
             </div>
         </div>

@@ -68,6 +68,10 @@ export const API_ROUTES = {
             deleteBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId + '/delete';
             }
+        },
+        tutorial: {
+            skipTutorialBook: applicationPrefix + 'book/seen-tutorial',
+            completedTutorialBook: applicationPrefix + 'book/seen-tutorial',
         }
     }
 

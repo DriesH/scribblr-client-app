@@ -34,11 +34,17 @@
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     }
 
+    hr {
+        height: 100%;
+        margin: 0;
+    }
+
     .page-left,
     .page-right {
         width: 550px;
         height: 550px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         position: relative;
@@ -49,9 +55,17 @@
         }
     }
 
-    .page-left {
-        margin-right: 2%;
+    .page-right {
+        p {
+            color: #808080;
+            text-align: center;
+        }
+
+        .quote-icon {
+            color: $main-color-four;
+        }
     }
+
 }
 
 #book-editor-information {

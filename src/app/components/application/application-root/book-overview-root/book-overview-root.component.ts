@@ -17,6 +17,8 @@ import * as BookActions from '../../../../ngrx-state/actions/book.action';
 })
 export class BookOverviewRootComponent implements OnInit {
 
+    tutorialActive = true;
+
     _postCfg = API_ROUTES.application.posts;
 
     editorActive = false;

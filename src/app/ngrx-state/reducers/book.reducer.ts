@@ -49,14 +49,19 @@ export function BookReducer(state: any = initialState, action: Action) {
             });
 
         case bookActions.ActionTypes.REMOVE_FROM_BOOK:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, {
+
+            });
 
         case bookActions.ActionTypes.REMOVE_FROM_POST_LIST:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, {
+
+            });
 
         case bookActions.ActionTypes.ADD_TO_POST_LIST:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, {
 
+            });
 
         default:
             return state;

@@ -20,11 +20,8 @@
         <button (click)="startEmpty()" class="btn btn-primary btn-color-main">Start</button>
     </div>
 </div>
+<scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false"></scrblr-book-tutorial>
 
 <div *ngIf="editorActive">
-    <scrblr-book-tutorial></scrblr-book-tutorial>
     <scrblr-book-editor [isLoadingPosts]="isLoadingPosts" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
 </div>
-
-
-
