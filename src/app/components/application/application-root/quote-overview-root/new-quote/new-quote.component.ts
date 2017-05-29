@@ -350,7 +350,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         }
 
         searchPexelsApi(searchQuery, ms = 1000) {
-
             let timer = 0;
 
             if (this.isActive) {
@@ -358,12 +357,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             }
 
             this.isActive = true;
-
             clearTimeout(timer);
-
             timer = setTimeout(() => {
                 this.isActive = false;
-                  this._pas.searchImages(searchQuery).debounceTime(2000).subscribe(res => {
+                  this._pas.searchImages(searchQuery).subscribe(res => {
                       console.log(res);
                       // this.pexelsImgs = res.presets;
                   });
