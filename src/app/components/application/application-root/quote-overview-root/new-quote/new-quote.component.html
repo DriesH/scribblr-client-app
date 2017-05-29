@@ -70,18 +70,14 @@
 
             <ul class="preset-picker" *ngIf="presetPickerActive" perfect-scrollbar>
                 <input class='pexels-search' (keyup)='searchPexelsApi(searchQuery)' [(ngModel)]="searchQuery" type="text" name="search" value="" placeholder="Type in a keyword to search for pictures...">
-                <li class="preset" *ngFor="let pexelsImg of pexelsImgs" (click)="changeImage($event, pexelsImg.src.large)">
-                    <img [src]="pexelsImg.src.tiny" alt="presetImg.name">
+                <li class="preset" *ngFor="let img of pexelsImgs" (click)="changeImage($event, img.src.large)">
+                    <img [src]="img.src.tiny" [alt]="img.photographer">
                 </li>
             </ul>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive">
 
-            <!--<div id="dropzone" [hidden]="presetPickerActive" #dropzone></div>-->
-
             <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous">
-
-
 
         </div>
     </div>

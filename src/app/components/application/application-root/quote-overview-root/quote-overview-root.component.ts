@@ -23,9 +23,12 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     @ViewChild('dropzoneInput')  dropzoneInput: ElementRef;
     @ViewChild('quoteContainer') quoteContainer: ElementRef;
 
-    quotes; // todo model quote
+    quotes = []; // todo model quote
     msnry;
     childShortId: String;
+
+    currentChildren = [];
+    currentChild = {};
 
     loading = true;
 
@@ -35,6 +38,28 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
         private store: Store<any>) { }
 
     ngOnInit() {
+        this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
+            let cc: any = CURRENT_CHILDREN;
+
+            this.currentChildren = cc.children;
+
+            this.currentChildren.forEach((child, key) => {
+                if (child.short_id === this.childShortId) {
+                    console.log(child);
+                    this.currentChild = child;
+                }
+            });
+
+        });
+
+        this.store.select('QUOTES').subscribe(QUOTES => {
+            let q: any = QUOTES;
+
+            if (q.newQuote !== {}) {
+                this.quotes.push(q.newQuote);
+            }
+        });
+
         this.route.params.subscribe(params => {
             this.childShortId = params.short_id_child;
             this.quotes = [];
@@ -45,15 +70,16 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
                     this.loading = false;
                     this.quotes = res.posts;
                 });
+
+            this.currentChildren.forEach((child, key) => {
+                if (child.short_id === this.childShortId) {
+                    console.log(child);
+                    this.currentChild = child;
+                }
+            });
+
         });
 
-        this.store.select('QUOTES').subscribe(QUOTES => {
-            let q: any = QUOTES;
-
-            if (q.newQuote !== {}) {
-                this.quotes.push(q.newQuote);
-            }
-        });
     }
 
     ngAfterViewInit() {

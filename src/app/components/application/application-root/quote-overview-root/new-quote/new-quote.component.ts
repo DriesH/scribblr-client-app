@@ -26,25 +26,23 @@ declare var Aviary: any;
 export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @ViewChild('presetImg') presetImg: ElementRef;
-    @ViewChild('pexelsImgs') pexelsImgs: ElementRef;
     @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
 
     csdkImageEditor;
-    isActive = false;
+    searchIsActive = false;
 
     defaultPreset;
     presetId;
     quoteModel = {
         quote: null,
         font: 'Calibri',
-        selectedPreset: '/assets/preset-imgs/guinea_pig.jpg'
+        selectedPreset: null
     };
 
     fonts: Array<String>;
-    presetImgs;
-
+    pexelsImgs;
 
     presetPickerActive = true;
 
@@ -65,11 +63,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         ngOnInit() {
             this._qs.getFonts().subscribe(res => this.fonts = res.fonts);
-            this._qs.getPresetImg().subscribe(res => {
-                this.presetImgs = res.presets;
-                this.defaultPreset = '/assets/preset-imgs/' + res.presets[0].name;
-                this.presetId =  + res.presets[0].id;
 
+            this._pas.getMostPopular().subscribe(res => {
+                this.pexelsImgs = res.photos;
+                this.quoteModel.selectedPreset = this.pexelsImgs[0].src.large;
             });
 
             this.csdkImageEditor = new Aviary.Feather({
@@ -196,7 +193,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             e.preventDefault();
             console.log('changeImage');
             this.quoteModel.selectedPreset = original_url;
-            // this.presetId = id;
         }
 
         /**
@@ -331,7 +327,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             this.quoteData.append('font_type', this.quoteModel.font);
 
             if (this.presetPickerActive) {
-                this.quoteData.append('preset', this.presetId);
+                this.quoteData.append('img_original', this.quoteModel.selectedPreset);
             } else {
                 this.quoteData.append('img_original', this.aviaryLink);
             }
@@ -351,16 +347,16 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         }
 
         searchPexelsApi(searchQuery, ms = 1000) {
-            let timer = 0;
+            let timer;
 
-            if (this.isActive) {
+            if (this.searchIsActive) {
                 return;
             }
 
-            this.isActive = true;
+            this.searchIsActive = true;
             clearTimeout(timer);
             timer = setTimeout(() => {
-                this.isActive = false;
+                this.searchIsActive = false;
                   this._pas.searchImages(searchQuery).subscribe(res => {
                       console.log(res);
                       this.pexelsImgs = res.photos;

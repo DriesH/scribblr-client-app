@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 
 import { UserService } from '../../../../services/application-services/user.service';
 
+import { NotificationsService } from 'angular2-notifications';
+
 import * as UserActions from '../../../../ngrx-state/actions/current-user.action';
 
 @Component({
@@ -26,12 +28,15 @@ export class UserRootComponent implements OnInit {
 
     isActive = false;
 
-    constructor(private store: Store<any>, private _us: UserService) { }
+    constructor(
+        private store: Store<any>,
+        private _us: UserService,
+        private _ns: NotificationsService) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             let cu: any = CURRENT_USER;
-            this.userModel = cu.user;
+            this.userModel = Object.assign({}, this.userModel, cu.user);
         });
     }
 
@@ -39,6 +44,7 @@ export class UserRootComponent implements OnInit {
         console.log('hello', userModel);
         this._us.updateUser(userModel).subscribe(res => {
             this.store.dispatch(new UserActions.UpdateUser({ user: res.user }));
+            this._ns.success('Successfully updated your profile!');
         });
     }
 

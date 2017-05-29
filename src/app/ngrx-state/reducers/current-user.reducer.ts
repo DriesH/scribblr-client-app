@@ -20,7 +20,9 @@ export const initialState: State = {
         house_number: null,
         city: null,
         postal_code: null,
-        country: null
+        country: null,
+        has_seen_book_tutorial: null,
+        achievements: []
     }
 };
 

@@ -7,13 +7,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { APP_CONFIG } from '../../_config/app.config';
 
-
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-
-import { HeaderOptions } from '../../models/header-options';
 
 @Injectable()
 export class PexelsapiService {
@@ -26,9 +22,16 @@ export class PexelsapiService {
 
     searchImages(query): Observable<any> {
         return this.http.get('https://api.pexels.com/v1/search?query=' + query + '&per_page=15&page=1',
-        this._headers.setOptions(APP_CONFIG.pexelsApiKey))
-            .map(res => this._hhs.extractData(res))
-            .catch(err => this._hhs.errorHandler(err));
-        }
+            this._headers.setOptions(APP_CONFIG.pexelsApiKey))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
+
+    getMostPopular(): Observable<any> {
+        return this.http.get('https://api.pexels.com/v1/popular?per_page=10&page=1',
+            this._headers.setOptions(APP_CONFIG.pexelsApiKey))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
 
 }

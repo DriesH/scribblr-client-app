@@ -1,10 +1,16 @@
 <router-outlet></router-outlet>
 
-<div class="add-button--container">
+<!--<div class="add-button--container">
     <a routerLink="new-quote" class="">add quote</a>
     <span class="vertical-divider"></span>
     <a routerLink="new-memory" class="">add memory</a>
+</div>-->
+
+<div class="child-infomatics--container">
+    <h1>{{ currentChild?.full_name }}</h1>
+
 </div>
+
 
 <div class="grid" id="gridboi" #quoteContainer [hidden]="quotes.length <= 0">
     <scrblr-quote
