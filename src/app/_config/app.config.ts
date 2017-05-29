@@ -15,4 +15,6 @@ export const APP_CONFIG = {
         'sharpness',
         'colorsplash',
     ],
+    pexelsApiKey: '563492ad6f91700001000001f750ff023c1346b44a8ba78928ae344b',
+
 };
