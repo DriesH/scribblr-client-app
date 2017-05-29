@@ -73,6 +73,7 @@ import { AchievementUnlockableService } from './services/achievement-unlockable.
 import { BookService } from './services/application-services/book.service';
 import { TutorialService } from './services/application-services/tutorial.service';
 import { PexelsapiService } from './services/application-services/pexelsapi.service';
+import { UserService } from './services/application-services/user.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -181,7 +182,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         AchievementUnlockableService,
         BookService,
         TutorialService,
-        PexelsapiService
+        PexelsapiService,
+        UserService
     ],
     bootstrap: [ AppComponent ]
 })

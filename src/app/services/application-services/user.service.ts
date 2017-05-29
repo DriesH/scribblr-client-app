@@ -13,7 +13,7 @@ import 'rxjs/add/observable/throw';
 import { API_ROUTES } from '../../_api-routes/api.routes';
 
 @Injectable()
-export class TutorialService {
+export class UserService {
 
     token;
 
@@ -24,16 +24,13 @@ export class TutorialService {
           this.token = localStorage.getItem('_token');
     }
 
-    // GET
-    skipTutorial(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.tutorial.skipTutorialBook, this._headers.setOptions(this.token))
+    // POST
+    updateUser(data): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.user.update,
+            data,
+            this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
-    completedTutorial(): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.tutorial.completedTutorialBook, this._headers.setOptions(this.token))
-            .map(res => this._hhs.extractData(res))
-            .catch(err => this._hhs.errorHandler(err));
-    }
 }

@@ -12,6 +12,9 @@ export const API_ROUTES = {
     },
     getUserRoute: '/auth/user',
     logoutUser: '/auth/logout',
+    user: {
+        update: '/auth/user'
+    },
     application: {
         child: {
             index: applicationPrefix + 'children',

@@ -1,6 +1,6 @@
 <div id="user-root">
 
-    <form class="scrblr-form wide-form" id="user-form" #userForm (ngSumbit)="updateUser(userModel)">
+    <form class="scrblr-form wide-form" id="user-form" #userForm="ngForm" (ngSumbit)="updateUser(userModel)">
         <div class="form-controls__container">
             <div class="from-input-group-side-by-side">
                 <div class="form-input-group">
@@ -49,7 +49,7 @@
                 <input type="text" name="country" id="country" #country="ngModel" [(ngModel)]="userModel.country">
             </div>
 
-            <button id="submit-button" class="btn btn-primary btn-color-main" type="submit" [disabled]="!userForm.isValid">Save</button>
+            <button id="submit-button" class="btn btn-primary btn-color-main" type="submit" [disabled]="!userForm.valid">Save</button>
         </div>
 
 

@@ -29,6 +29,11 @@ export function CurrentUserReducer (state = initialState, action: Action) {
         case userActions.ActionTypes.SUCCESS_LOGIN:
             return Object.assign({}, state, action.payload);
 
+        case userActions.ActionTypes.UPDATE_USER:
+            return Object.assign({}, state, {
+                user: action.payload.user
+            });
+
         default:
             return state;
     }
