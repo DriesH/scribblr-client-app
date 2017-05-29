@@ -1,0 +1,58 @@
+<div id="user-root">
+
+    <form class="scrblr-form wide-form" id="user-form" #userForm (ngSumbit)="updateUser(userModel)">
+        <div class="form-controls__container">
+            <div class="from-input-group-side-by-side">
+                <div class="form-input-group">
+                    <label for="first-name">First name</label>
+                    <input type="text" name="first_name" id="first-name" #firstName="ngModel" [(ngModel)]="userModel.first_name">
+                </div>
+
+                <div class="form-input-group">
+                    <label for="last-name">Last name</label>
+                    <input type="text" name="last_name" id="last-name" #lastName="ngModel" [(ngModel)]="userModel.last_name">
+                </div>
+            </div>
+
+
+            <div class="form-input-group">
+                <label for="email-name">Email</label>
+                <input type="text" name="email" id="email" #email="ngModel" [(ngModel)]="userModel.email">
+            </div>
+
+            <div class="from-input-group-side-by-side">
+                <div class="form-input-group">
+                    <label for="street-name">Street</label>
+                    <input type="text" name="street_name" id="street-name" #streetName="ngModel" [(ngModel)]="userModel.street_name">
+                </div>
+
+                <div class="form-input-group">
+                    <label for="house-number">House number</label>
+                    <input type="text" name="house_number" id="house-number" #houseNumber="ngModel" [(ngModel)]="userModel.house_number">
+                </div>
+            </div>
+
+            <div class="from-input-group-side-by-side">
+                <div class="form-input-group">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city" #city="ngModel" [(ngModel)]="userModel.city">
+                </div>
+
+                <div class="form-input-group">
+                    <label for="postal-code">Postal code</label>
+                    <input type="text" name="postal_code" id="postal-code" #postalCode="ngModel" [(ngModel)]="userModel.postal_code">
+                </div>
+            </div>
+
+            <div class="form-input-group">
+                <label for="country">Country</label>
+                <input type="text" name="country" id="country" #country="ngModel" [(ngModel)]="userModel.country">
+            </div>
+
+            <button id="submit-button" class="btn btn-primary btn-color-main" type="submit" [disabled]="!userForm.isValid">Save</button>
+        </div>
+
+
+    </form>
+
+</div>

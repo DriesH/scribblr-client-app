@@ -52,6 +52,10 @@ import { NewMemoryComponent } from './components/application/application-root/qu
 import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
 import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
 import { BookPageComponent } from './components/application/application-root/book-overview-root/book-page/book-page.component';
+import { BookTutorialComponent } from './components/application/application-root/book-overview-root/book-tutorial/book-tutorial.component';
+import { NewBookComponent } from './components/application/application-root/book-overview-root/new-book/new-book.component';
+import { BookInspectorComponent } from './components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
+import { UserRootComponent } from './components/application/application-root/user-root/user-root.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -91,9 +95,6 @@ import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reduc
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
-import { BookTutorialComponent } from './components/application/application-root/book-overview-root/book-tutorial/book-tutorial.component';
-import { NewBookComponent } from './components/application/application-root/book-overview-root/new-book/new-book.component';
-import { BookInspectorComponent } from './components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -139,6 +140,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         BookTutorialComponent,
         NewBookComponent,
         BookInspectorComponent,
+        UserRootComponent,
     ],
     imports: [
         BrowserModule,

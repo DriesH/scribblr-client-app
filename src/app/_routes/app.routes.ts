@@ -7,6 +7,8 @@ import { RegistrationPageComponent } from '../components/registration-page/regis
 import { LoginPageComponent } from '../components/login-page/login-page.component';
 import { ApplicationRootComponent } from '../components/application/application-root/application-root.component';
 
+import { UserRootComponent } from '../components/application/application-root/user-root/user-root.component';
+
 // Application root components
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
@@ -46,8 +48,6 @@ const ROUTES: Routes = [
     {
         path: 'login',
         component: LoginPageComponent,
-        // canActivate: [ AuthGuard ]
-
     },
 
     {
@@ -55,6 +55,10 @@ const ROUTES: Routes = [
         component: ApplicationRootComponent,
         canActivate: [ AuthGuard ],
         children: [
+            {
+                path: 'user',
+                component: UserRootComponent
+            },
             {
                 path: 'achievements',
                 component: AchievementOverviewRootComponent,
