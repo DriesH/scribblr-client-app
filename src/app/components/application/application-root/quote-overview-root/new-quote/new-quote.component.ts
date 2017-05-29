@@ -343,7 +343,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         dispatchNewQuote(newQuote) {
             this.store.dispatch(new quoteActions.NewQuote({ newQuote: newQuote }));
 
-            this.router.navigate(['application', 'scribbles', this.childShortId]);
+            this.router.navigate(['application', 'overview', this.childShortId]);
         }
 
         searchPexelsApi(searchQuery, ms = 1000) {

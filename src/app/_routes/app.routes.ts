@@ -19,6 +19,9 @@ import { NewMemoryComponent } from '../components/application/application-root/q
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
 
+// Child
+import { EditChildComponent } from '../components/application/application-root/children-overview-root/edit-child/edit-child.component';
+
 // Book
 import { NewBookComponent } from '../components/application/application-root/book-overview-root/new-book/new-book.component';
 import { BookInspectorComponent } from '../components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
@@ -64,11 +67,11 @@ const ROUTES: Routes = [
                 component: AchievementOverviewRootComponent,
             },
             {
-                path: 'scribbles',
+                path: 'overview',
                 component: QuoteOverviewRootComponent
             },
             {
-                path: 'scribbles/:short_id_child',
+                path: 'overview/:short_id_child',
                 component: QuoteOverviewRootComponent,
                 children: [
                     {
@@ -82,6 +85,10 @@ const ROUTES: Routes = [
                     {
                         path: 'new-memory',
                         component: NewMemoryComponent
+                    },
+                    {
+                        path: 'edit-child',
+                        component: EditChildComponent
                     }
                 ]
             },

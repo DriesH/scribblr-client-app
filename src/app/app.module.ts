@@ -97,6 +97,7 @@ import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reduc
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
+import { EditChildComponent } from './components/application/application-root/children-overview-root/edit-child/edit-child.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -143,6 +144,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewBookComponent,
         BookInspectorComponent,
         UserRootComponent,
+        EditChildComponent,
     ],
     imports: [
         BrowserModule,

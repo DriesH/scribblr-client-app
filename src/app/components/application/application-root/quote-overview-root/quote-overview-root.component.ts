@@ -30,6 +30,11 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     currentChildren = [];
     currentChild = {};
 
+    amountOf = {
+        quotes: null,
+        memories: null
+    };
+
     loading = true;
 
     constructor(
@@ -69,6 +74,8 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
                 .subscribe(res => {
                     this.loading = false;
                     this.quotes = res.posts;
+                    this.amountOf.quotes = res.quote_count;
+                    this.amountOf.memories = res.memory_count;
                 });
 
             this.currentChildren.forEach((child, key) => {

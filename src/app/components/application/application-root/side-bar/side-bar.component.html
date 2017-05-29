@@ -52,7 +52,7 @@
                     <span class="sidebar--children-loading"></span>
                 </li>
                 <li *ngFor="let child of children">
-                    <a class="child-avatar" [routerLink]="['scribbles', child.short_id]" routerLinkActive="active">
+                    <a class="child-avatar" [routerLink]="['overview', child.short_id]" routerLinkActive="active">
 
                         <img *ngIf="child.avatar_url_id" [src]="'https://scribblr-dev.local/api/application/children/' + child.short_id + '/avatar/' + child.avatar_url_id">
                         <img *ngIf="!child.avatar_url_id" [src]="'/assets/default-avatars/' + child.gender + '.svg'" [alt]="child.gender">
