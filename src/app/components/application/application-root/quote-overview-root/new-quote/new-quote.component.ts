@@ -183,6 +183,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             text.forEach((item, key) => {
                 let translationY = (text.length - 1) * (fontSize / 2);
 
+                ctx.textBaseline = 'middle';
                 ctx.fillText(item, c.width / 2, ((c.height / 2) + (fontSize * key)) - translationY);
             });
         }
