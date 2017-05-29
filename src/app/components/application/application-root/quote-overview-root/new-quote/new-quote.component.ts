@@ -165,7 +165,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             ctx.fillStyle = `rgba(0, 0, 0, 0.${overlayOpacity})`;
             ctx.fillRect(0, 0, c.width, c.height);
 
-            fontSize = c.height / 15;
+            fontSize = c.height / 8;
 
             // Set the font.
             ctx.font = `${ fontSize }px ` + this.quoteModel.font;
@@ -191,11 +191,11 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         * Change the preset image.
         * @param e: Event
         */
-        changeImage(e, id) {
+        changeImage(e, original_url) {
             e.preventDefault();
             console.log('changeImage');
-            this.quoteModel.selectedPreset = e.srcElement.currentSrc;
-            this.presetId = id;
+            this.quoteModel.selectedPreset = original_url;
+            // this.presetId = id;
         }
 
         /**
@@ -362,7 +362,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.isActive = false;
                   this._pas.searchImages(searchQuery).subscribe(res => {
                       console.log(res);
-                      // this.pexelsImgs = res.presets;
+                      this.pexelsImgs = res.photos;
                   });
             }, ms);
 

@@ -70,8 +70,8 @@
 
             <ul class="preset-picker" *ngIf="presetPickerActive" perfect-scrollbar>
                 <input class='pexels-search' (keyup)='searchPexelsApi(searchQuery)' [(ngModel)]="searchQuery" type="text" name="search" value="" placeholder="Type in a keyword to search for pictures...">
-                <li class="preset" *ngFor="let pexelsImg of pexelsImgs" (click)="changeImage($event, presetImg.id)">
-                    <img [src]="'/assets/preset-imgs/' + presetImg.name" alt="presetImg.name">
+                <li class="preset" *ngFor="let pexelsImg of pexelsImgs" (click)="changeImage($event, pexelsImg.src.large)">
+                    <img [src]="pexelsImg.src.tiny" alt="presetImg.name">
                 </li>
             </ul>
 
