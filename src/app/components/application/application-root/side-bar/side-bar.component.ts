@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 
 import * as ApplicationUIActions from '../../../../ngrx-state/actions/application-ui.action';
 
+import { API_ROUTES } from '../../../../_api-routes/api.routes';
+
 @Component({
   selector: 'scrblr-side-bar',
   templateUrl: './side-bar.component.html',
@@ -21,6 +23,10 @@ export class SideBarComponent implements OnInit {
 
     addChild() {
         this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: true }));
+    }
+
+    formatImageLink(childShortId, avatarUrlId) {
+        return API_ROUTES.baseUrl + API_ROUTES.application.child.getAvatar(childShortId, avatarUrlId);
     }
 
 }

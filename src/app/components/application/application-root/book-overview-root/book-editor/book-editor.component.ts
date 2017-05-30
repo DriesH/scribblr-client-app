@@ -176,6 +176,10 @@ export class BookEditorComponent implements OnInit {
     closeEditor() {
         this.closeEditorEvent.emit(true);
     }
+
+    formatImageLink(childShortId, avatarUrlId) {
+        return API_ROUTES.baseUrl + API_ROUTES.application.child.getAvatar(childShortId, avatarUrlId);
+    }
     /////////////////////----------------------------
 
     // EDITOR STUFF----------------------------------
@@ -265,5 +269,10 @@ export class BookEditorComponent implements OnInit {
 
         this.previousPageIndex = null;
     }
+
+    removeCurrentPage(currentPage) {
+        this.store.dispatch(new BookActions.RemoveFromBook(currentPage));
+    }
+
 
 }

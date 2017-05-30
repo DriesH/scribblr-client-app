@@ -114,6 +114,7 @@ export class NewBookComponent implements OnInit {
 
     closeEditor() {
         this.editorActive = false;
+        this.currentStep = 1;
     }
 
 }

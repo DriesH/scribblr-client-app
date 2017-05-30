@@ -1,6 +1,6 @@
 .ng-tooltip {
     max-width: 200px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 1);
     color: #FFF;
     text-align: center;
     border-radius: 6px;
@@ -30,7 +30,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    border-color: rgba(0, 0, 0, 0.8) transparent transparent;
+    border-color: rgba(0, 0, 0, 1) transparent transparent;
 }
 
 .ng-tooltip-bottom::after {
@@ -38,7 +38,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent rgba(0, 0, 0, 0.8);
+    border-color: transparent transparent rgba(0, 0, 0, 1);
 }
 
 .ng-tooltip-left::after {
@@ -46,7 +46,7 @@
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+    border-color: transparent transparent transparent rgba(0, 0, 0, 1);
 }
 
 .ng-tooltip-right::after {
@@ -54,5 +54,5 @@
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+    border-color: transparent rgba(0, 0, 0, 1) transparent transparent;
 }

@@ -10,12 +10,8 @@
     background: #DEE0E3;
 
     h1 {
-        font-family: 'Poppins', 'Arial', 'Helvetica', sans-serif;
-        color: #2D3338;
+        font-size: 28px;
         text-align: center;
-        margin: 0;
-        font-size: 4em;
-        letter-spacing: -3px;
     }
 
     .center {
@@ -36,7 +32,7 @@
             flex-direction: column;
             align-content: center;
             justify-content: center;
-            width: 75%;
+            width: 50%;
         }
 
         .form-right {
@@ -49,6 +45,7 @@
     }
 
     .form-avatar-upload {
+        width: 100%;
         margin: auto;
     }
 
@@ -79,11 +76,11 @@
 }
 
 .dropzone {
-    width: 430px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 100%;
 
     label {
         color: #545E68;

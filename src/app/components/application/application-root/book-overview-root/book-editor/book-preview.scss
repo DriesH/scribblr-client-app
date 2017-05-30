@@ -42,6 +42,19 @@
         }
     }
 
+    .page-left:hover .delete-page,
+    .page-right:hover .delete-page {
+        opacity: 0.8;
+    }
+
+    .delete-page {
+        position: absolute;
+        opacity: 0;
+        color: red;
+        top: 10px;
+        right: 10px;
+    }
+
     .page-number {
         position: absolute;
         font-size: 0.85em;
