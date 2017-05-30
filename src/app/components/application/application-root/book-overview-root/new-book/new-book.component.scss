@@ -9,6 +9,49 @@
     align-items: center;
     flex-wrap: wrap;
     position: relative;
+
+    .return {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        padding: 10px 20px;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: $main-color-one;
+        animation: forwards 900ms bounceLeft ease-out;
+
+        img {
+            width: 20px;
+            height: auto;
+            margin-right: 15px;
+            transform: rotateZ(-180deg);
+        }
+    }
+}
+
+@keyframes bounceLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-20px);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(-20px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 #step-indicators {

@@ -81,14 +81,27 @@ export function BookReducer(state: any = initialState, action: Action) {
             break;
 
         case bookActions.ActionTypes.REMOVE_FROM_POST_LIST:
-            return Object.assign({}, state, {
-
-            });
+            break;
 
         case bookActions.ActionTypes.ADD_TO_POST_LIST:
-            return Object.assign({}, state, {
+            console.log(action.payload.shortId);
 
+            let index = 0;
+
+            state.posts.forEach((item, key) => {
+                if (item.short_id === action.payload.shortId) {
+                    index = key;
+                }
             });
+
+            return {
+                ...state,
+                posts: [
+                    ...state.posts.slice(0, index),
+                    { ...state.posts[index], is_used_in_book: 0 },
+                    ...state.posts.slice(index + 1)
+                ]
+            };
 
         default:
             return state;

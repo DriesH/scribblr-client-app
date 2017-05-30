@@ -27,6 +27,8 @@ export class BookOverviewRootComponent implements OnInit {
         this.router.events.subscribe(e => {
             if (this.router.url === '/application/books/new') {
                 this.editorActive = true;
+            } else {
+                this.editorActive = false;
             }
         });
     }

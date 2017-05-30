@@ -270,8 +270,9 @@ export class BookEditorComponent implements OnInit {
         this.previousPageIndex = null;
     }
 
-    removeCurrentPage(pageIndex, pageSide) {
+    removeCurrentPage(pageIndex, pageSide, shortId) {
         this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
+        this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
     }
 
 

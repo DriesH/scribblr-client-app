@@ -148,6 +148,10 @@
         margin-top: 10px;
         background-color: rgba(0, 0, 0, 0.5);
 
+        &.used {
+            opacity: 0.1;
+        }
+
         img {
             width: 100%;
         }

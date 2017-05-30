@@ -81,7 +81,7 @@ export class NewBookComponent implements OnInit {
         this._bs.autoGenerateNewBook().subscribe(res => {
 
             this.store.dispatch(new BookActions.BookDataReceived(res.book));
-            this.store.dispatch(new BookActions.PostsDataReceived(res.left_over));
+            this.store.dispatch(new BookActions.PostsDataReceived(res.all_marked_posts));
 
             this.autoGenerateSuccess = true;
             this.editorActive = true;
