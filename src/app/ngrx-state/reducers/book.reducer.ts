@@ -26,54 +26,59 @@ export function BookReducer(state: any = initialState, action: Action) {
             });
 
         case bookActions.ActionTypes.UPDATE_BOOK_PAGE:
-            // let book = state.book.slice();
-            let isMemory = action.payload.isMemory;
-
-            // console.log(book);
-
-            if (isMemory === 1) {
-                console.log({
-                    ...state,
-                    book: [
-                        ...state.book,
-                        [action.payload.pageSide] = action.payload.newPageData,
-                    ]
-                });
-
+            if (action.payload.isMemory === 1) {
                 return {
                     ...state,
                     book: [
-                        ...state.book,
-                        [action.payload.pageIndex][action.payload.pageSide] = action.payload.newPageData
+                        ...state.book.slice(0, action.payload.pageIndex),
+                        [action.payload.newPageData, {}],
+                        ...state.book.slice(action.payload.pageIndex + 1),
                     ]
                 };
             } else {
-                return state;
+                if (action.payload.pageSide === 0) {
+                    return {
+                        ...state,
+                        book: [
+                            ...state.book.slice(0, action.payload.pageIndex),
+                            [action.payload.newPageData, state.book[action.payload.pageIndex][1]],
+                            ...state.book.slice(action.payload.pageIndex + 1),
+                        ]
+                    };
+                } else if (action.payload.pageSide === 1) {
+                    return {
+                        ...state,
+                        book: [
+                            ...state.book.slice(0, action.payload.pageIndex),
+                            [state.book[action.payload.pageIndex][0], action.payload.newPageData],
+                            ...state.book.slice(action.payload.pageIndex + 1),
+                        ]
+                    };
+                }
             }
-                // book[action.payload.pageIndex][0] = action.payload.newPageData;
-                // book[action.payload.pageIndex][1] = {};
-                // console.log('is memory');
-            // } else {
-            //     // if (book[action.payload.pageIndex][0].is_memory === 1) {
-            //     //     book[action.payload.pageIndex][0] = {};
-            //     // }
-
-            //     // book[action.payload.pageIndex][action.payload.pageSide] = action.payload.newPageData;
-            //     // console.log('is not memory');
-            // }
-
-            // return Object.assign({}, state, {
-            //     book: book
-            // });
+            break;
 
         case bookActions.ActionTypes.REMOVE_FROM_BOOK:
-
-            console.log(action.payload);
-
-            return state;
-            // return Object.assign({}, state, {
-
-            // });
+            if (action.payload.pageSide === 0) {
+                return {
+                    ...state,
+                    book: [
+                        ...state.book.slice(0, action.payload.pageIndex),
+                        [{}, state.book[action.payload.pageIndex][1]],
+                        ...state.book.slice(action.payload.pageIndex + 1),
+                    ]
+                };
+            } else if (action.payload.pageSide === 1) {
+                return {
+                    ...state,
+                    book: [
+                        ...state.book.slice(0, action.payload.pageIndex),
+                        [state.book[action.payload.pageIndex][0], {}],
+                        ...state.book.slice(action.payload.pageIndex + 1),
+                    ]
+                };
+            }
+            break;
 
         case bookActions.ActionTypes.REMOVE_FROM_POST_LIST:
             return Object.assign({}, state, {
