@@ -23,7 +23,6 @@ export class NewBookComponent implements OnInit {
     _postCfg = API_ROUTES.application.posts;
 
     editorActive = false;
-    isLoadingPosts = false;
     isLoadingChildren = false;
 
     currentChildQuotes = null; // short id of the current child that is showing quotes.
@@ -37,6 +36,8 @@ export class NewBookComponent implements OnInit {
     };
 
     children;
+
+    currentStep = 1;
 
     constructor(
         private _bs: BookService,
@@ -68,19 +69,12 @@ export class NewBookComponent implements OnInit {
         });
     }
 
-    getQuotes(childShortId) {
-        if (this.currentChildQuotes === childShortId) {
-            return;
+    setStep(step, type?) {
+        if (type) {
+            console.log(type);
         }
 
-        this.isLoadingPosts = true;
-
-        this._qs.getPost(childShortId).subscribe(res => {
-
-            this.isLoadingPosts = false;
-
-            this.currentChildQuotes = childShortId;
-        });
+        this.currentStep = step;
     }
 
     autoGenerate() {
@@ -92,8 +86,6 @@ export class NewBookComponent implements OnInit {
             this.autoGenerateSuccess = true;
             this.editorActive = true;
         });
-
-        this.getQuotes(this.children[0].short_id);
     }
 
     startEmpty() {

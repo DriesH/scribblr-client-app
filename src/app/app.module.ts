@@ -99,6 +99,7 @@ import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
 import { EditChildComponent } from './components/application/application-root/children-overview-root/edit-child/edit-child.component';
+import { FlipBookEditorComponent } from './components/application/application-root/book-overview-root/flip-book-editor/flip-book-editor.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -147,6 +148,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         UserRootComponent,
         EditChildComponent,
         TooltipDirective,
+        FlipBookEditorComponent,
     ],
     imports: [
         BrowserModule,

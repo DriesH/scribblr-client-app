@@ -49,25 +49,7 @@
 }
 
 .btn-trans {
-    background: transparent;
     width: 90px;
-    padding: 0.8em 1.5em;
-    border-radius: 2px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: $main-color-four;
-    cursor: pointer;
-    border: none;
-    transition: all 200ms ease-in-out;
-    box-sizing: border-box;
-
-    &:hover {
-        background: #EEE;
-    }
-
-    &.not-important {
-        color: #808080;
-    }
 }
 
 .bullet-indicators {

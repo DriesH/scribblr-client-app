@@ -9,11 +9,11 @@ import { Store } from '@ngrx/store';
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
-  selector: 'scrblr-book-editor',
-  templateUrl: './book-editor.component.html',
-  styleUrls: ['./book-editor.component.scss']
+  selector: 'scrblr-flip-book-editor',
+  templateUrl: './flip-book-editor.component.html',
+  styleUrls: ['./flip-book-editor.component.scss']
 })
-export class BookEditorComponent implements OnInit, AfterViewInit {
+export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
 
@@ -130,16 +130,16 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     }
 
     nextPage() {
-      if (this.currentPage >= this.maxPages) {
-          this.currentPage = this.maxPages;
-          return;
-      }
+        if (this.currentPage >= this.maxPages) {
+            this.currentPage = this.maxPages;
+            return;
+        }
 
-      this.currentPage++;
-      this.currentPageModel = this.currentPage;
+        this.currentPage++;
+        this.currentPageModel = this.currentPage;
 
-      this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-      this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+        this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
+        this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
     }
 
     previousPage() {
@@ -196,4 +196,7 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     closeEditor() {
         this.closeEditorEvent.emit(true);
     }
+}
+
+
 }
