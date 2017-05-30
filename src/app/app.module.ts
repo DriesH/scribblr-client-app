@@ -13,6 +13,7 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CustomFormsModule } from 'ng2-validation';
 import { DndModule } from 'ng2-dnd';
+import { TooltipDirective } from 'ng2-tooltip-directive/components';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
@@ -145,6 +146,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         BookInspectorComponent,
         UserRootComponent,
         EditChildComponent,
+        TooltipDirective,
     ],
     imports: [
         BrowserModule,

@@ -2,10 +2,15 @@
 
 .close-editor {
     position: absolute;
-    left: 50px;
+    right: 50px;
     top: 50px;
     cursor: pointer;
-    color: $main-color-four;
+    width: 20px;
+    height: 20px;
+
+    img {
+        width: 100%;
+    }
 }
 
 #book-editor {
@@ -18,7 +23,6 @@
     justify-content: center;
     align-items: flex-start;
 }
-
 
 #book-front-page {
     display: flex;
@@ -35,8 +39,9 @@
         justify-content: space-around;
         align-items: center;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        position: relative;
 
-        svg {
+        img {
             width: 100%;
             height: 100%;
         }
@@ -129,7 +134,6 @@
     margin-left: 50px;
 }
 
-
 #page-indicator {
     text-align: center;
 
@@ -138,8 +142,8 @@
     }
 }
 
-#selection-bar {
-    height: 150px;
+.selection-bar {
+    height: 170px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -147,6 +151,7 @@
     width: 100%;
     background: $main-color-one;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 0 35px;
@@ -159,6 +164,29 @@
         background: pink;
         display: block;
         margin: 0 50px;
+    }
+
+    p {
+        color: white;
+    }
+}
+
+.book-covers {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    cursor: pointer;
+
+    .book-cover {
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        position: relative;
+        margin-right: 25px;
+
+        img {
+            width: 100%;
+        }
     }
 }
 

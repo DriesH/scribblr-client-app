@@ -22,6 +22,6 @@
 </div>
 
 <div *ngIf="editorActive">
-    <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false"></scrblr-book-tutorial>
+    <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false" [currentUser]="currentUser"></scrblr-book-tutorial>
     <scrblr-book-editor [isLoadingPosts]="isLoadingPosts" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
 </div>

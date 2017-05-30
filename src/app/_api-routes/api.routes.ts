@@ -79,8 +79,8 @@ export const API_ROUTES = {
             }
         },
         tutorial: {
-            skipTutorialBook: applicationPrefix + 'book/seen-tutorial',
-            completedTutorialBook: applicationPrefix + 'book/seen-tutorial',
+            skipTutorialBook: applicationPrefix + 'books/seen-tutorial',
+            completedTutorialBook: applicationPrefix + 'books/seen-tutorial',
         }
     }
 

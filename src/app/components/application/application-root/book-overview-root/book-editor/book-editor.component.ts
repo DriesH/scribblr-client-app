@@ -18,36 +18,74 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     @Input('isLoadingPosts') isLoadingPosts;
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
 
+    _postCfg = API_ROUTES.application.posts;
+
+    // state and http stuff
     book;
     children;
     posts;
 
+    covers = [
+        'covers-01.png',
+        'covers-02.png',
+        'covers-03.png',
+        'covers-04.png',
+        'covers-05.png',
+        'covers-06.png',
+        'covers-07.png',
+        'covers-08.png',
+        'covers-09.png',
+        'covers-10.png'
+    ];
+
+    // model for saving book.
     bookModel = {
-        color: '#4E84D5'
+        cover: 'covers-01.png'
     };
 
-    _postCfg = API_ROUTES.application.posts;
+    // current page.
     private currentPage = 0;
     currentPageModel = this.currentPage;
-    currentChildQuotes = null; // short id of the current child that is showing quotes.
     maxPages = 10;
-    currentImages = [];
-    isMemoryBoolean;
 
-    // drag n drop stuff
-    isOverLeftPage = false;
-    isOverRightPage = false;
+    // stuff for bottom sidebar
+    currentChildQuotes = null; // short id of the current child that is showing quotes.
+    currentImages = [];
+
+    // to show the right view of the book. 2 quotes or 1 story + image.
+    isMemoryBoolean;
 
     constructor(
         private _qs: QuoteService,
         private store: Store<any>
-    ) {
+    ) { }
+
+    ngOnInit() {
+        this.store.select('BOOK').subscribe(BOOK => {
+            let b: any = BOOK;
+
+            this.book = b.book;
+            this.posts = b.posts;
+
+            if (this.currentPageModel !== 0) {
+                this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
+                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+            }
+        });
+
+        this.store.select('CURRENT_CHILDREN').subscribe(CHILDREN => {
+            let c: any = CHILDREN;
+            this.children = c.children;
+        });
 
     }
 
-    transferDataSuccess($event: any) {
-        console.log($event.mouseEvent.target.parentElement.parentElement.className);
+    selectCover(cover) {
+        this.bookModel.cover = cover;
+    }
 
+    // Drag and drop data transfer.
+    transferDataSuccess($event: any) {
         let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
         let dataEvent = {};
 
@@ -70,26 +108,6 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
 
         console.log(dataEvent);
         this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
-    }
-
-    ngOnInit() {
-        this.store.select('BOOK').subscribe(BOOK => {
-            let b: any = BOOK;
-
-            this.book = b.book;
-            this.posts = b.posts;
-
-            if (this.currentPageModel !== 0) {
-                this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
-            }
-        });
-
-        this.store.select('CURRENT_CHILDREN').subscribe(CHILDREN => {
-            let c: any = CHILDREN;
-            this.children = c.children;
-        });
-
     }
 
     ngAfterViewInit() {

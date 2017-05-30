@@ -21,7 +21,8 @@
                 <li><span (click)="setStep(3)" class="bullet-indicator" [ngClass]="{ 'active': currentStep === 3 }"></span></li>
             </ul>
 
-            <button class="btn-trans" (click)="nextStep()">Next</button>
+            <button class="btn-trans" (click)="nextStep()" *ngIf="!showCompleteButton">Next</button>
+            <button class="btn-trans" (click)="completedTutorial()" *ngIf="showCompleteButton">Got it!</button>
         </div>
     </div>
 </div>

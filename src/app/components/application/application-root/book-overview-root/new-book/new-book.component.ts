@@ -11,108 +11,117 @@ import { Store } from '@ngrx/store';
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
-  selector: 'scrblr-new-book',
-  templateUrl: './new-book.component.html',
-  styleUrls: ['./new-book.component.scss']
+    selector: 'scrblr-new-book',
+    templateUrl: './new-book.component.html',
+    styleUrls: ['./new-book.component.scss']
 })
 export class NewBookComponent implements OnInit {
 
-  tutorialActive = true;
+    tutorialActive = true;
+    currentUser;
 
-  _postCfg = API_ROUTES.application.posts;
+    _postCfg = API_ROUTES.application.posts;
 
-  editorActive = false;
-  isLoadingPosts = false;
-  isLoadingChildren = false;
+    editorActive = false;
+    isLoadingPosts = false;
+    isLoadingChildren = false;
 
-  currentChildQuotes = null; // short id of the current child that is showing quotes.
+    currentChildQuotes = null; // short id of the current child that is showing quotes.
 
-  autoGenerateSuccess = false;
+    autoGenerateSuccess = false;
 
-  currentImages = [];
+    currentImages = [];
 
-  childModel = {
-    shortId: null
-  };
+    childModel = {
+        shortId: null
+    };
 
-  children;
+    children;
 
-  constructor(
-    private _bs: BookService,
-    private _qs: QuoteService,
-    private _cs: ChildService,
-    private store: Store<any>
-  ) { }
+    constructor(
+        private _bs: BookService,
+        private _qs: QuoteService,
+        private _cs: ChildService,
+        private store: Store<any>
+    ) { }
 
-  ngOnInit() {
-    this.isLoadingChildren = true;
+    ngOnInit() {
+        this.isLoadingChildren = true;
 
-    this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
-      let cc: any = CURRENT_CHILDREN;
+        this.store.select('CURRENT_USER').subscribe((CURRENT_USER: any) => {
+            this.currentUser = CURRENT_USER.user;
 
-      this.children = cc.children;
+            if (this.currentUser.has_seen_book_tutorial === 1) {
+                this.tutorialActive = false;
+            } else {
+                this.tutorialActive = true;
+            }
+        });
 
-      if (this.children.length > 0) {
-        this.isLoadingChildren = false;
-      }
+        this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
+            this.children = CURRENT_CHILDREN.children;
 
-    });
-  }
+            if (this.children.length > 0) {
+                this.isLoadingChildren = false;
+            }
 
-  getQuotes(childShortId) {
-    if (this.currentChildQuotes === childShortId) {
-      return;
+        });
     }
 
-    this.isLoadingPosts = true;
+    getQuotes(childShortId) {
+        if (this.currentChildQuotes === childShortId) {
+            return;
+        }
 
-    this._qs.getPost(childShortId).subscribe(res => {
+        this.isLoadingPosts = true;
 
-      this.isLoadingPosts = false;
+        this._qs.getPost(childShortId).subscribe(res => {
 
-      this.currentChildQuotes = childShortId;
-    });
-  }
+            this.isLoadingPosts = false;
 
-  autoGenerate() {
-    this._bs.autoGenerateNewBook().subscribe(res => {
+            this.currentChildQuotes = childShortId;
+        });
+    }
 
-      this.store.dispatch(new BookActions.BookDataReceived(res.book));
-      this.store.dispatch(new BookActions.PostsDataReceived(res.left_over));
+    autoGenerate() {
+        this._bs.autoGenerateNewBook().subscribe(res => {
 
-      this.autoGenerateSuccess = true;
-      this.editorActive = true;
-    });
+            this.store.dispatch(new BookActions.BookDataReceived(res.book));
+            this.store.dispatch(new BookActions.PostsDataReceived(res.left_over));
 
-    this.getQuotes(this.children[0].short_id);
-  }
+            this.autoGenerateSuccess = true;
+            this.editorActive = true;
+        });
 
-  startEmpty() {
+        this.getQuotes(this.children[0].short_id);
+    }
 
-    let emptyBook = [
-      [{}, {}], // page 1 & 2
-      [{}, {}], // page 3 & 4
-      [{}, {}], // page 5 & 6
-      [{}, {}], // page 7 & 8
-      [{}, {}], // page 9 & 10
-      [{}, {}], // page 11 & 12
-      [{}, {}], // page 13 & 14
-      [{}, {}], // page 15 & 16
-      [{}, {}], // page 17 & 18
-      [{}, {}]  // page 19 & 20
-    ];
+    startEmpty() {
 
-    this._qs.getAllPosts().subscribe(res => {
-      this.store.dispatch(new BookActions.BookDataReceived(emptyBook));
-      this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+        let emptyBook = [
+            [{}, {}], // page 1 & 2
+            [{}, {}], // page 3 & 4
+            [{}, {}], // page 5 & 6
+            [{}, {}], // page 7 & 8
+            [{}, {}], // page 9 & 10
+            [{}, {}], // page 11 & 12
+            [{}, {}], // page 13 & 14
+            [{}, {}], // page 15 & 16
+            [{}, {}], // page 17 & 18
+            [{}, {}]  // page 19 & 20
+        ];
 
-      this.editorActive = true;
-    });
+        this._qs.getAllPosts().subscribe(res => {
+            this.store.dispatch(new BookActions.BookDataReceived(emptyBook));
+            this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
 
-  }
+            this.editorActive = true;
+        });
 
-  closeEditor() {
-    this.editorActive = false;
-  }
+    }
+
+    closeEditor() {
+        this.editorActive = false;
+    }
 
 }

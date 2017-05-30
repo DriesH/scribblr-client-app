@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import {
     trigger,
@@ -7,6 +7,10 @@ import {
     animate,
     transition
 } from '@angular/animations';
+
+import { Store } from '@ngrx/store';
+
+import * as UserActions from '../../../../../ngrx-state/actions/current-user.action';
 
 import { TutorialService} from '../../../../../services/application-services/tutorial.service';
 
@@ -24,12 +28,16 @@ import { TutorialService} from '../../../../../services/application-services/tut
 })
 export class BookTutorialComponent implements OnInit {
 
+    @Input('currentUser') currentUser;
+
     @Output('closeTutorial') closeTutorial = new EventEmitter<Boolean>();
 
     closingTutorial = 'in';
 
     currentStep = 1;
     maxStep = 3;
+
+    showCompleteButton = false;
 
     images = [
         '/assets/child-head-test/de-ronny.png',
@@ -48,7 +56,7 @@ export class BookTutorialComponent implements OnInit {
         vitae suscipit enim consequat vel.Proin convallis lacus vitae dapibus congue.`,
     ];
 
-    constructor(private _ts: TutorialService) { }
+    constructor(private _ts: TutorialService, private store: Store<any>) { }
 
     ngOnInit() {
     }
@@ -56,8 +64,13 @@ export class BookTutorialComponent implements OnInit {
     nextStep() {
         if (this.currentStep >= this.maxStep) {
             this.currentStep = this.maxStep;
+            this.showCompleteButton = true;
         } else {
             this.currentStep++;
+
+            if (this.currentStep === this.maxStep) {
+                this.showCompleteButton = true;
+            }
         }
     }
 
@@ -71,17 +84,22 @@ export class BookTutorialComponent implements OnInit {
     }
 
     skipTutorial() {
-        // this._ts.skipTutorial().subscribe(res => {
-        //     console.log(res);
-        // });
+        this._ts.skipTutorial().subscribe(res => {
+            console.log(res);
             this.closeTutorialFn();
+        });
     }
 
     completedTutorial() {
         this._ts.completedTutorial().subscribe(res => {
             console.log(res);
-        });
+
+            this.currentUser = Object.assign({}, this.currentUser, { has_seen_book_tutorial: 1 });
+
+            this.store.dispatch(new UserActions.UpdateUser({ user: this.currentUser }));
+
             this.closeTutorialFn();
+        });
     }
 
     closeTutorialFn() {
