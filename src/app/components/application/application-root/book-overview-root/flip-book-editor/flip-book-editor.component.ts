@@ -197,6 +197,3 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
         this.closeEditorEvent.emit(true);
     }
 }
-
-
-}

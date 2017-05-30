@@ -36,6 +36,9 @@ export class BookEditorComponent implements OnInit {
     posts;
     ///////////////////////
 
+    // SIDEBAR STUFF
+    currentChildPosts = [];
+    //////////////////
 
     // LOADING
     isLoadingPosts = false;
@@ -245,6 +248,15 @@ export class BookEditorComponent implements OnInit {
             this.currentPage = this.previousPageIndex;
 
             this.previousPageIndex = null;
+        }
+
+        if (tool !== 'cover') {
+            this.currentChildPosts = [];
+            this.posts.forEach((item, key) => {
+                if (item.child.short_id === tool) {
+                    this.currentChildPosts.push(item);
+                }
+            });
         }
     }
 
