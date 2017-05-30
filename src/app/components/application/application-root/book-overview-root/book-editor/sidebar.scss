@@ -1,0 +1,221 @@
+@import '../../../../../../scss/colors/colors';
+
+.side-bar--container {
+    display: flex;
+    flex-direction: row;
+    background-color: darken($main-color-one, 10%);
+    width: 330px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tool-bar {
+    width: 60px;
+    background-color: darken($main-color-one, 10%);
+}
+
+.tools {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .tool {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover,
+        &.active {
+            background-color: $main-color-one;
+        }
+
+        img {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    .child-avatar {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover,
+        &.active {
+            background-color: $main-color-one;
+        }
+
+        img {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+.selection-bar {
+    width: 270px;
+    background: $main-color-one;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: all 400ms ease-out;
+    color: white;
+
+    .selection-bar-title {
+        margin-top: 35px;
+        margin-bottom: 20px;
+        user-select: none;
+    }
+
+    .divider {
+        width: 1px;
+        height: 70%;
+        background: pink;
+        display: block;
+        margin: 0 50px;
+    }
+}
+
+.book-covers {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .book-cover {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        position: relative;
+        margin-bottom: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.children {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .child-avatar {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        position: relative;
+        margin-right: 10px;
+
+        p {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            color: white;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    .child-avatar:last-child {
+        margin-right: 0;
+    }
+}
+
+.posts {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .post {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        position: relative;
+        margin-right: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .post:last-child {
+        margin-right: 30px;
+    }
+}
+
+.loading-spinner {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.loading-spinner::after {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    border: 2px solid transparent;
+    border-top-color: white;
+    animation: loadingAnimation 500ms linear infinite;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

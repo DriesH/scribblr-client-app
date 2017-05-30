@@ -1,0 +1,112 @@
+@import '../../../../../../scss/colors/colors';
+
+#book-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    user-select: none;
+
+    .book {
+        width: 1000px;
+        height: 500px;
+        background: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        border-radius: 3px;
+    }
+
+    hr {
+        height: 100%;
+        margin: 0;
+        border-style: solid;
+        border-color: transparent #808080 transparent transparent;
+    }
+
+    .page-left,
+    .page-right {
+        width: 450px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .page-number {
+        position: absolute;
+        font-size: 0.85em;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.7;
+    }
+
+    .page-right {
+        p {
+            font-weight: bold;
+            color: #101010;
+            text-align: center;
+        }
+
+        .quote-icon {
+            color: $main-color-four;
+        }
+    }
+}
+
+.previous,
+.next {
+    font-size: 12;
+    cursor: pointer;
+    color: $main-color-one;
+    user-select: none;
+    align-self: center;
+}
+
+.previous {
+    margin-right: 30px;
+}
+
+.next {
+    margin-left: 30px;
+}
+
+.return-to-page {
+    cursor: pointer;
+    display: block;
+    background-color: $main-color-four;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: 0;
+    width: 200px;
+    text-align: center;
+    animation: fadeIn 200ms ease-out forwards;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateX(-50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(-50%);
+    }
+}

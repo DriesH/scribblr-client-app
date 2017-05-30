@@ -1,84 +1,89 @@
 <div id="book-editor">
     <div class="close-editor" (click)="closeEditor()">
-        <img src="/assets/icons/cross.svg" alt="close-button">
+        <img src="/assets/icons/cross.svg" alt="close-button"> <p>Close</p>
     </div>
 
 
     <div id="book-window">
-        <span *ngIf="currentPageModel !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left fa-3x"></i></span>
+        <span *ngIf="currentPage !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>
 
-        <div id="book-front-page" *ngIf="currentPageModel === 0">
+        <div id="book-front-page" *ngIf="currentPage === 0">
             <div class="front-page">
                 <img [src]="'/assets/book-covers/' + bookModel.cover">
             </div>
+
+            <span class="return-to-page" *ngIf="previousPageIndex !== null" (click)="returnToPreviousPage()">
+                Go back to where I was.&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+            </span>
         </div>
 
-        <div id="book-preview" *ngIf="currentPageModel >= 1">
+        <div id="book-preview" *ngIf="currentPage >= 1">
             <div class="book" *ngIf="isMemoryBoolean === false">
                 <div class="page-left" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
-                    <span class="page-number">{{ (currentPageModel * 2) - 1 }}</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
                 </div>
                 <hr>
                 <div class="page-right" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <scrblr-book-page [pageData]="book[currentPageModel - 1][1]" [src]="currentImages[1]" [loadingColor]="bookModel.color"></scrblr-book-page>
-                    <span class="page-number">{{ (currentPageModel * 2) }}</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][1]" [src]="currentImages[1]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) }}</span>
                 </div>
             </div>
 
             <div class="book" *ngIf="isMemoryBoolean === true">
                 <div class="page-left" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <scrblr-book-page [pageData]="book[currentPageModel - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
-                    <span class="page-number">{{ (currentPageModel * 2) - 1 }}</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
                 </div>
                 <hr>
                 <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                     <div class="quote-icon" [style.color]="bookModel.color">
                         <i class="fa fa-quote-left fa-5x"></i>
                     </div>
-                    <p>{{ book[currentPageModel - 1][0].story }}</p>
-                    <span class="page-number">{{ (currentPageModel * 2) }}</span>
+                    <p>{{ book[currentPage - 1][0].story }}</p>
+                    <span class="page-number">{{ (currentPage * 2) }}</span>
                 </div>
             </div>
         </div>
 
-        <span *ngIf="currentPageModel !== 10" class="next" (click)="nextPage()"><i class="fa fa-chevron-right fa-3x"></i></span>
+        <span *ngIf="currentPage !== 10" class="next" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
+
+
 
     </div>
 
 
-    <div id="selection-bar-front-page" class="selection-bar" *ngIf="currentPageModel === 0">
+    <div id="selection-bar" class="side-bar--container">
+        <div class="selection-bar" *ngIf="selectedTool === 'cover'">
+            <p class="selection-bar-title">Select a book cover!</p>
 
-        <p>Select a book cover!</p>
+            <ul class="book-covers">
+                <li *ngFor="let cover of covers" class="book-cover" (click)="selectCover(cover)">
+                    <img [src]="'/assets/book-covers/' + cover">
+                </li>
+            </ul>
+        </div>
 
-        <ul class="book-covers">
-            <li *ngFor="let cover of covers" class="book-cover" (click)="selectCover(cover)">
-                <img [src]="'/assets/book-covers/' + cover">
-            </li>
-        </ul>
-    </div>
-
-
-
-    <div id="selection-bar-children" class="selection-bar" *ngIf="currentPageModel >= 1">
-        <ul class="children">
-            <li *ngFor="let child of children" class="child-avatar" (click)="getQuotes(child.short_id)">
-                <img src="/assets/default-avatars/Male.svg">
-                <p>{{ child.full_name }}</p>
-            </li>
-        </ul>
-
-        <span class="divider"></span>
-
-        <span class="loading-spinner" *ngIf="isLoadingPosts"></span>
-
-        <div *ngIf="!isLoadingPosts" class="posts">
-            <div *ngIf="posts.length === 0">No memories for this child.</div>
-            <div *ngFor="let post of posts" dnd-draggable [dragEnabled]="true" [dragData]="post" class="post">
-                <scrblr-book-page [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+        <div class="selection-bar" *ngIf="selectedTool !== 'cover'">
+            <div *ngIf="!isLoadingPosts" class="posts">
+                <div *ngIf="posts.length === 0">No memories for this child.</div>
+                <div *ngFor="let post of posts" dnd-draggable [dragEnabled]="true" [dragData]="post" class="post">
+                    <scrblr-book-page [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+                </div>
             </div>
+
+        </div>
+
+        <div class="tool-bar">
+            <ul class="tools">
+                <li class="tool" [ngClass]="{ 'active': selectedTool === 'cover' }" (click)="changeTool('cover')">
+                    <img src="/assets/book-editor/book-cover-icon.svg">
+                </li>
+
+                <li class="child-avatar" [ngClass]="{ 'active': selectedTool === child.short_id}" *ngFor="let child of children" (click)="changeTool(child.short_id)">
+                    <img src="/assets/default-avatars/Male.svg">
+                </li>
+            </ul>
         </div>
     </div>
-
-
 </div>

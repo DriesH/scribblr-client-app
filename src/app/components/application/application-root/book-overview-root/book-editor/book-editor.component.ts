@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
@@ -9,23 +9,40 @@ import { Store } from '@ngrx/store';
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
-  selector: 'scrblr-book-editor',
-  templateUrl: './book-editor.component.html',
-  styleUrls: ['./book-editor.component.scss']
+    selector: 'scrblr-book-editor',
+    templateUrl: './book-editor.component.html',
+    styleUrls: [
+        './book-editor.component.scss',
+        './sidebar.scss',
+        './book-preview.scss',
+        './front-page.scss'
+    ]
 })
-export class BookEditorComponent implements OnInit, AfterViewInit {
+export class BookEditorComponent implements OnInit {
 
+    // CLOSE THE EDITOR EVENT
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
+    /////////////////////////
 
+
+    // CONFIG
     _postCfg = API_ROUTES.application.posts;
+    ///////////
+
 
     // state and http stuff
     book;
     children;
     posts;
+    ///////////////////////
 
+
+    // LOADING
     isLoadingPosts = false;
+    //////////
 
+
+    // DEFAULT COVERS
     covers = [
         'covers-01.png',
         'covers-02.png',
@@ -38,23 +55,42 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         'covers-09.png',
         'covers-10.png'
     ];
+    //////////////////
+
 
     // model for saving book.
     bookModel = {
-        cover: 'covers-01.png'
+        cover: 'covers-01.png',
+        array: '???' // CHECK THIS
     };
+    ////////////////////////
 
-    // current page.
-    private currentPage = 0;
-    currentPageModel = this.currentPage;
+
+    // current page stuff
+    currentPage = 0;
     maxPages = 10;
+    previousPageIndex = null;
+    /////////////////////
 
-    // stuff for bottom sidebar
+
+    // stuff for sidebar
     currentChildQuotes = null; // short id of the current child that is showing quotes.
-    currentImages = [];
+    ////////////////////
+
 
     // to show the right view of the book. 2 quotes or 1 story + image.
     isMemoryBoolean;
+    //////////////////////////////////////////////////////////////////
+
+
+    // ARRAY THAT HOLD THE CURRENT IMAGES FOR PAGE LEFT AND RIGHT.
+    currentImages = [];
+    /////////////////////////////////////////////////////////////
+
+    // SIDEBAR
+    selectedTool = 'cover';
+    /////////////////
+
 
     constructor(
         private _qs: QuoteService,
@@ -68,9 +104,9 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             this.book = b.book;
             this.posts = b.posts;
 
-            if (this.currentPageModel !== 0) {
-                this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+            if (this.currentPage !== 0) {
+                this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
             }
         });
 
@@ -81,39 +117,7 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
 
     }
 
-    selectCover(cover) {
-        this.bookModel.cover = cover;
-    }
-
-    // Drag and drop data transfer.
-    transferDataSuccess($event: any) {
-        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
-        let dataEvent = {};
-
-
-        if (pageSideName.indexOf('page-left') !== -1) {
-            dataEvent = {
-                pageIndex: this.currentPageModel - 1,
-                pageSide: 0,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
-            };
-        } else {
-            dataEvent = {
-                pageIndex: this.currentPageModel - 1,
-                pageSide: 1,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
-            };
-        }
-
-        console.log(dataEvent);
-        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
-    }
-
-    ngAfterViewInit() {
-    }
-
+    // GETTING DATA STUFF--------------------------
     getQuotes(childShortId) {
         if (this.currentChildQuotes === childShortId) {
             return;
@@ -128,36 +132,9 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             this.currentChildQuotes = childShortId;
         });
     }
+    /////////////////////--------------------------
 
-    nextPage() {
-      if (this.currentPage >= this.maxPages) {
-          this.currentPage = this.maxPages;
-          return;
-      }
-
-      this.currentPage++;
-      this.currentPageModel = this.currentPage;
-
-      this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-      this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
-    }
-
-    previousPage() {
-        if (this.currentPage <= 0) {
-            this.currentPage = 0;
-            return;
-        }
-
-        this.currentPage--;
-        this.currentPageModel = this.currentPage;
-
-        if (this.currentPage !== 0) {
-            this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
-        }
-
-    }
-
+    // GENERAL PURPOSE STUFF
     setCurrentImageArray(currentImages, book, currentPage) {
         currentImages = [];
 
@@ -196,4 +173,85 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     closeEditor() {
         this.closeEditorEvent.emit(true);
     }
+    /////////////////////----------------------------
+
+    // EDITOR STUFF----------------------------------
+    // Drag and drop data transfer.
+    transferDataSuccess($event: any) {
+        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
+        let dataEvent = {};
+
+
+        if (pageSideName.indexOf('page-left') !== -1) {
+            dataEvent = {
+                pageIndex: this.currentPage - 1,
+                pageSide: 0,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory
+            };
+        } else {
+            dataEvent = {
+                pageIndex: this.currentPage - 1,
+                pageSide: 1,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory
+            };
+        }
+
+        console.log(dataEvent);
+        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
+    }
+
+    nextPage() {
+        if (this.currentPage >= this.maxPages) {
+            this.currentPage = this.maxPages;
+            return;
+        }
+
+        this.currentPage++;
+
+        this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+        this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
+    }
+
+    previousPage() {
+        if (this.currentPage <= 0) {
+            this.currentPage = 0;
+            return;
+        }
+
+        this.currentPage--;
+
+        if (this.currentPage !== 0) {
+            this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
+        }
+
+    }
+
+    selectCover(cover) {
+        this.bookModel.cover = cover;
+
+        if (this.currentPage !== 0) {
+            this.previousPageIndex = this.currentPage;
+            this.currentPage = 0;
+        }
+    }
+
+    changeTool(tool) {
+        this.selectedTool = tool;
+
+        if (this.previousPageIndex !== null) {
+            this.currentPage = this.previousPageIndex;
+
+            this.previousPageIndex = null;
+        }
+    }
+
+    returnToPreviousPage() {
+        this.currentPage = this.previousPageIndex;
+
+        this.previousPageIndex = null;
+    }
+
 }
