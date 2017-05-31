@@ -61,7 +61,7 @@ h1, h2, h3, h4, p {
     // background-image: -webkit-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
     // background-image: -ms-linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
     // background-image: linear-gradient( 45deg, rgb(94,148,229) 0%, rgb(49,111,203) 100%);
-    background-image: url(/assets/header/background-header-gradient.png);
+    background-image: url(/assets/homepage/hero.jpg);
     background-size: cover;
 }
 
@@ -159,9 +159,14 @@ h1, h2, h3, h4, p {
     p {
         font-size: 24px;
     }
+
+    .blue {
+        color: $main-color-four;
+    }
 }
 
 .buffer-bottom-small {
     margin-bottom: 10px;
 }
+
 
