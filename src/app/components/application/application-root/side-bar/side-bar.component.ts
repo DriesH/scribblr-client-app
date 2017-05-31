@@ -14,6 +14,7 @@ import { API_ROUTES } from '../../../../_api-routes/api.routes';
 export class SideBarComponent implements OnInit {
 
     @Input('children') children = null;
+    @Input('noChildren') noChildren;
     @Input('currentUser') currentUser;
 
     constructor(private store: Store<any>) { }

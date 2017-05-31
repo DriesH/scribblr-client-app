@@ -10,8 +10,8 @@ import { NotificationsService } from 'angular2-notifications';
 interface Error {
     success: Boolean;
     error_type: String;
-    error_message: String;
-    errors: Array<String>;
+    error_message: string;
+    errors: any;
     old_input: any;
 }
 
@@ -62,7 +62,6 @@ export class ErrorHandlerService {
                 break;
 
             case errorTypes.NOT_AUTHENTICATED:
-                console.log('login');
                 this.notAuth(error);
                 break;
 
@@ -125,6 +124,29 @@ export class ErrorHandlerService {
 
     // Handler for validation errors.
     private validation(error: Error) {
+        const _errorMsg = {
+            title: 'Wooooops!',
+            msg: '',
+            _msg: ''
+        };
+
+        if (error.errors.email) {
+            _errorMsg.msg = error.errors.email[0];
+            _errorMsg._msg = error.errors.email[0];
+        }
+
+        if (error.errors.password) {
+            _errorMsg.msg = error.errors.password[0];
+            _errorMsg._msg = error.errors.password[0];
+        }
+
+        if (error.errors.fullname) {
+            _errorMsg.msg = error.errors.fullname[0];
+            _errorMsg._msg = error.errors.fullname[0];
+        }
+
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
+
         const _error = {
             error: {
                 type: errorTypes.VALIDATION,

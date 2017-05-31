@@ -38,6 +38,9 @@
             </scrblr-form-error>
         </div>
 
-        <button class="btn btn-primary submit-button btn-color-main" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button class="btn btn-primary submit-button btn-color-main" type="submit" [disabled]="!loginForm.valid">
+            <i *ngIf="buttonLoadingAnim" class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            <span *ngIf="!buttonLoadingAnim">Login</span>
+        </button>
     </div>
 </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
@@ -9,23 +9,43 @@ import { Store } from '@ngrx/store';
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
-  selector: 'scrblr-flip-book-editor',
-  templateUrl: './flip-book-editor.component.html',
-  styleUrls: ['./flip-book-editor.component.scss']
+    selector: 'scrblr-flip-book-editor',
+    templateUrl: './flip-book-editor.component.html',
+    styleUrls: [
+        './flip-book-editor.component.scss',
+        './sidebar.scss',
+        './flipbook-preview.scss',
+        './front-page.scss'
+    ]
 })
-export class FlipBookEditorComponent implements OnInit, AfterViewInit {
+export class FlipBookEditorComponent implements OnInit {
 
+    // CLOSE THE EDITOR EVENT
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
+    /////////////////////////
 
+
+    // CONFIG
     _postCfg = API_ROUTES.application.posts;
+    ///////////
+
 
     // state and http stuff
     book;
     children;
     posts;
+    ///////////////////////
 
+    // SIDEBAR STUFF
+    currentChildPosts = [];
+    //////////////////
+
+    // LOADING
     isLoadingPosts = false;
+    //////////
 
+
+    // DEFAULT COVERS
     covers = [
         'covers-01.png',
         'covers-02.png',
@@ -38,23 +58,42 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
         'covers-09.png',
         'covers-10.png'
     ];
+    //////////////////
+
 
     // model for saving book.
     bookModel = {
-        cover: 'covers-01.png'
+        cover: 'covers-01.png',
+        array: '???' // CHECK THIS
     };
+    ////////////////////////
 
-    // current page.
-    private currentPage = 0;
-    currentPageModel = this.currentPage;
+
+    // current page stuff
+    currentPage = 0;
     maxPages = 10;
+    previousPageIndex = null;
+    /////////////////////
 
-    // stuff for bottom sidebar
+
+    // stuff for sidebar
     currentChildQuotes = null; // short id of the current child that is showing quotes.
-    currentImages = [];
+    ////////////////////
+
 
     // to show the right view of the book. 2 quotes or 1 story + image.
     isMemoryBoolean;
+    //////////////////////////////////////////////////////////////////
+
+
+    // ARRAY THAT HOLD THE CURRENT IMAGES FOR PAGE LEFT AND RIGHT.
+    currentImages = [];
+    /////////////////////////////////////////////////////////////
+
+    // SIDEBAR
+    selectedTool = 'cover';
+    /////////////////
+
 
     constructor(
         private _qs: QuoteService,
@@ -68,9 +107,20 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
             this.book = b.book;
             this.posts = b.posts;
 
-            if (this.currentPageModel !== 0) {
-                this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
+            if (this.currentPage !== 0) {
+                this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+                this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
+            }
+
+            if (this.selectedTool !== 'cover') {
+                console.log('Hey the child post list changed');
+                this.currentChildPosts = [];
+                this.posts.forEach((item, key) => {
+                    if (item.child.short_id === this.selectedTool) {
+                        this.currentChildPosts.push(item);
+                    }
+                });
+                console.log('Currentchild posts: ', this.currentChildPosts);
             }
         });
 
@@ -81,39 +131,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     }
 
-    selectCover(cover) {
-        this.bookModel.cover = cover;
-    }
-
-    // Drag and drop data transfer.
-    transferDataSuccess($event: any) {
-        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
-        let dataEvent = {};
-
-
-        if (pageSideName.indexOf('page-left') !== -1) {
-            dataEvent = {
-                pageIndex: this.currentPageModel - 1,
-                pageSide: 0,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
-            };
-        } else {
-            dataEvent = {
-                pageIndex: this.currentPageModel - 1,
-                pageSide: 1,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
-            };
-        }
-
-        console.log(dataEvent);
-        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
-    }
-
-    ngAfterViewInit() {
-    }
-
+    // GETTING DATA STUFF--------------------------
     getQuotes(childShortId) {
         if (this.currentChildQuotes === childShortId) {
             return;
@@ -128,36 +146,9 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
             this.currentChildQuotes = childShortId;
         });
     }
+    /////////////////////--------------------------
 
-    nextPage() {
-        if (this.currentPage >= this.maxPages) {
-            this.currentPage = this.maxPages;
-            return;
-        }
-
-        this.currentPage++;
-        this.currentPageModel = this.currentPage;
-
-        this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-        this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
-    }
-
-    previousPage() {
-        if (this.currentPage <= 0) {
-            this.currentPage = 0;
-            return;
-        }
-
-        this.currentPage--;
-        this.currentPageModel = this.currentPage;
-
-        if (this.currentPage !== 0) {
-            this.isMemoryBoolean = this.isMemory(this.book, this.currentPageModel);
-            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPageModel);
-        }
-
-    }
-
+    // GENERAL PURPOSE STUFF
     setCurrentImageArray(currentImages, book, currentPage) {
         currentImages = [];
 
@@ -195,5 +186,105 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     closeEditor() {
         this.closeEditorEvent.emit(true);
+    }
+
+    formatImageLink(childShortId, avatarUrlId) {
+        return API_ROUTES.baseUrl + API_ROUTES.application.child.getAvatar(childShortId, avatarUrlId);
+    }
+    /////////////////////----------------------------
+
+    // EDITOR STUFF----------------------------------
+    // Drag and drop data transfer.
+    transferDataSuccess($event: any) {
+        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
+        let dataEvent = {};
+
+        if (pageSideName.indexOf('page-left') !== -1) {
+            dataEvent = {
+                pageIndex: this.currentPage - 1,
+                pageSide: 0,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory,
+                originalShortId: this.book[this.currentPage - 1][0].short_id
+            };
+        } else {
+            dataEvent = {
+                pageIndex: this.currentPage - 1,
+                pageSide: 1,
+                newPageData: $event.dragData,
+                isMemory: $event.dragData.is_memory,
+                originalShortId: this.book[this.currentPage - 1][1].short_id
+            };
+        }
+
+        console.log(dataEvent);
+        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
+        this.store.dispatch(new BookActions.RemoveFromPostList({ shortId: $event.dragData.short_id }));
+    }
+
+    nextPage() {
+        if (this.currentPage >= this.maxPages) {
+            this.currentPage = this.maxPages;
+            return;
+        }
+
+        this.currentPage++;
+
+        this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+        this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
+    }
+
+    previousPage() {
+        if (this.currentPage <= 0) {
+            this.currentPage = 0;
+            return;
+        }
+
+        this.currentPage--;
+
+        if (this.currentPage !== 0) {
+            this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
+            this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
+        }
+
+    }
+
+    selectCover(cover) {
+        this.bookModel.cover = cover;
+
+        if (this.currentPage !== 0) {
+            this.previousPageIndex = this.currentPage;
+            this.currentPage = 0;
+        }
+    }
+
+    changeTool(tool) {
+        this.selectedTool = tool;
+
+        if (this.previousPageIndex !== null) {
+            this.currentPage = this.previousPageIndex;
+
+            this.previousPageIndex = null;
+        }
+
+        if (tool !== 'cover') {
+            this.currentChildPosts = [];
+            this.posts.forEach((item, key) => {
+                if (item.child.short_id === tool) {
+                    this.currentChildPosts.push(item);
+                }
+            });
+        }
+    }
+
+    returnToPreviousPage() {
+        this.currentPage = this.previousPageIndex;
+
+        this.previousPageIndex = null;
+    }
+
+    removeCurrentPage(pageIndex, pageSide, shortId) {
+        this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
+        this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
     }
 }

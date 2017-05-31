@@ -15,7 +15,7 @@ import { AchievementOverviewRootComponent } from '../components/application/appl
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
 
 // Quotes
-import { NewMemoryComponent } from '../components/application/application-root/quote-overview-root/new-memory/new-memory.component';
+import { NewStoryComponent } from '../components/application/application-root/quote-overview-root/new-story/new-story.component';
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
 
@@ -83,8 +83,8 @@ const ROUTES: Routes = [
                         component: PostModalComponent
                     },
                     {
-                        path: 'new-memory',
-                        component: NewMemoryComponent
+                        path: 'new-story',
+                        component: NewStoryComponent
                     },
                     {
                         path: 'edit-child',

@@ -48,7 +48,7 @@
                         <p>New child</p>
                     </a>
                 </li>
-                <li *ngIf="children.length <= 0">
+                <li *ngIf="children.length <= 0 && !noChildren">
                     <span class="sidebar--children-loading"></span>
                 </li>
                 <li *ngFor="let child of children">

@@ -54,6 +54,8 @@ export class ApplicationRootComponent implements OnInit {
     currentRoute: String;
     _config = NotificationConfig;
 
+    noChildren = false;
+
     @ViewChild('quickQuote') quickQuote: ElementRef;
 
     constructor(
@@ -69,11 +71,13 @@ export class ApplicationRootComponent implements OnInit {
             this.currentUser = CURRENT_USER;
         });
 
-        this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
+        this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             console.log('My state changed in CURRENT_CHILDREN');
-            const currentChildren: any = CURRENT_CHILDREN;
-            if (currentChildren.children) {
-                this.children = currentChildren.children;
+            if (CURRENT_CHILDREN.children) {
+                this.children = CURRENT_CHILDREN.children;
+                this.noChildren = false;
+            } else {
+                this.noChildren = true;
             }
         });
 
@@ -88,7 +92,10 @@ export class ApplicationRootComponent implements OnInit {
         });
 
         this._cs.getAllChildren()
-            .subscribe(res => this.dispatchChildrenToStore(res.children));
+            .subscribe(res => {
+                this.noChildren = false;
+                this.dispatchChildrenToStore(res.children);
+            });
 
     }
 

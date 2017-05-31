@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
+import { BookService } from '../../../../../services/application-services/book.service';
 
 import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
@@ -63,8 +64,9 @@ export class BookEditorComponent implements OnInit {
 
     // model for saving book.
     bookModel = {
-        cover: 'covers-01.png',
-        array: '???' // CHECK THIS
+        cover_preset: 'covers-01.png',
+        title: 'test',
+        book: [] // CHECK THIS
     };
     ////////////////////////
 
@@ -97,6 +99,7 @@ export class BookEditorComponent implements OnInit {
 
     constructor(
         private _qs: QuoteService,
+        private _bs: BookService,
         private store: Store<any>
     ) { }
 
@@ -250,7 +253,7 @@ export class BookEditorComponent implements OnInit {
     }
 
     selectCover(cover) {
-        this.bookModel.cover = cover;
+        this.bookModel.cover_preset = cover;
 
         if (this.currentPage !== 0) {
             this.previousPageIndex = this.currentPage;
@@ -286,5 +289,12 @@ export class BookEditorComponent implements OnInit {
     removeCurrentPage(pageIndex, pageSide, shortId) {
         this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
         this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
+    }
+
+    saveBook(bookModel, book) {
+        bookModel.book = book;
+        this._bs.saveBook(bookModel).subscribe(res => {
+            console.log(res);
+        });
     }
 }

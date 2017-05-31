@@ -23,6 +23,7 @@ export class NewBookComponent implements OnInit {
     _postCfg = API_ROUTES.application.posts;
 
     editorActive = false;
+    editorType = null;
     isLoadingChildren = false;
 
     currentChildQuotes = null; // short id of the current child that is showing quotes.
@@ -71,44 +72,59 @@ export class NewBookComponent implements OnInit {
 
     setStep(step, type?) {
         if (type) {
-            console.log(type);
+            this.editorType = type;
         }
 
         this.currentStep = step;
     }
 
-    autoGenerate() {
-        this._bs.autoGenerateNewBook().subscribe(res => {
+    autoGenerate(type) {
+        switch (type) {
+            case 'book':
+                this._bs.autoGenerateNewBook().subscribe(res => {
+                    this.store.dispatch(new BookActions.BookDataReceived(res.book));
+                    this.store.dispatch(new BookActions.PostsDataReceived(res.all_marked_posts));
 
-            this.store.dispatch(new BookActions.BookDataReceived(res.book));
-            this.store.dispatch(new BookActions.PostsDataReceived(res.all_marked_posts));
-
-            this.autoGenerateSuccess = true;
-            this.editorActive = true;
-        });
+                    this.autoGenerateSuccess = true;
+                    this.editorActive = true;
+                });
+                break;
+            case 'flip-over':
+                break;
+        }
     }
 
-    startEmpty() {
+    startEmpty(type) {
 
-        let emptyBook = [
-            [{}, {}], // page 1 & 2
-            [{}, {}], // page 3 & 4
-            [{}, {}], // page 5 & 6
-            [{}, {}], // page 7 & 8
-            [{}, {}], // page 9 & 10
-            [{}, {}], // page 11 & 12
-            [{}, {}], // page 13 & 14
-            [{}, {}], // page 15 & 16
-            [{}, {}], // page 17 & 18
-            [{}, {}]  // page 19 & 20
-        ];
+        switch (type) {
+            case 'book':
+                let emptyBook = [
+                    [{}, {}], // page 1 & 2
+                    [{}, {}], // page 3 & 4
+                    [{}, {}], // page 5 & 6
+                    [{}, {}], // page 7 & 8
+                    [{}, {}], // page 9 & 10
+                    [{}, {}], // page 11 & 12
+                    [{}, {}], // page 13 & 14
+                    [{}, {}], // page 15 & 16
+                    [{}, {}], // page 17 & 18
+                    [{}, {}]  // page 19 & 20
+                ];
 
-        this._qs.getAllPosts().subscribe(res => {
-            this.store.dispatch(new BookActions.BookDataReceived(emptyBook));
-            this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+                this._qs.getAllPosts().subscribe(res => {
+                    this.store.dispatch(new BookActions.BookDataReceived(emptyBook));
+                    this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
 
-            this.editorActive = true;
-        });
+                    this.editorActive = true;
+                });
+                break;
+            case 'flip-over':
+
+                break;
+
+        }
+
+
 
     }
 

@@ -9,6 +9,9 @@ import { User } from '../../../models/user';
 import { Store } from '@ngrx/store';
 import * as userActions from '../../../ngrx-state/actions/current-user.action';
 
+const errorTypes = {
+    NOT_AUTHENTICATED: 'not_authenticated',
+};
 
 @Component({
     selector: 'scrblr-login-form',
@@ -22,12 +25,10 @@ export class LoginFormComponent implements OnInit {
     @ViewChild('passwordInput') passwordInput: any;
 
     formModel: any = {};
-    hasError = false;
-    errorMessage = '';
 
     isShowingPassword = false;
 
-
+    buttonLoadingAnim = false;
 
     constructor(private _auth: AuthService,
         private _jwt: JWTTokenService,
@@ -35,6 +36,11 @@ export class LoginFormComponent implements OnInit {
         private store: Store<any>) { }
 
     ngOnInit() {
+        this.store.select('APPLICATION_UI').subscribe((APPLICATION_UI: any) => {
+            if (APPLICATION_UI.error.type === errorTypes.NOT_AUTHENTICATED) {
+                this.buttonLoadingAnim = false;
+            }
+        });
     }
 
     showPassword() {
@@ -48,15 +54,13 @@ export class LoginFormComponent implements OnInit {
     }
 
     onLogin(formData) {
+        this.buttonLoadingAnim = true;
         this._auth.authenticateUser(formData)
             .subscribe(res => {
                 this.addUserToState(res.user);
 
                 this._jwt.setToken(res.user.JWTToken)
                     .then(success => {
-                        if (this.hasError) {
-                            this.hasError = false;
-                        }
 
                         this.router.navigate(['/application']);
                     })

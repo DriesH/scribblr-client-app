@@ -50,7 +50,7 @@ import { NewChildComponent } from './components/application/application-root/chi
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { PostModalComponent } from './components/application/application-root/quote-overview-root/post-modal/post-modal.component';
-import { NewMemoryComponent } from './components/application/application-root/quote-overview-root/new-memory/new-memory.component';
+import { NewStoryComponent } from './components/application/application-root/quote-overview-root/new-story/new-story.component';
 import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
 import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
 import { BookPageComponent } from './components/application/application-root/book-overview-root/book-page/book-page.component';
@@ -139,7 +139,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewQuoteComponent,
         PostModalComponent,
         EllipsisPipe,
-        NewMemoryComponent,
+        NewStoryComponent,
         KeysPipe,
         ImageLoadingComponent,
         BookEditorComponent,

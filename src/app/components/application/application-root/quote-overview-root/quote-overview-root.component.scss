@@ -99,8 +99,17 @@
 
 .child-infomatics--container {
     width: 100%;
-    height: 250px;
-    background-color: pink;
+    height: 100px;
+    background-color: white;
     box-sizing: border-box;
-    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 60px;
+
+    h1 {
+        margin: 0;
+        font-size: 28px;
+    }
 }

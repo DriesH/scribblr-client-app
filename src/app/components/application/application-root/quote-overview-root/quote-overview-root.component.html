@@ -7,11 +7,13 @@
 </div>-->
 
 <div class="child-infomatics--container">
-    <h1>{{ currentChild?.full_name }}</h1>
-    <p>Quotes: {{ amountOf.quotes }}</p>
-    <p>Memories: {{ amountOf.memories }}</p>
+    <h1 class="title">{{ currentChild?.full_name }}</h1>
 
-    <a routerLink="edit-child">Edit child</a>
+    <a class="edit-child" routerLink="edit-child">Edit child</a>
+
+    <a routerLink="new-quote">New quote</a>
+    <a routerLink="new-story">New Story</a>
+
 </div>
 
 
