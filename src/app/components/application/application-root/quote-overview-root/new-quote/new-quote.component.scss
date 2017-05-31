@@ -56,7 +56,7 @@
     }
 
     .canvas-style {
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         display: inline-block;
     }
@@ -68,7 +68,7 @@
         justify-content: flex-start;
         align-items: flex-start;
         overflow-y: auto;
-        width: 80%;
+        width: 100%;
         height: 280px;
         list-style: none;
         padding: 0;
@@ -107,7 +107,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 100%;
 
     .switch-button-text {
         color: $main-color-five;
@@ -159,6 +159,46 @@
 
 .pexels-search {
     width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    border: 1px solid $main-color-one;
+    transition: all 300ms ease-out;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $main-color-four;
+    }
+}
+
+.quote-input {
+    color: #3C3C3C;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #FBFBFB;
+    padding: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid $main-color-two;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid $main-color-four;
 }
 
 @keyframes spinning {
@@ -168,7 +208,6 @@
 
     100% {
         transform: rotateZ(360deg);
-
     }
 }
 

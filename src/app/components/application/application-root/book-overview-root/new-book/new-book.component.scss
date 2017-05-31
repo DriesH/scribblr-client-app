@@ -5,6 +5,7 @@
     width: 80%;
     height: calc(100vh - 100px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -29,6 +30,11 @@
             margin-right: 15px;
             transform: rotateZ(-180deg);
         }
+    }
+
+    .main-title {
+        font-size: 35px;
+        margin-bottom: 25px;
     }
 }
 
@@ -101,6 +107,7 @@
 
     h1 {
         color: white;
+        letter-spacing: -1px;
     }
 
     &:hover {

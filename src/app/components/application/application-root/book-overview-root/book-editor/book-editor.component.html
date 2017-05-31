@@ -24,13 +24,13 @@
         <div id="book-preview" *ngIf="currentPage >= 1">
             <div class="book" *ngIf="isMemoryBoolean === false">
                 <div class="page-left" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i></span>
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
                     <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
                     <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
                 </div>
                 <hr>
                 <div class="page-right" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 1, book[currentPage - 1][1].short_id)"><i class="fa fa-trash"></i></span>
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 1, book[currentPage - 1][1].short_id)"><i class="fa fa-trash"></i> Remove</span>
                     <scrblr-book-page [pageData]="book[currentPage - 1][1]" [src]="currentImages[1]" [loadingColor]="bookModel.color"></scrblr-book-page>
                     <span class="page-number">{{ (currentPage * 2) }}</span>
                 </div>
@@ -38,13 +38,13 @@
 
             <div class="book" *ngIf="isMemoryBoolean === true">
                 <div class="page-left" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i></span>
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
                     <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
                     <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
                 </div>
                 <hr>
                 <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
-                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 1, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i></span>
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
                     <div class="quote-icon" [style.color]="bookModel.color">
                         <i class="fa fa-quote-left fa-5x"></i>
                     </div>

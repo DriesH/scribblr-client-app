@@ -33,12 +33,12 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     csdkImageEditor;
     searchIsActive = false;
 
-    defaultPreset;
+    defaultPreset = 'https://images.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg?w=940&h=650&auto=compress&cs=tinysrgb';
     presetId;
     quoteModel = {
         quote: null,
-        font: 'Calibri',
-        selectedPreset: null
+        font: 'Impact',
+        selectedPreset: this.defaultPreset
     };
 
     fonts: Array<String>;
@@ -64,9 +64,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         ngOnInit() {
             this._qs.getFonts().subscribe(res => this.fonts = res.fonts);
 
+            this.canvasLoading = true;
+
             this._pas.getMostPopular().subscribe(res => {
                 this.pexelsImgs = res.photos;
-                this.quoteModel.selectedPreset = this.pexelsImgs[0].src.large;
             });
 
             this.csdkImageEditor = new Aviary.Feather({
@@ -123,7 +124,6 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             c.width = img.width;
             c.height = img.height;
 
-
             // Draw the image to the canvas.
             ctx.drawImage(img, 0, 0);
 
@@ -134,6 +134,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             if ( this.quoteModel.quote !== null ) {
                 this.updateCanvas(img, c, overlayOpacity);
             }
+
+            this.canvasLoading = false;
         }
 
         /**
@@ -201,10 +203,14 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         clearCanvas(c: HTMLCanvasElement) {
             const ctx = c.getContext('2d');
             let fontSize;
+
+            c.width = 1680;
+            c.height = 1050;
+
             ctx.fillStyle = 'rgb(45,51,56)';
             ctx.fillRect(0, 0, c.width, c.height);
 
-            fontSize = c.width / 20;
+            fontSize = c.height / 15;
 
             // Set the font.
             ctx.font = `${fontSize}px Calibri`;
@@ -215,8 +221,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             // Set the text color.
             ctx.fillStyle = 'white';
 
-            ctx.fillText('Select an image on your computer', c.width / 2, (c.height / 2) - 25);
-            ctx.fillText('and drop it on the page!', c.width / 2, (c.height / 2) + 25);
+            ctx.fillText('Select an image on your computer', c.width / 2, (c.height / 2) - (fontSize / 2));
+            ctx.fillText('and drop it on the page!', c.width / 2, (c.height / 2) + (fontSize / 2));
         }
 
         /**

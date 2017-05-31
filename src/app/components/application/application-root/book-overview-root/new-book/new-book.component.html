@@ -8,7 +8,11 @@
         </ul>
     </div>
 
+    <h1 class="main-title title" *ngIf="currentStep === 1">What do you want to make?</h1>
+    <h1 class="main-title title" *ngIf="currentStep === 2">How do you want to make it?</h1>
+
     <div id="step1" class="step--container" *ngIf="currentStep === 1">
+
         <div class="book-start-buttons--container" (click)="setStep(2, 'book')">
             <div class="book-start-information">
                 <h1 class="title">Scribbl' book</h1>

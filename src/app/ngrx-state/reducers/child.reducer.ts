@@ -11,6 +11,9 @@ export const initialState: State = {
 };
 
 export function ChildReducer(state = initialState, action: Action) {
+    let index = 0;
+    let updatedChild;
+
     switch (action.type) {
         case childActions.ActionTypes.SUCCESS_DOWNLOAD_CHILDREN:
             return {
@@ -23,6 +26,33 @@ export function ChildReducer(state = initialState, action: Action) {
             currentChildren.children.push(newChild);
 
             return Object.assign({}, state, currentChildren);
+
+        case childActions.ActionTypes.EDIT_CHILD:
+            index = 0;
+            updatedChild = {};
+
+            updatedChild = action.payload.updatedChild;
+
+            state.children.forEach((child, key) => {
+                if (child.short_id === action.payload.updatedChild.short_id) {
+                    index = key;
+                }
+            });
+
+            console.log('index: ', index);
+
+            return {
+                children: [
+                    ...state.children.slice(0, index),
+                    {
+                        ...state.children[index],
+                        full_name: updatedChild.full_name,
+                        gender: updatedChild.gender,
+                        date_of_birth: updatedChild.date_of_birth
+                    },
+                    ...state.children.slice(index + 1)
+                ]
+            };
 
         default:
             return state;

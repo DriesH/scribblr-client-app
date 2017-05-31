@@ -67,7 +67,7 @@ export class ChildService {
 
     // PUT
     editChild(shortId, data): Observable<any> {
-        return this.http.put(API_ROUTES.application.child.editChild(shortId),
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.child.editChild(shortId),
             data,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))

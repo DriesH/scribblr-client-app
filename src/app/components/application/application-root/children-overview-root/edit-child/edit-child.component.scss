@@ -1,0 +1,27 @@
+#edit-child-overlay {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: #DEE0E3;
+    z-index: 35;
+    box-sizing: border-box;
+    padding-top: 100px;
+}
+
+#submit-btn-edit-child {
+    align-self: center;
+}
+
+.close-cross {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    img {
+        width: 100%;
+    }
+}
