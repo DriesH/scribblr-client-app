@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 /* Angular 2 stuffs */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,6 +58,8 @@ import { BookTutorialComponent } from './components/application/application-root
 import { NewBookComponent } from './components/application/application-root/book-overview-root/new-book/new-book.component';
 import { BookInspectorComponent } from './components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
 import { UserRootComponent } from './components/application/application-root/user-root/user-root.component';
+import { EditChildComponent } from './components/application/application-root/children-overview-root/edit-child/edit-child.component';
+import { FlipBookEditorComponent } from './components/application/application-root/book-overview-root/flip-book-editor/flip-book-editor.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -98,8 +101,7 @@ import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reduc
 import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
-import { EditChildComponent } from './components/application/application-root/children-overview-root/edit-child/edit-child.component';
-import { FlipBookEditorComponent } from './components/application/application-root/book-overview-root/flip-book-editor/flip-book-editor.component';
+import { BookEffect } from './ngrx-state/effects/book.effects';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -170,6 +172,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
+        EffectsModule.runAfterBootstrap(BookEffect),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         SimpleNotificationsModule.forRoot()

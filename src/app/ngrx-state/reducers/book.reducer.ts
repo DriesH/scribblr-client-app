@@ -12,7 +12,11 @@ export const initialState: State = {
     posts: []
 };
 
+
+
 export function BookReducer(state: any = initialState, action: Action) {
+    let index = 0;
+
     switch (action.type) {
         case bookActions.ActionTypes.BOOK_DATA_RECEIVED:
 
@@ -36,6 +40,18 @@ export function BookReducer(state: any = initialState, action: Action) {
                     ]
                 };
             } else {
+                if (state.book[action.payload.pageIndex][0].is_memory === 1) {
+                    if (action.payload.pageSide === 1) {
+                        return {
+                            ...state,
+                            book: [
+                                ...state.book.slice(0, action.payload.pageIndex),
+                                [{}, action.payload.newPageData],
+                                ...state.book.slice(action.payload.pageIndex + 1),
+                            ]
+                        };
+                    }
+                }
                 if (action.payload.pageSide === 0) {
                     return {
                         ...state,
@@ -81,12 +97,7 @@ export function BookReducer(state: any = initialState, action: Action) {
             break;
 
         case bookActions.ActionTypes.REMOVE_FROM_POST_LIST:
-            break;
-
-        case bookActions.ActionTypes.ADD_TO_POST_LIST:
-            console.log(action.payload.shortId);
-
-            let index = 0;
+            index = 0;
 
             state.posts.forEach((item, key) => {
                 if (item.short_id === action.payload.shortId) {
@@ -98,10 +109,31 @@ export function BookReducer(state: any = initialState, action: Action) {
                 ...state,
                 posts: [
                     ...state.posts.slice(0, index),
-                    { ...state.posts[index], is_used_in_book: 0 },
+                    { ...state.posts[index], is_used_in_book: 1 },
                     ...state.posts.slice(index + 1)
                 ]
             };
+
+        case bookActions.ActionTypes.ADD_TO_POST_LIST:
+            index = 0;
+            if (action.payload.shortId) {
+                state.posts.forEach((item, key) => {
+                    if (item.short_id === action.payload.shortId) {
+                        index = key;
+                    }
+                });
+
+                return {
+                    ...state,
+                    posts: [
+                        ...state.posts.slice(0, index),
+                        { ...state.posts[index], is_used_in_book: 0 },
+                        ...state.posts.slice(index + 1)
+                    ]
+                };
+            } else {
+                return state;
+            }
 
         default:
             return state;

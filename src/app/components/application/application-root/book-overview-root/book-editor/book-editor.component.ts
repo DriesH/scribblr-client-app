@@ -111,6 +111,17 @@ export class BookEditorComponent implements OnInit {
                 this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
                 this.currentImages = this.setCurrentImageArray(this.currentImages, this.book, this.currentPage);
             }
+
+            if (this.selectedTool !== 'cover') {
+                console.log('Hey the child post list changed');
+                this.currentChildPosts = [];
+                this.posts.forEach((item, key) => {
+                    if (item.child.short_id === this.selectedTool) {
+                        this.currentChildPosts.push(item);
+                    }
+                });
+                console.log('Currentchild posts: ', this.currentChildPosts);
+            }
         });
 
         this.store.select('CURRENT_CHILDREN').subscribe(CHILDREN => {
@@ -188,25 +199,27 @@ export class BookEditorComponent implements OnInit {
         let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
         let dataEvent = {};
 
-
         if (pageSideName.indexOf('page-left') !== -1) {
             dataEvent = {
                 pageIndex: this.currentPage - 1,
                 pageSide: 0,
                 newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
+                isMemory: $event.dragData.is_memory,
+                originalShortId: this.book[this.currentPage - 1][0].short_id
             };
         } else {
             dataEvent = {
                 pageIndex: this.currentPage - 1,
                 pageSide: 1,
                 newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory
+                isMemory: $event.dragData.is_memory,
+                originalShortId: this.book[this.currentPage - 1][1].short_id
             };
         }
 
         console.log(dataEvent);
         this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
+        this.store.dispatch(new BookActions.RemoveFromPostList({ shortId: $event.dragData.short_id }));
     }
 
     nextPage() {
@@ -274,6 +287,4 @@ export class BookEditorComponent implements OnInit {
         this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
         this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
     }
-
-
 }
