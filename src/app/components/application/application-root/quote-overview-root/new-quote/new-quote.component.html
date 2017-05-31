@@ -38,7 +38,7 @@
                 <div class="form-input-group">
                     <label for="font">Font</label>
                     <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
-                        <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
+                        <option *ngFor="let font of fonts" [value]="font" [style.fontFamily]="font">{{ font }}</option>
                     </select>
 
                     <scrblr-form-error *ngIf="font.errors && (font.dirty ||font.touched)"
@@ -77,12 +77,24 @@
                 </div>
 
             </div>
-
-            <input *ngIf="presetPickerActive" class='pexels-search' (keyup)='searchPexelsApi(searchQuery)' [(ngModel)]="searchQuery" type="text" placeholder="Type in a keyword to search for pictures...">
+            <div *ngIf="presetPickerActive" class="pexels-search">
+                <input (keydown)="searchPexelsApi($event, searchQuery)" [(ngModel)]="searchQuery" type="text" placeholder="Type in a keyword to search for pictures...">
+                <span (click)="searchPexelsApi($event, searchQuery)"><i class="fa fa-search"></i></span>
+            </div>
             <ul class="preset-picker" *ngIf="presetPickerActive" perfect-scrollbar>
-                <li class="preset" *ngFor="let img of pexelsImgs" (click)="changeImage($event, img.src.large)">
-                    <img [src]="img.src.tiny" [alt]="img.photographer">
+                <li class="loading" *ngIf="pexelsLoading">
+                    <span class="loading-spinner"></span>
+                    <p>Loading...</p>
                 </li>
+                <li class="no-images" *ngIf="!pexelsLoading && pexelsImgs <= 0">
+                    <p>No images found for <span style="font-weight:bold;">"{{ oldSearchQuery }}"</span>...</p>
+                </li>
+                <span *ngIf="!pexelsLoading">
+                    <li class="preset" *ngFor="let img of pexelsImgs" (click)="changeImage($event, img.src.large)">
+                        <img [src]="img.src.tiny" [alt]="img.photographer">
+                    </li>
+                </span>
+
             </ul>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive">

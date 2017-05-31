@@ -61,7 +61,7 @@ export class QuoteService {
 
     // DELETE
     deletePost(childShortId, postShortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.deletePost(childShortId, postShortId),
+        return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.posts.deletePost(childShortId, postShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

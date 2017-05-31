@@ -23,7 +23,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     @ViewChild('dropzoneInput')  dropzoneInput: ElementRef;
     @ViewChild('quoteContainer') quoteContainer: ElementRef;
 
-    quotes = []; // todo model quote
+    posts = []; // todo model quote
     msnry;
     childShortId: String;
 
@@ -57,25 +57,21 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
         });
 
-        this.store.select('QUOTES').subscribe(QUOTES => {
-            let q: any = QUOTES;
-
-            if (q.newQuote !== {}) {
-                this.quotes.push(q.newQuote);
+        this.store.select('QUOTES').subscribe((QUOTES: any) => {
+            if (QUOTES.newQuote !== {}) {
+                this.posts.push(QUOTES.newQuote);
             }
         });
 
         this.route.params.subscribe(params => {
             this.childShortId = params.short_id_child;
-            this.quotes = [];
+            this.posts = [];
             this.loading = true;
 
             this._qs.getPost(this.childShortId)
                 .subscribe(res => {
                     this.loading = false;
-                    this.quotes = res.posts;
-                    this.amountOf.quotes = res.quote_count;
-                    this.amountOf.memories = res.memory_count;
+                    this.posts = res.posts;
                 });
 
             this.currentChildren.forEach((child, key) => {
@@ -105,7 +101,19 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     reloadMasonry() {
-        // console.log('reloadMasonry');
+        console.log('reloadMasonry');
         this.msnry.layout();
+    }
+
+    removeQuote(postShortId) {
+        this._qs.deletePost(this.childShortId, postShortId).subscribe(res => {
+            this.posts = this.posts.filter((post) => {
+                return post.short_id !== postShortId;
+            });
+
+            setTimeout(() => {
+                this.reloadMasonry();
+            }, 100);
+        });
     }
 }

@@ -108,11 +108,11 @@
     transform-origin: 0;
     width: 200px;
     text-align: center;
-    animation: fadeIn 200ms ease-out forwards;
+    animation: scaleFadeIn 200ms ease-out forwards;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes fadeIn {
+@keyframes scaleFadeIn {
     0% {
         opacity: 0;
         transform: scale(0) translateX(-50%);

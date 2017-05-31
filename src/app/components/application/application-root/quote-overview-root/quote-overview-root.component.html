@@ -18,21 +18,22 @@
 </div>
 
 
-<div class="grid" id="gridboi" #quoteContainer [hidden]="quotes.length <= 0">
+<div class="grid" id="gridboi" #quoteContainer [hidden]="posts.length <= 0">
     <scrblr-quote
-        *ngFor="let quote of quotes; let last = last"
+        *ngFor="let post of posts | filterPosts; let last = last"
         [last]="last"
-        [quoteData]="quote"
+        [quoteData]="post"
         [childShortId]="childShortId"
         (reachedLast)="initMasonry()"
         (imageLoaded)="reloadMasonry()"
-        (clickedQuote)="reloadMasonry()">
+        (clickedQuote)="reloadMasonry()"
+        (removeQuote)="removeQuote($event)">
     </scrblr-quote>
 
     <div class="grid-sizer"></div>
 </div>
 
-<div class="no-quotes" *ngIf="quotes.length <= 0">
+<div class="no-quotes" *ngIf="posts.length <= 0">
     <h1 class="title">
         <img src="/assets/icons/quotes.svg" alt="quotes">
         Start by adding quotes!

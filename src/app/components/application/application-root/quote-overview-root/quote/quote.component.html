@@ -1,13 +1,17 @@
-<div class="grid-item" (click)="clickedQuoteFn()" #quoteBlock>
+<div class="grid-item" #quoteBlock>
     <div class="quote-block">
-        <div class="img-header">
+        <div class="img-header rounded-bottom">
+            <div class="control-overlay">
+                <span class="edit"><i class="fa fa-edit"></i> Edit</span>
+                <span class="trash" (click)="removeQuoteFn(quoteData.short_id)"><i class="fa fa-trash"></i></span>
+            </div>
             <img [src]="quoteData.lqip" [lazyLoad]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"
                 [scrollTarget]="scrollContainer" [offset]="1600" (load)="imageLoadedFn()">
         </div>
 
+        <div *ngIf="quoteData.story !== null" class="story">
+            <p>{{ quoteData.story }}</p>
+        </div>
 
-        <h2>{{ quoteData.quote | ellipsis: 40 }}</h2>
-        <span class="date">05/01/in de joare stillekes</span>
-        <p>{{ quoteData.story }}</p>
     </div>
 </div>

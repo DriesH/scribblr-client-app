@@ -19,7 +19,7 @@ export class QuoteComponent implements OnInit {
     @Output('reachedLast') reachedLast = new EventEmitter<Boolean>();
     @Output('imageLoaded') imageLoaded = new EventEmitter<Boolean>();
 
-    @Output('clickedQuote') clickedQuote = new EventEmitter<Boolean>();
+    @Output('removeQuote') removeQuote = new EventEmitter<String>();
 
     @ViewChild('quoteBlock') quoteBlock: ElementRef;
 
@@ -38,6 +38,8 @@ export class QuoteComponent implements OnInit {
         if (this.last) {
             this.reachedLast.emit(true);
         }
+
+        // console.log(this.quoteData);
     }
 
     formatImageSrc(child_short_id, post_short_id, img_original_url_id?, img_baked_url_id?): String {
@@ -48,21 +50,15 @@ export class QuoteComponent implements OnInit {
         } else {
             return null;
         }
-
     }
 
     imageLoadedFn() {
         this.imageLoaded.emit(true);
     }
 
-    clickedQuoteFn() {
-        this.isClicked = !this.isClicked;
-
-        if (this.isClicked) {
-            this.quoteBlock.nativeElement.className = 'grid-item-double';
-        } else {
-            this.quoteBlock.nativeElement.className = 'grid-item';
-        }
-        this.clickedQuote.emit(true);
+    removeQuoteFn(shortId) {
+        this.removeQuote.emit(shortId);
     }
+
+
 }

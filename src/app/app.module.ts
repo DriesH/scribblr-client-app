@@ -102,6 +102,7 @@ import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
 import { BookEffect } from './ngrx-state/effects/book.effects';
+import { FilterPipe } from './pipes/filter.pipe';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -151,6 +152,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         EditChildComponent,
         TooltipDirective,
         FlipBookEditorComponent,
+        FilterPipe,
     ],
     imports: [
         BrowserModule,

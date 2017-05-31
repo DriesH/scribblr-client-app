@@ -8,6 +8,8 @@ import { NotificationsService } from 'angular2-notifications';
 
 import * as UserActions from '../../../../ngrx-state/actions/current-user.action';
 
+import { Router } from '@angular/router';
+
 @Component({
     selector: 'scrblr-user-root',
     templateUrl: './user-root.component.html',
@@ -31,7 +33,8 @@ export class UserRootComponent implements OnInit {
     constructor(
         private store: Store<any>,
         private _us: UserService,
-        private _ns: NotificationsService) { }
+        private _ns: NotificationsService,
+        private router: Router) { }
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
@@ -43,8 +46,10 @@ export class UserRootComponent implements OnInit {
     updateUser(userModel) {
         console.log('hello', userModel);
         this._us.updateUser(userModel).subscribe(res => {
+            console.log(res);
             this.store.dispatch(new UserActions.UpdateUser({ user: res.user }));
             this._ns.success('Successfully updated your profile!');
+            this.router.navigate(['application']);
         });
     }
 
