@@ -30,6 +30,9 @@ import { FlipBookInspectorComponent } from '../components/application/applicatio
 // News
 import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
 
+// Checkout
+import { CheckOutRootComponent } from '../components/application//application-root/check-out-root/check-out-root.component';
+
 // Guards
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -52,6 +55,11 @@ const ROUTES: Routes = [
     {
         path: 'login',
         component: LoginPageComponent,
+    },
+
+    {
+        path: 'checkout',
+        component: CheckOutRootComponent
     },
 
     {

@@ -8,6 +8,8 @@ import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 import { Store } from '@ngrx/store';
 
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
+import * as CartActions from '../../../../../ngrx-state/actions/cart.action';
+
 
 @Component({
     selector: 'scrblr-book-editor',
@@ -67,6 +69,7 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     isSaved = false; // book saved
     isFailed = false;
     userIsSaving = false;
+    userIsSavingAndOrdering = false;
     ////////////////////////
 
     // current page stuff
@@ -281,37 +284,20 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
     }
 
-    saveBook(bookModel, book) {
-        bookModel.book = book;
-        this._bs.saveBook(bookModel).subscribe(res => {
-            console.log(res);
-            this.isSaved = true;
-            this.isFailed = false;
-        }, err => {
-            this.isSaved = false;
-            this.isFailed = true;
-        });
-    }
 
-    editBook(bookShortId, bookModel, book) {
-        bookModel.book = book;
-        this._bs.editBook(bookShortId, bookModel).subscribe(res => {
-            console.log(res);
-            this.isSaved = true;
-            this.isFailed = false;
-        }, err => {
-            this.isSaved = false;
-            this.isFailed = true;
-        });
-    }
 
-    openModal() {
+    openSaveModal() {
         this.userIsSaving = true;
     }
 
-    closeModal() {
-        this.userIsSaving = false;
-        this.isSaved = false;
-        this.isFailed = false;
+    openOrderSaveModal() {
+        this.userIsSavingAndOrdering = true;
     }
+
+    closeModal() {
+        this.userIsSavingAndOrdering = false;
+        this.userIsSaving = false;
+    }
+
+
 }

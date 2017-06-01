@@ -100,7 +100,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.bookModel.cover_preset = (this.configuration.cover_preset) ? this.configuration.cover_preset : 'flip-book-covers-01.png';
-        this.bookModel.title = (this.configuration.title) ? this.configuration.title : 'My Book';
+        this.bookModel.title = (this.configuration.title) ? this.configuration.title : 'My Flip Book';
 
 
         this.store.select('FLIP_BOOK').subscribe((FLIP_BOOK: any) => {

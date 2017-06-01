@@ -4,62 +4,17 @@
     </div>
 
     <div class="save-and-order" *ngIf="!configuration.editing">
-        <span class="save" (click)="openModal(bookModel, book)"><i class="fa fa-floppy-o"></i> Save</span>
-        <span class="order"><i class="fa fa-shopping-cart"></i> Save and order</span>
+        <span class="save" (click)="openSaveModal()"><i class="fa fa-floppy-o"></i> Save</span>
+        <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Save and order</span>
     </div>
 
     <div class="save-and-order" *ngIf="configuration.editing">
-        <span class="save" (click)="openModal(bookModel, book)"><i class="fa fa-edit"></i> Edit and save</span>
-        <span class="order"><i class="fa fa-shopping-cart"></i> Order</span>
+        <span class="save" (click)="openSaveModal()"><i class="fa fa-edit"></i> Edit and save</span>
+        <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Order</span>
     </div>
 
-
-    <div class="modal-container" *ngIf="userIsSaving">
-        <div class="modal save-modal" *ngIf="!configuration.editing">
-            <div *ngIf="!isSaved" class="modal-body">
-                <h1 class="title">Give your book a title!</h1>
-
-                <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
-
-                <div class="btn-container">
-                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
-                    <a (click)="saveBook(bookModel, book)" class="btn-trans">Save book</a>
-                </div>
-            </div>
-
-
-            <div *ngIf="isSaved" class="modal-body">
-                <h1 class="title">Successfully saved!</h1>
-                <div class="btn-container">
-                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
-                    <a routerLink="/application/books" class="btn-trans">Close editor</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal save-modal" *ngIf="configuration.editing">
-            <div *ngIf="!isSaved" class="modal-body">
-                <h1 class="title">Edit the title</h1>
-
-                <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
-
-                <div class="btn-container">
-                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
-                    <a (click)="editBook(configuration.bookShortId, bookModel, book)" class="btn-trans">Edit and save</a>
-                </div>
-            </div>
-
-
-            <div *ngIf="isSaved" class="modal-body">
-                <h1 class="title">Successfully edited!</h1>
-                <div class="btn-container">
-                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
-                    <a routerLink="/application/books" class="btn-trans">Close editor</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <scrblr-save-modal *ngIf="userIsSaving" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-save-modal>
+    <scrblr-order-modal *ngIf="userIsSavingAndOrdering" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-order-modal>
 
     <div id="book-window">
         <span *ngIf="currentPage !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>

@@ -1,0 +1,82 @@
+@import '../../../../../../../scss/colors/colors';
+
+.modal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 35;
+}
+
+.modal {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    opacity: 0;
+    animation: modalFadeIn 200ms forwards ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .modal-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &.save-modal {
+        .title {
+            font-size: 24px !important;
+        }
+
+        .btn-trans {
+            &.back {
+                color: $main-color-one;
+            }
+        }
+
+        input[type="text"] {
+            align-self: center;
+            padding: 10px 5px;
+            border-radius: 3px;
+            border: 2px solid $main-color-one;
+            transition: all 200ms ease-out;
+            margin: 20px 0;
+            font-size: 18px;
+
+            &:focus {
+                outline: none;
+                border: 2px solid $main-color-four;
+            }
+        }
+    }
+}
+
+@keyframes modalFadeIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

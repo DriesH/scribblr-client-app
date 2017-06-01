@@ -114,6 +114,8 @@ import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 
 
 import { FilterPipe } from './pipes/filter.pipe';
+import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
+import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
 
 
 /* Perfect scrollbar config */
@@ -169,6 +171,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         BookThumbnailComponent,
         FlipBookInspectorComponent,
         CheckOutRootComponent,
+        OrderModalComponent,
+        SaveModalComponent,
     ],
     imports: [
         BrowserModule,
