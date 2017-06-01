@@ -68,6 +68,7 @@ import { JWTTokenService } from './services/jwttoken.service';
 import { AuthService } from './services/auth.service';
 import { HttpHeaderService } from './services/http-header.service';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { NoScrollService } from './services/no-scroll.service';
 
 /* Application services */
 import { ChildService } from './services/application-services/child.service';
@@ -194,7 +195,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         BookService,
         TutorialService,
         PexelsapiService,
-        UserService
+        UserService,
+        NoScrollService
     ],
     bootstrap: [ AppComponent ]
 })

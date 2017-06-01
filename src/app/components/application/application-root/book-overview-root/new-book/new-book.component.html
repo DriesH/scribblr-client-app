@@ -61,10 +61,10 @@
 
 <div *ngIf="editorActive && editorType === 'book'">
     <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false" [currentUser]="currentUser"></scrblr-book-tutorial>
-    <scrblr-book-editor (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
+    <scrblr-book-editor [configuration]="editorConfig" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
 </div>
 
 <div *ngIf="editorActive && editorType === 'flip-over'">
     <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false" [currentUser]="currentUser"></scrblr-book-tutorial>
-    <scrblr-flip-book-editor (closeEditorEvent)="closeEditor()"></scrblr-flip-book-editor>
+    <scrblr-flip-book-editor  (closeEditorEvent)="closeEditor()"></scrblr-flip-book-editor>
 </div>

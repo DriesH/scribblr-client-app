@@ -3,15 +3,19 @@
         <img src="/assets/icons/cross.svg" alt="close-button"> <p>Close</p>
     </div>
 
-    <div class="save-and-order">
+    <div class="save-and-order" *ngIf="!configuration.editing">
         <span class="save" (click)="openModal(bookModel, book)"><i class="fa fa-floppy-o"></i> Save</span>
         <span class="order"><i class="fa fa-shopping-cart"></i> Save and order</span>
     </div>
 
+    <div class="save-and-order" *ngIf="configuration.editing">
+        <span class="save" (click)="openModal(bookModel, book)"><i class="fa fa-edit"></i> Edit and save</span>
+        <span class="order"><i class="fa fa-shopping-cart"></i> Order</span>
+    </div>
+
 
     <div class="modal-container" *ngIf="userIsSaving">
-        <div class="modal save-modal">
-
+        <div class="modal save-modal" *ngIf="!configuration.editing">
             <div *ngIf="!isSaved" class="modal-body">
                 <h1 class="title">Give your book a title!</h1>
 
@@ -25,7 +29,29 @@
 
 
             <div *ngIf="isSaved" class="modal-body">
-                <h1 class="title">Successfully saved</h1>
+                <h1 class="title">Successfully saved!</h1>
+                <div class="btn-container">
+                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                    <a routerLink="/application/books" class="btn-trans">Close editor</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal save-modal" *ngIf="configuration.editing">
+            <div *ngIf="!isSaved" class="modal-body">
+                <h1 class="title">Edit the title</h1>
+
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
+
+                <div class="btn-container">
+                    <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                    <a (click)="editBook(configuration.bookShortId, bookModel, book)" class="btn-trans">Edit and save</a>
+                </div>
+            </div>
+
+
+            <div *ngIf="isSaved" class="modal-body">
+                <h1 class="title">Successfully edited!</h1>
                 <div class="btn-container">
                     <a (click)="closeModal()" class="btn-trans back">Go back</a>
                     <a routerLink="/application/books" class="btn-trans">Close editor</a>
@@ -85,7 +111,8 @@
 
     <div id="selection-bar" class="side-bar--container">
         <div class="selection-bar" *ngIf="selectedTool === 'cover'">
-            <p class="selection-bar-title">Select a book cover!</p>
+            <p class="selection-bar-title" *ngIf="!configuration.editing">Select a book cover!</p>
+            <p class="selection-bar-title" *ngIf="configuration.editing">Edit your book cover!</p>
 
             <ul class="book-covers">
                 <li *ngFor="let cover of covers" class="book-cover" (click)="selectCover(cover)">

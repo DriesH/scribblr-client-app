@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 import { BookService } from '../../../../../services/application-services/book.service';
@@ -20,7 +20,9 @@ import * as BookActions from '../../../../../ngrx-state/actions/book.action';
         './save-modal.scss'
     ]
 })
-export class BookEditorComponent implements OnInit {
+export class BookEditorComponent implements OnInit, AfterViewInit {
+
+    @Input('configuration') configuration;
 
     // CLOSE THE EDITOR EVENT
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
@@ -40,10 +42,6 @@ export class BookEditorComponent implements OnInit {
     currentChildPosts = [];
     //////////////////
 
-    // LOADING
-    isLoadingPosts = false;
-    //////////
-
     // DEFAULT COVERS
     covers = [
         'covers-01.png',
@@ -61,7 +59,7 @@ export class BookEditorComponent implements OnInit {
 
     // model for saving book.
     bookModel = {
-        cover_preset: 'covers-01.png',
+        cover_preset: '',
         title: 'My Book',
         book: [] // CHECK THIS
     };
@@ -100,6 +98,10 @@ export class BookEditorComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.bookModel.cover_preset = (this.configuration.cover_preset) ? this.configuration.cover_preset : 'covers-01.png';
+        this.bookModel.title = (this.configuration.title) ? this.configuration.title : 'My Book';
+
+
         this.store.select('BOOK').subscribe(BOOK => {
             let b: any = BOOK;
 
@@ -112,14 +114,12 @@ export class BookEditorComponent implements OnInit {
             }
 
             if (this.selectedTool !== 'cover') {
-                console.log('Hey the child post list changed');
                 this.currentChildPosts = [];
                 this.posts.forEach((item, key) => {
                     if (item.child.short_id === this.selectedTool) {
                         this.currentChildPosts.push(item);
                     }
                 });
-                console.log('Currentchild posts: ', this.currentChildPosts);
             }
         });
 
@@ -130,22 +130,10 @@ export class BookEditorComponent implements OnInit {
 
     }
 
-    // GETTING DATA STUFF--------------------------
-    getQuotes(childShortId) {
-        if (this.currentChildQuotes === childShortId) {
-            return;
-        }
+    ngAfterViewInit() {
 
-        this.isLoadingPosts = true;
 
-        this._qs.getPost(childShortId).subscribe(res => {
-            this.posts = res.posts;
-            this.isLoadingPosts = false;
-
-            this.currentChildQuotes = childShortId;
-        });
     }
-    /////////////////////--------------------------
 
     // GENERAL PURPOSE STUFF
     setCurrentImageArray(currentImages, book, currentPage) {
@@ -296,6 +284,18 @@ export class BookEditorComponent implements OnInit {
     saveBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
+            console.log(res);
+            this.isSaved = true;
+            this.isFailed = false;
+        }, err => {
+            this.isSaved = false;
+            this.isFailed = true;
+        });
+    }
+
+    editBook(bookShortId, bookModel, book) {
+        bookModel.book = book;
+        this._bs.editBook(bookShortId, bookModel).subscribe(res => {
             console.log(res);
             this.isSaved = true;
             this.isFailed = false;

@@ -74,6 +74,9 @@ export const API_ROUTES = {
             getBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId;
             },
+            editBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId;
+            },
             deleteBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId + '/delete';
             }

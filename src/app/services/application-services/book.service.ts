@@ -33,12 +33,6 @@ export class BookService {
             .catch(err => this._hhs.errorHandler(err));
     }
 
-    autoGenerateNewBookForChild(childShortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.generateNewBookForChild(childShortId), this._headers.setOptions(this.token))
-            .map(res => this._hhs.extractData(res))
-            .catch(err => this._hhs.errorHandler(err));
-    }
-
     // POST
     saveBook(bookData): Observable<any> {
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.newBook,
@@ -48,12 +42,12 @@ export class BookService {
                 .catch(err => this._hhs.errorHandler(err));
     }
 
-    saveBookForChild(childShortId, bookData): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.newBookForChild(childShortId),
+    editBook(bookShortId, bookData): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.editBook(bookShortId),
             bookData,
             this._headers.setOptions(this.token))
-                .map(res => this._hhs.extractData(res))
-                .catch(err => this._hhs.errorHandler(err));
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
     }
 
     // GET

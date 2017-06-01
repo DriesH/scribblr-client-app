@@ -10,6 +10,8 @@ import { Store } from '@ngrx/store';
 
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
+import { BookEditorConfig } from '../../../../../models/book-editor';
+
 @Component({
     selector: 'scrblr-new-book',
     templateUrl: './new-book.component.html',
@@ -39,6 +41,13 @@ export class NewBookComponent implements OnInit {
     children;
 
     currentStep = 1;
+
+    editorConfig: BookEditorConfig = {
+        cover_preset: null,
+        editing: false,
+        title: null,
+        bookShortId: null
+    };
 
     constructor(
         private _bs: BookService,
