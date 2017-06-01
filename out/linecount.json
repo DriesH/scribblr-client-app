@@ -1,0 +1,2182 @@
+{
+    "extension": "linecount",
+    "version": "0.1.6",
+    "workspace": "g:\\WEBSITES\\scribblr-client-app",
+    "linecount": [
+        {
+            "version": "0.1.6",
+            "counttime": "2017-06-01 18:22:50",
+            "filesum": 350,
+            "codesum": 13774,
+            "commentsum": 1163,
+            "blanksum": 1982,
+            "filelist": [
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 25,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 3,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": ".angular-cli.json"
+                },
+                {
+                    "blank": 13,
+                    "code": 15,
+                    "comment": 5,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 1,
+                    "filename": ".editorconfig"
+                },
+                {
+                    "blank": 1,
+                    "code": 41,
+                    "comment": 3,
+                    "filename": "karma.conf.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 25,
+                    "comment": 2,
+                    "filename": "protractor.conf.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 73,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": ".stylelintrc"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "stylelint.json"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "tsconfig.json"
+                },
+                {
+                    "blank": 11,
+                    "code": 106,
+                    "comment": 0,
+                    "filename": "tslint.json"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "e2e\\app.e2e-spec.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "e2e\\app.po.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "e2e\\tsconfig.e2e.json"
+                },
+                {
+                    "filename": "src\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 11,
+                    "code": 95,
+                    "comment": 5,
+                    "filename": "src\\index.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\main.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "src\\manifest.json"
+                },
+                {
+                    "blank": 4,
+                    "code": 21,
+                    "comment": 7,
+                    "filename": "src\\test.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 4,
+                    "comment": 51,
+                    "filename": "src\\polyfills.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 5,
+                    "filename": "src\\styles.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\tsconfig.app.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src\\typings.d.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "src\\tsconfig.spec.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 4,
+                    "filename": "src\\environments\\environment.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\environments\\environment.prod.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\avatar.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\assets\\.gitkeep"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\app\\app.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\app.component.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\app.component.ts"
+                },
+                {
+                    "blank": 20,
+                    "code": 181,
+                    "comment": 14,
+                    "filename": "src\\app\\app.module.ts"
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-36x36.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-144x144.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-192x192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-72x72.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-48x48.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\android-icon-96x96.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-114x114.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-120x120.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-144x144.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-152x152.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-180x180.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-57x57.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-76x76.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-60x60.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-precomposed.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon-72x72.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\apple-icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "src\\favicons\\browserconfig.xml"
+                },
+                {
+                    "filename": "src\\favicons\\favicon-16x16.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\favicon-32x32.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\favicons\\favicon-96x96.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\account.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\cart.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\book.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\children.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\info.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\email.svg"
+                },
+                {
+                    "filename": "src\\assets\\avatar.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\memory.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\assets\\achievements\\share.svg"
+                },
+                {
+                    "filename": "src\\assets\\application-landing-page\\background.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-01.svg"
+                },
+                {
+                    "filename": "src\\assets\\application-landing-page\\background_mountain_1.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-01.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-02.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-03.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-02.svg"
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-04.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-03.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-04.svg"
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-05.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-05.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-06.svg"
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-06.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-07.svg"
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-08.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-07.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-09.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-09.svg"
+                },
+                {
+                    "filename": "src\\assets\\book-covers\\covers-10.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-10.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-editor\\autogenerate-one-child-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-editor\\autogenerate-all-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-covers\\covers-08.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-editor\\book-cover-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\book-editor\\start-blank-book-icon.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "src\\assets\\css\\dnd-style.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src\\assets\\default-avatars\\Female.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\assets\\default-avatars\\Male.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\assets\\default-avatars\\Other.svg"
+                },
+                {
+                    "filename": "src\\assets\\default-avatars\\boy.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\default-avatars\\girl.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\default-avatars\\other.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\child-head-test\\de-ronny.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\cross.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\eye.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 41,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\logout.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\right-arrow.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\quotes.svg"
+                },
+                {
+                    "filename": "src\\assets\\homepage\\book2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\book1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\book4.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\book3.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\scribblr-book-green.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\hero.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\scribblr-book-blue.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\scribblr-book-orange.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\homepage\\scribblr-book-purple.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "src\\assets\\js\\editor.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "src\\assets\\js\\masonry.js"
+                },
+                {
+                    "filename": "src\\assets\\header\\background-header-gradient.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\json-data\\background-anim.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\json-data\\register_anim.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\json-data\\paint_drop_anim.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\logos\\children-logo-01.svg"
+                },
+                {
+                    "filename": "src\\assets\\logos\\logo-medium.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\login-page\\login-background-children.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\logos\\logo-svg-white.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\logos\\logo-svg.svg"
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\guinea_pig.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\modal\\header-1.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\horses.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\mountains.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\school_desk.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\pencils.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\paint.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\long_exposure_lights.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\soccer_ball.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\preset-imgs\\valley.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\register-page\\background-register-scribblr.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 56,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\full-tiger-happy.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\head-tiger-password.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\head-tiger-suprise.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\head-tiger-wink.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 94,
+                    "comment": 0,
+                    "filename": "src\\app\\_api-routes\\api.routes.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 92,
+                    "comment": 15,
+                    "filename": "src\\app\\_routes\\app.routes.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "src\\app\\_config\\app.config.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\text-lines.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\assets\\scribbie-the-tiger\\locked.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 3,
+                    "filename": "src\\app\\classes\\base64toblob.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\models\\book-editor.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\app\\guards\\auth.guard.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\app\\models\\child.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\app\\models\\header-options.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\app\\models\\user.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducer.interface.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 833,
+                    "comment": 638,
+                    "filename": "src\\assets\\register-page\\register-background-child.jpg"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\action.interface.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 9,
+                    "filename": "src\\app\\ngrx-state\\util.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "src\\app\\pipes\\ellipsis.pipe.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\app\\pipes\\capitalize.pipe.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\pipes\\keys.pipe.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "src\\app\\pipes\\child-age.pipe.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\pipes\\url-sanitizer.pipe.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "src\\app\\pipes\\filter.pipe.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\achievement-unlockable.service.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 45,
+                    "comment": 1,
+                    "filename": "src\\app\\services\\auth.service.ts"
+                },
+                {
+                    "blank": 41,
+                    "code": 141,
+                    "comment": 19,
+                    "filename": "src\\app\\services\\error-handler.service.ts"
+                },
+                {
+                    "blank": 22,
+                    "code": 62,
+                    "comment": 2,
+                    "filename": "src\\app\\services\\dropzone.service.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\http-header.service.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\http-helper.service.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\jwttoken.service.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\no-scroll.service.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\register.service.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "src\\scss\\aviary\\_aviary.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\scss\\fonts\\_fonts.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\scss\\fonts\\_montserrat.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\scss\\buttons\\_add-button.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\scss\\buttons\\_main-buttons.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 74,
+                    "comment": 1,
+                    "filename": "src\\scss\\buttons\\_buttons.scss"
+                },
+                {
+                    "blank": 8,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "src\\scss\\buttons\\_switch-button.scss"
+                },
+                {
+                    "blank": 17,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "src\\scss\\dropdown\\_dropdown.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "src\\scss\\forms\\_input.scss"
+                },
+                {
+                    "blank": 26,
+                    "code": 147,
+                    "comment": 0,
+                    "filename": "src\\scss\\forms\\_forms.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\scss\\forms\\_add-form.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "src\\scss\\colors\\_colors.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "src\\scss\\colors\\_link-colors.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\scss\\colors\\_main-pallet-colors.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\scss\\logo\\_logo.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\scss\\links\\_links.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "src\\scss\\links\\_return-links.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\scss\\navigation_elements\\_home-navigation.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "src\\scss\\scrollbar\\scrollbar.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\scss\\navigation_elements\\_navigation_elements.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "src\\scss\\tooltips\\_tooltips.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\scss\\titles\\_register-titles.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\scss\\titles\\_login-titles.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\scss\\titles\\_splash-titles.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\scss\\titles\\_titles.scss"
+                },
+                {
+                    "filename": "src\\assets\\font-awesome\\fonts\\fontawesome-webfont.eot",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "src\\assets\\css\\font-awesome\\fa.min.css"
+                },
+                {
+                    "filename": "src\\assets\\font-awesome\\fonts\\FontAwesome.otf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\font-awesome\\fonts\\fontawesome-webfont.woff",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\font-awesome\\fonts\\fontawesome-webfont.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\font-awesome\\fonts\\fontawesome-webfont.woff2",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 4,
+                    "code": 28,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_animated.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 17,
+                    "comment": 3,
+                    "filename": "src\\assets\\font-awesome\\scss\\_bordered-pulled.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 5,
+                    "filename": "src\\assets\\font-awesome\\scss\\_core.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_fixed-width.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 3,
+                    "filename": "src\\assets\\font-awesome\\scss\\_larger.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 16,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_list.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 786,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_icons.scss"
+                },
+                {
+                    "blank": 9,
+                    "code": 41,
+                    "comment": 13,
+                    "filename": "src\\assets\\font-awesome\\scss\\_mixins.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 11,
+                    "comment": 3,
+                    "filename": "src\\assets\\font-awesome\\scss\\_path.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1441,
+                    "comment": 0,
+                    "filename": "src\\assets\\font-awesome\\fonts\\fontawesome-webfont.svg"
+                },
+                {
+                    "blank": 4,
+                    "code": 12,
+                    "comment": 4,
+                    "filename": "src\\assets\\font-awesome\\scss\\_rotated-flipped.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 2,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_screen-reader.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 17,
+                    "comment": 2,
+                    "filename": "src\\assets\\font-awesome\\scss\\_stacked.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 794,
+                    "comment": 3,
+                    "filename": "src\\assets\\font-awesome\\scss\\_variables.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 4,
+                    "filename": "src\\assets\\font-awesome\\scss\\font-awesome.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\achievements-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\book-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\cog-wheel-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\home-icon.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\message-icon.svg"
+                },
+                {
+                    "blank": 17,
+                    "code": 44,
+                    "comment": 16,
+                    "filename": "src\\app\\components\\home-page\\home-page.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\home-page\\home.media.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\icons\\sidebar-icons\\news-icon.svg"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\form-error\\form-error.component.html"
+                },
+                {
+                    "blank": 13,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\home-page\\home-page.component.ts"
+                },
+                {
+                    "blank": 33,
+                    "code": 188,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\home-page\\home-page.component.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\form-error\\form-error.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\form-error\\form-error.component.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\image-loading\\image-loading.component.html"
+                },
+                {
+                    "blank": 8,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\image-loading\\image-loading.component.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\image-loading\\image-loading.component.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar.component.html"
+                },
+                {
+                    "blank": 6,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar.component.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-mobile.scss"
+                },
+                {
+                    "blank": 9,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-page.component.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-page.component.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\register-mobile.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-page.component.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\registration-page.component.html"
+                },
+                {
+                    "blank": 4,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\registration-page.component.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 39,
+                    "comment": 1,
+                    "filename": "src\\app\\ngrx-state\\effects\\book.effects.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 17,
+                    "comment": 6,
+                    "filename": "src\\app\\ngrx-state\\effects\\child.effects.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\registration-page.component.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 47,
+                    "comment": 14,
+                    "filename": "src\\app\\ngrx-state\\effects\\current-user.effects.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 39,
+                    "comment": 1,
+                    "filename": "src\\app\\ngrx-state\\effects\\flip-book.effects.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\application-ui.action.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\book.action.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\child.action.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\current-user.action.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\quote.action.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\actions\\flip-book.action.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 124,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\book.reducer.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\child.reducer.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\application-ui.reducer.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\current-user.reducer.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 77,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\flip-book.reducer.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "src\\app\\ngrx-state\\reducers\\quote.reducer.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 25,
+                    "comment": 1,
+                    "filename": "src\\app\\services\\application-services\\achievement.service.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 82,
+                    "comment": 7,
+                    "filename": "src\\app\\services\\application-services\\book.service.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 59,
+                    "comment": 4,
+                    "filename": "src\\app\\services\\application-services\\child.service.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\application-services\\flip-book.service.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 60,
+                    "comment": 4,
+                    "filename": "src\\app\\services\\application-services\\quote.service.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\application-services\\pexelsapi.service.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 26,
+                    "comment": 2,
+                    "filename": "src\\app\\services\\application-services\\user.service.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar-profile\\nav-bar-profile.component.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "src\\app\\services\\easter-egg\\easter-egg.service.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar-profile\\nav-bar-profile.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\nav-bar\\nav-bar-profile\\nav-bar-profile.component.html"
+                },
+                {
+                    "blank": 7,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\application-root.component.html"
+                },
+                {
+                    "blank": 20,
+                    "code": 91,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\application-root.component.ts"
+                },
+                {
+                    "blank": 22,
+                    "code": 113,
+                    "comment": 6,
+                    "filename": "src\\app\\components\\application\\application-root\\application-root.component.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\registration-form\\registration-form.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "src\\app\\components\\registration-page\\registration-form\\registration-form.component.scss"
+                },
+                {
+                    "blank": 8,
+                    "code": 29,
+                    "comment": 2,
+                    "filename": "src\\app\\services\\application-services\\tutorial.service.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-form\\login-form.component.html"
+                },
+                {
+                    "blank": 17,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\registration-page\\registration-form\\registration-form.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "src\\app\\components\\login-page\\login-form\\login-form.component.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement-overview-root.component.html"
+                },
+                {
+                    "blank": 8,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement-overview-root.component.scss"
+                },
+                {
+                    "blank": 18,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\login-page\\login-form\\login-form.component.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 22,
+                    "comment": 29,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement-overview-root.component.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 130,
+                    "comment": 1,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-overview-root.component.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-overview-root.component.html"
+                },
+                {
+                    "blank": 11,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-overview-root.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\children-overview-root.component.html"
+                },
+                {
+                    "blank": 8,
+                    "code": 33,
+                    "comment": 5,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote-overview-root.component.html"
+                },
+                {
+                    "blank": 4,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\children-overview-root.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\children-overview-root.component.scss"
+                },
+                {
+                    "blank": 27,
+                    "code": 91,
+                    "comment": 2,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote-overview-root.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote-overview-root.media.scss"
+                },
+                {
+                    "blank": 21,
+                    "code": 130,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote-overview-root.component.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\news-overview-root\\news-overview-root.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\news-overview-root\\news-overview-root.component.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\news-overview-root\\news-overview-root.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\notifications\\config.ts"
+                },
+                {
+                    "blank": 34,
+                    "code": 206,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\side-bar\\side-bar.component.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 62,
+                    "comment": 1,
+                    "filename": "src\\app\\components\\application\\application-root\\side-bar\\side-bar.component.html"
+                },
+                {
+                    "blank": 10,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\side-bar\\side-bar.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\user-root\\user-root.component.scss"
+                },
+                {
+                    "blank": 13,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\user-root\\user-root.component.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\user-root\\user-root.component.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement\\achievement.component.html"
+                },
+                {
+                    "blank": 12,
+                    "code": 100,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement\\achievement.component.scss"
+                },
+                {
+                    "blank": 64,
+                    "code": 227,
+                    "comment": 29,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\book-editor.component.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\achievement-overview-root\\achievement\\achievement.component.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 56,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\book-editor.component.scss"
+                },
+                {
+                    "blank": 23,
+                    "code": 124,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\book-editor.component.html"
+                },
+                {
+                    "blank": 16,
+                    "code": 113,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\book-preview.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\front-page.scss"
+                },
+                {
+                    "blank": 10,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\save-modal.scss"
+                },
+                {
+                    "blank": 26,
+                    "code": 175,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-editor\\sidebar.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-page\\book-page.component.html"
+                },
+                {
+                    "blank": 9,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-page\\book-page.component.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-page\\book-page.component.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-inspector\\book-inspector.component.html"
+                },
+                {
+                    "blank": 23,
+                    "code": 164,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-inspector\\book-inspector.component.scss"
+                },
+                {
+                    "blank": 24,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-inspector\\book-inspector.component.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-tutorial\\book-tutorial.component.html"
+                },
+                {
+                    "blank": 18,
+                    "code": 108,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-tutorial\\book-tutorial.component.scss"
+                },
+                {
+                    "blank": 25,
+                    "code": 84,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\book-tutorial\\book-tutorial.component.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-page\\flip-book-page.component.html"
+                },
+                {
+                    "blank": 9,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-page\\flip-book-page.component.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-page\\flip-book-page.component.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\new-book\\new-book.component.html"
+                },
+                {
+                    "blank": 33,
+                    "code": 175,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\new-book\\new-book.component.scss"
+                },
+                {
+                    "blank": 42,
+                    "code": 124,
+                    "comment": 11,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\new-book\\new-book.component.ts"
+                },
+                {
+                    "blank": 42,
+                    "code": 112,
+                    "comment": 24,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\flip-book-editor.component.html"
+                },
+                {
+                    "blank": 13,
+                    "code": 56,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\flip-book-editor.component.scss"
+                },
+                {
+                    "blank": 60,
+                    "code": 208,
+                    "comment": 29,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\flip-book-editor.component.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 111,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\flipbook-preview.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\front-page.scss"
+                },
+                {
+                    "blank": 10,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\save-modal.scss"
+                },
+                {
+                    "blank": 26,
+                    "code": 175,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\book-overview-root\\flip-book-editor\\sidebar.scss"
+                },
+                {
+                    "blank": 9,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\edit-child\\edit-child.component.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\edit-child\\edit-child.component.scss"
+                },
+                {
+                    "blank": 16,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\edit-child\\edit-child.component.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\new-child\\new-child.component.html"
+                },
+                {
+                    "blank": 12,
+                    "code": 79,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\new-child\\new-child.component.scss"
+                },
+                {
+                    "blank": 31,
+                    "code": 114,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\children-overview-root\\new-child\\new-child.component.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 80,
+                    "comment": 10,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-quote\\new-quote.component.html"
+                },
+                {
+                    "blank": 31,
+                    "code": 200,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-quote\\new-quote.component.scss"
+                },
+                {
+                    "blank": 83,
+                    "code": 239,
+                    "comment": 61,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-quote\\new-quote.component.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-story\\new-story.component.html"
+                },
+                {
+                    "blank": 20,
+                    "code": 137,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-story\\new-story.component.scss"
+                },
+                {
+                    "blank": 23,
+                    "code": 61,
+                    "comment": 18,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\new-story\\new-story.component.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote\\quote.component.html"
+                },
+                {
+                    "blank": 16,
+                    "code": 106,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote\\quote.component.scss"
+                },
+                {
+                    "blank": 19,
+                    "code": 44,
+                    "comment": 1,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote\\quote.component.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\quote\\quote.media.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\post-modal\\post-modal.component.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\post-modal\\post-modal.component.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\app\\components\\application\\application-root\\quote-overview-root\\post-modal\\post-modal.component.ts"
+                }
+            ]
+        }
+    ]
+}

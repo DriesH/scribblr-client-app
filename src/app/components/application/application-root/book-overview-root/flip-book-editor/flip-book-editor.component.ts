@@ -44,16 +44,16 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     // DEFAULT COVERS
     covers = [
-        'flip-covers-01.png',
-        'flip-covers-02.png',
-        'flip-covers-03.png',
-        'flip-covers-04.png',
-        'flip-covers-05.png',
-        'flip-covers-06.png',
-        'flip-covers-07.png',
-        'flip-covers-08.png',
-        'flip-covers-09.png',
-        'flip-covers-10.png'
+        'flip-book-covers-01.png',
+        'flip-book-covers-02.png',
+        'flip-book-covers-03.png',
+        'flip-book-covers-04.png',
+        'flip-book-covers-05.png',
+        'flip-book-covers-06.png',
+        'flip-book-covers-07.png',
+        'flip-book-covers-08.png',
+        'flip-book-covers-09.png',
+        'flip-book-covers-10.png'
     ];
     //////////////////
 
@@ -99,7 +99,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     ) { }
 
     ngOnInit() {
-        this.bookModel.cover_preset = (this.configuration.cover_preset) ? this.configuration.cover_preset : 'flip-covers-01.png';
+        this.bookModel.cover_preset = (this.configuration.cover_preset) ? this.configuration.cover_preset : 'flip-book-covers-01.png';
         this.bookModel.title = (this.configuration.title) ? this.configuration.title : 'My Book';
 
 

@@ -54,6 +54,10 @@
         transform: scale(1.02);
     }
 
+    &.flip-over {
+        width: 50% !important;
+    }
+
     .gradient-overlay {
         cursor: pointer;
         display: block;

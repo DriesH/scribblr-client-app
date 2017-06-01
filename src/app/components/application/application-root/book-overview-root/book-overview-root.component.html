@@ -14,7 +14,7 @@
     </div>
     <div id="book-overview">
 
-        <div class="book" *ngFor="let book of books" [routerLink]="'book/' + book.short_id">
+        <div class="book" [ngClass]="{'flip-over': book.is_flip_over === 1}" *ngFor="let book of books" [routerLink]="'book/' + book.short_id">
             <div class="front-page">
                 <img [src]="'/assets/book-covers/' + book.cover_preset">
             </div>
