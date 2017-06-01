@@ -60,6 +60,10 @@ import { BookInspectorComponent } from './components/application/application-roo
 import { UserRootComponent } from './components/application/application-root/user-root/user-root.component';
 import { EditChildComponent } from './components/application/application-root/children-overview-root/edit-child/edit-child.component';
 import { FlipBookEditorComponent } from './components/application/application-root/book-overview-root/flip-book-editor/flip-book-editor.component';
+import { FlipBookPageComponent } from './components/application/application-root/book-overview-root/flip-book-page/flip-book-page.component';
+import { BookThumbnailComponent } from './components/application/application-root/book-overview-root/book-thumbnail/book-thumbnail.component';
+import { FlipBookInspectorComponent } from './components/application/application-root/book-overview-root/flip-book-inspector/flip-book-inspector.component';
+import { CheckOutRootComponent } from './components/application/application-root/check-out-root/check-out-root.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -110,7 +114,7 @@ import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 
 
 import { FilterPipe } from './pipes/filter.pipe';
-import { FlipBookPageComponent } from './components/application/application-root/book-overview-root/flip-book-page/flip-book-page.component';
+
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -162,6 +166,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FlipBookEditorComponent,
         FilterPipe,
         FlipBookPageComponent,
+        BookThumbnailComponent,
+        FlipBookInspectorComponent,
+        CheckOutRootComponent,
     ],
     imports: [
         BrowserModule,

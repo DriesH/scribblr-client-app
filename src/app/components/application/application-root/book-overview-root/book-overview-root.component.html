@@ -12,17 +12,16 @@
     <div id="new-book">
         <a routerLink="new"><i class="fa fa-plus"></i> Create new book or flip-over</a>
     </div>
-    <div id="book-overview">
-
-        <div class="book" [ngClass]="{'flip-over': book.is_flip_over === 1}" *ngFor="let book of books" [routerLink]="'book/' + book.short_id">
-            <div class="front-page">
-                <img [src]="'/assets/book-covers/' + book.cover_preset">
-            </div>
-            <a class="gradient-overlay">
-                <h1 class="title">{{ book.title }}</h1>
-                <p class="date">{{ book.created_at | date }}</p>
-            </a>
-        </div>
+    <div id="book-overview" class="grid" #bookContainer>
+        <div class="grid-sizer"></div>
+        <scrblr-book-thumbnail
+            *ngFor="let book of books; let last = last"
+            [last]="last"
+            [bookData]="book"
+            [bookShortId]="book.short_id"
+            (reachedLast)="initMasonry()"
+        >
+        </scrblr-book-thumbnail>
     </div>
 </div>
 

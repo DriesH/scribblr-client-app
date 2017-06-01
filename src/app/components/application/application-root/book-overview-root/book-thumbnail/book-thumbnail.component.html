@@ -1,0 +1,15 @@
+<div class="grid-item" [ngClass]="{'': bookData.is_flip_over === 1}">
+    <div class="book" [routerLink]="inspectorLink">
+        <div class="front-page">
+            <img [src]="'/assets/book-covers/' + bookData.cover_preset" (load)="imgLoaded()">
+        </div>
+        <a class="gradient-overlay">
+            <h1 class="title">
+                <i *ngIf="bookData.is_flip_over === 0" class="fa fa-book"></i>
+                <i *ngIf="bookData.is_flip_over === 1" class="fa fa-calendar-o"></i>
+                {{ bookData.title }}
+            </h1>
+            <p class="date">{{ bookData.created_at | date }}</p>
+        </a>
+    </div>
+</div>

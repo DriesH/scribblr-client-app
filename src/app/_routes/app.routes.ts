@@ -25,6 +25,7 @@ import { EditChildComponent } from '../components/application/application-root/c
 // Book
 import { NewBookComponent } from '../components/application/application-root/book-overview-root/new-book/new-book.component';
 import { BookInspectorComponent } from '../components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
+import { FlipBookInspectorComponent } from '../components/application/application-root/book-overview-root/flip-book-inspector/flip-book-inspector.component';
 
 // News
 import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
@@ -107,6 +108,10 @@ const ROUTES: Routes = [
                     {
                         path: 'book/:short_id_book',
                         component: BookInspectorComponent
+                    },
+                    {
+                        path: 'flip-book/:short_id_book',
+                        component: FlipBookInspectorComponent
                     }
                 ]
             }
