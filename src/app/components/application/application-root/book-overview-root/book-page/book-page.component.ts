@@ -14,8 +14,7 @@ export class BookPageComponent implements OnInit, OnChanges {
     loaded = false;
     isEmpty = false;
 
-    constructor() {
-    }
+    constructor() { }
 
     ngOnInit() {
         if (this.src === null) {

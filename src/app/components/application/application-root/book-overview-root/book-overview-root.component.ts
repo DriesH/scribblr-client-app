@@ -12,7 +12,6 @@ import { BookService } from '../../../../services/application-services/book.serv
 export class BookOverviewRootComponent implements OnInit {
 
     editorActive = false;
-    bookInspectorActive = false;
 
     books = [];
 
