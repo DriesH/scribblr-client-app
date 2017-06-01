@@ -26,11 +26,9 @@ export class BookEditorComponent implements OnInit {
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
     /////////////////////////
 
-
     // CONFIG
     _postCfg = API_ROUTES.application.posts;
     ///////////
-
 
     // state and http stuff
     book;
@@ -45,7 +43,6 @@ export class BookEditorComponent implements OnInit {
     // LOADING
     isLoadingPosts = false;
     //////////
-
 
     // DEFAULT COVERS
     covers = [
@@ -62,7 +59,6 @@ export class BookEditorComponent implements OnInit {
     ];
     //////////////////
 
-
     // model for saving book.
     bookModel = {
         cover_preset: 'covers-01.png',
@@ -75,23 +71,19 @@ export class BookEditorComponent implements OnInit {
     userIsSaving = false;
     ////////////////////////
 
-
     // current page stuff
     currentPage = 0;
     maxPages = 10;
     previousPageIndex = null;
     /////////////////////
 
-
     // stuff for sidebar
     currentChildQuotes = null; // short id of the current child that is showing quotes.
     ////////////////////
 
-
     // to show the right view of the book. 2 quotes or 1 story + image.
     isMemoryBoolean;
     //////////////////////////////////////////////////////////////////
-
 
     // ARRAY THAT HOLD THE CURRENT IMAGES FOR PAGE LEFT AND RIGHT.
     currentImages = [];
@@ -100,7 +92,6 @@ export class BookEditorComponent implements OnInit {
     // SIDEBAR
     selectedTool = 'cover';
     /////////////////
-
 
     constructor(
         private _qs: QuoteService,
@@ -213,7 +204,10 @@ export class BookEditorComponent implements OnInit {
                 pageSide: 0,
                 newPageData: $event.dragData,
                 isMemory: $event.dragData.is_memory,
-                originalShortId: this.book[this.currentPage - 1][0].short_id
+                originalShortId: {
+                    pageLeft: this.book[this.currentPage - 1][0].short_id,
+                    pageRight: this.book[this.currentPage - 1][1].short_id
+                }
             };
         } else {
             dataEvent = {
@@ -221,7 +215,10 @@ export class BookEditorComponent implements OnInit {
                 pageSide: 1,
                 newPageData: $event.dragData,
                 isMemory: $event.dragData.is_memory,
-                originalShortId: this.book[this.currentPage - 1][1].short_id
+                originalShortId: {
+                    pageLeft: this.book[this.currentPage - 1][0].short_id,
+                    pageRight: this.book[this.currentPage - 1][1].short_id
+                }
             };
         }
 
@@ -299,6 +296,7 @@ export class BookEditorComponent implements OnInit {
     saveBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
+            console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {
@@ -313,5 +311,7 @@ export class BookEditorComponent implements OnInit {
 
     closeModal() {
         this.userIsSaving = false;
+        this.isSaved = false;
+        this.isFailed = false;
     }
 }

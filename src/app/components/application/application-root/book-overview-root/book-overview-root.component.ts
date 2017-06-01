@@ -16,9 +16,14 @@ export class BookOverviewRootComponent implements OnInit {
 
     books = [];
 
+    isLoading = false;
+    noBooks = false;
+
     constructor(private _bs: BookService, private router: Router) { }
 
     ngOnInit() {
+        this.isLoading = true;
+
         this.editorActive = false;
 
         this.router.events.subscribe(e => {
@@ -26,6 +31,9 @@ export class BookOverviewRootComponent implements OnInit {
                 this.editorActive = true;
             } else {
                 this._bs.getAllBooks().subscribe(res => {
+                    if (res.book) {
+
+                    }
                     this.books = res.books;
                 });
                 this.editorActive = false;

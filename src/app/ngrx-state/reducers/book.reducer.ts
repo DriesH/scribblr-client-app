@@ -116,6 +116,7 @@ export function BookReducer(state: any = initialState, action: Action) {
 
         case bookActions.ActionTypes.ADD_TO_POST_LIST:
             index = 0;
+
             if (action.payload.shortId) {
                 state.posts.forEach((item, key) => {
                     if (item.short_id === action.payload.shortId) {
