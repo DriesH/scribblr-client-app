@@ -1,17 +1,25 @@
 <router-outlet></router-outlet>
 
-<div *ngIf="!editorActive">
-    <div id="book-overview">
-        <a class="book" *ngFor="let book of books" routerLink="book/book.short_id">
-            <h1>{{ book.title }}</h1>
-            <div class="front-page">
+<div class="loading-screen-books" *ngIf="books.length <= 0">
+    <span class="loading-spinner"></span>
+</div>
 
-            </div>
-        </a>
-    </div>
-
+<div *ngIf="!editorActive || !bookInspectorActive">
     <div id="new-book">
-        <a routerLink="new">Create new book</a>
+        <a routerLink="new"><i class="fa fa-plus"></i> Create new book or flip-over</a>
+    </div>
+    <div id="book-overview">
+
+        <div class="book" *ngFor="let book of books" [routerLink]="'book/' + book.short_id">
+            <div class="front-page">
+                <img [src]="'/assets/book-covers/' + book.cover_preset">
+            </div>
+            <a class="gradient-overlay">
+                <h1 class="title">{{ book.title }}</h1>
+                <p class="date">{{ book.created_at | date }}</p>
+            </a>
+
+        </div>
     </div>
 </div>
 

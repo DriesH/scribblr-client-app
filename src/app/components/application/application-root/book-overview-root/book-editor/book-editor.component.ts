@@ -16,7 +16,8 @@ import * as BookActions from '../../../../../ngrx-state/actions/book.action';
         './book-editor.component.scss',
         './sidebar.scss',
         './book-preview.scss',
-        './front-page.scss'
+        './front-page.scss',
+        './save-modal.scss'
     ]
 })
 export class BookEditorComponent implements OnInit {
@@ -65,9 +66,13 @@ export class BookEditorComponent implements OnInit {
     // model for saving book.
     bookModel = {
         cover_preset: 'covers-01.png',
-        title: 'test',
+        title: 'My Book',
         book: [] // CHECK THIS
     };
+
+    isSaved = false; // book saved
+    isFailed = false;
+    userIsSaving = false;
     ////////////////////////
 
 
@@ -294,7 +299,19 @@ export class BookEditorComponent implements OnInit {
     saveBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
-            console.log(res);
+            this.isSaved = true;
+            this.isFailed = false;
+        }, err => {
+            this.isSaved = false;
+            this.isFailed = true;
         });
+    }
+
+    openModal() {
+        this.userIsSaving = true;
+    }
+
+    closeModal() {
+        this.userIsSaving = false;
     }
 }

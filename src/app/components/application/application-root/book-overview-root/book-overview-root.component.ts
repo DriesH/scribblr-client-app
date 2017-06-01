@@ -12,6 +12,7 @@ import { BookService } from '../../../../services/application-services/book.serv
 export class BookOverviewRootComponent implements OnInit {
 
     editorActive = false;
+    bookInspectorActive = false;
 
     books = [];
 
@@ -20,14 +21,13 @@ export class BookOverviewRootComponent implements OnInit {
     ngOnInit() {
         this.editorActive = false;
 
-        this._bs.getAllBooks().subscribe(res => {
-            this.books = res.books;
-        });
-
         this.router.events.subscribe(e => {
             if (this.router.url === '/application/books/new') {
                 this.editorActive = true;
             } else {
+                this._bs.getAllBooks().subscribe(res => {
+                    this.books = res.books;
+                });
                 this.editorActive = false;
             }
         });
