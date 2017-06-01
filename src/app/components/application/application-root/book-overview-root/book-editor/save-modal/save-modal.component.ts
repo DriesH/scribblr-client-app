@@ -16,7 +16,7 @@ export class SaveModalComponent implements OnInit {
     @Input('book') book;
     @Input('isEditing') isEditing;
 
-    @Output('close') close: EventEmitter<boolean>;
+    @Output('close') close = new EventEmitter<boolean>();
 
     constructor(private _bs: BookService) { }
 

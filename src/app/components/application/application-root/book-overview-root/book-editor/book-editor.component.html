@@ -13,8 +13,8 @@
         <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Order</span>
     </div>
 
-    <scrblr-save-modal *ngIf="userIsSaving" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-save-modal>
-    <scrblr-order-modal *ngIf="userIsSavingAndOrdering" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-order-modal>
+    <scrblr-save-modal *ngIf="userIsSaving" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-save-modal>
+    <scrblr-order-modal *ngIf="userIsSavingAndOrdering" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-order-modal>
 
     <div id="book-window">
         <span *ngIf="currentPage !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>

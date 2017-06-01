@@ -11,39 +11,58 @@
 
             </div>
             <div class="product-body">
-
                 <div class="products-in-cart">
-                    <div class="product">
-                        <img src="/assets/book-covers/covers-01.png">
+                    <div class="product" *ngFor="let item of currentItemsInCart">
+                        <img [src]="'/assets/book-covers/' + item.cover_preset">
                         <div class="title-group">
-                            <h1 class="title">Joren his first book</h1>
-                            <p class="sub-title">Book: 14cm x 14cm, hard-cover</p>
+                            <h1 class="title">{{ item.title }}</h1>
+                            <p class="sub-title" *ngIf="!item.is_flip_over">Book: 14cm x 14cm, hard-cover</p>
+                            <p class="sub-title" *ngIf="item.is_flip_over">Flip-over: 20cm x 14cm, hard-cover</p>
                         </div>
-                        <div class="quantity">
+                        <div class="quantity" *ngIf="!item.is_flip_over">
                             Quantity:&nbsp;
-                            <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="4">5</option>
-                                <option value="4">6</option>
-                                <option value="4">7</option>
-                                <option value="4">8</option>
-                                <option value="4">9</option>
-                                <option value="4">10</option>
+                            <select id="quantity-selection" #quantity="ngModel" [(ngModel)]="qModel.quantityBook" (change)="recalculatePrice()">
+                                <option [value]="1">1</option>
+                                <option [value]="2">2</option>
+                                <option [value]="3">3</option>
+                                <option [value]="4">4</option>
+                                <option [value]="4">5</option>
+                                <option [value]="4">6</option>
+                                <option [value]="4">7</option>
+                                <option [value]="4">8</option>
+                                <option [value]="4">9</option>
+                                <option [value]="4">10</option>
                             </select>
                         </div>
+
+                        <div class="quantity" *ngIf="item.is_flip_over">
+                            Quantity:&nbsp;
+                            <select id="quantity-selection" #quantity="ngModel" [(ngModel)]="qModel.quantityFlipover" (change)="recalculatePrice()">
+                                <option [value]="1">1</option>
+                                <option [value]="2">2</option>
+                                <option [value]="3">3</option>
+                                <option [value]="4">4</option>
+                                <option [value]="4">5</option>
+                                <option [value]="4">6</option>
+                                <option [value]="4">7</option>
+                                <option [value]="4">8</option>
+                                <option [value]="4">9</option>
+                                <option [value]="4">10</option>
+                            </select>
+                        </div>
+
                         <div class="flex-spacer"></div>
                         <div class="product-price">
-                            <p class="price-tag">€45</p>
+                            <p class="price-tag" *ngIf="!item.is_flip_over">€{{ prices.book * qModel.quantityBook }}</p>
+                            <p class="price-tag" *ngIf="item.is_flip_over">€{{ prices.flip-over * qModel.quantityFlipover }}</p>
+
                         </div>
                     </div>
                 </div>
                 <hr>
-                <p class="price">Shipping cost: <span class="price-tag">€5</span></p>
+                <p class="price">Shipping cost: <span class="price-tag">€{{ prices.shipping }}</span></p>
                 <hr>
-                <p class="total-price">Total price: <span class="price-tag">€50</span></p>
+                <p class="total-price">Total price: <span class="price-tag">€{{ totalPrice }}</span></p>
                 <div class="button-container">
                     <button class="checkout-btn"><i class="fa fa-paypal"></i> Pay with paypal</button>
                 </div>

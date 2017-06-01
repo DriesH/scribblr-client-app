@@ -284,8 +284,6 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
     }
 
-
-
     openSaveModal() {
         this.userIsSaving = true;
     }
@@ -298,6 +296,4 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         this.userIsSavingAndOrdering = false;
         this.userIsSaving = false;
     }
-
-
 }

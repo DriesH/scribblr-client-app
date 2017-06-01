@@ -91,6 +91,9 @@ export const API_ROUTES = {
         tutorial: {
             skipTutorialBook: applicationPrefix + 'books/seen-tutorial',
             completedTutorialBook: applicationPrefix + 'books/seen-tutorial',
+        },
+        check_out: {
+            prices: applicationPrefix + 'orders/prices'
         }
     }
 

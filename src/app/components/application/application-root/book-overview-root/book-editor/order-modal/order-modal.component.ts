@@ -2,6 +2,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
+import { Router } from '@angular/router';
+
 import { BookService } from '../../../../../../services/application-services/book.service';
 
 import * as CartActions from '../../../../../../ngrx-state/actions/cart.action';
@@ -20,9 +22,9 @@ export class OrderModalComponent implements OnInit {
     @Input('book') book;
     @Input('isEditing') isEditing;
 
-    @Output('close') close: EventEmitter<boolean>;
+    @Output('close') close = new EventEmitter<boolean>();
 
-    constructor(private _bs: BookService, private store: Store<any>) { }
+    constructor(private _bs: BookService, private store: Store<any>, private router: Router) { }
 
     ngOnInit() {
         this.isSaved = false;
@@ -35,7 +37,8 @@ export class OrderModalComponent implements OnInit {
             console.log(res);
             this.isSaved = true;
             this.isFailed = false;
-            this.store.dispatch(new CartActions.AddToCart({ new_item: res }));
+            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.router.navigate(['checkout']);
         }, err => {
             this.isSaved = false;
             this.isFailed = true;

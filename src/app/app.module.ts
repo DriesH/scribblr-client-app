@@ -19,9 +19,12 @@ import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 /* ngrx stuffs */
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, combineReducers } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { compose } from '@ngrx/core/compose';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
 
 /* Routes */
 import { APP_ROUTES } from './_routes/app.routes';
@@ -84,6 +87,8 @@ import { TutorialService } from './services/application-services/tutorial.servic
 import { PexelsapiService } from './services/application-services/pexelsapi.service';
 import { UserService } from './services/application-services/user.service';
 import { FlipBookService } from './services/application-services/flip-book.service';
+import { CheckOutService } from './services/application-services/check-out.service';
+
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -112,6 +117,7 @@ import { BookEffect } from './ngrx-state/effects/book.effects';
 import { FlipBookReducer } from './ngrx-state/reducers/flip-book.reducer';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 
+import { CartReducer } from './ngrx-state/reducers/cart.reducer';
 
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
@@ -185,14 +191,20 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         LazyLoadImageModule,
         DndModule.forRoot(),
         APP_ROUTES,
-        StoreModule.provideStore({
-            CURRENT_USER: CurrentUserReducer,
-            CURRENT_CHILDREN: ChildReducer,
-            APPLICATION_UI: ApplicationUIReducer,
-            QUOTES: QuoteReducer,
-            BOOK: BookReducer,
-            FLIP_BOOK: FlipBookReducer
-        }),
+        StoreModule.provideStore(
+            compose(
+                localStorageSync({ keys: ['CART'], rehydrate: true}),
+                combineReducers
+            )({
+                CURRENT_USER: CurrentUserReducer,
+                CURRENT_CHILDREN: ChildReducer,
+                APPLICATION_UI: ApplicationUIReducer,
+                QUOTES: QuoteReducer,
+                BOOK: BookReducer,
+                FLIP_BOOK: FlipBookReducer,
+                CART: CartReducer
+            })
+        ),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
         EffectsModule.runAfterBootstrap(BookEffect),
@@ -218,7 +230,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PexelsapiService,
         UserService,
         NoScrollService,
-        FlipBookService
+        FlipBookService,
+        CheckOutService
     ],
     bootstrap: [ AppComponent ]
 })
