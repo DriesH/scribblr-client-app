@@ -77,7 +77,7 @@ export const API_ROUTES = {
         },
         flip_book: {
             generateNewBook: applicationPrefix + 'books/generate?is_flip_over=1',
-            newBook: applicationPrefix + 'books/new/flip',
+            newBook: applicationPrefix + 'books/new',
             getBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId;
             },

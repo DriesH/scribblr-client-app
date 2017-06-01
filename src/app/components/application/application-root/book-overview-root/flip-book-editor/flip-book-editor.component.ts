@@ -60,7 +60,8 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     // model for saving book.
     bookModel = {
         cover_preset: '',
-        title: 'My Book',
+        title: 'My Flip Book',
+        is_flip_over: true,
         book: [] // CHECK THIS
     };
 
@@ -71,7 +72,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     // current page stuff
     currentPage = 0;
-    maxPages = 10;
+    maxPages = 20;
     previousPageIndex = null;
     /////////////////////
 
@@ -135,15 +136,17 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     setCurrentImageArray(currentImages, book, currentPage) {
         currentImages = [];
 
-        book[currentPage - 1].forEach(post => {
-            if (Object.keys(post).length !== 0 && post.constructor === Object) {
-                currentImages.push(
-                    API_ROUTES.baseUrl + this._postCfg.imageBaked(post.child.short_id, post.short_id, post.img_baked_url_id)
-                );
-            } else {
-                currentImages.push(null);
-            }
-        });
+        if (Object.keys(book[currentPage - 1]).length !== 0 && book[currentPage - 1].constructor === Object) {
+            currentImages.push(
+                API_ROUTES.baseUrl +
+                this._postCfg.imageBaked(book[currentPage - 1].child.short_id,
+                    book[currentPage - 1].short_id,
+                    book[currentPage - 1].img_baked_url_id
+                )
+            );
+        } else {
+            currentImages.push(null);
+        }
 
         return currentImages;
     }
@@ -153,18 +156,13 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     }
 
     isMemory(book, currentPageNumber) {
-        let i = 0;
-
-        for (i = 0; i < 2; i++) {
-            if (book[currentPageNumber - 1][i].is_memory === 1) {
-                console.log('boolean is memory', true);
-                return true;
-            } else {
-                console.log('boolean is memory', false);
-                return false;
-            }
+        if (book[currentPageNumber - 1].is_memory === 1) {
+            console.log('boolean is memory', true);
+            return true;
+        } else {
+            console.log('boolean is memory', false);
+            return false;
         }
-
     }
 
     closeEditor() {
@@ -262,7 +260,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     saveBook(bookModel, book) {
         bookModel.book = book;
-        this._bs.saveBook(bookModel).subscribe(res => {
+        this._bs.saveFlipBook(bookModel).subscribe(res => {
             console.log(res);
             this.isSaved = true;
             this.isFailed = false;
@@ -274,7 +272,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     editBook(bookShortId, bookModel, book) {
         bookModel.book = book;
-        this._bs.editBook(bookShortId, bookModel).subscribe(res => {
+        this._bs.editFlipBook(bookShortId, bookModel).subscribe(res => {
             console.log(res);
             this.isSaved = true;
             this.isFailed = false;

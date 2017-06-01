@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <span *ngIf="currentPage !== 10" class="next" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
+        <span *ngIf="currentPage !== maxPages" class="next" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
     </div>
 
     <div id="selection-bar" class="side-bar--container">

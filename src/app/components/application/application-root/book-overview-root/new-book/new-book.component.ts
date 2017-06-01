@@ -145,8 +145,8 @@ export class NewBookComponent implements OnInit {
                 }
 
                 this._qs.getAllPosts().subscribe(res => {
-                    this.store.dispatch(new BookActions.BookDataReceived(emptyFlipBook));
-                    this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+                    this.store.dispatch(new FlipBookActions.FlipBookDataReceived(emptyFlipBook));
+                    this.store.dispatch(new FlipBookActions.FlipBookPostsDataReceived(res.posts));
 
                     this.editorActive = true;
                 });

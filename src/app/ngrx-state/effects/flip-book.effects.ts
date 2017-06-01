@@ -32,12 +32,12 @@ export class FlipBookEffect {
         .mergeMap(payload => {
             if (payload.isMemory) {
                 return [
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId.pageLeft }),
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId.pageRight })
+                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId }),
+                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId })
                 ];
             } else {
                 return [
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId.pageLeft }),
+                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId }),
                 ];
             }
         });
