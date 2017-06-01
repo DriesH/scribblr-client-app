@@ -35,7 +35,7 @@
     align-items: center;
     width: 80%;
     min-width: 700px;
-    height: 150px;
+    height: 50px;
     background-color: #FFF;
     margin: auto;
     text-align: left;
@@ -44,7 +44,6 @@
     padding: 10px;
     opacity: 1;
     transition: 200ms ease-in-out all;
-    cursor: pointer;
 
     &.completed {
         position: relative;
@@ -63,13 +62,21 @@
         border-radius: 100px 5px 5px 100px;
     }
 
-    &:hover {
-        height: 160px;
+    .points {
+        background-color: #DEE0E3;
+        border-radius: 50%;
+        display: block;
+        height: 35px;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
     }
 }
 
 .achievement--image {
-    height: auto;
+    height: 50px;
     border-radius: 50%;
     transition: 200ms ease-in-out all;
 }
@@ -80,9 +87,10 @@
     width: calc(100% - 200px);
     text-overflow: ellipsis;
 
-    h1 {
+    h2 {
         margin-top: 5px;
         margin-bottom: 0;
+        color:#2d3338;
     }
 
     p {

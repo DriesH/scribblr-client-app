@@ -40,7 +40,7 @@ export class AchievementOverviewRootComponent implements OnInit {
     // ];
 
     achievementCategories;
-
+    totalPoints;
 
     constructor(
         private _as: AchievementService,
@@ -51,6 +51,7 @@ export class AchievementOverviewRootComponent implements OnInit {
             .subscribe(res => {
                 console.log(res);
                 this.achievementCategories = res.achievements;
+                this.totalPoints = res.total_points;
             });
 
     }
