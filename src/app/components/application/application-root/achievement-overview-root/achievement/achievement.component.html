@@ -1,11 +1,12 @@
 <div class="achievement--wrapper">
     <div class="achievement--block" [ngClass]="{ 'completed': achievementData.completed }">
-        <img src="/assets/achievements/email.svg" class="achievement--image">
+        <img [src]="achievementData.image" class="achievement--image">
 
         <div class="achievement--text">
-            <h1>{{ achievementData.title }}</h1>
-            <p>{{ achievementData.description }}</p>
+            <h2>{{ achievementData.title }}</h2>
         </div>
+
+        <span class="points">{{ achievementData.points }}</span>
     </div>
 
 </div>

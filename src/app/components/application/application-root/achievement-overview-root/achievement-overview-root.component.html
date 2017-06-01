@@ -1,4 +1,5 @@
 <div id="achievement--wrapper">
+    <span class="total_points">{{totalPoints}}</span>
     <div class="category--container" *ngFor="let category of achievementCategories | keys">
         <h1><i class="fa" [ngClass]="{ 'fa-user': category.key === 'Account', 'fa-child': category.key === 'Children', 'fa-quote-left': category.key === 'Memories'}"></i> {{category.key}}</h1>
         <hr>
