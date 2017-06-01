@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
+import { BookService } from '../../../../../services/application-services/book.service';
 
 import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { Store } from '@ngrx/store';
 
-import * as BookActions from '../../../../../ngrx-state/actions/book.action';
+import * as FlipBookActions from '../../../../../ngrx-state/actions/flip-book.action';
 
 @Component({
     selector: 'scrblr-flip-book-editor',
@@ -15,20 +16,21 @@ import * as BookActions from '../../../../../ngrx-state/actions/book.action';
         './flip-book-editor.component.scss',
         './sidebar.scss',
         './flipbook-preview.scss',
-        './front-page.scss'
+        './front-page.scss',
+        './save-modal.scss'
     ]
 })
-export class FlipBookEditorComponent implements OnInit {
+export class FlipBookEditorComponent implements OnInit, AfterViewInit {
+
+    @Input('configuration') configuration;
 
     // CLOSE THE EDITOR EVENT
     @Output('closeEditorEvent') closeEditorEvent = new EventEmitter<Boolean>();
     /////////////////////////
 
-
     // CONFIG
     _postCfg = API_ROUTES.application.posts;
     ///////////
-
 
     // state and http stuff
     book;
@@ -40,34 +42,32 @@ export class FlipBookEditorComponent implements OnInit {
     currentChildPosts = [];
     //////////////////
 
-    // LOADING
-    isLoadingPosts = false;
-    //////////
-
-
     // DEFAULT COVERS
     covers = [
-        'covers-01.png',
-        'covers-02.png',
-        'covers-03.png',
-        'covers-04.png',
-        'covers-05.png',
-        'covers-06.png',
-        'covers-07.png',
-        'covers-08.png',
-        'covers-09.png',
-        'covers-10.png'
+        'flip-covers-01.png',
+        'flip-covers-02.png',
+        'flip-covers-03.png',
+        'flip-covers-04.png',
+        'flip-covers-05.png',
+        'flip-covers-06.png',
+        'flip-covers-07.png',
+        'flip-covers-08.png',
+        'flip-covers-09.png',
+        'flip-covers-10.png'
     ];
     //////////////////
 
-
     // model for saving book.
     bookModel = {
-        cover: 'covers-01.png',
-        array: '???' // CHECK THIS
+        cover_preset: '',
+        title: 'My Book',
+        book: [] // CHECK THIS
     };
-    ////////////////////////
 
+    isSaved = false; // book saved
+    isFailed = false;
+    userIsSaving = false;
+    ////////////////////////
 
     // current page stuff
     currentPage = 0;
@@ -75,16 +75,13 @@ export class FlipBookEditorComponent implements OnInit {
     previousPageIndex = null;
     /////////////////////
 
-
     // stuff for sidebar
     currentChildQuotes = null; // short id of the current child that is showing quotes.
     ////////////////////
 
-
     // to show the right view of the book. 2 quotes or 1 story + image.
     isMemoryBoolean;
     //////////////////////////////////////////////////////////////////
-
 
     // ARRAY THAT HOLD THE CURRENT IMAGES FOR PAGE LEFT AND RIGHT.
     currentImages = [];
@@ -94,18 +91,21 @@ export class FlipBookEditorComponent implements OnInit {
     selectedTool = 'cover';
     /////////////////
 
-
     constructor(
         private _qs: QuoteService,
+        private _bs: BookService,
         private store: Store<any>
     ) { }
 
     ngOnInit() {
-        this.store.select('BOOK').subscribe(BOOK => {
-            let b: any = BOOK;
+        this.bookModel.cover_preset = (this.configuration.cover_preset) ? this.configuration.cover_preset : 'flip-covers-01.png';
+        this.bookModel.title = (this.configuration.title) ? this.configuration.title : 'My Book';
 
-            this.book = b.book;
-            this.posts = b.posts;
+
+        this.store.select('FLIP_BOOK').subscribe((FLIP_BOOK: any) => {
+
+            this.book = FLIP_BOOK.book;
+            this.posts = FLIP_BOOK.posts;
 
             if (this.currentPage !== 0) {
                 this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
@@ -113,14 +113,12 @@ export class FlipBookEditorComponent implements OnInit {
             }
 
             if (this.selectedTool !== 'cover') {
-                console.log('Hey the child post list changed');
                 this.currentChildPosts = [];
                 this.posts.forEach((item, key) => {
                     if (item.child.short_id === this.selectedTool) {
                         this.currentChildPosts.push(item);
                     }
                 });
-                console.log('Currentchild posts: ', this.currentChildPosts);
             }
         });
 
@@ -131,22 +129,7 @@ export class FlipBookEditorComponent implements OnInit {
 
     }
 
-    // GETTING DATA STUFF--------------------------
-    getQuotes(childShortId) {
-        if (this.currentChildQuotes === childShortId) {
-            return;
-        }
-
-        this.isLoadingPosts = true;
-
-        this._qs.getPost(childShortId).subscribe(res => {
-            this.posts = res.posts;
-            this.isLoadingPosts = false;
-
-            this.currentChildQuotes = childShortId;
-        });
-    }
-    /////////////////////--------------------------
+    ngAfterViewInit() { }
 
     // GENERAL PURPOSE STUFF
     setCurrentImageArray(currentImages, book, currentPage) {
@@ -196,30 +179,19 @@ export class FlipBookEditorComponent implements OnInit {
     // EDITOR STUFF----------------------------------
     // Drag and drop data transfer.
     transferDataSuccess($event: any) {
-        let pageSideName = $event.mouseEvent.target.parentElement.parentElement.className;
         let dataEvent = {};
 
-        if (pageSideName.indexOf('page-left') !== -1) {
-            dataEvent = {
-                pageIndex: this.currentPage - 1,
-                pageSide: 0,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory,
-                originalShortId: this.book[this.currentPage - 1][0].short_id
-            };
-        } else {
-            dataEvent = {
-                pageIndex: this.currentPage - 1,
-                pageSide: 1,
-                newPageData: $event.dragData,
-                isMemory: $event.dragData.is_memory,
-                originalShortId: this.book[this.currentPage - 1][1].short_id
-            };
-        }
+        dataEvent = {
+            pageIndex: this.currentPage - 1,
+            pageSide: 0,
+            newPageData: $event.dragData,
+            isMemory: $event.dragData.is_memory,
+            originalShortId: this.book[this.currentPage - 1].short_id,
+        };
 
         console.log(dataEvent);
-        this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
-        this.store.dispatch(new BookActions.RemoveFromPostList({ shortId: $event.dragData.short_id }));
+        this.store.dispatch(new FlipBookActions.UpdateFlipBookPage(dataEvent));
+        this.store.dispatch(new FlipBookActions.RemoveFromFlipBookPostList({ shortId: $event.dragData.short_id }));
     }
 
     nextPage() {
@@ -250,7 +222,7 @@ export class FlipBookEditorComponent implements OnInit {
     }
 
     selectCover(cover) {
-        this.bookModel.cover = cover;
+        this.bookModel.cover_preset = cover;
 
         if (this.currentPage !== 0) {
             this.previousPageIndex = this.currentPage;
@@ -284,7 +256,41 @@ export class FlipBookEditorComponent implements OnInit {
     }
 
     removeCurrentPage(pageIndex, pageSide, shortId) {
-        this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
-        this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
+        this.store.dispatch(new FlipBookActions.RemoveFromFlipBook({ pageIndex: pageIndex, pageSide: pageSide }));
+        this.store.dispatch(new FlipBookActions.AddToFlipBookPostList({ shortId: shortId }));
+    }
+
+    saveBook(bookModel, book) {
+        bookModel.book = book;
+        this._bs.saveBook(bookModel).subscribe(res => {
+            console.log(res);
+            this.isSaved = true;
+            this.isFailed = false;
+        }, err => {
+            this.isSaved = false;
+            this.isFailed = true;
+        });
+    }
+
+    editBook(bookShortId, bookModel, book) {
+        bookModel.book = book;
+        this._bs.editBook(bookShortId, bookModel).subscribe(res => {
+            console.log(res);
+            this.isSaved = true;
+            this.isFailed = false;
+        }, err => {
+            this.isSaved = false;
+            this.isFailed = true;
+        });
+    }
+
+    openModal() {
+        this.userIsSaving = true;
+    }
+
+    closeModal() {
+        this.userIsSaving = false;
+        this.isSaved = false;
+        this.isFailed = false;
     }
 }

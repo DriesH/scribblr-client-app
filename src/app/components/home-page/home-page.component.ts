@@ -19,13 +19,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     constructor(private auth: AuthService, private store: Store<any>) { }
 
     ngOnInit() {
-        this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
-            let currentUser: any = CURRENT_USER;
-
-            if (currentUser.isAuth) {
+        this.store.select('CURRENT_USER').subscribe((CURRENT_USER: any) => {
+            if (CURRENT_USER.isAuth) {
                 this.isLoggedIn = true;
             }
-
             this.auth.getUser();
         });
 

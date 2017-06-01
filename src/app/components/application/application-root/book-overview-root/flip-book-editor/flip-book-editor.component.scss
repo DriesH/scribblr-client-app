@@ -22,6 +22,28 @@
     }
 }
 
+.save-and-order {
+    position: absolute;
+    right: 400px;
+    top: 50px;
+
+    .save {
+        margin-right: 25px;
+    }
+
+    .save,
+    .order {
+        cursor: pointer;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $main-color-two;
+        }
+    }
+}
+
 #book-editor {
     background: #FAFAFA;
     width: 100%;
@@ -41,3 +63,7 @@
     align-items: center;
     justify-content: center;
 }
+
+
+
+

@@ -9,6 +9,8 @@ import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 import { Store } from '@ngrx/store';
 
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
+import * as FlipBookActions from '../../../../../ngrx-state/actions/flip-book.action';
+
 
 import { BookEditorConfig } from '../../../../../models/book-editor';
 
@@ -99,6 +101,14 @@ export class NewBookComponent implements OnInit {
                 });
                 break;
             case 'flip-over':
+                this._bs.autoGenerateNewFlipBook().subscribe(res => {
+                    console.log(res);
+                    this.store.dispatch(new FlipBookActions.FlipBookDataReceived(res.book));
+                    this.store.dispatch(new FlipBookActions.FlipBookPostsDataReceived(res.all_marked_posts));
+
+                    this.autoGenerateSuccess = true;
+                    this.editorActive = true;
+                });
                 break;
         }
     }
@@ -128,7 +138,18 @@ export class NewBookComponent implements OnInit {
                 });
                 break;
             case 'flip-over':
+                let emptyFlipBook = [];
 
+                for (let i = 0; i < 20; i++) {
+                    emptyFlipBook.push({});
+                }
+
+                this._qs.getAllPosts().subscribe(res => {
+                    this.store.dispatch(new BookActions.BookDataReceived(emptyFlipBook));
+                    this.store.dispatch(new BookActions.PostsDataReceived(res.posts));
+
+                    this.editorActive = true;
+                });
                 break;
 
         }

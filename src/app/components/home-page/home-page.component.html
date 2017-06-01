@@ -8,9 +8,13 @@
                 <h1 class="main-title">Saving memories for later.</h1>
                 <p class="sub-title">Collect and print the most valuable moments with your children.</p>
 
-                <div class="button-container">
+                <div class="button-container" *ngIf="!isLoggedIn">
                     <a class="btn-empty" href="home#section1">Learn more</a>
                     <a class="btn-full" routerLink="/register">Create account</a>
+                </div>
+
+                <div class="button-container" *ngIf="isLoggedIn">
+                    <a class="btn-full" routerLink="/application">Go to application</a>
                 </div>
 
             </div>

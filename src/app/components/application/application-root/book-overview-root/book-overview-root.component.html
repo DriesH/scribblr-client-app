@@ -1,7 +1,11 @@
 <router-outlet></router-outlet>
 
-<div class="loading-screen-books" *ngIf="books.length <= 0">
+<div class="loading-screen-books" *ngIf="isLoading && !noBooks">
     <span class="loading-spinner"></span>
+</div>
+
+<div class="loading-screen-books" *ngIf="!isLoading && noBooks">
+   <h1>piemel</h1>
 </div>
 
 <div *ngIf="!editorActive || !bookInspectorActive">
@@ -18,7 +22,6 @@
                 <h1 class="title">{{ book.title }}</h1>
                 <p class="date">{{ book.created_at | date }}</p>
             </a>
-
         </div>
     </div>
 </div>

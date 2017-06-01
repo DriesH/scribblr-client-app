@@ -79,6 +79,7 @@ import { BookService } from './services/application-services/book.service';
 import { TutorialService } from './services/application-services/tutorial.service';
 import { PexelsapiService } from './services/application-services/pexelsapi.service';
 import { UserService } from './services/application-services/user.service';
+import { FlipBookService } from './services/application-services/flip-book.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
@@ -103,7 +104,13 @@ import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
 
 import { BookReducer } from './ngrx-state/reducers/book.reducer';
 import { BookEffect } from './ngrx-state/effects/book.effects';
+
+import { FlipBookReducer } from './ngrx-state/reducers/flip-book.reducer';
+import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
+
+
 import { FilterPipe } from './pipes/filter.pipe';
+import { FlipBookPageComponent } from './components/application/application-root/book-overview-root/flip-book-page/flip-book-page.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -154,6 +161,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         TooltipDirective,
         FlipBookEditorComponent,
         FilterPipe,
+        FlipBookPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -171,11 +179,13 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
             CURRENT_CHILDREN: ChildReducer,
             APPLICATION_UI: ApplicationUIReducer,
             QUOTES: QuoteReducer,
-            BOOK: BookReducer
+            BOOK: BookReducer,
+            FLIP_BOOK: FlipBookReducer
         }),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
         EffectsModule.runAfterBootstrap(BookEffect),
+        EffectsModule.runAfterBootstrap(FlipBookEffect),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         SimpleNotificationsModule.forRoot()
@@ -196,7 +206,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         TutorialService,
         PexelsapiService,
         UserService,
-        NoScrollService
+        NoScrollService,
+        FlipBookService
     ],
     bootstrap: [ AppComponent ]
 })

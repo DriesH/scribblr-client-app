@@ -31,10 +31,12 @@ export class BookOverviewRootComponent implements OnInit {
                 this.editorActive = true;
             } else {
                 this._bs.getAllBooks().subscribe(res => {
-                    if (res.book) {
-
+                    if (res.books.length <= 0) {
+                        this.noBooks = true;
                     }
                     this.books = res.books;
+                    this.isLoading = false;
+
                 });
                 this.editorActive = false;
             }

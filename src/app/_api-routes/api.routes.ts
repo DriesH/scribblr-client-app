@@ -64,18 +64,25 @@ export const API_ROUTES = {
         book: {
             index: applicationPrefix + 'books',
             generateNewBook: applicationPrefix + 'books/generate',
-            generateNewBookForChild: (childShortId) => {
-                return applicationPrefix + 'books/generate?c=' + childShortId;
-            },
             newBook: applicationPrefix + 'books/new',
-            newBookForChild: (childShortId) => {
-                return applicationPrefix + 'books/new?c=' + childShortId;
-            },
             getBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId;
             },
             editBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId;
+            },
+            deleteBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId + '/delete';
+            }
+        },
+        flip_book: {
+            generateNewBook: applicationPrefix + 'books/generate?is_flip_over=1',
+            newBook: applicationPrefix + 'books/new/flip',
+            getBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId;
+            },
+            editBook: (bookShortId) => {
+                return applicationPrefix + 'books/' + bookShortId + '?is_flip_over=1';
             },
             deleteBook: (bookShortId) => {
                 return applicationPrefix + 'books/' + bookShortId + '/delete';

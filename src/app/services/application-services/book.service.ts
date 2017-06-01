@@ -72,4 +72,28 @@ export class BookService {
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // GET
+    autoGenerateNewFlipBook(): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.generateNewBook, this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
+    saveFlipBook(bookData): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.newBook,
+            bookData,
+            this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
+    getFlipBook(bookShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.getBook(bookShortId),
+            this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
 }
