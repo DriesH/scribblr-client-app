@@ -9,7 +9,18 @@
     margin: 0 auto;
 
     .total_points {
-        
+        float: right;
+        margin-top: 20px;
+        display: block;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $main-color-four;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold;
     }
 }
 
