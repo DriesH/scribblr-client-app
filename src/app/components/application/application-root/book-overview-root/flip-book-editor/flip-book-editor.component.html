@@ -58,7 +58,7 @@
 
                 <div class="flip-book-page" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                     <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1].short_id)"><i class="fa fa-trash"></i> Remove</span>
-                    <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]"></scrblr-book-page>
+                    <scrblr-book-page [pageData]="book[currentPage - 1]" [src]="currentImages[0]"></scrblr-book-page>
                     <span class="page-number">{{ currentPage }}</span>
                 </div>
 
