@@ -97,9 +97,9 @@
 
             </ul>
 
-            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive">
+            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 
-            <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous">
+            <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous">
 
         </div>
     </div>
