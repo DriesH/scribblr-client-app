@@ -58,6 +58,14 @@ export const API_ROUTES = {
                 return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId;
             }
         },
+        story: {
+            newStory: (childShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/story/new';
+            },
+            updateStory: (childShortId, postShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/story/' + postShortId;
+            }
+        },
         achievement: {
             index: applicationPrefix + 'achievements'
         },

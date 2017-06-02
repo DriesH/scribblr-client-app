@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
-import { dataURItoBlob } from '../../../../../classes/base64toblob';
-
 import { APP_CONFIG } from '../../../../../_config/app.config';
 
 import { DropzoneService } from '../../../../../services/dropzone.service';

@@ -1,8 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Store } from '@ngrx/store';
+
 import { APP_CONFIG } from '../../../../../_config/app.config';
 
 import { DropzoneService } from '../../../../../services/dropzone.service';
+
+import { QuoteService } from '../../../../../services/application-services/quote.service';
+
 
 declare var Aviary: any;
 
@@ -30,7 +37,7 @@ export class NewStoryComponent implements OnInit {
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
 
-    constructor() { }
+    constructor(private _qs: QuoteService, private store: Store<any>) { }
 
     ngOnInit() {
         this.csdkImageEditor = new Aviary.Feather({
@@ -42,8 +49,10 @@ export class NewStoryComponent implements OnInit {
         });
     }
 
-    addNewStory() {
-        console.log('hello');
+    addNewStory(childShortId, storyData) {
+        this._qs.newStory(childShortId, storyData).subscribe(res => {
+
+        });
     }
 
     /**

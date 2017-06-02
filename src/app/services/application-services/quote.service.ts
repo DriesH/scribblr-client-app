@@ -75,4 +75,18 @@ export class QuoteService {
                 .catch(err => this._hhs.errorHandler(err));
     }
 
+    newStory(childShortId, data): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.story.newStory(childShortId),
+            data,
+            this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
+    updateStory(childShortId, postShortId): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.story.updateStory(childShortId, postShortId),
+            this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
 }
