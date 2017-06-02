@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NewsService } from '../../../../services/application-services/news.service';
-
 @Component({
   selector: 'scrblr-news-overview-root',
   templateUrl: './news-overview-root.component.html',
@@ -9,18 +7,9 @@ import { NewsService } from '../../../../services/application-services/news.serv
 })
 export class NewsOverviewRootComponent implements OnInit {
 
-    newsItems;
-
-  constructor(
-      private _ns: NewsService,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-
-      this._ns.getAllNews()
-          .subscribe(res => {
-              this.newsItems = res.news;
-          });
   }
 
 }
