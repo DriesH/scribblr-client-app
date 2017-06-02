@@ -19,12 +19,9 @@ import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 /* ngrx stuffs */
-import { StoreModule, combineReducers } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { compose } from '@ngrx/core/compose';
-import { localStorageSync } from 'ngrx-store-localstorage';
-
 
 /* Routes */
 import { APP_ROUTES } from './_routes/app.routes';
