@@ -119,6 +119,8 @@ import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 
 import { CartReducer } from './ngrx-state/reducers/cart.reducer';
 
+import { localStorageNgrx } from './classes/ngrx-localstorage';
+
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
 import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
@@ -192,18 +194,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         DndModule.forRoot(),
         APP_ROUTES,
         StoreModule.provideStore(
-            compose(
-                localStorageSync({ keys: ['CART'], rehydrate: true}),
-                combineReducers
-            )({
-                CURRENT_USER: CurrentUserReducer,
-                CURRENT_CHILDREN: ChildReducer,
-                APPLICATION_UI: ApplicationUIReducer,
-                QUOTES: QuoteReducer,
-                BOOK: BookReducer,
-                FLIP_BOOK: FlipBookReducer,
-                CART: CartReducer
-            })
+            localStorageNgrx()
         ),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),

@@ -137,3 +137,18 @@
         box-shadow: 0 4px 0 darken($main-color-four, 5%);
     }
 }
+
+.footer {
+    height: 200px;
+    width: 100%;
+    background-color: $main-color-one;
+    padding: 0 150px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+        width: 100px;
+    }
+}

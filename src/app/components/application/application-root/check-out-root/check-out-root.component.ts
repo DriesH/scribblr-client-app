@@ -45,7 +45,12 @@ export class CheckOutRootComponent implements OnInit {
     }
 
     recalculatePrice() {
-        this.totalPrice = (this.prices.book * this.qModel.quantityBook) + (24.99 * this.qModel.quantityFlipover);
+        this.totalPrice = (this.prices.book * this.qModel.quantityBook) + (this.prices.flip_over * this.qModel.quantityFlipover);
+
+        if (!this.prices.can_get_free_shipping) {
+            this.totalPrice += this.prices.shipping;
+        }
+
     }
 
 }
