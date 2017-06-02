@@ -1,4 +1,5 @@
-import { combineReducers } from '@ngrx/store';
+import { combineReducers, ActionReducer, State } from '@ngrx/store';
+
 import { compose } from '@ngrx/core/compose';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
@@ -10,14 +11,17 @@ import { BookReducer } from '../ngrx-state/reducers/book.reducer';
 import { FlipBookReducer } from '../ngrx-state/reducers/flip-book.reducer';
 import { CartReducer } from '../ngrx-state/reducers/cart.reducer';
 
-export function localStorageNgrx () {
-    return compose(localStorageSync({ keys: ['CART'], rehydrate: true }), combineReducers)({
-        CURRENT_USER: CurrentUserReducer,
-        CURRENT_CHILDREN: ChildReducer,
-        APPLICATION_UI: ApplicationUIReducer,
-        QUOTES: QuoteReducer,
-        BOOK: BookReducer,
-        FLIP_BOOK: FlipBookReducer,
-        CART: CartReducer
-    });
+
+const developmentReducer: ActionReducer<State<any>> = compose(localStorageSync({ keys: ['CART'], rehydrate: true }), combineReducers)({
+    CURRENT_USER: CurrentUserReducer,
+    CURRENT_CHILDREN: ChildReducer,
+    APPLICATION_UI: ApplicationUIReducer,
+    QUOTES: QuoteReducer,
+    BOOK: BookReducer,
+    FLIP_BOOK: FlipBookReducer,
+    CART: CartReducer
+});
+
+export function localStorageNgrx (state: any, action: any) {
+    return developmentReducer(state, action);
 }

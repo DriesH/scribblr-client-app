@@ -35,7 +35,8 @@ export class BookThumbnailComponent implements OnInit {
         }
     }
 
-    addToCart(bookData) {
+    addToCart(event, bookData) {
+        event.stopPropagation();
         this.store.dispatch(new CartActions.AddToCart({ new_item: bookData }));
     }
 

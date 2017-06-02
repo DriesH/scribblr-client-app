@@ -193,9 +193,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         LazyLoadImageModule,
         DndModule.forRoot(),
         APP_ROUTES,
-        StoreModule.provideStore(
-            localStorageNgrx
-        ),
+        StoreModule.provideStore(localStorageNgrx),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
         EffectsModule.runAfterBootstrap(BookEffect),
