@@ -124,6 +124,7 @@ import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
 import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
+import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
 
 
 /* Perfect scrollbar config */
@@ -181,6 +182,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         CheckOutRootComponent,
         OrderModalComponent,
         SaveModalComponent,
+        NewsComponent,
     ],
     imports: [
         BrowserModule,

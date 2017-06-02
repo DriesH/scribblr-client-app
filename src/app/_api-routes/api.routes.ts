@@ -95,6 +95,9 @@ export const API_ROUTES = {
         check_out: {
             prices: applicationPrefix + 'orders/prices',
             checkout: applicationPrefix + 'orders/checkout'
+        },
+        news: {
+            news: applicationPrefix + 'news',
         }
     }
 
