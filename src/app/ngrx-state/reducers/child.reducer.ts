@@ -54,6 +54,20 @@ export function ChildReducer(state = initialState, action: Action) {
                 ]
             };
 
+        case childActions.ActionTypes.DELETE_CHILD:
+            state.children.forEach((child, key) => {
+                if (child.short_id === action.payload.childShortId) {
+                    index = key;
+                }
+            });
+
+            return {
+                children: [
+                    ...state.children.slice(0, index),
+                    ...state.children.slice(index + 1)
+                ]
+            };
+
         default:
             return state;
     }

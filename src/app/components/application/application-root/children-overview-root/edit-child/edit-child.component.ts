@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 
 import { ActivatedRoute, Params } from '@angular/router';
@@ -22,6 +24,10 @@ export class EditChildComponent implements OnInit {
         gender: null
     };
 
+    childName123 = '';
+    canDelete = false;
+
+
     childData: FormData = new FormData();
 
     childShortId;
@@ -29,7 +35,8 @@ export class EditChildComponent implements OnInit {
     constructor(
         private store: Store<any>,
         private route: ActivatedRoute,
-        private _cs: ChildService) { }
+        private _cs: ChildService,
+        private router: Router) { }
 
     ngOnInit() {
         this.route.parent.params.subscribe((params: Params) => {
@@ -54,8 +61,24 @@ export class EditChildComponent implements OnInit {
 
         this._cs.editChild(this.childShortId, this.childData).subscribe(res => {
             this.store.dispatch(new ChildActions.EditChild({ updatedChild: res.child }));
+            this.router.navigate(['application']);
         });
 
+    }
+
+    removeChild(childShortId) {
+        this._cs.deleteChild(childShortId).subscribe(res => {
+            this.store.dispatch(new ChildActions.DeleteChild({ childShortId: this.childShortId }));
+            this.router.navigate(['application']);
+        });
+    }
+
+    checkName() {
+        if (this.childModel.full_name === this.childName123) {
+            this.canDelete = true;
+        } else {
+            this.canDelete = false;
+        }
     }
 
 }

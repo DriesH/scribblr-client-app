@@ -48,16 +48,24 @@
         <div class="scroll-wrap" perfect-scrollbar>
             <ul class="sidebar--children">
                 <li>
-                    <a class="new-child" (click)="addChild()">
+                    <a class="new-child" [ngClass]="{ 'flashing': noChildren }" (click)="addChild()">
                         <span class="circle">
                             +
                         </span>
                         <p>New child</p>
                     </a>
                 </li>
-                <li *ngIf="children.length <= 0 && !noChildren">
+                <li *ngIf="!children && !noChildren">
                     <span class="sidebar--children-loading"></span>
                 </li>
+
+                <li *ngIf="noChildren">
+                    <span class="no-children">
+                        <img src="/assets/icons/right-arrow-white.svg">
+                        <p>No children</p>
+                    </span>
+                </li>
+
                 <li *ngFor="let child of children">
                     <a class="child-avatar" [routerLink]="['overview', child.short_id]" routerLinkActive="active">
 

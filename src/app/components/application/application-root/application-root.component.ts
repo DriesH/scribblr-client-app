@@ -73,10 +73,11 @@ export class ApplicationRootComponent implements OnInit {
 
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             console.log('My state changed in CURRENT_CHILDREN');
-            if (CURRENT_CHILDREN.children) {
+            if (CURRENT_CHILDREN.children.length) {
                 this.children = CURRENT_CHILDREN.children;
                 this.noChildren = false;
             } else {
+                this.children = CURRENT_CHILDREN.children;
                 this.noChildren = true;
             }
         });

@@ -78,6 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 
     h1 {
         text-align: center;
@@ -110,6 +111,8 @@
     justify-content: space-around;
     align-items: center;
     padding: 0 60px;
+    position: relative;
+    z-index: 5;
 
     h1 {
         margin: 0;

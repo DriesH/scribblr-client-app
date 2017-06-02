@@ -37,4 +37,15 @@
 
         <button type="submit" id="submit-btn-edit-child" class="btn btn-primary btn-color-main" [disabled]="!editChildForm.valid">Save</button>
     </form>
+
+    <div class="danger-zone">
+        <h1 class="title">Danger zone</h1>
+        <hr>
+        <div class="child-name-container">
+            <label for="child-name">Type the name of your child if you want to delete it. (All quotes and stories will also be deleted!)</label>
+            <input type="text" name="child-name" id="child-name" #childName="ngModel" [(ngModel)]="childName123" (keyup)="checkName()">
+        </div>
+        <button class="btn btn-primary btn-color-danger" (click)="removeChild(childShortId)" [disabled]="!canDelete">Delete</button>
+    </div>
+
 </div>

@@ -1,5 +1,5 @@
 <div id="application-root">
-    <scrblr-side-bar [children]="children" [currentUser]="currentUser.user"></scrblr-side-bar>
+    <scrblr-side-bar [children]="children" [currentUser]="currentUser.user" [noChildren]="noChildren"></scrblr-side-bar>
 
     <div id="application-body">
         <div class="application-body--header">
@@ -12,21 +12,7 @@
 
         <div class="application-body--content" [ngClass]="{ 'mountain-bg': currentRoute === '/application' }">
             <div class="application-body--quick-quote" *ngIf="currentRoute === '/application'">
-                <label for="quote" class="title"><img src="/assets/icons/quotes.svg" alt="quotes">Any funny quotes today?</label>
 
-                <div class="quick-quote-container">
-                    <div class="dropdown">
-                        <input class="dropdown-toggle" type="text">
-                        <div class="dropdown-text"><img src="/assets/default-avatars/Male.svg" alt=""></div>
-                        <ul class="dropdown-content">
-                            <li><a href="#"></a><img src="https://www.google.be/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="" /></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Log out</a></li>
-                        </ul>
-                    </div>
-                    <input #quickQuote type="text" name="quote" id="quote" placeholder="Start typing a quote!" autofocus>
-                    <span class="bottom-border-input"></span>
-                </div>
             </div>
             <router-outlet></router-outlet>
             <scrblr-new-child *ngIf="applicationUI.addingNewChild" [@fadeIn]></scrblr-new-child>
