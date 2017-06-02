@@ -8,13 +8,12 @@
         </div>
         <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
 
-        <div class="shopping-cart">
+        <a routerLink="/checkout" class="shopping-cart" *ngIf="cart.length > 0">
             <p class="cart">
                 <i class="fa fa-shopping-cart fa-2x"></i>&nbsp;Cart
             </p>
-            <span class="items-in-cart">0</span>
-        </div>
-
+            <span class="items-in-cart">{{ cart.length }}</span>
+        </a>
     </div>
 
     <hr class="sidebar--separator">

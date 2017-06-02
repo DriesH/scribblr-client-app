@@ -10,6 +10,9 @@
                 {{ bookData.title }}
             </h1>
             <p class="date">{{ bookData.created_at | date }}</p>
+            <span class="order-book" (click)="addToCart(bookData)">
+                <i class="fa fa-cart-arrow-down"></i> Put in shopping cart
+            </span>
         </a>
     </div>
 </div>

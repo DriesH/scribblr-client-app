@@ -48,13 +48,9 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
         });
     }
 
-    ngAfterViewInit() {
-
-    }
+    ngAfterViewInit() { }
 
     initMasonry() {
-        console.log('initMasonry');
-
         this.msnry = new Masonry(this.bookContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
@@ -63,13 +59,10 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
             initLayout: false
         });
         this.reloadMasonry();
-
-        console.log('initMasonry: ', this.msnry);
-
+        setTimeout(this.reloadMasonry(), 100);
     }
 
     reloadMasonry() {
-        console.log('reloadMasonry');
         this.msnry.layout();
     }
 

@@ -11,13 +11,32 @@ export const initialState: State = {
 };
 
 export function CartReducer(state = initialState, action: Action) {
+    let index = 0;
+
     switch (action.type) {
         case CartActions.ActionTypes.ADD_TO_CART:
             return {
                 ...state,
                 items_in_cart: [
                     ...state.items_in_cart,
-                    action.payload.new_item
+                    { ...action.payload.new_item, amount: 1 }
+                ]
+            };
+
+        case CartActions.ActionTypes.REMOVE_FROM_CART:
+            index = 0;
+
+            state.items_in_cart.forEach((item, key) => {
+                if (item.short_id === action.payload.item.short_id) {
+                    index = key;
+                }
+            });
+
+            return {
+                ...state,
+                items_in_cart: [
+                    ...state.items_in_cart.slice(0, index),
+                    ...state.items_in_cart.slice(index + 1)
                 ]
             };
 

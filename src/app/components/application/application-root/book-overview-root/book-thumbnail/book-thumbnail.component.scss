@@ -59,6 +59,20 @@
             font-size: 15px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
         }
+
+        &:hover .order-book {
+            opacity: 1;
+        }
+
+        .order-book {
+            color: white;
+            position: absolute;
+            right: 10px;
+            bottom: 20px;
+            opacity: 0;
+            transition: all 200ms ease-in-out;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
     }
 
     .front-page {

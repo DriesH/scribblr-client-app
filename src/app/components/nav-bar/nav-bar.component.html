@@ -6,6 +6,7 @@
 
     <div class="nav-link" *ngIf="!CURRENT_USER.isAuth">
         <a routerLink="/login">Sign in</a>
+        <a routerLink="/login">Sign up</a>
     </div>
 
     <scrblr-nav-bar-profile *ngIf="CURRENT_USER.isAuth" [currentUser]="CURRENT_USER.user"></scrblr-nav-bar-profile>

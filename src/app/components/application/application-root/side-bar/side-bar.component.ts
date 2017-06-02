@@ -17,9 +17,14 @@ export class SideBarComponent implements OnInit {
     @Input('noChildren') noChildren;
     @Input('currentUser') currentUser;
 
+    cart;
+
     constructor(private store: Store<any>) { }
 
     ngOnInit() {
+        this.store.select('CART').subscribe((CART: any) => {
+            this.cart = CART.items_in_cart;
+        });
     }
 
     addChild() {

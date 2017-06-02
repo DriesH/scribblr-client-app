@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 
 import { CheckOutService } from '../../../../services/application-services/check-out.service';
+
+import * as CartActions from '../../../../ngrx-state/actions/cart.action';
 
 @Component({
     selector: 'scrblr-check-out-root',
@@ -14,14 +17,12 @@ export class CheckOutRootComponent implements OnInit {
     prices: any = {};
     currentItemsInCart = [];
 
-    qModel = {
-        quantityBook: 0,
-        quantityFlipover: 0
-    };
-
     totalPrice = 0;
 
-    constructor(private store: Store<any>, private _cos: CheckOutService) { }
+    constructor(private store: Store<any>,
+        private _cos: CheckOutService,
+        private location: Location
+    ) { }
 
     ngOnInit() {
         this._cos.getPrices().subscribe(res => {
@@ -32,25 +33,31 @@ export class CheckOutRootComponent implements OnInit {
 
         this.store.select('CART').subscribe((CART: any) => {
             this.currentItemsInCart = CART.items_in_cart;
-
-            this.currentItemsInCart.forEach((item, key) => {
-                if (!item.is_flip_over) {
-                    this.qModel.quantityBook++;
-                } else if (item.is_flip_over) {
-                    this.qModel.quantityFlipover++;
-                }
-            });
-
         });
     }
 
     recalculatePrice() {
-        this.totalPrice = (this.prices.book * this.qModel.quantityBook) + (this.prices.flip_over * this.qModel.quantityFlipover);
+        this.totalPrice = 0;
+        this.currentItemsInCart.forEach((item, key) => {
+            if (item.is_flip_over) {
+                this.totalPrice += (this.prices.flip_over * item.amount);
+            } else {
+                this.totalPrice += (this.prices.book * item.amount);
+            }
+        });
 
         if (!this.prices.can_get_free_shipping) {
             this.totalPrice += this.prices.shipping;
         }
+    }
 
+    removeFromCart(itemData) {
+        this.store.dispatch(new CartActions.RemoveFromCart({ item: itemData }));
+        this.recalculatePrice();
+    }
+
+    returnToPreviousPage() {
+        this.location.back();
     }
 
 }
