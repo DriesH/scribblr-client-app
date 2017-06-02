@@ -97,7 +97,7 @@ export const API_ROUTES = {
             checkout: applicationPrefix + 'orders/checkout'
         },
         news: {
-            news: applicationPrefix + 'news',
+            index: applicationPrefix + 'news',
         }
     }
 

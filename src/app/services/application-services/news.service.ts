@@ -25,8 +25,8 @@ export class NewsService {
             this.token = localStorage.getItem('_token');
         }
 
-        getAllAchievements(): Observable<any> {
-            return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.achievement.index, this._headers.setOptions(this.token))
+        getAllNews(): Observable<any> {
+            return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.index, this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
         }

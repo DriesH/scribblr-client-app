@@ -51,6 +51,7 @@ import { SideBarComponent } from './components/application/application-root/side
 import { ChildrenOverviewRootComponent } from './components/application/application-root/children-overview-root/children-overview-root.component';
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
+import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { PostModalComponent } from './components/application/application-root/quote-overview-root/post-modal/post-modal.component';
 import { NewStoryComponent } from './components/application/application-root/quote-overview-root/new-story/new-story.component';
@@ -88,6 +89,7 @@ import { PexelsapiService } from './services/application-services/pexelsapi.serv
 import { UserService } from './services/application-services/user.service';
 import { FlipBookService } from './services/application-services/flip-book.service';
 import { CheckOutService } from './services/application-services/check-out.service';
+import { NewsService } from './services/application-services/news.service';
 
 
 /* Guards */
@@ -224,7 +226,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         UserService,
         NoScrollService,
         FlipBookService,
-        CheckOutService
+        CheckOutService,
+        NewsService
     ],
     bootstrap: [ AppComponent ]
 })
