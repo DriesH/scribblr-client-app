@@ -10,8 +10,8 @@
     <h1 class="title">{{ currentChild?.full_name }}</h1>
     <span class="flex-spacer"></span>
     <div class="button--container">
-        <a class="new-quote" routerLink="new-quote"><i class="fa fa-quote-right"></i> New quote</a>
-        <a class="new-story" routerLink="new-story"><i class="fa fa-book"></i> New Story</a>
+        <a class="new-quote" [ngClass]="{ 'flashing': posts.length <= 0 }" routerLink="new-quote"><i class="fa fa-quote-right"></i> New quote</a>
+        <a class="new-story" [ngClass]="{ 'flashing': posts.length <= 0 }" routerLink="new-story"><i class="fa fa-book"></i> New Story</a>
         <a class="edit-child" routerLink="edit-child"><i class="fa fa-edit"></i> Edit child</a>
     </div>
     <span class="flex-spacer"></span>

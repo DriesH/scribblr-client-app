@@ -20,7 +20,8 @@ const errorTypes = {
     IMAGE_NOT_FOUND: 'image_not_found',
     VALIDATION: 'validation',
     NOT_AUTHENTICATED: 'not_authenticated',
-    SERVER_ERROR: 'internal_server'
+    SERVER_ERROR: 'internal_server',
+    NO_POSTS: 'no_posts'
 };
 
 @Injectable()
@@ -67,6 +68,9 @@ export class ErrorHandlerService {
 
             case errorTypes.SERVER_ERROR:
                 this.serverError(error);
+                break;
+            case errorTypes.NO_POSTS:
+                this.noPosts(error);
                 break;
         }
     }
@@ -197,5 +201,30 @@ export class ErrorHandlerService {
         };
 
         this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
+    }
+
+    private noPosts(error: Error) {
+        console.log(error);
+        // Contents for alert box.
+        const _errorMsg = {
+            title: 'No posts!',
+            msg: error.error_message,
+            _msg: error.error_message
+        };
+
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
+
+        // Contents for ui state.
+        const _error = {
+            error: {
+                type: errorTypes.NOT_AUTHENTICATED,
+                msg: error.error_message
+            }
+        };
+
+        this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
+
+        this.router.navigate(['application', 'books']);
+
     }
 }

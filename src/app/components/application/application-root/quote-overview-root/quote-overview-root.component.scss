@@ -146,9 +146,46 @@
         color: $main-color-four;
         text-transform: capitalize;
 
+        &.flashing {
+            animation: flashing 6000ms ease-in-out forwards;
+        }
+
         &:hover {
             color: lighten($main-color-two, 20%);
             background: $main-color-four;
         }
     }
+}
+
+@keyframes flashing {
+    0% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    20% {
+        color: lighten($main-color-two, 20%);
+        background: $main-color-four;
+    }
+
+    40% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    60% {
+        color: lighten($main-color-two, 20%);
+        background: $main-color-four;
+    }
+
+    80% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    100% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
 }

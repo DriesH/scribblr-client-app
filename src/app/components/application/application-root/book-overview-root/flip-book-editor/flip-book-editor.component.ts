@@ -68,6 +68,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     isSaved = false; // book saved
     isFailed = false;
     userIsSaving = false;
+    userIsSavingAndOrdering = false;
     ////////////////////////
 
     // current page stuff
@@ -258,37 +259,16 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
         this.store.dispatch(new FlipBookActions.AddToFlipBookPostList({ shortId: shortId }));
     }
 
-    saveBook(bookModel, book) {
-        bookModel.book = book;
-        this._bs.saveFlipBook(bookModel).subscribe(res => {
-            console.log(res);
-            this.isSaved = true;
-            this.isFailed = false;
-        }, err => {
-            this.isSaved = false;
-            this.isFailed = true;
-        });
-    }
-
-    editBook(bookShortId, bookModel, book) {
-        bookModel.book = book;
-        this._bs.editFlipBook(bookShortId, bookModel).subscribe(res => {
-            console.log(res);
-            this.isSaved = true;
-            this.isFailed = false;
-        }, err => {
-            this.isSaved = false;
-            this.isFailed = true;
-        });
-    }
-
-    openModal() {
+    openSaveModal() {
         this.userIsSaving = true;
     }
 
+    openOrderSaveModal() {
+        this.userIsSavingAndOrdering = true;
+    }
+
     closeModal() {
+        this.userIsSavingAndOrdering = false;
         this.userIsSaving = false;
-        this.isSaved = false;
-        this.isFailed = false;
     }
 }
