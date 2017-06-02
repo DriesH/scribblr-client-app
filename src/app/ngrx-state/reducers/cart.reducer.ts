@@ -40,6 +40,13 @@ export function CartReducer(state = initialState, action: Action) {
                 ]
             };
 
+
+        case CartActions.ActionTypes.CLEAR_CART:
+            return {
+                items_in_cart: []
+            };
+
+
         default:
             return state;
     }

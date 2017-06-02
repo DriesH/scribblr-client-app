@@ -34,4 +34,11 @@ export class CheckOutService {
             .catch(err => this._hhs.errorHandler(err));
     }
 
+    checkOut(cartData): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.check_out.checkout,
+            cartData,
+            this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
 }

@@ -93,7 +93,8 @@ export const API_ROUTES = {
             completedTutorialBook: applicationPrefix + 'books/seen-tutorial',
         },
         check_out: {
-            prices: applicationPrefix + 'orders/prices'
+            prices: applicationPrefix + 'orders/prices',
+            checkout: applicationPrefix + 'orders/checkout'
         }
     }
 

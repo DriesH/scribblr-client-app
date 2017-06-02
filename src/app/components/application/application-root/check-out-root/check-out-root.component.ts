@@ -51,6 +51,12 @@ export class CheckOutRootComponent implements OnInit {
         }
     }
 
+    payCart(cartData) {
+        this._cos.checkOut(cartData).subscribe(res => {
+            this.store.dispatch(new CartActions.ClearCart({}));
+        });
+    }
+
     removeFromCart(itemData) {
         this.store.dispatch(new CartActions.RemoveFromCart({ item: itemData }));
         this.recalculatePrice();
@@ -59,5 +65,4 @@ export class CheckOutRootComponent implements OnInit {
     returnToPreviousPage() {
         this.location.back();
     }
-
 }
