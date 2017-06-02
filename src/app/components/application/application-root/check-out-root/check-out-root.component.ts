@@ -52,7 +52,8 @@ export class CheckOutRootComponent implements OnInit {
     }
 
     payCart(cartData) {
-        this._cos.checkOut(cartData).subscribe(res => {
+        console.log(cartData);
+        this._cos.checkOut({ books: cartData }).subscribe(res => {
             this.store.dispatch(new CartActions.ClearCart({}));
         });
     }

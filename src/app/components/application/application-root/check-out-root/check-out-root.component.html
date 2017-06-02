@@ -67,7 +67,7 @@
                 <hr>
                 <p class="total-price">Total price: <span class="price-tag">{{ totalPrice | currency:'EUR':true }}</span></p>
                 <div class="button-container">
-                    <button class="checkout-btn"><i class="fa fa-paypal"></i> Pay with paypal</button>
+                    <button class="checkout-btn" (click)="payCart(currentItemsInCart)"><i class="fa fa-paypal"></i> Pay with paypal</button>
                 </div>
             </div>
         </div>
