@@ -11,10 +11,7 @@ import { FlipBookReducer } from '../ngrx-state/reducers/flip-book.reducer';
 import { CartReducer } from '../ngrx-state/reducers/cart.reducer';
 
 export function localStorageNgrx () {
-    return compose(
-        localStorageSync({ keys: ['CART'], rehydrate: true }),
-        combineReducers
-    )({
+    return compose(localStorageSync({ keys: ['CART'], rehydrate: true }), combineReducers)({
         CURRENT_USER: CurrentUserReducer,
         CURRENT_CHILDREN: ChildReducer,
         APPLICATION_UI: ApplicationUIReducer,

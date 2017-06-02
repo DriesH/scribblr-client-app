@@ -194,7 +194,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         DndModule.forRoot(),
         APP_ROUTES,
         StoreModule.provideStore(
-            localStorageNgrx()
+            localStorageNgrx
         ),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
         EffectsModule.runAfterBootstrap(ChildEffect),
