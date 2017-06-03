@@ -46,12 +46,15 @@
                 </div>
 
                 <div class="form-avatar-upload">
-                    <div class="dropzone" *ngIf="!image.src">
+                    <div class="dropzone" *ngIf="!isShowingCropper">
                         <label for="avatar-upload">Upload an avatar</label>
                         <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera">
                     </div>
 
-                    <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+                    <div [hidden]="!isShowingCropper" class="img-cropper-container">
+                        <i class="fa fa-trash fa-lg delete" (click)="removeCropper()"></i>
+                        <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+                    </div>
 
                     <scrblr-form-error *ngIf="avatarError"
                         [model]="story" [modelName]="'Story'">

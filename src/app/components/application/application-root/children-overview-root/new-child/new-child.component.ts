@@ -35,7 +35,7 @@ export class NewChildComponent implements OnInit {
 
     childData: FormData = new FormData();
     image: any = new Image();
-
+    isShowingCropper = false;
     avatarError = false;
 
     constructor(
@@ -88,12 +88,19 @@ export class NewChildComponent implements OnInit {
             myReader.onloadend = (loadEvent: any) => {
                 this.image.src = loadEvent.target.result;
                 this.cropper.setImage(this.image);
+                this.isShowingCropper = true;
             };
 
             myReader.readAsDataURL(file);
         }, error => {
             this.avatarError = true;
         });
+    }
+
+    removeCropper() {
+        this.image.src = null;
+        // this.cropper.setImage(this.image);
+        this.isShowingCropper = false;
     }
 
     private checkMIMEType(file, done, error) {
