@@ -1,11 +1,12 @@
 @import 'input';
+@import 'forms-media';
 
 .scrblr-form {
     z-index: 30;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 430px;
+    max-width: 430px;
     margin: 0 auto;
 
     &.wide-form {
@@ -152,21 +153,3 @@
     margin-top: 45px;
 }
 
-@media screen and (max-width: 480px) {
-    .submit-button {
-        margin-top: 15px;
-    }
-
-    .form-input-group input[type="text"],
-    .form-input-group input[type="password"],
-    .form-input-group input[type="date"],
-    .form-controls__container {
-        width: 100%;
-    }
-
-    .scrblr-form {
-        .logo img {
-            width: 225px;
-        }
-    }
-}

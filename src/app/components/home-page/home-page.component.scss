@@ -20,12 +20,14 @@ p {
     align-items: center;
     background-image: url(/assets/homepage/hero.jpg);
     background-size: cover;
+    background-position: center;
     z-index: 30;
+    box-sizing: border-box;
 }
 
 #section1 {
     position: relative;
-    height: 760px;
+    height: 540px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -168,6 +170,27 @@ p {
 
         &.show {
             animation: fadeInRight 400ms ease-out forwards;
+        }
+    }
+}
+
+.quotes {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .quote {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 100%;
+            max-width: 350px;
         }
     }
 }

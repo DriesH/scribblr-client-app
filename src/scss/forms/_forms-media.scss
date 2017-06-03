@@ -1,0 +1,20 @@
+@media screen and (max-width: 480px) {
+    .submit-button {
+        margin-top: 0 !important;
+    }
+
+    .form-input-group input[type="text"],
+    .form-input-group input[type="password"],
+    .form-input-group input[type="date"],
+    .form-controls__container {
+        width: 100%;
+    }
+
+    .scrblr-form {
+        width: 100%;
+
+        .logo img {
+            width: 180px !important;
+        }
+    }
+}

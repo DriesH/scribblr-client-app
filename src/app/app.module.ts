@@ -15,6 +15,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CustomFormsModule } from 'ng2-validation';
 import { DndModule } from 'ng2-dnd';
 import { TooltipDirective } from 'ng2-tooltip-directive/components';
+import { FacebookModule } from 'ngx-facebook';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
@@ -200,7 +201,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         EffectsModule.runAfterBootstrap(FlipBookEffect),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
-        SimpleNotificationsModule.forRoot()
+        SimpleNotificationsModule.forRoot(),
+        FacebookModule.forRoot()
     ],
     providers: [
         RegisterService,

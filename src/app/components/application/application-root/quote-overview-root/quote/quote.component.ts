@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
+import { UIParams } from 'ngx-facebook';
+
 import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 @Component({
@@ -20,6 +22,8 @@ export class QuoteComponent implements OnInit {
     @Output('imageLoaded') imageLoaded = new EventEmitter<Boolean>();
 
     @Output('removeQuote') removeQuote = new EventEmitter<String>();
+
+    @Output('shareFb') shareFb = new EventEmitter<Object>();
 
     @ViewChild('quoteBlock') quoteBlock: ElementRef;
 
@@ -60,5 +64,23 @@ export class QuoteComponent implements OnInit {
         this.removeQuote.emit(shortId);
     }
 
+    share($event: Event, childShortId, postShortId, imgBakedUrlId) {
+        $event.stopPropagation();
 
+        let data = {
+            child_short_id: childShortId,
+            post_short_id: postShortId
+        };
+
+        let params: UIParams = {
+            href: location.origin + '/shared/' + childShortId + '/' + postShortId + '/' + imgBakedUrlId,
+            method: 'share'
+        };
+
+        this.shareFb.emit({ data: data, fbData: params });
+    }
+
+    copyLink() {
+
+    }
 }

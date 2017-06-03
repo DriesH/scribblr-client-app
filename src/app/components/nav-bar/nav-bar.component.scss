@@ -35,6 +35,14 @@ nav {
         }
     }
 
+    p {
+        display: block;
+        align-self: center;
+        text-decoration: none;
+        color: white;
+        margin-right: 25px;
+    }
+
     a:last-child {
         margin-right: 0;
     }

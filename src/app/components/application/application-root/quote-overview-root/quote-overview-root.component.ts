@@ -6,6 +6,8 @@ import { QuoteService } from '../../../../services/application-services/quote.se
 
 import { Store } from '@ngrx/store';
 
+import { FacebookService, UIParams, UIResponse, InitParams  } from 'ngx-facebook';
+
 declare var Masonry: any;
 
 @Component({
@@ -40,7 +42,17 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     constructor(
         private _qs: QuoteService,
         private route: ActivatedRoute,
-        private store: Store<any>) { }
+        private store: Store<any>,
+        private facebook: FacebookService
+    ) {
+        let initParams: InitParams = {
+            appId: '1236834116439954',
+            xfbml: true,
+            version: 'v2.8'
+        };
+
+        facebook.init(initParams);
+    }
 
     ngOnInit() {
         this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
@@ -114,6 +126,16 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             setTimeout(() => {
                 this.reloadMasonry();
             }, 100);
+        });
+    }
+
+    shareFb(shareData) {
+        this._qs.sharePost(shareData.data.child_short_id, shareData.data.post_short_id).subscribe(res => {
+            this.facebook.ui(shareData.fbData).then((resFb: UIResponse) => {
+                console.log(resFb);
+            }).catch((e: any) => {
+                console.log(e);
+            });
         });
     }
 }

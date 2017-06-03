@@ -5,8 +5,8 @@
                 <span class="edit"><i class="fa fa-edit"></i> Edit</span>
                 <span class="trash" (click)="removeQuoteFn(quoteData.short_id)"><i class="fa fa-trash"></i></span>
                 <div class="share">
-                    <span class="share-facebook"><i class="fa fa-facebook-square fa-2x"></i></span>
-                    <span class="share-facebook" (click)="openCopyLinkModal(quoteData.short_id)"><i class="fa fa-link fa-2x"></i></span>
+                    <span class="share-facebook" (click)="share($event, childShortId, quoteData.short_id, quoteData.img_baked_url_id)"><i class="fa fa-facebook-square"></i></span>
+                    <span class="share-facebook" (click)="openCopyLinkModal(quoteData.short_id)"><i class="fa fa-link"></i></span>
                 </div>
             </div>
             <img [src]="quoteData.lqip" [lazyLoad]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 @Component({
     selector: 'scrblr-nav-bar',
     templateUrl: './nav-bar.component.html',
-    styleUrls: ['./nav-bar.component.scss'],
+    styleUrls: ['./nav-bar.component.scss', './nav-bar.media.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit, OnDestroy {

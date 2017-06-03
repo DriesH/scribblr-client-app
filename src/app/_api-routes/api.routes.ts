@@ -56,6 +56,9 @@ export const API_ROUTES = {
             },
             updatePost: (childShortId, postShortId) => {
                 return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId;
+            },
+            share: (childShortId, postShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/share';
             }
         },
         story: {

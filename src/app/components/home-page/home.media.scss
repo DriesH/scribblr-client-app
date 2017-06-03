@@ -1,0 +1,146 @@
+@media screen and (min-width: 740px) and (max-width: 900px) {
+    .main-title {
+        font-size: 50px;
+    }
+
+    .sub-title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 739px) {
+    .main-title {
+        font-size: 25px;
+    }
+
+    .sub-title {
+        font-size: 15px;
+    }
+
+    .title-container {
+        position: relative;
+    }
+
+    .button-container {
+        bottom: -35vh;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        flex-direction: column;
+    }
+
+    .btn-full {
+        margin-top: 20px !important;
+    }
+
+    .btn-empty,
+    .btn-full {
+        margin: 0;
+    }
+
+    #intro {
+        padding: 20px;
+        height: 100vh;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        flex-direction: column;
+    }
+
+    .btn-full {
+        margin-top: 20px !important;
+    }
+
+    .btn-empty,
+    .btn-full {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .books {
+        width: 700px;
+
+        .book {
+            width: 325px;
+        }
+
+        .book:nth-child(odd) {
+            margin-right: 5px;
+            margin-bottom: -50px;
+        }
+
+        .book:nth-child(even) {
+            margin-bottom: 5px;
+        }
+    }
+
+    @keyframes bookFadeIn {
+        0% {
+            opacity: 0;
+            transform: rotate(5deg) translate(225px, 535px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: rotate(5deg) translate(225px, -15px);
+        }
+    }
+
+    @keyframes bookFadeOut {
+        0% {
+            opacity: 1;
+            transform: rotate(5deg) translate(225px, -15px);
+        }
+
+        100% {
+            opacity: 0;
+            transform: rotate(5deg) translate(225px, 535px);
+        }
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 939px) {
+    .books {
+        display: none;
+    }
+
+    #section1 {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .quotes {
+        width: 100%;
+        flex-direction: column;
+
+        .quote:first-child {
+            margin-top: 20px;
+        }
+    }
+
+    .section {
+        padding: 20px;
+
+        .title {
+            font-size: 28px;
+            text-align: left;
+        }
+
+        .section-information {
+            text-align: left;
+            width: 100%;
+        }
+    }
+}
