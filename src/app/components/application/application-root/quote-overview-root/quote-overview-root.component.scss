@@ -147,7 +147,7 @@
         text-transform: capitalize;
 
         &.flashing {
-            animation: flashing 6000ms ease-in-out forwards;
+            animation: flashing 6000ms ease-in-out;
         }
 
         &:hover {
@@ -187,5 +187,4 @@
         background: lighten($main-color-two, 20%);
         color: $main-color-four;
     }
-
 }

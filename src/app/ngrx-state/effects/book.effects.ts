@@ -36,9 +36,15 @@ export class BookEffect {
                     new BookActions.AddToPostList({ shortId: payload.originalShortId.pageRight })
                 ];
             } else {
-                return [
-                    new BookActions.AddToPostList({ shortId: payload.originalShortId.pageLeft }),
-                ];
+                if (payload.pageSide) { // right
+                    return [
+                        new BookActions.AddToPostList({ shortId: payload.originalShortId.pageRight }),
+                    ];
+                } else { // left
+                    return [
+                        new BookActions.AddToPostList({ shortId: payload.originalShortId.pageLeft }),
+                    ];
+                }
             }
         });
 

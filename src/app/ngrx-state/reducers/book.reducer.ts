@@ -19,7 +19,6 @@ export function BookReducer(state: any = initialState, action: Action) {
 
     switch (action.type) {
         case bookActions.ActionTypes.BOOK_DATA_RECEIVED:
-
             return Object.assign({}, state, {
                 book: action.payload
             });

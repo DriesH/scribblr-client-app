@@ -3,6 +3,8 @@
 #book-overview {
     width: 80%;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .grid {
@@ -20,6 +22,11 @@
     width: 33%;
 }
 
+.book-overview {
+    position: relative;
+    z-index: 2;
+}
+
 #new-book {
     width: 100%;
     height: 100px;
@@ -29,8 +36,10 @@
     justify-content: center;
     align-items: center;
     padding: 0 60px;
+    position: relative;
+    z-index: 2;
 
-    a {
+    .piemel {
         background: lighten($main-color-two, 20%);
         padding: 10px 15px;
         border-radius: 3px;
@@ -38,10 +47,46 @@
         color: $main-color-four;
         text-transform: capitalize;
 
+        &.flashing {
+            animation: flashing 6000ms ease-in-out;
+        }
+
         &:hover {
             color: lighten($main-color-two, 20%);
             background: $main-color-four;
         }
+    }
+}
+
+@keyframes flashing {
+    0% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    20% {
+        color: lighten($main-color-two, 20%);
+        background: $main-color-four;
+    }
+
+    40% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    60% {
+        color: lighten($main-color-two, 20%);
+        background: $main-color-four;
+    }
+
+    80% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
+    }
+
+    100% {
+        background: lighten($main-color-two, 20%);
+        color: $main-color-four;
     }
 }
 
@@ -74,6 +119,28 @@
         top: -5px;
         animation: spinning 500ms infinite linear;
         border-radius: 50%;
+    }
+}
+
+.no-books {
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        width: 20%;
+    }
+
+    img {
+        opacity: 0.8;
     }
 }
 

@@ -30,16 +30,9 @@ export class FlipBookEffect {
         .ofType(FlipBookActions.ActionTypes.UPDATE_BOOK_PAGE)
         .map(toPayload)
         .mergeMap(payload => {
-            if (payload.isMemory) {
-                return [
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId }),
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId })
-                ];
-            } else {
-                return [
-                    new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId }),
-                ];
-            }
+            return [
+                new FlipBookActions.AddToFlipBookPostList({ shortId: payload.originalShortId }),
+            ];
         });
 
     constructor(

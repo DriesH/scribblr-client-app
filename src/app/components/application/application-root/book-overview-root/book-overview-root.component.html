@@ -1,17 +1,20 @@
 <router-outlet></router-outlet>
 
-<div class="loading-screen-books" *ngIf="isLoading && !noBooks">
-    <span class="loading-spinner"></span>
-</div>
-
-<div class="loading-screen-books" *ngIf="!isLoading && noBooks">
-   <h1>piemel</h1>
-</div>
-
-<div *ngIf="!editorActive">
+<div *ngIf="!editorActive" class="book-overview">
     <div id="new-book">
-        <a routerLink="new"><i class="fa fa-plus"></i> Create new book or flip-over</a>
+        <a routerLink="new" class="piemel" [ngClass]="{ 'flashing': noBooks }"><i class="fa fa-plus"></i> Create new book or flip-over</a>
     </div>
+
+    <div class="loading-screen-books" *ngIf="isLoading && !noBooks">
+        <span class="loading-spinner"></span>
+    </div>
+
+    <div class="no-books" *ngIf="!isLoading && noBooks">
+        <h1 class="title">
+            <img src="/assets/icons/quotes.svg" alt="quotes"> Start by adding a book
+        </h1>
+    </div>
+
     <div id="book-overview" class="grid" #bookContainer>
         <div class="grid-sizer"></div>
         <scrblr-book-thumbnail
