@@ -1,0 +1,20 @@
+@import '../../../../../../scss/colors/colors';
+
+.newsItem--wrapper {
+  width: 50%;
+  margin: 20px auto;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 5px;
+  padding: 7px;
+  cursor: pointer;
+  
+  h1 {
+    color: $main-color-five;
+  }
+
+  .unread:before {
+    content: "• ";
+    color: red;
+  }
+
+}

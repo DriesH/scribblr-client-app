@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'scrblr-news',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
+  @Input() newsData;
+  isShowingMessage = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMessage() {
+    this.isShowingMessage = !this.isShowingMessage;
   }
 
 }

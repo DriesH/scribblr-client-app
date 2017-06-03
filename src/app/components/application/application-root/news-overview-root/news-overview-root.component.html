@@ -1,2 +1,7 @@
-news-overview-root works!
+<div id="news--wrapper">
+        <div class="news--container">
+            <scrblr-news *ngFor="let newsItem of news" [newsData]="newsItem"></scrblr-news>
+        </div>
+</div>
+
 
