@@ -23,7 +23,7 @@
 }
 
 .quote-block {
-    cursor: pointer;
+    // cursor: pointer;
     width: 96.5%;
     margin: auto;
     box-sizing: border-box;
@@ -90,6 +90,7 @@
             position: absolute;
             left: 20px;
             top: 20px;
+            cursor: pointer;
         }
 
         .trash {
@@ -97,6 +98,19 @@
             right: 20px;
             top: 20px;
             color: red;
+            cursor: pointer;
+        }
+
+        .share {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            color: white;
+
+            span {
+                margin-right: 5px;
+                cursor: pointer;
+            }
         }
 
         &:hover {
