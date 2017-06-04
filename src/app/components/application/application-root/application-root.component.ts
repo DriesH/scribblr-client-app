@@ -89,10 +89,12 @@ export class ApplicationRootComponent implements OnInit {
             this.applicationUI = APPLICATION_UI;
         });
 
-        this.router.events.subscribe(event => {
-            this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: false }));
-            let e: any = event;
-            this.currentRoute = e.url;
+        this.router.events.subscribe((event: any) => {
+            if (event.state) {
+                this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: false }));
+                let e: any = event;
+                this.currentRoute = e.url;
+            }
         });
 
         this._cs.getAllChildren()
