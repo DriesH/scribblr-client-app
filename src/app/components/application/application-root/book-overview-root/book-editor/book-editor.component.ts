@@ -40,6 +40,10 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     posts;
     ///////////////////////
 
+    // CLOSING MODAL
+    isClosing = false;
+    ////////////////
+
     // SIDEBAR STUFF
     currentChildPosts = [];
     //////////////////
@@ -172,6 +176,14 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             }
         }
 
+    }
+
+    openCloseModal() {
+        this.isClosing = true;
+    }
+
+    closeCloseModal() {
+        this.isClosing = false;
     }
 
     closeEditor() {

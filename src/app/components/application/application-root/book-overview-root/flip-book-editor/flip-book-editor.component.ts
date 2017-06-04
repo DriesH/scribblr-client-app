@@ -38,6 +38,10 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     posts;
     ///////////////////////
 
+    // CLOSING MODAL
+    isClosing;
+    /////////////////////
+
     // SIDEBAR STUFF
     currentChildPosts = [];
     //////////////////
@@ -164,6 +168,14 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
             console.log('boolean is memory', false);
             return false;
         }
+    }
+
+    openCloseModal() {
+        this.isClosing = true;
+    }
+
+    closeCloseModal() {
+        this.isClosing = false;
     }
 
     closeEditor() {

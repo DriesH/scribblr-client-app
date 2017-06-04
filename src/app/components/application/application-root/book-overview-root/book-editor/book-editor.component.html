@@ -1,7 +1,20 @@
 <div id="book-editor">
-    <div class="close-editor" (click)="closeEditor()">
+    <div class="close-editor" (click)="openCloseModal()">
         <img src="/assets/icons/cross.svg" alt="close-button"> <p>Close</p>
     </div>
+
+    <div class="modal-container" *ngIf="isClosing">
+        <div class="modal closing-modal">
+            <div class="modal-body">
+                <h1 class="title">Are you sure?</h1>
+                <div class="btn-container">
+                    <span class="btn-trans back" (click)="closeCloseModal()">No</span>
+                    <span class="btn-trans" (click)="closeEditor()">Yes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="save-and-order" *ngIf="!configuration.editing">
         <span class="save" (click)="openSaveModal()"><i class="fa fa-floppy-o"></i> Save</span>

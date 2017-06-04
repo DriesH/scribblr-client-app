@@ -35,7 +35,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     presetId;
     quoteModel = {
         quote: null,
-        font: 'Impact',
+        font: 'Boogaloo',
         selectedPreset: this.defaultPreset
     };
 

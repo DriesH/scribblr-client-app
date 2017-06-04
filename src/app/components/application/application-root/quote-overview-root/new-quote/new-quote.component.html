@@ -37,7 +37,7 @@
 
                 <div class="form-input-group">
                     <label for="font">Font</label>
-                    <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" required>
+                    <select id="font" name="font" #font="ngModel" [(ngModel)]="quoteModel.font" (change)="updateCanvasOnChange()" [style.fontFamily]="quoteModel.font" required>
                         <option *ngFor="let font of fonts" [value]="font" [style.fontFamily]="font">{{ font }}</option>
                     </select>
 

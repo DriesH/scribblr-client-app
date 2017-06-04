@@ -67,6 +67,33 @@
             }
         }
     }
+
+    &.closing-modal {
+        .title {
+            font-size: 24px !important;
+        }
+
+        .btn-trans {
+            &.back {
+                color: $main-color-one;
+            }
+        }
+
+        input[type="text"] {
+            align-self: center;
+            padding: 10px 5px;
+            border-radius: 3px;
+            border: 2px solid $main-color-one;
+            transition: all 200ms ease-out;
+            margin: 20px 0;
+            font-size: 18px;
+
+            &:focus {
+                outline: none;
+                border: 2px solid $main-color-four;
+            }
+        }
+    }
 }
 
 @keyframes modalFadeIn {
