@@ -67,9 +67,9 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
-        overflow-y: auto;
+        // overflow-y: auto;
         width: 100%;
-        height: 280px;
+        min-height: 280px;
         list-style: none;
         padding: 0;
         box-sizing: border-box;
@@ -217,6 +217,14 @@ textarea {
 textarea:focus {
     outline: none;
     border: 1px solid $main-color-four;
+}
+
+.pexels-link {
+    width: 100%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+    font-style: italic;
 }
 
 @keyframes spinning {

@@ -40,20 +40,15 @@ export class BookTutorialComponent implements OnInit {
     showCompleteButton = false;
 
     images = [
-        '/assets/child-head-test/de-ronny.png',
-        '/assets/child-head-test/de-ronny.png',
-        '/assets/child-head-test/de-ronny.png',
+        '/assets/book-tutorial/tutorial-page-1.gif',
+        '/assets/book-tutorial/tutorial-page-2.gif',
+        '/assets/book-tutorial/tutorial-page-3.gif',
     ];
 
     explanations = [
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a efficitur quam. Donec congue arcu ut urna
-        volutpat imperdiet.Nunc varius lacinia arcu, vitae suscipit enim consequat vel.Proin convallis lacus
-        vitae.`,
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a efficitur quam. Donec congue arcu ut urna
-        volutpat imperdiet.Nunc varius lacinia arcu, vitae suscipit enim consequat vel.Proin convallis lacus
-        vitae dapibus congue.`,
-        `Lorem ipsum dolor sit amet. Donec congue arcu ut urna volutpat imperdiet.Nunc varius lacinia arcu,
-        vitae suscipit enim consequat vel.Proin convallis lacus vitae dapibus congue.`,
+        `Start by selecting a cover from our collection. We limited this to our own covers`,
+        `Add new quotes to pages by draging them from the sidebar to the page you want them on.`,
+        `Save the book or order and save the book.`,
     ];
 
     constructor(private _ts: TutorialService, private store: Store<any>) { }

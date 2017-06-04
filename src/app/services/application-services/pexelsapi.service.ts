@@ -28,7 +28,7 @@ export class PexelsapiService {
     }
 
     getMostPopular(): Observable<any> {
-        return this.http.get('https://api.pexels.com/v1/popular?per_page=10&page=1',
+        return this.http.get('https://api.pexels.com/v1/popular?per_page=12&page=1',
             this._headers.setOptions(APP_CONFIG.pexelsApiKey))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

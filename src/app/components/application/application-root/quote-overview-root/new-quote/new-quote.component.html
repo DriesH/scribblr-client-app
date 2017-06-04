@@ -81,7 +81,7 @@
                 <input (keydown)="searchPexelsApi($event, searchQuery)" [(ngModel)]="searchQuery" type="text" placeholder="Type in a keyword to search for pictures...">
                 <span (click)="searchPexelsApi($event, searchQuery)"><i class="fa fa-search"></i></span>
             </div>
-            <ul class="preset-picker" *ngIf="presetPickerActive" perfect-scrollbar>
+            <ul class="preset-picker" *ngIf="presetPickerActive">
                 <li class="loading" *ngIf="pexelsLoading">
                     <span class="loading-spinner"></span>
                     <p>Loading...</p>
@@ -94,8 +94,9 @@
                         <img [src]="img.src.tiny" [alt]="img.photographer">
                     </li>
                 </span>
-
             </ul>
+
+            <span class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 
