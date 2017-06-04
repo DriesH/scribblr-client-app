@@ -10,6 +10,8 @@ import { DropzoneService } from '../../../../../services/dropzone.service';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
+import * as quoteActions from '../../../../../ngrx-state/actions/quote.action';
+
 
 declare var Aviary: any;
 
@@ -72,8 +74,13 @@ export class NewStoryComponent implements OnInit {
         this.storyData.set('img_baked', storyModel.img_baked);
 
         this._qs.newStory(childShortId, this.storyData).subscribe(res => {
-
+            this.dispatchNewQuote(res.story);
         });
+    }
+
+    dispatchNewQuote(newQuote) {
+        this.store.dispatch(new quoteActions.NewQuote({ newQuote: newQuote }));
+        this.router.navigate(['application', 'overview', this.childShortId]);
     }
 
     /**
