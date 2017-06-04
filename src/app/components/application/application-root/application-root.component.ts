@@ -9,6 +9,8 @@ import { NotificationConfig } from './notifications/config';
 import { Store } from '@ngrx/store';
 
 import * as ChildActions from '../../../ngrx-state/actions/child.action';
+import * as ApplicationUIActions from '../../../ngrx-state/actions/application-ui.action';
+
 
 import { EasterEggService } from '../../../services/easter-egg/easter-egg.service';
 
@@ -67,12 +69,12 @@ export class ApplicationRootComponent implements OnInit {
 
     ngOnInit() {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
-            console.log('My state changed in CURRENT_USER');
+            // console.log('My state changed in CURRENT_USER');
             this.currentUser = CURRENT_USER;
         });
 
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
-            console.log('My state changed in CURRENT_CHILDREN');
+            // console.log('My state changed in CURRENT_CHILDREN');
             if (CURRENT_CHILDREN.children.length) {
                 this.children = CURRENT_CHILDREN.children;
                 this.noChildren = false;
@@ -83,11 +85,12 @@ export class ApplicationRootComponent implements OnInit {
         });
 
         this.store.select('APPLICATION_UI').subscribe(APPLICATION_UI => {
-            console.log('My state changed in APPLICATION_UI');
+            // console.log('My state changed in APPLICATION_UI');
             this.applicationUI = APPLICATION_UI;
         });
 
         this.router.events.subscribe(event => {
+            this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: false }));
             let e: any = event;
             this.currentRoute = e.url;
         });

@@ -24,8 +24,8 @@ export class QuoteService {
     }
 
     // POST
-    newPost(childShortId, data): Observable<any> {
-        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.posts.newPost(childShortId),
+    newQuote(childShortId, data): Observable<any> {
+        return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.posts.newQuote(childShortId),
             data,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))

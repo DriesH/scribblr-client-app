@@ -1,11 +1,5 @@
 <router-outlet></router-outlet>
 
-<!--<div class="add-button--container">
-    <a routerLink="new-quote" class="">add quote</a>
-    <span class="vertical-divider"></span>
-    <a routerLink="new-memory" class="">add memory</a>
-</div>-->
-
 <div class="child-infomatics--container">
     <h1 class="title">{{ currentChild?.full_name }}</h1>
     <span class="flex-spacer"></span>
@@ -16,7 +10,6 @@
     </div>
     <span class="flex-spacer"></span>
 </div>
-
 
 <div class="grid" id="gridboi" #quoteContainer [hidden]="posts.length <= 0">
     <scrblr-quote
@@ -34,7 +27,7 @@
     <div class="grid-sizer"></div>
 </div>
 
-<div class="no-quotes" *ngIf="posts.length <= 0">
+<div class="no-quotes" *ngIf="posts.length <= 0 && !loading">
     <h1 class="title">
         <img src="/assets/icons/quotes.svg" alt="quotes">
         Start by adding quotes!

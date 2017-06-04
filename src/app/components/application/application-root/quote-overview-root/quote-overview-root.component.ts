@@ -62,7 +62,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
             this.currentChildren.forEach((child, key) => {
                 if (child.short_id === this.childShortId) {
-                    console.log(child);
+                    // console.log(child);
                     this.currentChild = child;
                 }
             });
@@ -113,7 +113,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     reloadMasonry() {
-        console.log('reloadMasonry');
+        // console.log('reloadMasonry');
         this.msnry.layout();
     }
 
@@ -132,7 +132,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     shareFb(shareData) {
         this._qs.sharePost(shareData.data.child_short_id, shareData.data.post_short_id).subscribe(res => {
             this.facebook.ui(shareData.fbData).then((resFb: UIResponse) => {
-                console.log(resFb);
+                // console.log(resFb);
             }).catch((e: any) => {
                 console.log(e);
             });

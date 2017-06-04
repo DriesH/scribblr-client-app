@@ -14,6 +14,8 @@ export class DropzoneService {
         this.body = document.getElementsByTagName('body')[0];
         this.attachEventListeners(element);
         this.imageElement = img;
+
+        this.imageElement.style.display = 'none';
     }
 
     public destroy(element: HTMLElement) {
@@ -44,14 +46,13 @@ export class DropzoneService {
         e.preventDefault();
         console.log('dragstart', e);
 
-        // e.target.style.background = 'black';
+        console.log(e.target);
+
     }
 
     private dragLeave(e) {
         e.preventDefault();
         console.log('dragexit', e);
-
-        // e.target.style.background = 'pink';
     }
 
     private drop(e) {
@@ -81,6 +82,10 @@ export class DropzoneService {
 
         fr.onload = (ev: any) => {
             this.imageElement.src = ev.target.result;
+        };
+
+        this.imageElement.onload = (ev: any) => {
+            this.imageElement.style.display = 'block';
         };
     }
 }

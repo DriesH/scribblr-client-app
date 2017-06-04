@@ -26,7 +26,7 @@ export class SideBarComponent implements OnInit {
             this.cart = CART.items_in_cart;
         });
 
-        console.log(this.noChildren);
+        // console.log(this.noChildren);
     }
 
     addChild() {

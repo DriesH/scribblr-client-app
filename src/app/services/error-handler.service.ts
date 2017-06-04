@@ -130,7 +130,7 @@ export class ErrorHandlerService {
     private validation(error: Error) {
         const _errorMsg = {
             title: 'Wooooops!',
-            msg: '',
+            msg: error.error_message,
             _msg: ''
         };
 

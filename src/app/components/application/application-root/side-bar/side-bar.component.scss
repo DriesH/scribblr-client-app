@@ -230,7 +230,7 @@
             text-decoration: none;
 
             &.flashing {
-                animation: flashing 2000ms infinite ease-in-out;
+                animation: flashingChild 2000ms infinite ease-in-out;
             }
 
             .circle {
@@ -273,7 +273,7 @@
     }
 }
 
-@keyframes flashing {
+@keyframes flashingChild {
     0% {
         background-color: transparent;
     }

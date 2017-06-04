@@ -16,7 +16,8 @@ declare var Aviary: any;
 @Component({
     selector: 'scrblr-new-story',
     templateUrl: './new-story.component.html',
-    styleUrls: ['./new-story.component.scss']
+    styleUrls: ['./new-story.component.scss'],
+    providers: [ DropzoneService ]
 })
 export class NewStoryComponent implements OnInit {
 
@@ -26,18 +27,29 @@ export class NewStoryComponent implements OnInit {
 
     aviaryLink: string = null;
 
-    memoryModel = {
+    childShortId: String;
+
+    storyModel = {
         story: null,
-        font: 'Calibri',
-        selectedPreset: '/assets/preset-imgs/guinea_pig.jpg'
+        img_baked: null
     };
+
+    storyData: FormData = new FormData();
+
+    imageLoaded = false;
 
     @ViewChild('presetImg') presetImg: ElementRef;
     @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
 
-    constructor(private _qs: QuoteService, private store: Store<any>) { }
+    constructor(
+        private _dz: DropzoneService,
+        private _qs: QuoteService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private store: Store<any>
+    ) { }
 
     ngOnInit() {
         this.csdkImageEditor = new Aviary.Feather({
@@ -47,10 +59,19 @@ export class NewStoryComponent implements OnInit {
             onError: this.errorSavingToAviary,
             onClose: this.onAviaryClose.bind(this)
         });
+
+        this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
+
+        this.route.parent.params.subscribe(params => {
+            this.childShortId = params.short_id_child;
+        });
     }
 
-    addNewStory(childShortId, storyData) {
-        this._qs.newStory(childShortId, storyData).subscribe(res => {
+    addNewStory(childShortId, storyModel) {
+        this.storyData.set('story', storyModel.story);
+        this.storyData.set('img_baked', storyModel.img_baked);
+
+        this._qs.newStory(childShortId, this.storyData).subscribe(res => {
 
         });
     }
@@ -61,6 +82,8 @@ export class NewStoryComponent implements OnInit {
      */
     startAviary(e) {
         console.log(e);
+
+        this.imageLoaded = true;
 
         this.csdkImageEditor.launch({
             image: this.userImg.nativeElement.id
@@ -74,21 +97,8 @@ export class NewStoryComponent implements OnInit {
      * @param newURL; String
      */
     saveToAviary(imageID, newURL) {
-        console.log('newURL: ', newURL);
-        console.log('imageID: ', imageID);
-        this.canvasLoading = true;
-
-        let img = new Image();
-
-        img.src = newURL;
-        img.setAttribute('crossOrigin', 'anonymous');
-
-        this.aviaryLink = newURL;
-
-        img.onload = () => {
-            // this.initCanvas(img, this.previewCanvas.nativeElement, '40');
-            this.canvasLoading = false;
-        };
+        this.userImg.nativeElement.src = newURL;
+        this.storyModel.img_baked = newURL;
 
         this.csdkImageEditor.close();
     }

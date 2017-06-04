@@ -1,37 +1,36 @@
-<div id="new-memory-overlay" #dropzone>
+<div id="new-story-overlay" #dropzone>
+
     <a class="close-cross" routerLink="../">
         <img src="/assets/icons/cross.svg">
     </a>
 
-    <div class="new-memory--container">
-
-        <div class="new-memory-preview--container">
-
-            <div class="explanation--container">
-                <h1 class="title">Add your picture!</h1>
-
-                <div class="placeholder"></div>
-            </div>
-
-            <div class="preview-image--container">
-                <img src="" id="userImg" #userImg (load)="startAviary()" cross-origin="anonymous" *ngIf="false">
-                <span class="overlay"></span>
-            </div>
-        </div>
+    <div class="new-story--container">
 
         <div class="form--container">
             <form #newMemoryForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Story<span style="color:red">*</span></label>
-                    <textarea name="story" class="story-input" id="story" placeholder="Your funny story..." #story="ngModel" [(ngModel)]="memoryModel.story" autofocus required></textarea>
+                    <textarea name="story" class="story-input" id="story" placeholder="Your funny story..." #story="ngModel" [(ngModel)]="storyModel.story" autofocus required></textarea>
                     <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)"
                         [model]="story"
                         [modelName]="'Story'">
                     </scrblr-form-error>
                 </div>
             </form>
-            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory()" [disabled]="!newMemoryForm.valid">New</button>
+            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory(childShortId, storyModel)" [disabled]="!newMemoryForm.valid">New</button>
         </div>
+
+        <div class="new-story-preview--container">
+            <div class="preview-image--container">
+                <div class="placeholder" *ngIf="!imageLoaded">
+                    <p>Drag and drop an image</p>
+                </div>
+                <img src="" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous">
+                <span class="overlay"></span>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
