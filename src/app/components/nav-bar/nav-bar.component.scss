@@ -48,6 +48,24 @@ nav {
     }
 }
 
+.mobile {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+
+    a {
+        font-size: 14px;
+        color: white;
+        text-decoration: none;
+
+        &:visited {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
 .homepage-logo {
     display: block;
     width: 165px;

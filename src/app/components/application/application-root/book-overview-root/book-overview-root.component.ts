@@ -22,6 +22,8 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
     msnry;
 
+    isGetting = false;
+
     @ViewChild('bookContainer') bookContainer;
 
     constructor(private _bs: BookService, private router: Router) { }
@@ -31,19 +33,25 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
         this.editorActive = false;
 
-        this.router.events.subscribe(e => {
-            if (this.router.url === '/application/books/new') {
-                this.editorActive = true;
-            } else {
-                this._bs.getAllBooks().subscribe(res => {
-                    if (res.books.length <= 0) {
-                        this.noBooks = true;
-                    }
-                    this.books = res.books;
-                    this.isLoading = false;
+        this.router.events.subscribe((e: any) => {
+            if (e.state) {
+                if (this.router.url === '/application/books/new') {
+                    this.editorActive = true;
+                } else {
+                    if (!this.isGetting) {
+                        this.isGetting = true;
 
-                });
-                this.editorActive = false;
+                        this._bs.getAllBooks().subscribe(res => {
+                            if (res.books.length <= 0) {
+                                this.noBooks = true;
+                            }
+                            this.books = res.books;
+                            this.isLoading = false;
+                            this.isGetting = false;
+                        });
+                    }
+                    this.editorActive = false;
+                }
             }
         });
     }
