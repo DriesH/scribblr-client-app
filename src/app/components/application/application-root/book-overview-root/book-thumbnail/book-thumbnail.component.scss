@@ -21,6 +21,7 @@
     // margin: 0 10px 10px;
     position: relative;
     transition: all 200ms ease-out;
+    user-select: none;
 
     &:hover {
         transform: scale(1.02);

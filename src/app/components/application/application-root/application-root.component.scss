@@ -43,8 +43,13 @@
         justify-content: center;
         align-items: center;
 
+        &:hover {
+            color: #545E68 !important;
+        }
+
         img {
-            margin-left: 15px;
+            height: 18px;
+            margin-left: 0;
         }
     }
 

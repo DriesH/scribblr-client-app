@@ -96,8 +96,8 @@
 
         <!---->
         <div class="selection-bar" *ngIf="selectedTool === 'cover'">
-            <p class="selection-bar-title" *ngIf="!configuration.editing">Select a book cover!</p>
-            <p class="selection-bar-title" *ngIf="configuration.editing">Edit your book cover!</p>
+            <p class="selection-bar-title" *ngIf="!configuration.editing">Select a book cover</p>
+            <p class="selection-bar-title" *ngIf="configuration.editing">Edit your book cover</p>
 
             <ul class="book-covers">
                 <li *ngFor="let cover of covers" class="book-cover" (click)="selectCover(cover)">

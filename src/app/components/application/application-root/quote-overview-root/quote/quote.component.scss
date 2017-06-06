@@ -1,3 +1,5 @@
+@import '../../../../../../scss/colors/colors';
+
 .grid-item {
     width: 25%;
     margin-bottom: 10px;
@@ -91,14 +93,29 @@
             left: 20px;
             top: 20px;
             cursor: pointer;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+
+            &:active {
+                color: $main-color-four;
+            }
         }
 
         .trash {
             position: absolute;
-            right: 20px;
-            top: 20px;
-            color: red;
+            right: 15px;
+            top: 15px;
+            color: white;
             cursor: pointer;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+            padding: 5px;
+
+            &:hover {
+                text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+            }
+
+            &:active {
+                color: red;
+            }
         }
 
         .share {
@@ -106,6 +123,7 @@
             left: 20px;
             bottom: 20px;
             color: white;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 
             span {
                 margin-right: 5px;
