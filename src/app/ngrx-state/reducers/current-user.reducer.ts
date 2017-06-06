@@ -20,7 +20,9 @@ export const initialState: State = {
         house_number: null,
         city: null,
         postal_code: null,
-        country: null
+        country: null,
+        has_seen_book_tutorial: null,
+        achievements: []
     }
 };
 
@@ -28,6 +30,11 @@ export function CurrentUserReducer (state = initialState, action: Action) {
     switch (action.type) {
         case userActions.ActionTypes.SUCCESS_LOGIN:
             return Object.assign({}, state, action.payload);
+
+        case userActions.ActionTypes.UPDATE_USER:
+            return Object.assign({}, state, {
+                user: action.payload.user
+            });
 
         default:
             return state;

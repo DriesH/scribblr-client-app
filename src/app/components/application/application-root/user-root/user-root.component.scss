@@ -1,0 +1,12 @@
+#user-form {
+    margin-bottom: 150px;
+}
+
+#submit-button {
+    align-self: center;
+}
+
+input[disabled]
+{
+    background-color: lighten(lightgrey, 0.7);
+}

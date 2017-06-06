@@ -1,0 +1,39 @@
+@media screen and (max-width: 480px) {
+    .register-page__container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .register-page-background__container {
+        display: none;
+    }
+
+    .register-form__container {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .register-page-background__container {
+        width: 0%;
+        height: 0%;
+    }
+}
+
+@media screen and (min-width: 481px) {
+     .register-form__container {
+        width: 65%;
+        height: auto;
+        box-shadow: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+     .register-form__container {
+        width: 55%;
+        height: auto;
+        box-shadow: none;
+    }
+}

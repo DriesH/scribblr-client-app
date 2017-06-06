@@ -1,5 +1,11 @@
-<div class="link">
-    <a routerLink="/user"> {{ currentUser?.first_name + ' ' +  currentUser?.last_name}} </a>
-    <a routerLink="/application/children"> Application</a>
+<div class="nav-link">
+    <p>Hello, {{ currentUser?.first_name }}</p>
+    <a routerLink="/application">Application</a>
+</div>
+
+<div class="mobile">
+    <a (click)="logout()">
+        Sign out&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg" style="color: white;"></i>
+    </a>
 </div>
 

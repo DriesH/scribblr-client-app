@@ -1,0 +1,6 @@
+<div id="book-inspector">
+    <div class="loading-container" *ngIf="!editorActive">
+        <span class="loading-spinner"></span>
+    </div>
+    <scrblr-book-editor *ngIf="editorActive" [configuration]="editorConfig" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
+</div>

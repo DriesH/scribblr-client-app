@@ -1,0 +1,82 @@
+<div id="check-out-root">
+    <header class="header">
+        <a routerLink="/home">
+            <img src="/assets/logos/logo-svg.svg" alt="logo">
+        </a>
+    </header>
+
+    <section class="page-body">
+        <div class="product--container">
+            <a class="return-previous"(click)="returnToPreviousPage()"><img src="/assets/icons/right-arrow.svg">Return to previous page</a>
+            <div class="product-header">
+                <h1 class="title"><i class="fa fa-shopping-cart"></i> Cart overview.</h1>
+            </div>
+            <div class="product-body">
+                <div class="products-in-cart">
+                    <div class="product" *ngFor="let item of currentItemsInCart">
+                        <a (click)="removeFromCart(item)" class="remove">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                        <img [src]="'/assets/book-covers/' + item.cover_preset">
+                        <div class="title-group">
+                            <h1 class="title">{{ item.title }}</h1>
+                            <p class="sub-title" *ngIf="!item.is_flip_over">Book: 14cm x 14cm, hard-cover</p>
+                            <p class="sub-title" *ngIf="item.is_flip_over">Flip-over: 20cm x 14cm, hard-cover</p>
+                        </div>
+                        <div class="quantity" *ngIf="!item.is_flip_over">
+                            Quantity:&nbsp;
+                            <select id="quantity-selection" #quantity="ngModel" [(ngModel)]="item.amount" (change)="recalculatePrice()">
+                                <option [value]="1">1</option>
+                                <option [value]="2">2</option>
+                                <option [value]="3">3</option>
+                                <option [value]="4">4</option>
+                                <option [value]="5">5</option>
+                                <option [value]="6">6</option>
+                                <option [value]="7">7</option>
+                                <option [value]="8">8</option>
+                                <option [value]="9">9</option>
+                                <option [value]="10">10</option>
+                            </select>
+                        </div>
+
+                        <div class="quantity" *ngIf="item.is_flip_over">
+                            Quantity:&nbsp;
+                            <select id="quantity-selection" #quantity="ngModel" [(ngModel)]="item.amount" (change)="recalculatePrice()">
+                                <option [value]="1">1</option>
+                                <option [value]="2">2</option>
+                                <option [value]="3">3</option>
+                                <option [value]="4">4</option>
+                                <option [value]="5">5</option>
+                                <option [value]="6">6</option>
+                                <option [value]="7">7</option>
+                                <option [value]="8">8</option>
+                                <option [value]="9">9</option>
+                                <option [value]="10">10</option>
+                            </select>
+                        </div>
+
+                        <div class="flex-spacer"></div>
+                        <div class="product-price">
+                            <p class="price-tag" *ngIf="!item.is_flip_over">{{ prices.book * item.amount | currency:'EUR':true }}</p>
+                            <p class="price-tag" *ngIf="item.is_flip_over">{{ prices.flip_over * item.amount | currency:'EUR':true }}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p class="price">Shipping cost: <span class="price-tag">{{ prices.shipping | currency:'EUR':true }}</span></p>
+                <hr>
+                <p class="total-price">Total price: <span class="price-tag">{{ totalPrice | currency:'EUR':true }}</span></p>
+                <div class="button-container">
+                    <button class="checkout-btn" (click)="payCart(currentItemsInCart)"><i class="fa fa-paypal"></i> Pay with paypal</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a routerLink="/home" class="logo">
+            <img src="/assets/logos/logo-svg-white.svg" alt="logo">
+            <p>Scribblr Inc. © 2017</p>
+        </a>
+    </footer>
+</div>

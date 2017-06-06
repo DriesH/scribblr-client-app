@@ -1,0 +1,44 @@
+<div class="modal-container">
+    <div class="modal save-modal" *ngIf="!isEditing">
+        <div *ngIf="!isSaved" class="modal-body">
+            <h1 class="title">Give your book a title!</h1>
+
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
+
+            <div class="btn-container">
+                <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                <a (click)="saveBook(bookModel, book)" class="btn-trans">Save book</a>
+            </div>
+        </div>
+
+        <div *ngIf="isSaved" class="modal-body">
+            <h1 class="title">Successfully saved!</h1>
+            <div class="btn-container">
+                <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                <a routerLink="/application/books" class="btn-trans">Close editor</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal save-modal" *ngIf="isEditing">
+        <div *ngIf="!isSaved" class="modal-body">
+            <h1 class="title">Edit the title</h1>
+
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
+
+            <div class="btn-container">
+                <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                <a (click)="editBook(configuration.bookShortId, bookModel, book)" class="btn-trans">Edit and save</a>
+            </div>
+        </div>
+
+
+        <div *ngIf="isSaved" class="modal-body">
+            <h1 class="title">Successfully edited!</h1>
+            <div class="btn-container">
+                <a (click)="closeModal()" class="btn-trans back">Go back</a>
+                <a routerLink="/application/books" class="btn-trans">Close editor</a>
+            </div>
+        </div>
+    </div>
+</div>

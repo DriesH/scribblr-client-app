@@ -9,20 +9,26 @@ import { User } from '../../../models/user';
 import { Store } from '@ngrx/store';
 import * as userActions from '../../../ngrx-state/actions/current-user.action';
 
+const errorTypes = {
+    NOT_AUTHENTICATED: 'not_authenticated',
+};
+
 @Component({
     selector: 'scrblr-login-form',
     templateUrl: './login-form.component.html',
-    styleUrls: ['./login-form.component.scss']
+    styleUrls: [
+        './login-form.component.scss'
+    ]
 })
 export class LoginFormComponent implements OnInit {
 
     @ViewChild('passwordInput') passwordInput: any;
 
     formModel: any = {};
-    hasError = false;
-    errorMessage = '';
 
     isShowingPassword = false;
+
+    buttonLoadingAnim = false;
 
     constructor(private _auth: AuthService,
         private _jwt: JWTTokenService,
@@ -30,6 +36,11 @@ export class LoginFormComponent implements OnInit {
         private store: Store<any>) { }
 
     ngOnInit() {
+        this.store.select('APPLICATION_UI').subscribe((APPLICATION_UI: any) => {
+            if (APPLICATION_UI.error.type === errorTypes.NOT_AUTHENTICATED) {
+                this.buttonLoadingAnim = false;
+            }
+        });
     }
 
     showPassword() {
@@ -43,33 +54,23 @@ export class LoginFormComponent implements OnInit {
     }
 
     onLogin(formData) {
+        this.buttonLoadingAnim = true;
         this._auth.authenticateUser(formData)
             .subscribe(res => {
                 this.addUserToState(res.user);
 
                 this._jwt.setToken(res.user.JWTToken)
                     .then(success => {
-                        if (this.hasError) {
-                            this.hasError = false;
-                        }
 
-                        this.router.navigate(['/home']);
+                        this.router.navigate(['/application']);
                     })
                     .catch(error => {
-                        this.onError(error);
+                        console.log(error);
                     });
-            }, error => {
-                this.onError(error);
             });
     }
 
     private addUserToState(user: User) {
         this.store.dispatch(new userActions.SuccessfullLogin(user));
-    }
-
-    // TODO: move this to a state in ngrx.
-    private onError(error) {
-        this.hasError = true;
-        this.errorMessage = 'error';
     }
 }

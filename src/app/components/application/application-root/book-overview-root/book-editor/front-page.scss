@@ -1,0 +1,29 @@
+@import '../../../../../../scss/colors/colors';
+
+#book-front-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 3px;
+
+    .front-page {
+        width: 500px;
+        height: 500px;
+        background: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        position: relative;
+        border-radius: 3px;
+
+        img {
+            border-radius: 3px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

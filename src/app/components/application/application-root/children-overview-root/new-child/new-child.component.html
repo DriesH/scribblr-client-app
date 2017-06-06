@@ -1,0 +1,70 @@
+<div id="new-child-overlay">
+    <span class="close-cross" (click)="closeModal()">
+        <img src="/assets/icons/cross.svg">
+    </span>
+
+    <h1 class="title">Add a new child!</h1>
+
+    <form (ngSubmit)="addNewChild()" #newChildForm="ngForm">
+        <div class="form-content">
+            <div class="form-left">
+                <div class="form-input-group">
+                    <label for="name">Name<span style="color:red">*</span></label>
+                    <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="childModel.full_name" autofocus required>
+
+                    <scrblr-form-error
+                        *ngIf="name.errors && (name.dirty || name.touched)"
+                        [model]="name" [modelName]="'Name'">
+                    </scrblr-form-error>
+                </div>
+
+                <div class="form-input-group">
+                    <label for="gender">Gender<span style="color:red">*</span></label>
+                    <select id="gender" name="gender" #gender="ngModel" [(ngModel)]="childModel.gender" required>
+                        <option [value]="null" disabled>Select a gender...</option>
+                        <option [value]="'Male'">Boy</option>
+                        <option [value]="'Female'">Girl</option>
+                        <option [value]="'Other'">Other</option>
+                    </select>
+
+                    <scrblr-form-error
+                        *ngIf="gender.errors && (gender.dirty || gender.touched)"
+                        [model]="gender" [modelName]="'Gender'">
+                    </scrblr-form-error>
+
+                </div>
+
+                <div class="form-input-group">
+                    <label for="date-of-birth">Date of birth<span style="color:red">*</span></label>
+                    <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth"
+                        required>
+
+                    <scrblr-form-error
+                        *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)"
+                        [model]="dateOfBirth" [modelName]="'Date of Birth'">
+                    </scrblr-form-error>
+                </div>
+
+                <div class="form-avatar-upload">
+                    <div class="dropzone" *ngIf="!isShowingCropper">
+                        <label for="avatar-upload">Upload an avatar</label>
+                        <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera">
+                    </div>
+
+                    <div [hidden]="!isShowingCropper" class="img-cropper-container">
+                        <i class="fa fa-trash fa-lg delete" (click)="removeCropper()"></i>
+                        <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+                    </div>
+
+                    <scrblr-form-error *ngIf="avatarError"
+                        [model]="story" [modelName]="'Story'">
+                    </scrblr-form-error>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">Add!</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

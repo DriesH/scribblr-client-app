@@ -1,0 +1,84 @@
+<div id="sidebar" class="sidebar">
+    <div class="sidebar--header">
+        <div class="sidebar--avatar">
+            <img src="/assets/avatar.svg" alt="">
+            <a routerLink="user" class="sidebar--avatar-options">
+                <img src="/assets/icons/sidebar-icons/cog-wheel-icon.svg" alt="cogwheel">
+            </a>
+        </div>
+        <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
+
+        <a routerLink="/checkout" class="shopping-cart" *ngIf="cart.length > 0">
+            <p class="cart">
+                <i class="fa fa-shopping-cart fa-2x"></i>&nbsp;Cart
+            </p>
+            <span class="items-in-cart">{{ cart.length }}</span>
+        </a>
+    </div>
+
+    <hr class="sidebar--separator">
+
+    <ul class="sidebar--toolbox">
+        <li>
+            <a routerLink="/application" class="sidebar--toolbox-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <img src="/assets/icons/sidebar-icons/home-icon.svg" alt="home">Home
+            </a>
+        </li>
+        <li>
+            <a routerLink="books" class="sidebar--toolbox-link" routerLinkActive="active">
+                <img src="/assets/icons/sidebar-icons/book-icon.svg" alt="book">Books
+            </a>
+        </li>
+        <li>
+            <a routerLink="achievements" class="sidebar--toolbox-link" routerLinkActive="active">
+                <img src="/assets/icons/sidebar-icons/achievements-icon.svg" alt="achievements">Achievements
+            </a>
+        </li>
+        <li>
+            <a routerLink="news"class="sidebar--toolbox-link" routerLinkActive="active">
+                <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">News
+            </a>
+            <!--NOTIFICATION POP UP-->
+        </li>
+    </ul>
+
+    <hr class="sidebar--separator">
+
+    <div class="test-wrap">
+        <div class="scroll-wrap" perfect-scrollbar>
+            <ul class="sidebar--children">
+                <li>
+                    <a class="new-child" [ngClass]="{ 'flashing': noChildren }" (click)="addChild()">
+                        <span class="circle">
+                            +
+                        </span>
+                        <p>New child</p>
+                    </a>
+                </li>
+                <li *ngIf="!children && !noChildren">
+                    <span class="sidebar--children-loading"></span>
+                </li>
+
+                <li *ngIf="noChildren">
+                    <span class="no-children">
+                        <img src="/assets/icons/right-arrow-white.svg">
+                        <p>No children</p>
+                    </span>
+                </li>
+
+                <li *ngFor="let child of children">
+                    <a class="child-avatar" [routerLink]="['overview', child.short_id]" routerLinkActive="active">
+
+                        <img *ngIf="child.avatar_url_id" [src]="formatImageLink(child.short_id, child.avatar_url_id)">
+                        <img *ngIf="!child.avatar_url_id" [src]="'/assets/default-avatars/' + child.gender + '.svg'" [alt]="child.gender">
+                        <div>
+                            <p class="fullname">{{ child.full_name }}</p>
+                            <p class="age">{{ child.date_of_birth | childAge }}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

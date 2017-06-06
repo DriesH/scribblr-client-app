@@ -1,0 +1,244 @@
+@import '../../../scss/colors/colors';
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+#intro {
+    position: relative;
+    height: 934px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/assets/homepage/hero.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: 30;
+    box-sizing: border-box;
+}
+
+#section1 {
+    position: relative;
+    height: 540px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 25;
+    overflow: hidden;
+}
+
+#section2 {
+    position: relative;
+    height: 760px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+    overflow: hidden;
+    background-color: pink;
+}
+
+.main-title {
+    text-align: center;
+    font-family: 'Poppins';
+    letter-spacing: -2px;
+    font-size: 72px;
+    text-shadow: 0 5px 5px rgba(17, 50, 99, 0.45);
+    color: white;
+}
+
+.sub-title {
+    font-size: 30px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    letter-spacing: -1px;
+    text-align: center;
+    text-shadow: 0 3px 5px rgba(17, 50, 99, 0.45);
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.btn-empty,
+.btn-full {
+    display: block;
+    width: 215px;
+    height: 50px;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 100ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn-empty {
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+    border: 3px solid white;
+
+    &:hover {
+        background-color: white;
+        color: $main-color-four;
+    }
+}
+
+.btn-full {
+    margin-left: 20px;
+    font-weight: 600;
+    color: $main-color-four;
+    border: 3px solid white;
+    background-color: white;
+
+    &:hover {
+        color: white;
+        border: 3px solid $main-color-four;
+        background-color: $main-color-four;
+        box-shadow: 0 4px 5px rgba(17, 50, 99, 0.45);
+    }
+}
+
+.books {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 950px;
+    flex-wrap: wrap;
+    transform: rotate(5deg) translate(235px, 135px);
+    opacity: 0;
+
+    &.show {
+        animation: forwards 400ms ease-out bookFadeIn;
+    }
+
+    &.hide {
+        animation: forwards 400ms ease-out bookFadeOut;
+    }
+
+    .book {
+        width: 450px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .book:nth-child(odd) {
+        margin-right: 15px;
+        margin-bottom: -50px;
+    }
+
+    .book:nth-child(even) {
+        margin-bottom: 15px;
+    }
+}
+
+.section {
+    .title {
+        font-size: 45px;
+        text-align: right;
+
+        i {
+            color: $main-color-four;
+        }
+    }
+
+    .section-information {
+        text-align: right;
+        font-size: 18px;
+        width: 30%;
+        opacity: 0;
+
+        &.hide {
+            animation: fadeOutRight 400ms ease-out forwards;
+        }
+
+        &.show {
+            animation: fadeInRight 400ms ease-out forwards;
+        }
+    }
+}
+
+.quotes {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .quote {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 100%;
+            max-width: 350px;
+        }
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+}
+
+@keyframes bookFadeIn {
+    0% {
+        opacity: 0;
+        transform: rotate(5deg) translate(235px, 535px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(5deg) translate(235px, 135px);
+    }
+}
+
+@keyframes bookFadeOut {
+    0% {
+        opacity: 1;
+        transform: rotate(5deg) translate(235px, 135px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(5deg) translate(235px, 535px);
+    }
+}

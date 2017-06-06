@@ -1,0 +1,17 @@
+.btn-color-main {
+    color: #FFF;
+    background: $main-color-four;
+
+    &:hover {
+        background: lighten($main-color-four, 5%);
+    }
+}
+
+.btn-color-danger {
+    color: #FFF;
+    background: #C0392B;
+
+    &:hover {
+        background: lighten(#C0392B, 5%);
+    }
+}

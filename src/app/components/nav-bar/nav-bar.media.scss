@@ -1,0 +1,23 @@
+@media screen and (max-width: 615px) {
+    .nav-link {
+        display: none;
+    }
+
+    .mobile {
+        display: block !important;
+    }
+
+    nav {
+        justify-content: center;
+        align-items: center;
+        padding: 65px 0 0;
+    }
+
+    .homepage-logo {
+        width: 130px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

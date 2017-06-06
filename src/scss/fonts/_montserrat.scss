@@ -1,0 +1,15 @@
+.montserrat {
+    font-family: 'Montserrat';
+
+    &.light {
+        font-weight: 200;
+    }
+
+    &.normal {
+        font-weight: normal;
+    }
+
+    &.bold {
+        font-weight: bold;
+    }
+}

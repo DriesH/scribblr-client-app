@@ -1,0 +1,9 @@
+<div class="newsItem--wrapper">
+
+    <h1 [ngClass]="{ 'unread': !newsData.read }" (click)="toggleMessage()">{{newsData.title}}</h1>
+
+    <div class="message-container" *ngIf="isShowingMessage">
+        <div [innerHTML]="newsData.message">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div id="start-menu" *ngIf="!editorActive">
+    <a class="return" routerLink="../"><img src="/assets/icons/right-arrow.svg">Go back</a>
+
+    <div id="step-indicators">
+        <ul class="bullet-indicators">
+            <li><span class="bullet-indicator" [ngClass]="{ 'active': currentStep === 1 }"></span></li>
+            <li><span class="bullet-indicator" [ngClass]="{ 'active': currentStep === 2 }"></span></li>
+        </ul>
+    </div>
+
+    <h1 class="main-title title" *ngIf="currentStep === 1">What do you want to make?</h1>
+    <h1 class="main-title title" *ngIf="currentStep === 2">Hier komt een super coole zin.</h1>
+
+    <div id="step1" class="step--container" *ngIf="currentStep === 1">
+
+        <div class="book-start-buttons--container" (click)="setStep(2, 'book')">
+            <div class="book-start-information">
+                <h1 class="title">Scribbl' book</h1>
+                <img src="/assets/book-editor/autogenerate-all-icon.svg">
+                <p>I want to make a book with quotes and memories.</p>
+            </div>
+        </div>
+
+        <div class="book-start-buttons--container">
+            <div class="book-start-information" (click)="setStep(2, 'flip-over')">
+                <h1 class="title">Scribbl' flip-over</h1>
+                <img src="/assets/book-editor/autogenerate-all-icon.svg">
+                <p>I want to make a flip-over with quotes and memories.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="step2" class="step--container" *ngIf="currentStep === 2">
+        <div id="auto-generate-all-children" class="book-start-buttons--container" (click)="autoGenerate(editorType)">
+            <div class="book-start-information">
+                <h1 class="title">Generate a {{ editorType }} with all children</h1>
+                <img src="/assets/book-editor/autogenerate-all-icon.svg">
+                <p>Feeling lazy? Let us do the work! You can still edit the book after we generated it for you.</p>
+            </div>
+        </div>
+
+        <div id="start-blank-book" class="book-start-buttons--container" (click)="startEmpty(editorType)">
+            <div class="book-start-information">
+                <h1 class="title">Start from a blank canvas</h1>
+                <img src="/assets/book-editor/start-blank-book-icon.svg">
+                <p>If you like to do things yourself!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="editorActive && editorType === 'book'">
+    <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false" [currentUser]="currentUser"></scrblr-book-tutorial>
+    <scrblr-book-editor [configuration]="editorConfig" (closeEditorEvent)="closeEditor()"></scrblr-book-editor>
+</div>
+
+<div *ngIf="editorActive && editorType === 'flip-over'">
+    <scrblr-book-tutorial *ngIf="tutorialActive" (closeTutorial)="tutorialActive = false" [currentUser]="currentUser"></scrblr-book-tutorial>
+    <scrblr-flip-book-editor [configuration]="editorConfig" (closeEditorEvent)="closeEditor()"></scrblr-flip-book-editor>
+</div>

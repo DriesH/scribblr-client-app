@@ -1,0 +1,12 @@
+<div class="placeholder" [style.backgroundColor]="loadingColor" *ngIf="!loaded && !isEmpty">
+    <span class="loading-spinner"></span>
+    <p class="loading-text">Loading...</p>
+</div>
+
+<div class="placeholder empty" *ngIf="isEmpty">
+    <p class="loading-text">Empty, drag a quote or memory over here to fill up the space</p>
+</div>
+
+<img [hidden]="!loaded" (load)="doneLoading()" [src]="src" />
+
+

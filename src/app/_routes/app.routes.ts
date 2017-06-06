@@ -1,4 +1,5 @@
 // router module and routes.
+// tslint:disable:max-line-length
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomePageComponent } from '../components/home-page/home-page.component';
@@ -6,11 +7,33 @@ import { RegistrationPageComponent } from '../components/registration-page/regis
 import { LoginPageComponent } from '../components/login-page/login-page.component';
 import { ApplicationRootComponent } from '../components/application/application-root/application-root.component';
 
-import { ChildOverviewRootComponent } from '../components/application/child-overview-root/child-overview-root.component';
-import { QuoteOverviewRootComponent } from '../components/application/quote-overview-root/quote-overview-root.component';
-import { AchievementOverviewRootComponent } from '../components/application/achievement-overview-root/achievement-overview-root.component';
-import { BookOverviewRootComponent } from '../components/application/book-overview-root/book-overview-root.component';
+import { UserRootComponent } from '../components/application/application-root/user-root/user-root.component';
 
+// Application root components
+import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
+import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
+import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
+
+// Quotes
+import { NewStoryComponent } from '../components/application/application-root/quote-overview-root/new-story/new-story.component';
+import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
+import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
+
+// Child
+import { EditChildComponent } from '../components/application/application-root/children-overview-root/edit-child/edit-child.component';
+
+// Book
+import { NewBookComponent } from '../components/application/application-root/book-overview-root/new-book/new-book.component';
+import { BookInspectorComponent } from '../components/application/application-root/book-overview-root/book-inspector/book-inspector.component';
+import { FlipBookInspectorComponent } from '../components/application/application-root/book-overview-root/flip-book-inspector/flip-book-inspector.component';
+
+// News
+import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
+
+// Checkout
+import { CheckOutRootComponent } from '../components/application//application-root/check-out-root/check-out-root.component';
+
+// Guards
 import { AuthGuard } from '../guards/auth.guard';
 
 const ROUTES: Routes = [
@@ -32,8 +55,11 @@ const ROUTES: Routes = [
     {
         path: 'login',
         component: LoginPageComponent,
-        canActivate: [ AuthGuard ]
+    },
 
+    {
+        path: 'checkout',
+        component: CheckOutRootComponent
     },
 
     {
@@ -42,24 +68,63 @@ const ROUTES: Routes = [
         canActivate: [ AuthGuard ],
         children: [
             {
-                path: 'children',
-                component: ChildOverviewRootComponent,
+                path: 'user',
+                component: UserRootComponent
             },
             {
-                path: 'achievement',
+                path: 'achievements',
                 component: AchievementOverviewRootComponent,
             },
             {
-                path: 'scribbles',
+                path: 'overview',
+                component: QuoteOverviewRootComponent
+            },
+            {
+                path: 'overview/:short_id_child',
                 component: QuoteOverviewRootComponent,
+                children: [
+                    {
+                        path: 'new-quote',
+                        component: NewQuoteComponent
+                    },
+                    {
+                        path: 'quote/:short_id_quote',
+                        component: PostModalComponent
+                    },
+                    {
+                        path: 'new-story',
+                        component: NewStoryComponent
+                    },
+                    {
+                        path: 'edit-child',
+                        component: EditChildComponent
+                    }
+                ]
+            },
+            {
+                path: 'news',
+                component: NewsOverviewRootComponent
             },
             {
                 path: 'books',
                 component: BookOverviewRootComponent,
+                children: [
+                    {
+                        path: 'new',
+                        component: NewBookComponent
+                    },
+                    {
+                        path: 'book/:short_id_book',
+                        component: BookInspectorComponent
+                    },
+                    {
+                        path: 'flip-book/:short_id_book',
+                        component: FlipBookInspectorComponent
+                    }
+                ]
             }
         ]
-    },
-
+    }
     // {
     //     path: '**',
     //     redirectTo: 'home'

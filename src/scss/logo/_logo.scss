@@ -1,0 +1,14 @@
+.logo {
+    align-self: center;
+    transform: translateX(22px);
+
+    img {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        transform: translateX(7px);
+    }
+}

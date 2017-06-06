@@ -1,8 +1,10 @@
 <div class="register-page__container">
-    <div class="register-form__container">
+    <div class="register-form__container" perfect-scrollbar>
         <scrblr-registration-form (registerEvent)="onRegister($event)"></scrblr-registration-form>
-        <a id="return-to-homepage" class="return-link" routerLink="/home"><i class="fa fa-chevron-left"></i>&nbsp;Go back</a>
+        <a class="return-link" routerLink="/home"><i class="fa fa-chevron-left"></i>&nbsp;Go back</a>
     </div>
-    <div class="register-page__background">
+    <div class="register-page-background__container">
     </div>
+
+    <simple-notifications [options]="_config"></simple-notifications>
 </div>

@@ -1,0 +1,51 @@
+<div id="edit-child-overlay">
+    <a class="close-cross" routerLink="../">
+        <img src="/assets/icons/cross.svg">
+    </a>
+
+    <form class="scrblr-form" (ngSubmit)="editChild()" #editChildForm="ngForm">
+        <div class="form-input-group">
+            <label for="name">Name<span style="color:red">*</span></label>
+            <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="childModel.full_name" autofocus required>
+
+            <scrblr-form-error *ngIf="name.errors && (name.dirty || name.touched)" [model]="name" [modelName]="'Name'">
+            </scrblr-form-error>
+        </div>
+
+        <div class="form-input-group">
+            <label for="gender">Gender<span style="color:red">*</span></label>
+            <select id="gender" name="gender" #gender="ngModel" [(ngModel)]="childModel.gender" required>
+                <option [value]="null" disabled>Select a gender...</option>
+                <option [value]="'Male'">Boy</option>
+                <option [value]="'Female'">Girl</option>
+                <option [value]="'Other'">Other</option>
+            </select>
+
+            <scrblr-form-error *ngIf="gender.errors && (gender.dirty || gender.touched)" [model]="gender" [modelName]="'Gender'">
+            </scrblr-form-error>
+
+        </div>
+
+        <div class="form-input-group">
+            <label for="date-of-birth">Date of birth<span style="color:red">*</span></label>
+            <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth" required>
+
+            <scrblr-form-error *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)" [model]="dateOfBirth" [modelName]="'Date of Birth'">
+            </scrblr-form-error>
+        </div>
+
+
+        <button type="submit" id="submit-btn-edit-child" class="btn btn-primary btn-color-main" [disabled]="!editChildForm.valid">Save</button>
+    </form>
+
+    <div class="danger-zone">
+        <h1 class="title">Danger zone</h1>
+        <hr>
+        <div class="child-name-container">
+            <label for="child-name">Type the name of your child if you want to delete it. (All quotes and stories will also be deleted!)</label>
+            <input type="text" name="child-name" id="child-name" #childName="ngModel" [(ngModel)]="childName123" (keyup)="checkName()">
+        </div>
+        <button class="btn btn-primary btn-color-danger" (click)="removeChild(childShortId)" [disabled]="!canDelete">Delete</button>
+    </div>
+
+</div>

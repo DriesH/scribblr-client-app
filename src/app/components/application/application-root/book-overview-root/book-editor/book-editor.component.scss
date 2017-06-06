@@ -1,0 +1,69 @@
+@import '../../../../../../scss/colors/colors';
+
+.close-editor {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    cursor: pointer;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: 0 10px;
+        line-height: 20px;
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+}
+
+.save-and-order {
+    position: absolute;
+    right: 400px;
+    top: 50px;
+
+    .save {
+        margin-right: 25px;
+    }
+
+    .save,
+    .order {
+        cursor: pointer;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $main-color-two;
+        }
+    }
+}
+
+#book-editor {
+    background: #FAFAFA;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden;
+    padding-right: 330px;
+}
+
+#book-window {
+    min-height: calc(100vh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+

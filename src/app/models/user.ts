@@ -9,4 +9,6 @@ export interface User {
     city: String;
     postal_code: String;
     country: String;
+    has_seen_book_tutorial: Number;
+    achievements: Array<any>;
 }

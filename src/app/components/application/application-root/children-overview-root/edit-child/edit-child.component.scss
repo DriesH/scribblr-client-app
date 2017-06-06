@@ -1,0 +1,79 @@
+@import '../../../../../../scss/colors/colors';
+
+#edit-child-overlay {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: #DEE0E3;
+    z-index: 35;
+    box-sizing: border-box;
+    padding-top: 100px;
+}
+
+#submit-btn-edit-child {
+    align-self: center;
+}
+
+.close-cross {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.danger-zone {
+    margin: 100px auto 0;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .child-name-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        input {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid $main-color-two;
+            font-size: 14px;
+            float: left;
+            width: 200px;
+            height: 35px;
+
+            &:focus {
+                outline: none;
+                border: 1px solid $main-color-four;
+            }
+        }
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    hr {
+        width: 100%;
+        border: 1px solid;
+        border-color: $main-color-one transparent transparent;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 150px;
+        height: 50px;
+        // align-self: center;
+        line-height: normal;
+    }
+}

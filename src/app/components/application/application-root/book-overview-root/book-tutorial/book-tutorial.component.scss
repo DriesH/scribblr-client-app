@@ -1,0 +1,126 @@
+@import '../../../../../../scss/colors/colors';
+
+.black-background {
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: 450ms ease-in forwards fadeIn;
+    z-index: 30;
+}
+
+#book-tutorial-modal {
+    position: absolute;
+    width: 500px;
+    border-radius: 3px;
+    background: white;
+    z-index: 35;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    padding: 1.5em;
+    box-sizing: border-box;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
+    animation: 350ms ease-in-out forwards sizeUp;
+
+    h1 {
+        margin-bottom: 0.7em;
+        font-size: 24px;
+        color: $main-color-four;
+        text-align: center;
+    }
+}
+
+.tutorial-content {
+    margin-bottom: 75px;
+}
+
+.image--container {
+    width: 100%;
+    background-color: #FAFAFA;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.btn-trans {
+    width: 90px;
+}
+
+.bullet-indicators {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .bullet-indicator {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: $main-color-four;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 5px solid #E0E0E0;
+        transition: all 100ms ease-in-out;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+            border: 0 solid #E0E0E0;
+        }
+    }
+
+    .bullet-indicator {
+        margin-right: 15px;
+    }
+
+    li:last-child .bullet-indicator {
+        margin-right: 0;
+    }
+}
+
+.button--container {
+    position: absolute;
+    bottom: 1.5em;
+    left: 0;
+    right: 0;
+    padding: 0 1.5em;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.explanation-text--container {
+    p {
+        color: #868686;
+        text-align: center;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes sizeUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

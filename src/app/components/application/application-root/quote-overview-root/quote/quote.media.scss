@@ -1,0 +1,11 @@
+@media screen and (max-width: 1200px) and (min-width: 876px) {
+    .grid-item {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .grid-item {
+        width: 100%;
+    }
+}

@@ -16,4 +16,9 @@ export class NavBarProfileComponent implements OnInit {
     ngOnInit() {
     }
 
+    logout() {
+        localStorage.clear();
+        window.location.reload();
+    }
+
 }

@@ -1,8 +1,25 @@
 <div id="application-root">
+    <scrblr-side-bar [children]="children" [currentUser]="currentUser.user" [noChildren]="noChildren"></scrblr-side-bar>
 
-    <scrblr-app-navigation></scrblr-app-navigation>
+    <div id="application-body">
+        <div class="application-body--header">
+            <a routerLink="/home" class="scribblr-logo">
+                <img src="/assets/logos/logo-svg.svg" alt="logo">
+            </a>
 
-    <router-outlet></router-outlet>
+            <a class="account-link" (click)="logout()"><img id='logout' src="/assets/icons/logout.svg" alt="logout"></a>
+        </div>
+
+        <div class="application-body--content" [ngClass]="{ 'mountain-bg': currentRoute === '/application' }">
+            <div class="application-body--quick-quote" *ngIf="currentRoute === '/application'">
+
+            </div>
+            <router-outlet></router-outlet>
+            <scrblr-new-child *ngIf="applicationUI.addingNewChild" [@fadeIn]></scrblr-new-child>
+        </div>
+    </div>
+
+    <simple-notifications [options]="_config"></simple-notifications>
 
 </div>
 

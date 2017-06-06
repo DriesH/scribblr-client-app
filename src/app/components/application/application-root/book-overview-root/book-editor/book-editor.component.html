@@ -1,0 +1,115 @@
+<div id="book-editor">
+    <div class="close-editor" (click)="openCloseModal()">
+        <img src="/assets/icons/cross.svg" alt="close-button"> <p>Close</p>
+    </div>
+
+    <div class="modal-container" *ngIf="isClosing">
+        <div class="modal closing-modal">
+            <div class="modal-body">
+                <h1 class="title">Are you sure?</h1>
+                <div class="btn-container">
+                    <span class="btn-trans back" (click)="closeCloseModal()">No</span>
+                    <span class="btn-trans" (click)="closeEditor()">Yes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="save-and-order" *ngIf="!configuration.editing">
+        <span class="save" (click)="openSaveModal()"><i class="fa fa-floppy-o"></i> Save</span>
+        <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Save and order</span>
+    </div>
+
+    <div class="save-and-order" *ngIf="configuration.editing">
+        <span class="save" (click)="openSaveModal()"><i class="fa fa-edit"></i> Edit and save</span>
+        <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Order</span>
+    </div>
+
+    <scrblr-save-modal *ngIf="userIsSaving" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-save-modal>
+    <scrblr-order-modal *ngIf="userIsSavingAndOrdering" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-order-modal>
+
+    <div id="book-window">
+        <span *ngIf="currentPage !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>
+
+        <div id="book-front-page" *ngIf="currentPage === 0">
+            <div class="front-page">
+                <img [src]="'/assets/book-covers/' + bookModel.cover_preset">
+            </div>
+
+            <span class="return-to-page" *ngIf="previousPageIndex !== null" (click)="returnToPreviousPage()">
+                Go back to where I was.&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+            </span>
+        </div>
+
+        <div id="book-preview" *ngIf="currentPage >= 1">
+            <div class="book" *ngIf="isMemoryBoolean === false">
+                <div class="page-left" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
+                </div>
+                <hr>
+                <div class="page-right" data-is-memory="false" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 1, book[currentPage - 1][1].short_id)"><i class="fa fa-trash"></i> Remove</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][1]" [src]="currentImages[1]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) }}</span>
+                </div>
+            </div>
+
+            <div class="book" *ngIf="isMemoryBoolean === true">
+                <div class="page-left" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
+                    <scrblr-book-page [pageData]="book[currentPage - 1][0]" [src]="currentImages[0]" [loadingColor]="bookModel.color"></scrblr-book-page>
+                    <span class="page-number">{{ (currentPage * 2) - 1 }}</span>
+                </div>
+                <hr>
+                <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                    <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
+                    <div class="quote-icon" [style.color]="bookModel.color">
+                        <i class="fa fa-quote-left fa-5x"></i>
+                    </div>
+                    <p>{{ book[currentPage - 1][0].story }}</p>
+                    <span class="page-number">{{ (currentPage * 2) }}</span>
+                </div>
+            </div>
+        </div>
+        <span *ngIf="currentPage !== maxPages" class="next" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
+    </div>
+
+    <div id="selection-bar" class="side-bar--container">
+        <div class="selection-bar" *ngIf="selectedTool === 'cover'">
+            <p class="selection-bar-title" *ngIf="!configuration.editing">Select a book cover!</p>
+            <p class="selection-bar-title" *ngIf="configuration.editing">Edit your book cover!</p>
+
+            <ul class="book-covers">
+                <li *ngFor="let cover of covers" class="book-cover" (click)="selectCover(cover)">
+                    <img [src]="'/assets/book-covers/' + cover">
+                </li>
+            </ul>
+        </div>
+
+        <div class="selection-bar" *ngIf="selectedTool !== 'cover'">
+            <div *ngIf="!isLoadingPosts" class="posts">
+                <div *ngIf="currentChildPosts.length === 0" class="no-memories">
+                    <p>No memories for this child.</p>
+                </div>
+                <div *ngFor="let post of currentChildPosts" dnd-draggable [dragEnabled]="post.is_used_in_book !== 1" [dragData]="post" class="post" [ngClass]="{'used': post.is_used_in_book === 1}">
+                    <scrblr-book-page [pageData]="post" [src]="makePostUrl(null, post.short_id, post.img_baked_url_id)"></scrblr-book-page>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-bar">
+            <ul class="tools">
+                <li class="tool" [ngClass]="{ 'active': selectedTool === 'cover' }" (click)="changeTool('cover')">
+                    <img src="/assets/book-editor/book-cover-icon.svg">
+                </li>
+                <li class="child-avatar" [ngClass]="{ 'active': selectedTool === child.short_id }" *ngFor="let child of children" (click)="changeTool(child.short_id)" [tooltip]="child.full_name" placement="left" delay="100">
+                    <img *ngIf="child.avatar_url_id" [src]="formatImageLink(child.short_id, child.avatar_url_id)">
+                    <img *ngIf="!child.avatar_url_id" [src]="'/assets/default-avatars/' + child.gender + '.svg'" [alt]="child.gender">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
