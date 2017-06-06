@@ -96,7 +96,7 @@
                 </span>
             </ul>
 
-            <span class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
+            <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 
