@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
@@ -60,7 +61,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         private _pas: PexelsapiService,
         private route: ActivatedRoute,
         private router: Router,
-        private store: Store<any>
+        private store: Store<any>,
+        private location: Location
     ) { }
 
     ngOnInit() {
@@ -68,7 +70,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.canvasLoading = true;
 
+        this.pexelsLoading = true;
+
         this._pas.getMostPopular().subscribe(res => {
+            this.pexelsLoading = false;
             this.pexelsImgs = res.photos;
         });
 
@@ -83,17 +88,34 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         this.route.parent.params.subscribe(params => {
             this.childShortId = params.short_id_child;
         });
-
     }
 
     ngAfterViewInit() {
         this.initCanvas(this.presetImg.nativeElement, this.previewCanvas.nativeElement, '40');
+        this.attachEventListeners();
+    }
+
+    attachEventListeners() {
+        document.addEventListener('keyup', this.closeOverlay.bind(this));
+    }
+
+    removeEventListeners() {
+        document.removeEventListener('keyup', this.closeOverlay.bind(this));
+    }
+
+    closeOverlay(event) {
+        event.preventDefault();
+        if ( event.key === 'Escape') {
+            this.location.back();
+        }
     }
 
     ngOnDestroy() {
         if (!this.presetPickerActive) {
             this._dz.destroy(this.dropzone.nativeElement);
         }
+
+
     }
 
     updateCanvasOnKeyup() {

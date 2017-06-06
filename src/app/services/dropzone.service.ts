@@ -83,9 +83,5 @@ export class DropzoneService {
         fr.onload = (ev: any) => {
             this.imageElement.src = ev.target.result;
         };
-
-        this.imageElement.onload = (ev: any) => {
-            this.imageElement.style.display = 'block';
-        };
     }
 }

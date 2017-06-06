@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -9,6 +9,8 @@ import { APP_CONFIG } from '../../../../../_config/app.config';
 import { DropzoneService } from '../../../../../services/dropzone.service';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
+
+import { PexelsapiService } from '../../../../../services/application-services/pexelsapi.service';
 
 import * as quoteActions from '../../../../../ngrx-state/actions/quote.action';
 
@@ -21,7 +23,7 @@ declare var Aviary: any;
     styleUrls: ['./new-story.component.scss'],
     providers: [ DropzoneService ]
 })
-export class NewStoryComponent implements OnInit {
+export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     csdkImageEditor;
 
@@ -38,19 +40,34 @@ export class NewStoryComponent implements OnInit {
 
     storyData: FormData = new FormData();
 
-    imageLoaded = false;
+    imageLoading = false;
+
+    hideUserImage = false;
+
+    presetPickerActive = true;
+
+    //////////////
+    /// PEXELS ///
+    //////////////
+    pexelsLoading;
+    oldSearchQuery;
+    pexelsImgs;
+    //////////////
 
     @ViewChild('presetImg') presetImg: ElementRef;
     @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
+    @ViewChild('aviaryImage') aviaryImage: ElementRef;
 
     constructor(
         private _dz: DropzoneService,
         private _qs: QuoteService,
+        private _pas: PexelsapiService,
         private route: ActivatedRoute,
         private router: Router,
-        private store: Store<any>
+        private store: Store<any>,
+        private location: Location
     ) { }
 
     ngOnInit() {
@@ -62,11 +79,48 @@ export class NewStoryComponent implements OnInit {
             onClose: this.onAviaryClose.bind(this)
         });
 
-        this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
+        this.pexelsLoading = true;
+
+        this._pas.getMostPopular().subscribe(res => {
+            this.pexelsLoading = false;
+            this.pexelsImgs = res.photos;
+            this.storyModel.img_baked = this.pexelsImgs[0].src.large;
+        });
 
         this.route.parent.params.subscribe(params => {
             this.childShortId = params.short_id_child;
         });
+    }
+
+    ngAfterViewInit() {
+        this.attachEventListeners();
+    }
+
+    attachEventListeners() {
+        document.addEventListener('keyup', this.closeOverlay.bind(this));
+    }
+
+    removeEventListeners() {
+        document.removeEventListener('keyup', this.closeOverlay.bind(this));
+    }
+
+    closeOverlay(event) {
+        event.preventDefault();
+        if ( event.key === 'Escape') {
+            this.location.back();
+        }
+    }
+
+    ngOnDestroy() {
+        if (!this.presetPickerActive) {
+            this._dz.destroy(this.dropzone.nativeElement);
+        }
+
+        this.removeEventListeners();
+    }
+
+    imageLoaded() {
+        this.imageLoading = false;
     }
 
     addNewStory(childShortId, storyModel) {
@@ -90,7 +144,7 @@ export class NewStoryComponent implements OnInit {
     startAviary(e) {
         console.log(e);
 
-        this.imageLoaded = true;
+        this.imageLoading = true;
 
         this.csdkImageEditor.launch({
             image: this.userImg.nativeElement.id
@@ -104,7 +158,9 @@ export class NewStoryComponent implements OnInit {
      * @param newURL; String
      */
     saveToAviary(imageID, newURL) {
-        this.userImg.nativeElement.src = newURL;
+        this.hideUserImage = true;
+        console.log(this.hideUserImage);
+        this.aviaryImage.nativeElement.src = newURL;
         this.storyModel.img_baked = newURL;
 
         this.csdkImageEditor.close();
@@ -123,6 +179,42 @@ export class NewStoryComponent implements OnInit {
      * @param isDirty: Boolean
      */
     onAviaryClose(isDirty) {
+    }
+
+    toggleImageMode() {
+        this.presetPickerActive = !this.presetPickerActive;
+
+        if (!this.presetPickerActive) {
+            this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);
+        } else {
+            this._dz.destroy(this.dropzone.nativeElement);
+        }
+    }
+
+    changeImage(e, original_url) {
+        e.preventDefault();
+        this.imageLoading = true;
+        console.log('changeImage');
+        this.storyModel.img_baked = original_url;
+    }
+
+    searchPexelsApi(event, searchQuery) {
+        if (event.key === 'Enter') {
+            this.pexelsLoading = true;
+            this.oldSearchQuery = searchQuery;
+            this._pas.searchImages(searchQuery).subscribe(res => {
+                console.log(res);
+                this.pexelsImgs = res.photos;
+                this.pexelsLoading = false;
+            });
+        } else if (event.type === 'click') {
+            this.pexelsLoading = true;
+            this._pas.searchImages(searchQuery).subscribe(res => {
+                console.log(res);
+                this.pexelsImgs = res.photos;
+                this.pexelsLoading = false;
+            });
+        }
     }
 
 }
