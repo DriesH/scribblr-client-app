@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, Event, NavigationEnd } from '@angular/router';
 
 import { BookService } from '../../../../services/application-services/book.service';
 
@@ -33,12 +33,14 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
         this.editorActive = false;
 
-        this.router.events.subscribe((e: any) => {
-            if (e.state) {
+        this.router.events.subscribe((e: Event) => {
+            if (event instanceof NavigationEnd) {
+                console.log('ik werk dries');
                 if (this.router.url === '/application/books/new') {
                     this.editorActive = true;
                 } else {
                     if (!this.isGetting) {
+                        this.editorActive = false;
                         this.isGetting = true;
 
                         this._bs.getAllBooks().subscribe(res => {
@@ -50,7 +52,6 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
                             this.isGetting = false;
                         });
                     }
-                    this.editorActive = false;
                 }
             }
         });
@@ -70,6 +71,7 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
         this.msnry = new Masonry(this.bookContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
+            gutter: 10,
             percentPosition: true,
             stagger: 20,
             initLayout: false

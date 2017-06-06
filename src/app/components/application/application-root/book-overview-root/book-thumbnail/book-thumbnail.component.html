@@ -4,15 +4,19 @@
             <img [src]="'/assets/book-covers/' + bookData.cover_preset" (load)="imgLoaded()">
         </div>
         <a class="gradient-overlay">
-            <h1 class="title">
-                <i *ngIf="bookData.is_flip_over === 0" class="fa fa-book"></i>
-                <i *ngIf="bookData.is_flip_over === 1" class="fa fa-calendar-o"></i>
-                {{ bookData.title }}
-            </h1>
-            <p class="date">{{ bookData.created_at | date }}</p>
-            <span class="order-book" (click)="addToCart($event, bookData)">
-                <i class="fa fa-cart-arrow-down"></i> Put in shopping cart
-            </span>
+            <div class="header-field">
+                <div class="title-sub-title-field">
+                    <h1 class="title">
+                        <i *ngIf="bookData.is_flip_over === 0" class="fa fa-book"></i>
+                        <i *ngIf="bookData.is_flip_over === 1" class="fa fa-calendar-o"></i>
+                        {{ bookData.title }}
+                    </h1>
+                    <p class="date">{{ bookData.created_at | date }}</p>
+                </div>
+                <span class="order-book" (click)="addToCart($event, bookData)">
+                    <i class="fa fa-cart-arrow-down"></i> Put in shopping cart
+                </span>
+            </div>
         </a>
     </div>
 </div>

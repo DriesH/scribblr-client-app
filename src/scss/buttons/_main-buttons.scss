@@ -5,6 +5,10 @@
     &:hover {
         background: lighten($main-color-four, 5%);
     }
+
+    &:focus:active {
+        background: darken($main-color-four, 5%);
+    }
 }
 
 .btn-color-danger {
@@ -13,5 +17,9 @@
 
     &:hover {
         background: lighten(#C0392B, 5%);
+    }
+
+    &:focus:active {
+        background: darken($main-color-four, 5%);
     }
 }

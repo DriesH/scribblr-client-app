@@ -96,6 +96,10 @@ p {
         background-color: white;
         color: $main-color-four;
     }
+
+    &:active {
+
+    }
 }
 
 .btn-full {
@@ -110,6 +114,15 @@ p {
         border: 3px solid $main-color-four;
         background-color: $main-color-four;
         box-shadow: 0 4px 5px rgba(17, 50, 99, 0.45);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        color: white;
+        border: 3px solid lighten($main-color-four, 10%);
+        background-color: lighten($main-color-four, 10%);
+        box-shadow: 0 1px 3px rgba(17, 50, 99, 0.45);
+        transform: translateY(0);
     }
 }
 

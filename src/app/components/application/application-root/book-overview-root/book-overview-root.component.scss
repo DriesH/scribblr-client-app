@@ -19,7 +19,7 @@
 }
 
 .grid-sizer {
-    width: 33%;
+    width: 32%;
 }
 
 .book-overview {
@@ -48,7 +48,7 @@
         text-transform: capitalize;
 
         &.flashing {
-            animation: flashing 6000ms ease-in-out;
+            animation: flashingNewBook 6000ms ease-in-out;
         }
 
         &:hover {
@@ -58,7 +58,7 @@
     }
 }
 
-@keyframes flashing {
+@keyframes flashingNewBook {
     0% {
         background: lighten($main-color-two, 20%);
         color: $main-color-four;

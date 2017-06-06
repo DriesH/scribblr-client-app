@@ -85,8 +85,9 @@ export class NewBookComponent implements OnInit {
         if (type) {
             this.editorType = type;
         }
-
-        this.currentStep = step;
+        setTimeout(() => {
+            this.currentStep = step;
+        }, 500);
     }
 
     autoGenerate(type) {

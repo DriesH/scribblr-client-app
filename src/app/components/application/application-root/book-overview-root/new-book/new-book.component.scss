@@ -119,6 +119,15 @@
         color: #74A3E9;
     }
 
+    &:active {
+        background: darken(#74A3E9, 5%);
+        color: white;
+    }
+
+    &:active h1 {
+        color: white;
+    }
+
     .book-start-information {
         width: 100%;
         height: 100%;

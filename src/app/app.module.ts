@@ -65,6 +65,11 @@ import { FlipBookPageComponent } from './components/application/application-root
 import { BookThumbnailComponent } from './components/application/application-root/book-overview-root/book-thumbnail/book-thumbnail.component';
 import { FlipBookInspectorComponent } from './components/application/application-root/book-overview-root/flip-book-inspector/flip-book-inspector.component';
 import { CheckOutRootComponent } from './components/application/application-root/check-out-root/check-out-root.component';
+import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
+import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
+import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
+import { HomeDashboardRootComponent } from './components/application/application-root/home-dashboard-root/home-dashboard-root.component';
+
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -121,10 +126,6 @@ import { CartReducer } from './ngrx-state/reducers/cart.reducer';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 
 import { FilterPipe } from './pipes/filter.pipe';
-import { OrderModalComponent } from './components/application/application-root/book-overview-root/book-editor/order-modal/order-modal.component';
-import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
-import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
-
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -182,6 +183,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         OrderModalComponent,
         SaveModalComponent,
         NewsComponent,
+        HomeDashboardRootComponent,
     ],
     imports: [
         BrowserModule,

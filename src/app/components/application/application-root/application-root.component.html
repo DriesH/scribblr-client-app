@@ -10,10 +10,7 @@
             <a class="account-link" (click)="logout()"><img id='logout' src="/assets/icons/logout.svg" alt="logout"></a>
         </div>
 
-        <div class="application-body--content" [ngClass]="{ 'mountain-bg': currentRoute === '/application' }">
-            <div class="application-body--quick-quote" *ngIf="currentRoute === '/application'">
-
-            </div>
+        <div class="application-body--content">
             <router-outlet></router-outlet>
             <scrblr-new-child *ngIf="applicationUI.addingNewChild" [@fadeIn]></scrblr-new-child>
         </div>

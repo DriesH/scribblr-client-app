@@ -13,6 +13,8 @@ import { UserRootComponent } from '../components/application/application-root/us
 import { QuoteOverviewRootComponent } from '../components/application/application-root/quote-overview-root/quote-overview-root.component';
 import { AchievementOverviewRootComponent } from '../components/application/application-root/achievement-overview-root/achievement-overview-root.component';
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
+import { HomeDashboardRootComponent } from '../components/application/application-root/home-dashboard-root/home-dashboard-root.component';
+
 
 // Quotes
 import { NewStoryComponent } from '../components/application/application-root/quote-overview-root/new-story/new-story.component';
@@ -67,6 +69,10 @@ const ROUTES: Routes = [
         component: ApplicationRootComponent,
         canActivate: [ AuthGuard ],
         children: [
+            {
+                path: 'home',
+                component: HomeDashboardRootComponent
+            },
             {
                 path: 'user',
                 component: UserRootComponent
