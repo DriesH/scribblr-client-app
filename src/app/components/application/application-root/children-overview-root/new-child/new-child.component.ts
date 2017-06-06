@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 
 import { Store } from '@ngrx/store';
@@ -24,6 +24,7 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 export class NewChildComponent implements OnInit {
 
     @ViewChild('cropper') cropper: ImageCropperComponent;
+    @ViewChild('avatarFileInput') avatarFileInput: ElementRef;
 
     imageData: any;
     cropperSettings: CropperSettings;
@@ -47,16 +48,19 @@ export class NewChildComponent implements OnInit {
         this.cropperSettings.height = 600;
         this.cropperSettings.croppedWidth = 600;
         this.cropperSettings.croppedHeight = 600;
-        this.cropperSettings.canvasWidth = 400;
-        this.cropperSettings.canvasHeight = 400;
+        this.cropperSettings.canvasWidth = 468;
+        this.cropperSettings.canvasHeight = 468;
         this.cropperSettings.noFileInput = true;
         this.cropperSettings.rounded = false;
+        this.cropperSettings.cropperClass = 'cropper-canvas-img-cropper-ng';
 
         this.imageData = {};
     }
 
     ngOnInit() {
         this.addEventListeners();
+
+        console.log(this.imageData);
     }
 
     addEventListeners() {
@@ -92,15 +96,12 @@ export class NewChildComponent implements OnInit {
             };
 
             myReader.readAsDataURL(file);
+
+            this.imageData.fileName = file.name;
+
         }, error => {
             this.avatarError = true;
         });
-    }
-
-    removeCropper() {
-        this.image.src = null;
-        // this.cropper.setImage(this.image);
-        this.isShowingCropper = false;
     }
 
     private checkMIMEType(file, done, error) {
@@ -148,5 +149,10 @@ export class NewChildComponent implements OnInit {
     dispatchNewChild(newChild) {
         this.store.dispatch(new ChildActions.NewChild(newChild));
         this.closeModal();
+    }
+
+    openFile(e) {
+        e.preventDefault();
+        this.avatarFileInput.nativeElement.click();
     }
 }

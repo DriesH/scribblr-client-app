@@ -103,6 +103,10 @@
         color: #FFF;
     }
 
+    ::-webkit-inner-spin-button {
+        display: none;
+    }
+
     select {
         border-radius: 5px;
         border: 1px solid $main-color-two;

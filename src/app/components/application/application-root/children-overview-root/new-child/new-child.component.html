@@ -36,8 +36,7 @@
 
                 <div class="form-input-group">
                     <label for="date-of-birth">Date of birth<span style="color:red">*</span></label>
-                    <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth"
-                        required>
+                    <input type="date" name="date_of_birth" id="date-of-birth" #dateOfBirth="ngModel" [(ngModel)]="childModel.date_of_birth" required>
 
                     <scrblr-form-error
                         *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)"
@@ -46,13 +45,19 @@
                 </div>
 
                 <div class="form-avatar-upload">
-                    <div class="dropzone" *ngIf="!isShowingCropper">
+                    <div class="dropzone">
                         <label for="avatar-upload">Upload an avatar</label>
-                        <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera">
+
+                        <div class="file-upload" (click)="openFile($event)">
+                            <button (click)="openFile($event)">Upload</button>
+                            <span *ngIf="!imageData.image">No file selected...</span>
+                            <span *ngIf="imageData.image">{{ imageData.fileName }}</span>
+                        </div>
+
+                        <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera" hidden #avatarFileInput>
                     </div>
 
                     <div [hidden]="!isShowingCropper" class="img-cropper-container">
-                        <i class="fa fa-trash fa-lg delete" (click)="removeCropper()"></i>
                         <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
                     </div>
 
@@ -61,7 +66,7 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">Add!</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newChildForm.valid">Add child</button>
             </div>
         </div>
 
