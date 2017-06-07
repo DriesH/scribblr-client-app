@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -39,9 +40,12 @@ export class NewChildComponent implements OnInit {
     isShowingCropper = false;
     avatarError = false;
 
+    makingChild = false;
+
     constructor(
         private store: Store<any>,
-        private _cs: ChildService) {
+        private _cs: ChildService,
+        private router: Router) {
 
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.width = 600;
@@ -120,9 +124,18 @@ export class NewChildComponent implements OnInit {
     }
 
     addNewChild() {
+        if (this.makingChild) {
+            return;
+        }
+
         if (this.avatarError) {
             return;
         }
+
+        if (!this.childModel.date_of_birth || !this.childModel.full_name || !this.childModel.gender) {
+            return;
+        }
+
 
         let img;
         let ext;
@@ -143,12 +156,18 @@ export class NewChildComponent implements OnInit {
             this.childData.append('avatar', img.image, 'avatar.' + ext);
         }
 
-        this._cs.newChild(this.childData).subscribe(res => this.dispatchNewChild(res.child));
+        this.makingChild = true;
+
+        this._cs.newChild(this.childData).subscribe(res => {
+            this.dispatchNewChild(res.child);
+            this.makingChild = false;
+        });
     }
 
     dispatchNewChild(newChild) {
         this.store.dispatch(new ChildActions.NewChild(newChild));
         this.closeModal();
+        this.router.navigate(['application', 'overview', newChild.short_id]);
     }
 
     openFile(e) {

@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 
 import { ActivatedRoute, Params } from '@angular/router';
 
+import { NotificationsService } from 'angular2-notifications';
+
 import { ChildService } from '../../../../../services/application-services/child.service';
 
 import * as ChildActions from '../../../../../ngrx-state/actions/child.action';
@@ -32,11 +34,14 @@ export class EditChildComponent implements OnInit {
 
     childShortId;
 
+    isDeletingChild = false;
+
     constructor(
         private store: Store<any>,
         private route: ActivatedRoute,
         private _cs: ChildService,
-        private router: Router) { }
+        private router: Router,
+        private _ns: NotificationsService,) { }
 
     ngOnInit() {
         this.route.parent.params.subscribe((params: Params) => {
@@ -67,9 +72,14 @@ export class EditChildComponent implements OnInit {
     }
 
     removeChild(childShortId) {
+        this.isDeletingChild = true;
         this._cs.deleteChild(childShortId).subscribe(res => {
             this.store.dispatch(new ChildActions.DeleteChild({ childShortId: this.childShortId }));
-            this.router.navigate(['application']);
+            setTimeout(() => {
+                this.isDeletingChild = false;
+                this.router.navigate(['application', 'home']);
+                this._ns.success('Successfully deleted child', 'We have successfully deleted your child');
+            }, 500);
         });
     }
 

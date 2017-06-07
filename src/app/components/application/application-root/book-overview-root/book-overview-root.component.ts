@@ -35,7 +35,6 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
         this.router.events.subscribe((e: Event) => {
             if (event instanceof NavigationEnd) {
-                console.log('ik werk dries');
                 if (this.router.url === '/application/books/new') {
                     this.editorActive = true;
                 } else {

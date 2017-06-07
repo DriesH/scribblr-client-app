@@ -45,7 +45,16 @@
             <label for="child-name">Type the name of your child if you want to delete it. (All quotes and stories will also be deleted!)</label>
             <input type="text" name="child-name" id="child-name" #childName="ngModel" [(ngModel)]="childName123" (keyup)="checkName()">
         </div>
-        <button class="btn btn-primary btn-color-danger" (click)="removeChild(childShortId)" [disabled]="!canDelete">Delete</button>
+        <button class="btn btn-primary btn-color-danger" (click)="removeChild(childShortId)" [disabled]="!canDelete || isDeletingChild">
+            <span *ngIf="!isDeletingChild">
+                Delete
+            </span>
+
+            <span *ngIf="isDeletingChild">
+                <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            </span>
+
+        </button>
     </div>
 
 </div>
