@@ -59,13 +59,12 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.childShortId = params.short_id_child;
-            this.posts = [];
             this.loading = true;
 
             this._qs.getPosts(this.childShortId)
                 .subscribe(res => {
                     this.loading = false;
-                    this.posts = res.posts;
+                    this.store.dispatch(new QuoteActions.PostsLoaded({ posts: res.posts }));
                 });
 
             this.currentChildren.forEach((child, key) => {
@@ -89,19 +88,14 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
         });
 
         this.store.select('QUOTES').subscribe((QUOTES: any) => {
-            if (QUOTES.updateQuote !== {}) {
-                console.log(QUOTES);
-                this.posts.forEach((item, key) => {
-                    if (item.short_id === QUOTES.updateQuote.short_id) {
-                        console.log(item);
-                        item = QUOTES.updateQuote;
-                    }
-                });
-                // this.store.dispatch(new QuoteActions.ClearQuoteState({}));
-            }
+            console.log('QUOTES has changes, ', QUOTES);
 
-            if (QUOTES.newQuote !== {}) {
-                this.posts.push(QUOTES.newQuote);
+            this.posts = QUOTES.posts;
+
+            if (this.posts.length > 0 && this.msnry) {
+                setTimeout(() => {
+                    this.initMasonry();
+                }, 200);
             }
         });
     }
@@ -110,7 +104,10 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     initMasonry() {
-        // console.log('initMasonry');
+        console.log('initMasonry');
+
+        this.msnry = {};
+
         this.msnry = new Masonry(this.quoteContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
@@ -118,11 +115,12 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             stagger: 20,
             initLayout: false
         });
+
         this.reloadMasonry();
     }
 
     reloadMasonry() {
-        // console.log('reloadMasonry');
+        console.log('reloadMasonry');
         this.msnry.layout();
     }
 

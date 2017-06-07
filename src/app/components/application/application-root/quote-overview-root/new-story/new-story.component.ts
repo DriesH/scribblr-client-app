@@ -128,12 +128,12 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         this.storyData.set('img_baked', storyModel.img_baked);
 
         this._qs.newStory(childShortId, this.storyData).subscribe(res => {
-            this.dispatchNewQuote(res.story);
+            this.dispatchNewStory(res.story);
         });
     }
 
-    dispatchNewQuote(newQuote) {
-        this.store.dispatch(new quoteActions.NewQuote({ newQuote: newQuote }));
+    dispatchNewStory(newStory) {
+        this.store.dispatch(new quoteActions.NewQuote({ newPost: newStory }));
         this.router.navigate(['application', 'overview', this.childShortId]);
     }
 

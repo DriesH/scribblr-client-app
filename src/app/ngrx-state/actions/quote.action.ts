@@ -1,8 +1,16 @@
 export const ActionTypes = {
+    POSTS_LOADED: '[Quote] Posts loaded',
     NEW_QUOTE: '[Quote] New quote added',
     UPDATE_QUOTE: '[Quote] Update quote',
     CLEAR_QUOTES: '[Quote] Clear quote fields'
 };
+
+export class PostsLoaded {
+    type = ActionTypes.POSTS_LOADED;
+
+    constructor(public payload: Object) { }
+}
+
 
 export class NewQuote {
     type = ActionTypes.NEW_QUOTE;

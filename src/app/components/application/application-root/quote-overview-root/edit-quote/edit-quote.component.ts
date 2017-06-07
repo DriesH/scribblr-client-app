@@ -93,17 +93,22 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.route.params.subscribe(params => {
             this.quoteShortId = params.short_id_quote;
+        });
 
-            this._qs.getPost(this.childShortId, this.quoteShortId).subscribe(res => {
-                this.quoteModel.selectedPreset = API_ROUTES.baseUrl +
-                                                 API_ROUTES.application.posts.imageOriginal(
-                                                     this.childShortId,
-                                                     this.quoteShortId,
-                                                     res.post.img_original_url_id
-                                                );
-
-                this.quoteModel.font = res.post.font.name;
-                this.quoteModel.quote = res.post.quote;
+        this.store.select('QUOTES').subscribe((QUOTES: any) => {
+            QUOTES.posts.forEach((item, key) => {
+                if (item.short_id === this.quoteShortId) {
+                    if (item.font) {
+                        this.quoteModel.font = item.font.name;
+                    }
+                    this.quoteModel.quote = item.quote;
+                    this.quoteModel.selectedPreset = API_ROUTES.baseUrl +
+                                                     API_ROUTES.application.posts.imageOriginal(
+                                                         this.childShortId,
+                                                         this.quoteShortId,
+                                                         item.img_original_url_id
+                                                     );
+                }
             });
         });
     }
@@ -175,9 +180,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             this.updateCanvas(img, c, overlayOpacity);
         }
 
-        setTimeout(() => {
-            this.canvasLoading = false;
-        }, 600);
+        this.canvasLoading = false;
     }
 
     /**
@@ -394,7 +397,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     dispatchEditQuote(updatedQuote) {
-        this.store.dispatch(new quoteActions.UpdateQuote({ updateQuote: updatedQuote }));
+        this.store.dispatch(new quoteActions.UpdateQuote({ updatedQuote: updatedQuote }));
 
         this.router.navigate(['application', 'overview', this.childShortId]);
     }
