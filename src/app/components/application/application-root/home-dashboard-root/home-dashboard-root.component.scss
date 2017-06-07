@@ -9,19 +9,20 @@
     width: 80%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     padding: 50px 0 0;
 }
 
 .latest-posts {
-    width: 60%;
+    width: 100%;
 }
 
 .quick-access-panels {
-    width: 30%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .loading-screen {
