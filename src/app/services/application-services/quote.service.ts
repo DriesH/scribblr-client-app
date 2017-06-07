@@ -40,8 +40,15 @@ export class QuoteService {
                 .catch(err => this._hhs.errorHandler(err));
     }
 
-    getPost(childShortId): Observable<any> {
-        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.getPost(childShortId),
+    getPosts(childShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.getPosts(childShortId),
+            this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
+
+    getPost(childShortId, postShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.getPost(childShortId, postShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

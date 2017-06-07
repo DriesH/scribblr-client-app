@@ -2,7 +2,7 @@
     <div class="quote-block">
         <div class="img-header rounded-bottom">
             <div class="control-overlay">
-                <span class="edit"><i class="fa fa-edit"></i> Edit</span>
+                <a class="edit" [routerLink]="'quote/' + quoteData.short_id"><i class="fa fa-edit"></i> Edit</a>
                 <span class="trash" (click)="removeQuoteFn(quoteData.short_id)"><i class="fa fa-trash"></i></span>
                 <div class="share">
                     <span class="share-facebook" (click)="share($event, childShortId, quoteData.short_id, quoteData.img_baked_url_id)"><i class="fa fa-facebook-square"></i></span>

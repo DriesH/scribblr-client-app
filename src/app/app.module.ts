@@ -51,7 +51,7 @@ import { ChildrenOverviewRootComponent } from './components/application/applicat
 import { NewChildComponent } from './components/application/application-root/children-overview-root/new-child/new-child.component';
 import { NewsOverviewRootComponent } from './components/application/application-root/news-overview-root/news-overview-root.component';
 import { NewQuoteComponent } from './components/application/application-root/quote-overview-root/new-quote/new-quote.component';
-import { PostModalComponent } from './components/application/application-root/quote-overview-root/post-modal/post-modal.component';
+import { EditQuoteComponent } from './components/application/application-root/quote-overview-root/edit-quote/edit-quote.component';
 import { NewStoryComponent } from './components/application/application-root/quote-overview-root/new-story/new-story.component';
 import { ImageLoadingComponent } from './components/image-loading/image-loading.component';
 import { BookEditorComponent } from './components/application/application-root/book-overview-root/book-editor/book-editor.component';
@@ -70,6 +70,8 @@ import { OrderModalComponent } from './components/application/application-root/b
 import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
 import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
 import { HomeDashboardRootComponent } from './components/application/application-root/home-dashboard-root/home-dashboard-root.component';
+import { QuickQuoteComponent } from './components/application/application-root/home-dashboard-root/quick-quote/quick-quote.component';
+import { QuickStartComponent } from './components/application/application-root/home-dashboard-root/quick-start/quick-start.component';
 
 
 /* Services */
@@ -106,24 +108,10 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { KeysPipe } from './pipes/keys.pipe';
 
 /* Reducers and effects */
-import { CurrentUserReducer } from './ngrx-state/reducers/current-user.reducer';
 import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
-
-import { ChildReducer } from './ngrx-state/reducers/child.reducer';
 import { ChildEffect } from './ngrx-state/effects/child.effects';
-
-import { ApplicationUIReducer } from './ngrx-state/reducers/application-ui.reducer';
-
-import { QuoteReducer } from './ngrx-state/reducers/quote.reducer';
-
-import { BookReducer } from './ngrx-state/reducers/book.reducer';
 import { BookEffect } from './ngrx-state/effects/book.effects';
-
-import { FlipBookReducer } from './ngrx-state/reducers/flip-book.reducer';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
-
-import { CartReducer } from './ngrx-state/reducers/cart.reducer';
-
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 
 import { FilterPipe } from './pipes/filter.pipe';
@@ -162,7 +150,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         NewsOverviewRootComponent,
         FormErrorComponent,
         NewQuoteComponent,
-        PostModalComponent,
+        EditQuoteComponent,
         EllipsisPipe,
         NewStoryComponent,
         KeysPipe,
@@ -185,6 +173,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SaveModalComponent,
         NewsComponent,
         HomeDashboardRootComponent,
+        QuickQuoteComponent,
+        QuickStartComponent,
     ],
     imports: [
         BrowserModule,

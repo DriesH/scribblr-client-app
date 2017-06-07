@@ -27,12 +27,12 @@ p {
 
 #section1 {
     position: relative;
-    height: 540px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     z-index: 25;
     overflow: hidden;
+    padding: 50px;
 }
 
 #section2 {
@@ -43,7 +43,7 @@ p {
     align-items: center;
     z-index: 20;
     overflow: hidden;
-    background-color: pink;
+    background-color: $main-color-two;
 }
 
 .main-title {
@@ -134,6 +134,7 @@ p {
     flex-wrap: wrap;
     transform: rotate(5deg) translate(235px, 135px);
     opacity: 0;
+    user-select: none;
 
     &.show {
         animation: forwards 400ms ease-out bookFadeIn;
@@ -162,20 +163,36 @@ p {
 }
 
 .section {
-    .title {
-        font-size: 45px;
-        text-align: right;
-
-        i {
-            color: $main-color-four;
-        }
-    }
-
     .section-information {
-        text-align: right;
-        font-size: 18px;
-        width: 30%;
+        width: 75%;
+        margin: 0 auto;
         opacity: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            font-size: 3rem;
+            text-align: right;
+
+            i {
+                color: $main-color-four;
+            }
+        }
+
+        .info-textbox {
+            h3 {
+                font-weight: normal;
+                font-size: 1.2rem;
+                text-align: right;
+            }
+
+            p {
+                line-height: 1.5rem;
+                text-align: right;
+            }
+        }
+
 
         &.hide {
             animation: fadeOutRight 400ms ease-out forwards;
@@ -188,22 +205,32 @@ p {
 }
 
 .quotes {
-    width: 25%;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    user-select: none;
+    flex-wrap: wrap;
+
+    &.show {
+        animation: forwards 400ms ease-out fadeInLeft;
+    }
+
+    &.hide {
+        animation: forwards 400ms ease-out fadeOutLeft;
+    }
 
     .quote {
-        width: 100%;
+        width: 250px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        overflow: hidden;
 
         img {
             width: 100%;
-            max-width: 350px;
         }
     }
 }
@@ -229,6 +256,30 @@ p {
     100% {
         opacity: 0;
         transform: translateX(-250px);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(250px);
     }
 }
 

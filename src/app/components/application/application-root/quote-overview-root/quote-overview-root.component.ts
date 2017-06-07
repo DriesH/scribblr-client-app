@@ -80,7 +80,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             this.posts = [];
             this.loading = true;
 
-            this._qs.getPost(this.childShortId)
+            this._qs.getPosts(this.childShortId)
                 .subscribe(res => {
                     this.loading = false;
                     this.posts = res.posts;

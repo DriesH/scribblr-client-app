@@ -101,7 +101,7 @@ export class ErrorHandlerService {
 
         this.store.dispatch(new ApplicationUIActions.ShowErrorMessage(_error));
 
-        this.router.navigate(['application']);
+        this.router.navigate(['application', 'home']);
     }
 
     // Handler for image not found errors.

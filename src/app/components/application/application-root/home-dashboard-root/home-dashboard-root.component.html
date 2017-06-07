@@ -1,3 +1,10 @@
-<p>
-  home-dashboard works!
-</p>
+<div id="home-panel">
+    <div class="loading-screen" *ngIf="isLoading">
+        <span class="loading-spinner"></span>
+    </div>
+    <div class="control-panel">
+        <scrblr-quick-quote></scrblr-quick-quote>
+    </div>
+    <scrblr-quick-start *ngIf="noChildren"></scrblr-quick-start>
+</div>
+

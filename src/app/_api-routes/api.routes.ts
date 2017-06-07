@@ -39,11 +39,14 @@ export const API_ROUTES = {
             fonts: applicationPrefix + 'fonts',
             presetImg: applicationPrefix + 'presets',
             index: applicationPrefix + 'posts',
-            newQuote: (shortId) => {
-                return applicationPrefix + 'children/' + shortId + '/quote/new';
+            newQuote: (childShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/quote/new';
             },
-            getPost: (shortId) => {
-                return applicationPrefix + 'children/' + shortId + '/posts';
+            getPosts: (childShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/posts';
+            },
+            getPost: (childShortId, postShortId) => { //
+                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId;
             },
             deletePost: (childShortId, postShortId) => {
                 return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/delete';

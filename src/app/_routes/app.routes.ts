@@ -15,11 +15,10 @@ import { AchievementOverviewRootComponent } from '../components/application/appl
 import { BookOverviewRootComponent } from '../components/application/application-root/book-overview-root/book-overview-root.component';
 import { HomeDashboardRootComponent } from '../components/application/application-root/home-dashboard-root/home-dashboard-root.component';
 
-
 // Quotes
 import { NewStoryComponent } from '../components/application/application-root/quote-overview-root/new-story/new-story.component';
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
-import { PostModalComponent } from '../components/application/application-root/quote-overview-root/post-modal/post-modal.component';
+import { EditQuoteComponent } from '../components/application/application-root/quote-overview-root/edit-quote/edit-quote.component';
 
 // Child
 import { EditChildComponent } from '../components/application/application-root/children-overview-root/edit-child/edit-child.component';
@@ -95,7 +94,7 @@ const ROUTES: Routes = [
                     },
                     {
                         path: 'quote/:short_id_quote',
-                        component: PostModalComponent
+                        component: EditQuoteComponent
                     },
                     {
                         path: 'new-story',
