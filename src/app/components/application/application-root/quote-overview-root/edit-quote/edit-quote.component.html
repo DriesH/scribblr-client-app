@@ -5,7 +5,7 @@
 
     <div class="new-quote--container">
         <div class="form--container">
-            <form (ngSubmit)="addNewQuote(previewCanvas)" #newQuoteForm="ngForm">
+            <form (ngSubmit)="editQuote(previewCanvas)" #newQuoteForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Quote<span style="color:red">*</span></label>
                     <!--<input type="text"
@@ -36,7 +36,7 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">New quote</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">Save quote</button>
 
             </form>
         </div>
@@ -87,11 +87,9 @@
 
             <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
 
-            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive"
-                crossorigin="anonymous">
+            <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 
             <img src="" [hidden]="presetPickerActive" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous">
-
         </div>
     </div>
 </div>

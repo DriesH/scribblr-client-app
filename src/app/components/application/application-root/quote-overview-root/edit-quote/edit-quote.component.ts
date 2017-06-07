@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
 import { APP_CONFIG } from '../../../../../_config/app.config';
+import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { DropzoneService } from '../../../../../services/dropzone.service';
 
@@ -37,7 +38,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     quoteModel = {
         quote: null,
         font: 'Boogaloo',
-        selectedPreset: this.defaultPreset
+        selectedPreset: null
     };
 
     fonts: Array<String>;
@@ -94,7 +95,15 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             this.quoteShortId = params.short_id_quote;
 
             this._qs.getPost(this.childShortId, this.quoteShortId).subscribe(res => {
-                console.log(res);
+                this.quoteModel.selectedPreset = API_ROUTES.baseUrl +
+                                                 API_ROUTES.application.posts.imageOriginal(
+                                                     this.childShortId,
+                                                     this.quoteShortId,
+                                                     res.post.img_original_url_id
+                                                );
+
+                this.quoteModel.font = res.post.font.name;
+                this.quoteModel.quote = res.post.quote;
             });
         });
     }
@@ -123,8 +132,6 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         if (!this.presetPickerActive) {
             this._dz.destroy(this.dropzone.nativeElement);
         }
-
-
     }
 
     updateCanvasOnKeyup() {
@@ -168,7 +175,9 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             this.updateCanvas(img, c, overlayOpacity);
         }
 
-        this.canvasLoading = false;
+        setTimeout(() => {
+            this.canvasLoading = false;
+        }, 600);
     }
 
     /**
@@ -367,7 +376,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     onAviaryClose(isDirty) {
     }
 
-    addNewQuote(c: HTMLCanvasElement) {
+    editQuote(c: HTMLCanvasElement) {
         this.quoteData.append('quote', this.quoteModel.quote);
         this.quoteData.append('font_type', this.quoteModel.font);
 
@@ -379,13 +388,13 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         c.toBlob(blob => {
             this.quoteData.append('img_baked', blob, 'baked_img.jpg');
-            this._qs.newQuote(this.childShortId, this.quoteData).subscribe(res => this.dispatchNewQuote(res.quote));
+            this._qs.updateQuote(this.childShortId, this.quoteShortId, this.quoteData).subscribe(res => this.dispatchEditQuote(res.quote));
         }, 'image/jpeg', 0.65);
 
     }
 
-    dispatchNewQuote(newQuote) {
-        this.store.dispatch(new quoteActions.NewQuote({ newQuote: newQuote }));
+    dispatchEditQuote(updatedQuote) {
+        this.store.dispatch(new quoteActions.UpdateQuote({ updateQuote: updatedQuote }));
 
         this.router.navigate(['application', 'overview', this.childShortId]);
     }

@@ -20,7 +20,6 @@ export class HomeDashboardRootComponent implements OnInit {
         }, 500);
 
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
-            console.log(CURRENT_CHILDREN);
             if (CURRENT_CHILDREN.children.length > 0) {
                 this.noChildren = false;
             } else {

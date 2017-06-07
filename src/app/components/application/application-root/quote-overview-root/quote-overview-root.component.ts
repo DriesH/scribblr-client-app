@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, UIParams, UIResponse, InitParams  } from 'ngx-facebook';
 
+import * as QuoteActions from '../../../../ngrx-state/actions/quote.action';
+
 declare var Masonry: any;
 
 @Component({
@@ -55,26 +57,6 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.store.select('CURRENT_CHILDREN').subscribe(CURRENT_CHILDREN => {
-            let cc: any = CURRENT_CHILDREN;
-
-            this.currentChildren = cc.children;
-
-            this.currentChildren.forEach((child, key) => {
-                if (child.short_id === this.childShortId) {
-                    // console.log(child);
-                    this.currentChild = child;
-                }
-            });
-
-        });
-
-        this.store.select('QUOTES').subscribe((QUOTES: any) => {
-            if (QUOTES.newQuote !== {}) {
-                this.posts.push(QUOTES.newQuote);
-            }
-        });
-
         this.route.params.subscribe(params => {
             this.childShortId = params.short_id_child;
             this.posts = [];
@@ -88,13 +70,40 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
             this.currentChildren.forEach((child, key) => {
                 if (child.short_id === this.childShortId) {
-                    console.log(child);
+                    // console.log(child);
+                    this.currentChild = child;
+                }
+            });
+        });
+
+        this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
+            this.currentChildren = CURRENT_CHILDREN.children;
+
+            this.currentChildren.forEach((child, key) => {
+                if (child.short_id === this.childShortId) {
+                    // console.log(child);
                     this.currentChild = child;
                 }
             });
 
         });
 
+        this.store.select('QUOTES').subscribe((QUOTES: any) => {
+            if (QUOTES.updateQuote !== {}) {
+                console.log(QUOTES);
+                this.posts.forEach((item, key) => {
+                    if (item.short_id === QUOTES.updateQuote.short_id) {
+                        console.log(item);
+                        item = QUOTES.updateQuote;
+                    }
+                });
+                // this.store.dispatch(new QuoteActions.ClearQuoteState({}));
+            }
+
+            if (QUOTES.newQuote !== {}) {
+                this.posts.push(QUOTES.newQuote);
+            }
+        });
     }
 
     ngAfterViewInit() {

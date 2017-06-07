@@ -57,8 +57,8 @@ export const API_ROUTES = {
             imageBaked: (childShortId, postShortId, img_baked_url_id) => {
                 return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/img-baked/' + img_baked_url_id;
             },
-            updatePost: (childShortId, postShortId) => {
-                return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId;
+            updateQuote: (childShortId, postShortId) => {
+                return applicationPrefix + 'children/' + childShortId + '/quotes/' + postShortId;
             },
             share: (childShortId, postShortId) => {
                 return applicationPrefix + 'children/' + childShortId + '/posts/' + postShortId + '/share';
