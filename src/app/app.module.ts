@@ -115,6 +115,8 @@ import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 
 import { FilterPipe } from './pipes/filter.pipe';
+import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
+import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
 
 /* Perfect scrollbar config */
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -175,6 +177,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         HomeDashboardRootComponent,
         QuickQuoteComponent,
         QuickStartComponent,
+        QuickStoryComponent,
+        LatestPostsComponent,
     ],
     imports: [
         BrowserModule,

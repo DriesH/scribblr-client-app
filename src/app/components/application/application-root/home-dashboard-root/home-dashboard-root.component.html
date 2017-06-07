@@ -3,7 +3,13 @@
         <span class="loading-spinner"></span>
     </div>
     <div class="control-panel">
-        <scrblr-quick-quote></scrblr-quick-quote>
+        <div class="latest-posts">
+            <scrblr-latest-posts></scrblr-latest-posts>
+        </div>
+        <div class="quick-access-panels">
+            <scrblr-quick-quote></scrblr-quick-quote>
+            <scrblr-quick-story></scrblr-quick-story>
+        </div>
     </div>
     <scrblr-quick-start *ngIf="noChildren"></scrblr-quick-start>
 </div>

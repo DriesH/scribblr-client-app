@@ -1,0 +1,8 @@
+<div id="quick-story">
+    <h1 class="title">Quick story</h1>
+    <p>Enter a quick draft story.</p>
+
+    <textarea name="story" class="story-input" id="story" placeholder="Your funny story..." #story="ngModel" [(ngModel)]="storyModel.story" autofocus required></textarea>
+
+    <button class="btn-trans" (click)="saveDraft()">Save draft</button>
+</div>

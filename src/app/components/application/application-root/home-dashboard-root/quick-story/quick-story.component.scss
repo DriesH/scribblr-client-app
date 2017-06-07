@@ -1,6 +1,6 @@
 @import '../../../../../../scss/colors/colors';
 
-#quick-quote {
+#quick-story {
     width: 100%;
     background-color: white;
     border: 1px solid rgba($main-color-five, 0.2);
@@ -11,7 +11,6 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 20px;
 
     .title {
         font-size: 1.5rem;
@@ -22,7 +21,7 @@
         margin: 0;
     }
 
-    .quote-input {
+    .story-input {
         color: #3C3C3C;
         font-family: 'Open Sans';
         font-weight: 400;

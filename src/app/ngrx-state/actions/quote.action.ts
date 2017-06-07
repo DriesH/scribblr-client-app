@@ -2,7 +2,8 @@ export const ActionTypes = {
     POSTS_LOADED: '[Quote] Posts loaded',
     NEW_QUOTE: '[Quote] New quote added',
     UPDATE_QUOTE: '[Quote] Update quote',
-    CLEAR_QUOTES: '[Quote] Clear quote fields'
+    CLEAR_QUOTES: '[Quote] Clear quote fields',
+    REMOVE_QUOTE: '[Quote] '
 };
 
 export class PostsLoaded {
@@ -33,6 +34,12 @@ export class ClearQuoteState {
             updateQuote: {}
         };
     }
+}
+
+export class RemoveQuote {
+    type = ActionTypes.REMOVE_QUOTE;
+
+    constructor(public payload: Object) { }
 }
 
 export type Actions

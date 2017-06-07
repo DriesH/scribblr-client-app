@@ -91,12 +91,6 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             console.log('QUOTES has changes, ', QUOTES);
 
             this.posts = QUOTES.posts;
-
-            if (this.posts.length > 0 && this.msnry) {
-                setTimeout(() => {
-                    this.initMasonry();
-                }, 200);
-            }
         });
     }
 

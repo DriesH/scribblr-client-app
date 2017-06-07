@@ -1,0 +1,39 @@
+@import '../../../../../../scss/colors/colors';
+
+:host {
+    width: 100%;
+}
+
+#latest-posts {
+    box-sizing: border-box;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    width: 100%;
+
+    .posts {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        // width: 100vw;
+        margin: 0;
+
+        li:first-child .post {
+            margin-left: 0;
+        }
+
+        li:last-child .post {
+            margin-right: 0;
+        }
+    }
+
+    .post {
+        width: 250px;
+        height: 250px;
+        background-color: pink;
+        margin: 0 5px;
+    }
+}
+
