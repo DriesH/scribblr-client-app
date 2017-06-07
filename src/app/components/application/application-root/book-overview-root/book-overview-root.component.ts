@@ -33,8 +33,8 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
         this.editorActive = false;
 
-        this.router.events.subscribe((e: Event) => {
-            if (event instanceof NavigationEnd) {
+        this.router.events.subscribe((routerEvent: Event) => {
+            if (routerEvent instanceof NavigationEnd) {
                 if (this.router.url === '/application/books/new') {
                     this.editorActive = true;
                 } else {

@@ -43,7 +43,6 @@
     "ng2-validation": "^4.2.0",
     "ngrx-store-localstorage": "^0.1.8",
     "ngx-facebook": "^2.4.0",
-    "ngx-perfect-scrollbar": "^4.0.0",
     "normalize-scss": "6.0.0",
     "reselect": "3.0.0",
     "rxjs": "5.3.1",

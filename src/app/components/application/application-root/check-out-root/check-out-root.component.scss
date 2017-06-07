@@ -103,6 +103,15 @@
 
             .remove {
                 margin-right: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #A0A0A0;
+                }
+
+                &:active {
+                    color: red;
+                }
             }
 
             .title {

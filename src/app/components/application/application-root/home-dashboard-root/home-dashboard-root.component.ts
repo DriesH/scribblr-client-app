@@ -17,7 +17,7 @@ export class HomeDashboardRootComponent implements OnInit {
     ngOnInit() {
         setTimeout(() => {
             this.isLoading = false;
-        }, 500);
+        }, 300);
 
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             if (CURRENT_CHILDREN.children.length > 0) {

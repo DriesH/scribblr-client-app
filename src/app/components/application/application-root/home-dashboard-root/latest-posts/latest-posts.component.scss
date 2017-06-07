@@ -4,6 +4,12 @@
     width: 100%;
 }
 
+#latest-posts-wrap {
+    .title {
+        font-size: 2rem;
+    }
+}
+
 #latest-posts {
     box-sizing: border-box;
     align-items: flex-start;
@@ -17,7 +23,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        // width: 100vw;
         margin: 0;
 
         li:first-child .post {
@@ -31,9 +36,36 @@
 
     .post {
         width: 250px;
-        height: 250px;
-        background-color: pink;
+        // height: 250px;
+        // background-color: $main-color-two;
         margin: 0 5px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay {
+            display: block;
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: opacity 100ms ease-out;
+        }
+
+        img {
+            width: 100%;
+        }
     }
 }
-

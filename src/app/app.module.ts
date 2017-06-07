@@ -11,14 +11,10 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CustomFormsModule } from 'ng2-validation';
 import { DndModule } from 'ng2-dnd';
 import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { FacebookModule } from 'ngx-facebook';
-import { DatepickerModule } from 'angular2-material-datepicker'
-
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -118,14 +114,6 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
 import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
 
-/* Perfect scrollbar config */
-const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true,
-    minScrollbarLength: 150,    // Minimum size for the scrollbar (Default: null).
-    maxScrollbarLength: 150,
-    wheelPropagation: false,
-    swipePropagation: true
-};
 
 @NgModule({
     declarations: [
@@ -189,7 +177,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FileUploadModule,
         ImageCropperModule,
         LazyLoadImageModule,
-        DatepickerModule,
         DndModule.forRoot(),
         APP_ROUTES,
         StoreModule.provideStore(localStorageNgrx),
@@ -197,7 +184,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         EffectsModule.runAfterBootstrap(ChildEffect),
         EffectsModule.runAfterBootstrap(BookEffect),
         EffectsModule.runAfterBootstrap(FlipBookEffect),
-        PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         SimpleNotificationsModule.forRoot(),
         FacebookModule.forRoot()

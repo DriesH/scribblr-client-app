@@ -26,13 +26,16 @@ export class CheckOutRootComponent implements OnInit {
 
     ngOnInit() {
         this._cos.getPrices().subscribe(res => {
-            console.log(res);
             this.prices = res;
             this.recalculatePrice();
         });
 
         this.store.select('CART').subscribe((CART: any) => {
             this.currentItemsInCart = CART.items_in_cart;
+
+            if (!this.currentItemsInCart.length) {
+                this.location.back();
+            }
         });
     }
 

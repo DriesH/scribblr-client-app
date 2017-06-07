@@ -13,6 +13,7 @@
         "outDir": "../out-tsc/app",
         "module": "es2015",
         "baseUrl": "",
+        "typeRoots": [],
         "types": []
     },
     "exclude": [

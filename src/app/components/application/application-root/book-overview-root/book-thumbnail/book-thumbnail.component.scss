@@ -77,13 +77,22 @@
         }
 
         .order-book {
+            position: absolute;
             color: white;
             right: 15px;
             bottom: 15px;
             opacity: 0;
             transition: all 200ms ease-in-out;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
             z-index: 11;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 5px;
+            border-radius: 3px;
+
+            &:active {
+                text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+                background-color: rgba(0, 0, 0, 1);
+            }
 
             &:hover {
                 text-decoration: underline;
