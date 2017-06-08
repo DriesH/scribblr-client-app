@@ -4,6 +4,8 @@ import { UIParams } from 'ngx-facebook';
 
 import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
+import { QuoteService } from '../../../../../services/application-services/quote.service';
+
 @Component({
     selector: 'scrblr-quote',
     templateUrl: './quote.component.html',
@@ -35,7 +37,7 @@ export class QuoteComponent implements OnInit {
     isClicked = false;
     copyLinkText = 'Click to copy link';
 
-    constructor() { }
+    constructor(private _qs: QuoteService) { }
 
     ngOnInit() {
         this.scrollContainer = document.getElementById('gridboi');
@@ -65,8 +67,8 @@ export class QuoteComponent implements OnInit {
         this.removeQuote.emit(shortId);
     }
 
-    share($event: Event, childShortId, postShortId, imgBakedUrlId) {
-        $event.stopPropagation();
+    share(event: Event, childShortId, postShortId, imgBakedUrlId) {
+        event.stopPropagation();
 
         let data = {
             child_short_id: childShortId,
@@ -79,10 +81,14 @@ export class QuoteComponent implements OnInit {
         };
 
         this.shareFb.emit({ data: data, fbData: params });
-        this.triggerShare('', ''); //FIXME
+        this.triggerShare('', ''); // FIXME:
     }
 
     triggerShare(childShortId, postShortId) {
         // trigger share of this post on API : /children/{childShortId}/posts/{postShortId}/share
+
+        this._qs.sharePost(childShortId, postShortId).subscribe(res => {
+
+        });
     }
 }

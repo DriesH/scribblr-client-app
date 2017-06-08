@@ -49,7 +49,7 @@
     }
 }
 
-@media screen and (min-width: 540px) {
+@media screen and (max-width: 540px) {
     .button-container {
         display: flex;
         justify-content: center;
