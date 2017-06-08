@@ -1,5 +1,15 @@
 @import '../../../../../scss/colors/colors';
 
+.news--container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
 .loading-screen {
     position: absolute;
     display: flex;

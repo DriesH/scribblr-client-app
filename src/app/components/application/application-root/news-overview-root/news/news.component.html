@@ -1,9 +1,8 @@
-<div class="newsItem--wrapper">
+<div class="news-item" [ngClass]="{ 'unread': !newsData.read, 'read': newsData.read }">
+    <h1 class="title">{{ newsData.title }}</h1>
+    <p class="date">12 Jun, 2017{{ newsData.created_at | date }}</p>
 
-    <h1 [ngClass]="{ 'unread': !newsData.read }" (click)="toggleMessage()">{{newsData.title}}</h1>
-
-    <div class="message-container" *ngIf="isShowingMessage">
-        <div [innerHTML]="newsData.message">
-        </div>
+    <div class="message--container">
+        <p [innerHTML]="newsData.message"></p>
     </div>
 </div>

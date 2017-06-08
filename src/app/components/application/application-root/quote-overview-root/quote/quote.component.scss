@@ -30,7 +30,7 @@
     margin: auto;
     box-sizing: border-box;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 3px;
     position: relative;
 
     img {
@@ -70,8 +70,8 @@
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     position: relative;
     z-index: 5;
 
@@ -143,8 +143,8 @@
     }
 
     &.rounded-bottom {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
     }
 }
 

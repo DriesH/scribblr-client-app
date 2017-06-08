@@ -1,20 +1,40 @@
 @import '../../../../../../scss/colors/colors';
 
-.newsItem--wrapper {
-  width: 50%;
-  margin: 20px auto;
-  background-color: rgba(255,255,255,0.5);
-  border-radius: 5px;
-  padding: 7px;
-  cursor: pointer;
-  
-  h1 {
+.news-item {
+    background-color: white;
+    border: 1px solid rgba($main-color-five, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 15px;
     color: $main-color-five;
-  }
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
 
-  .unread:before {
-    content: "• ";
-    color: red;
-  }
+    &.unread {
+        border-left: 3px red solid;
+    }
 
+    &.read {
+        border-left: 3px solid $main-color-four;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .date {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin: 0 0 15px;
+    }
+
+    .message--container {
+        p {
+            margin: 0;
+        }
+    }
 }

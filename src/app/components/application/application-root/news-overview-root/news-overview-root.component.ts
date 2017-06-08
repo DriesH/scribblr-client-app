@@ -25,6 +25,14 @@ export class NewsOverviewRootComponent implements OnInit {
                 this.news = res.news;
                 this.newsIsLoading = false;
             });
+
+        this.hasReadAll();
+    }
+
+    hasReadAll() {
+        this._ns.readAll().subscribe(res => {
+            console.log(res);
+        });
     }
 
 }

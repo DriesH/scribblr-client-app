@@ -116,7 +116,8 @@ export const API_ROUTES = {
         },
         news: {
             index: applicationPrefix + 'news',
-            getUnreadCount: applicationPrefix + 'news/unread'
+            getUnreadCount: applicationPrefix + 'news/unread',
+            readAll: applicationPrefix + 'news/read/all'
         }
     }
 

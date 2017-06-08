@@ -8,6 +8,8 @@
         </div>
         <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
 
+        <hr class="sidebar--separator" *ngIf="cart.length > 0">
+
         <a routerLink="/checkout" class="shopping-cart" *ngIf="cart.length > 0">
             <p class="cart">
                 <i class="fa fa-shopping-cart fa-2x"></i>&nbsp;Cart

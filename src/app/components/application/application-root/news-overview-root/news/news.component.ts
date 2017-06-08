@@ -1,22 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'scrblr-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+    selector: 'scrblr-news',
+    templateUrl: './news.component.html',
+    styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
 
-  @Input() newsData;
-  isShowingMessage = false;
+    @Input('newsData') newsData;
+    isShowingMessage = false;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  toggleMessage() {
-    this.isShowingMessage = !this.isShowingMessage;
-  }
-
+    toggleMessage() {
+        this.isShowingMessage = !this.isShowingMessage;
+    }
 }
