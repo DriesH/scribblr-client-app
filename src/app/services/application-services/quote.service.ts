@@ -106,4 +106,10 @@ export class QuoteService {
             .catch(err => this._hhs.errorHandler(err));
     }
 
+    getLatestPost(): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.posts.latest, this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
+
 }

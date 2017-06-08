@@ -1,4 +1,8 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit, Output, EventEmitter } from '@angular/core';
+
+import { QuoteService } from '../../../../../services/application-services/quote.service';
+
+import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 @Component({
     selector: 'scrblr-latest-posts',
@@ -7,11 +11,19 @@ import { Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit } fr
 })
 export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
+    latestPostsArray = [];
+
     @ViewChild('latestPosts') latestPosts: ElementRef;
 
-    constructor() { }
+    @Output('reachedLast') reachedLast = new EventEmitter<boolean>();
+
+    constructor(private _qs: QuoteService) { }
 
     ngOnInit() {
+        this._qs.getLatestPost().subscribe(res => {
+            console.log(res);
+            this.latestPostsArray = res.latest_posts;
+        });
     }
 
     ngAfterViewInit() {
@@ -37,6 +49,15 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
         } else if (Math.sign(event.deltaY) < 0) {
             this.latestPosts.nativeElement.scrollLeft -= 100;
         }
+    }
 
+    makePostUrl(csi, psi, ibui) {
+        return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageBaked(csi, psi, ibui);
+    }
+
+    reachedLastFn(last) {
+        if (last) {
+            this.reachedLast.emit(last);
+        }
     }
 }
