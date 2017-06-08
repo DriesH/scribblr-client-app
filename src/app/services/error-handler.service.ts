@@ -85,7 +85,7 @@ export class ErrorHandlerService {
         // Contents for alert box.
         const _errorMsg = {
             title: 'Not found!',
-            msg: 'We couldn\'t seem to find your kiddo... Maybe they\'re playing hide\'n\'seek again...',
+            msg: 'We couldn\'t seem to find what you were looking for...',
             _msg: error.error_message
         };
 
@@ -106,14 +106,14 @@ export class ErrorHandlerService {
 
     // Handler for image not found errors.
     private imageNotFound(error: Error) {
-        // // Contents for alert box.
-        // const _errorMsg = {
-        //     title: 'Not found!',
-        //     msg: 'We couldn\'t seem to find your kiddo... Maybe they\'re playing hide\'n\'seek again...',
-        //     _msg: error.error_message
-        // };
+        // Contents for alert box.
+        const _errorMsg = {
+            title: 'Image not found!',
+            msg: 'The image you are looking for can not be found...',
+            _msg: error.error_message
+        };
 
-        // this._ns.error(_errorMsg.title, _errorMsg.msg);
+        this._ns.error(_errorMsg.title, _errorMsg.msg);
 
         // Contents for ui state.
         const _error = {
@@ -186,7 +186,7 @@ export class ErrorHandlerService {
         // Contents for alert box.
         const _errorMsg = {
             title: 'Server error!',
-            msg: 'Hmmm... The server has exploded or something... Give us some time! We\'re fixing it!',
+            msg: 'The server has exploded... Give us some time! We\'re fixing it!',
             _msg: error.error_message
         };
 
