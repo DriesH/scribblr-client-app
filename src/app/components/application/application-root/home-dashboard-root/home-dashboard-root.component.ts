@@ -17,10 +17,6 @@ export class HomeDashboardRootComponent implements OnInit {
     constructor(private store: Store<any>) { }
 
     ngOnInit() {
-        setTimeout(() => {
-            this.isLoading = false;
-        }, 300);
-
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             if (CURRENT_CHILDREN.children.length > 0) {
                 this.children = CURRENT_CHILDREN.children;
@@ -30,4 +26,9 @@ export class HomeDashboardRootComponent implements OnInit {
             }
         });
     }
+
+    doneLoading() {
+        this.isLoading = false;
+    }
+
 }

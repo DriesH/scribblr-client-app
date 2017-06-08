@@ -4,8 +4,14 @@
     width: 100%;
 }
 
+#statistics-wrap {
+    .title {
+        font-size: 2rem;
+    }
+}
+
 #statistics {
-    width: 100%;
+    // width: 100%;
     height: 180px;
     background-color: white;
     border: 1px solid rgba($main-color-five, 0.2);
@@ -22,7 +28,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
 
         p {
             margin: 0;

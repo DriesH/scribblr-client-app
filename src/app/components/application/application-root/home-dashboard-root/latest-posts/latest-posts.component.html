@@ -2,34 +2,10 @@
     <h1 class="title">Latest memories.</h1>
     <div id="latest-posts" #latestPosts>
         <ul class="posts">
-            <li>
+            <li *ngFor="let post of latestPostsArray; let last = last">
                 <div class="post">
                     <span class="overlay"></span>
-                    <img src="/assets/homepage/quote-1.jpg" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="post">
-                    <span class="overlay"></span>
-                    <img src="/assets/homepage/quote-2.jpg" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="post">
-                    <span class="overlay"></span>
-                    <img src="/assets/homepage/quote-3.jpg" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="post">
-                    <span class="overlay"></span>
-                    <img src="/assets/homepage/quote-4.jpg" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="post">
-                    <span class="overlay"></span>
-                    <img src="/assets/homepage/quote-1.jpg" alt="">
+                    <img [src]="makePostUrl(post.child.short_id, post.short_id, post.img_baked_url_id)" (load)=reachedLastFn(last)>
                 </div>
             </li>
         </ul>

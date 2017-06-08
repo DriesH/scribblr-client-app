@@ -19,14 +19,24 @@
     width: 100%;
 }
 
-.quick-access-panels {
+.quick-access-container {
     width: 100%;
     display: flex;
-    flex-direction: row;
-}
+    flex-direction: column;
 
-.statistics {
-    width: 100%;
+    .header-container {
+        width: 100%;
+    }
+
+    .quick-access-panels {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
 }
 
 .loading-screen {
