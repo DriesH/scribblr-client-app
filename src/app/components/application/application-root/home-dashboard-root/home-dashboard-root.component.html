@@ -1,8 +1,12 @@
-<div id="home-panel">
+<div id="home-panel">git
     <div class="loading-screen" *ngIf="isLoading">
         <span class="loading-spinner"></span>
     </div>
     <div class="control-panel">
+        <div class="statistics">
+            <scrblr-statistics></scrblr-statistics>
+        </div>
+
         <div class="latest-posts">
             <scrblr-latest-posts></scrblr-latest-posts>
         </div>

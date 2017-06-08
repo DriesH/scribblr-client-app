@@ -16,6 +16,9 @@ export const API_ROUTES = {
         update: '/auth/user'
     },
     application: {
+        stats: {
+            index: applicationPrefix + 'stats'
+        },
         child: {
             index: applicationPrefix + 'children',
             newChild: applicationPrefix + 'children/new',

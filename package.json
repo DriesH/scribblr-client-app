@@ -29,6 +29,7 @@
     "@ngrx/effects": "2.0.3",
     "@ngrx/router-store": "1.2.6",
     "@ngrx/store": "2.2.2",
+    "angular2-counto": "^1.2.3",
     "angular2-material-datepicker": "^0.5.0",
     "angular2-notifications": "^0.7.3",
     "core-js": "2.4.1",

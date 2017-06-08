@@ -172,6 +172,7 @@ export class NewChildComponent implements OnInit {
 
     openFile(e) {
         e.preventDefault();
+        e.stopPropagation();
         this.avatarFileInput.nativeElement.click();
     }
 }

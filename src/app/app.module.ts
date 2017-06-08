@@ -15,6 +15,8 @@ import { CustomFormsModule } from 'ng2-validation';
 import { DndModule } from 'ng2-dnd';
 import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { FacebookModule } from 'ngx-facebook';
+import { CountoModule } from 'angular2-counto';
+
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -113,6 +115,7 @@ import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { FilterPipe } from './pipes/filter.pipe';
 import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
 import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
+import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
 
 
 @NgModule({
@@ -167,6 +170,7 @@ import { LatestPostsComponent } from './components/application/application-root/
         QuickStartComponent,
         QuickStoryComponent,
         LatestPostsComponent,
+        StatisticsComponent,
     ],
     imports: [
         BrowserModule,
@@ -178,6 +182,7 @@ import { LatestPostsComponent } from './components/application/application-root/
         ImageCropperModule,
         LazyLoadImageModule,
         DndModule.forRoot(),
+        CountoModule,
         APP_ROUTES,
         StoreModule.provideStore(localStorageNgrx),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
