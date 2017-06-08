@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 interface QuoteModel {
     quote: string;
@@ -11,6 +11,8 @@ interface QuoteModel {
 })
 export class QuickQuoteComponent implements OnInit {
 
+    @Input('children') children;
+
     quoteModel: QuoteModel = {
         quote: null
     };
@@ -20,4 +22,15 @@ export class QuickQuoteComponent implements OnInit {
     ngOnInit() {
     }
 
+    avatarUrl(child) {
+        if (!child) {
+            return;
+        }
+
+        if (!child.avatar_url_id) {
+            return '/assets/default-avatars/' + child.gender + '.svg';
+        }
+
+        return child.avatar_url_id;
+    }
 }

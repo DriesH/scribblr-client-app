@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'scrblr-quick-start',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./quick-start.component.scss']
 })
 export class QuickStartComponent implements OnInit {
+
 
     constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 interface StoryModel {
     story: string;
@@ -10,6 +10,9 @@ interface StoryModel {
     styleUrls: ['./quick-story.component.scss']
 })
 export class QuickStoryComponent implements OnInit {
+
+    @Input('children') children;
+
 
     storyModel: StoryModel = {
         story: null

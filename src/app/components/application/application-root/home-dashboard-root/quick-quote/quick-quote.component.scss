@@ -1,5 +1,9 @@
 @import '../../../../../../scss/colors/colors';
 
+:host {
+    width: 25%;
+}
+
 #quick-quote {
     width: 100%;
     background-color: white;
@@ -18,42 +22,7 @@
     }
 
     p {
-        font-size: 0.9rem;
+        font-size: 2rem;
         margin: 0;
-    }
-
-    .quote-input {
-        color: #3C3C3C;
-        font-family: 'Open Sans';
-        font-weight: 400;
-        font-size: 1rem;
-        border-radius: 0;
-        line-height: 22px;
-        background-color: #FBFBFB;
-        padding: 13px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 100%;
-        display: block;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        box-sizing: border-box;
-        border: 1px solid $main-color-two;
-    }
-
-    textarea {
-        resize: vertical;
-        height: 150px;
-        max-height: 250px;
-    }
-
-    textarea:focus {
-        outline: none;
-        border: 1px solid $main-color-four;
-    }
-
-    button {
-        align-self: flex-end;
     }
 }

@@ -1,5 +1,9 @@
 @import '../../../../../../scss/colors/colors';
 
+:host {
+    width: 25%;
+}
+
 #quick-story {
     width: 100%;
     background-color: white;

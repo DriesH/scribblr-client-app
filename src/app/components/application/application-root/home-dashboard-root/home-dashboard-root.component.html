@@ -7,8 +7,7 @@
             <scrblr-latest-posts></scrblr-latest-posts>
         </div>
         <div class="quick-access-panels">
-            <scrblr-quick-quote></scrblr-quick-quote>
-            <scrblr-quick-story></scrblr-quick-story>
+            <scrblr-quick-quote [children]="children"></scrblr-quick-quote>
         </div>
     </div>
     <scrblr-quick-start *ngIf="noChildren"></scrblr-quick-start>

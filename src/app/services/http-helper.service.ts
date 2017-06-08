@@ -18,7 +18,7 @@ export class HttpHelperService {
         let body = res.json();
 
         if (body.achievement) {
-            this._aus.unlock(body.achievement);
+            this._aus.handleAchievement(body.achievement);
         }
 
         return body || {};

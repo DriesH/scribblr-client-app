@@ -12,6 +12,8 @@ export class HomeDashboardRootComponent implements OnInit {
     noChildren = false;
     isLoading = true;
 
+    children = [];
+
     constructor(private store: Store<any>) { }
 
     ngOnInit() {
@@ -21,6 +23,7 @@ export class HomeDashboardRootComponent implements OnInit {
 
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             if (CURRENT_CHILDREN.children.length > 0) {
+                this.children = CURRENT_CHILDREN.children;
                 this.noChildren = false;
             } else {
                 this.noChildren = true;
