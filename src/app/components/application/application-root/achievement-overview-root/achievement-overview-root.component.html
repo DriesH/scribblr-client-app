@@ -1,10 +1,31 @@
 <div id="achievement--wrapper">
-    <span class="total_points">{{totalPoints}}</span>
+
+    <h1 class="title">Achievements.</h1>
+
+    <div class="achievement--header">
+        <div class="points--explanation">
+            <h2>Collect 100 points to get a discount on your next order.</h2>
+            <p>Collect points by using Scribblr, we give you points when you share your memories, buy books, add children, ...</p>
+        </div>
+        <div class="points">
+            <p class="type"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;Amount of points</p>
+            <p class="amount" *ngIf="!totalPoints">{{ totalPoints }}</p>
+            <p class="amount" *ngIf="totalPoints" counto [step]="30" [countTo]="totalPoints" [countFrom]="0" [duration]="0.7"
+                (countoChange)="points = $event">{{ points | number:'1.0-0'}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="isLoadingAchievements" class="loading-screen">
+        <span class="loading-spinner"></span>
+    </div>
+
     <div class="category--container" *ngFor="let category of achievementCategories | keys">
-        <h1><i class="fa" [ngClass]="{ 'fa-user': category.key === 'Account', 'fa-child': category.key === 'Children', 'fa-quote-left': category.key === 'Memories'}"></i> {{category.key}}</h1>
-        <hr>
+        <div class="category--header">
+            <h1 class="title"><i class="fa" [ngClass]="{ 'fa-user': category.key === 'Account', 'fa-child': category.key === 'Children', 'fa-quote-left': category.key === 'Memories', 'fa-book': category.key === 'Books'}"></i>&nbsp;&nbsp;{{category.key}}</h1>
+        </div>
         <div class="achievement--container">
             <scrblr-achievement *ngFor="let achievement of category.value" [achievementData]="achievement"></scrblr-achievement>
         </div>
     </div>
+
 </div>

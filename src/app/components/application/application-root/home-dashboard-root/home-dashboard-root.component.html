@@ -6,9 +6,6 @@
         <div class="statistics">
             <scrblr-statistics></scrblr-statistics>
         </div>
-        <div class="latest-posts">
-            <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>
-        </div>
         <div class="quick-access-container">
             <div class="header-container">
                 <h1 class="title">Quick access.</h1>
@@ -17,6 +14,9 @@
                 <scrblr-quick-quote [children]="children"></scrblr-quick-quote>
                 <scrblr-quick-story [children]="children"></scrblr-quick-story>
             </div>
+        </div>
+        <div class="latest-posts">
+            <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>
         </div>
     </div>
     <scrblr-quick-start *ngIf="noChildren"></scrblr-quick-start>

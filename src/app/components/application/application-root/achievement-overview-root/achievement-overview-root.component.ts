@@ -10,18 +10,22 @@ import { AchievementService } from '../../../../services/application-services/ac
 export class AchievementOverviewRootComponent implements OnInit {
 
     achievementCategories;
-    totalPoints;
+    totalPoints = 0;
+    isLoadingAchievements = false;
 
     constructor(
         private _as: AchievementService,
     ) { }
 
     ngOnInit() {
+        this.isLoadingAchievements = true;
+
         this._as.getAllAchievements()
             .subscribe(res => {
                 console.log(res);
                 this.achievementCategories = res.achievements;
                 this.totalPoints = res.total_points;
+                this.isLoadingAchievements = false;
             });
 
     }

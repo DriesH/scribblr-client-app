@@ -1,12 +1,8 @@
-<div class="achievement--wrapper">
-    <div class="achievement--block" [ngClass]="{ 'completed': achievementData.completed }">
-        <img [src]="achievementData.image" class="achievement--image">
+<div class="achievement--block" [ngClass]="{ 'completed': achievementData.completed }">
+    <img [src]="achievementData.image" class="achievement--image">
 
-        <div class="achievement--text">
-            <h2>{{ achievementData.title }}</h2>
-        </div>
+    <h2 class="achievement--text">{{ achievementData.title }}</h2>
 
-        <span class="points">{{ achievementData.points }}</span>
-    </div>
-
+    <p class="achievement--points">{{ achievementData.points }}&nbsp;points</p>
 </div>
+
