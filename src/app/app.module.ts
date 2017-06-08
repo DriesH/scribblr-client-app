@@ -16,6 +16,7 @@ import { DndModule } from 'ng2-dnd';
 import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { FacebookModule } from 'ngx-facebook';
 import { CountoModule } from 'angular2-counto';
+import { ClipModule } from 'ng2-clip';
 
 
 /* ngrx stuffs */
@@ -191,7 +192,8 @@ import { StatisticsComponent } from './components/application/application-root/h
         EffectsModule.runAfterBootstrap(FlipBookEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         SimpleNotificationsModule.forRoot(),
-        FacebookModule.forRoot()
+        FacebookModule.forRoot(),
+        ClipModule
     ],
     providers: [
         RegisterService,

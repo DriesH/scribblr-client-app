@@ -33,6 +33,7 @@ export class QuoteComponent implements OnInit {
     scrollContainer: HTMLElement;
 
     isClicked = false;
+    copyLinkText = 'Click to copy link';
 
     constructor() { }
 
@@ -78,9 +79,10 @@ export class QuoteComponent implements OnInit {
         };
 
         this.shareFb.emit({ data: data, fbData: params });
+        this.triggerShare('', ''); //FIXME
     }
 
-    copyLink() {
-
+    triggerShare(childShortId, postShortId) {
+        // trigger share of this post on API : /children/{childShortId}/posts/{postShortId}/share
     }
 }
