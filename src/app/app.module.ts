@@ -17,7 +17,7 @@ import { TooltipDirective } from 'ng2-tooltip-directive/components';
 import { FacebookModule } from 'ngx-facebook';
 import { CountoModule } from 'angular2-counto';
 import { ClipModule } from 'ng2-clip';
-
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -113,7 +113,6 @@ import { BookEffect } from './ngrx-state/effects/book.effects';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 
-import { FilterPipe } from './pipes/filter.pipe';
 import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
 import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
 import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
@@ -158,7 +157,6 @@ import { StatisticsComponent } from './components/application/application-root/h
         EditChildComponent,
         TooltipDirective,
         FlipBookEditorComponent,
-        FilterPipe,
         FlipBookPageComponent,
         BookThumbnailComponent,
         FlipBookInspectorComponent,
@@ -184,6 +182,7 @@ import { StatisticsComponent } from './components/application/application-root/h
         LazyLoadImageModule,
         DndModule.forRoot(),
         CountoModule,
+        Ng2FilterPipeModule,
         APP_ROUTES,
         StoreModule.provideStore(localStorageNgrx),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),

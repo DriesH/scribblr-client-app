@@ -41,6 +41,10 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     loading = true;
 
+    filterProperty = {
+        is_memory: null
+    };
+
     constructor(
         private _qs: QuoteService,
         private route: ActivatedRoute,
@@ -138,5 +142,20 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
                 console.log(e);
             });
         });
+    }
+
+    changeFilter(event) {
+        console.log(event.target.value);
+        if (event.target.value !== 'null') {
+            this.filterProperty.is_memory = +event.target.value;
+            setTimeout(() => {
+                this.initMasonry();
+            }, 100);
+        } else {
+            this.filterProperty.is_memory = null;
+            setTimeout(() => {
+                this.initMasonry();
+            }, 100);
+        }
     }
 }

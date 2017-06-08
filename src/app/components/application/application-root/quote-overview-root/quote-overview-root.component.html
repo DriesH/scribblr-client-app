@@ -2,18 +2,26 @@
 
 <div class="child-infomatics--container">
     <h1 class="title">{{ currentChild?.full_name }}</h1>
-    <span class="flex-spacer"></span>
     <div class="button--container">
         <a class="new-quote" [ngClass]="{ 'flashing': posts.length <= 0 }" routerLink="new-quote"><i class="fa fa-quote-right"></i> New quote</a>
         <a class="new-story" [ngClass]="{ 'flashing': posts.length <= 0 }" routerLink="new-story"><i class="fa fa-book"></i> New Story</a>
         <a class="edit-child" routerLink="edit-child"><i class="fa fa-edit"></i> Edit child</a>
     </div>
-    <span class="flex-spacer"></span>
+    <div class="filters">
+        <p>
+            filter:
+        </p>
+        <select (change)="changeFilter($event)">
+            <option value="null">All</option>
+            <option value="0">Quotes</option>
+            <option value="1">Stories</option>
+        </select>
+    </div>
 </div>
 
 <div class="grid" id="gridboi" #quoteContainer [hidden]="posts.length <= 0">
     <scrblr-quote
-        *ngFor="let post of posts | filterPosts; let last = last"
+        *ngFor="let post of posts | filterBy: filterProperty; let last = last"
         [last]="last"
         [quoteData]="post"
         [childShortId]="childShortId"
