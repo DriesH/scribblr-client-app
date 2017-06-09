@@ -18,7 +18,7 @@
                         autofocus
                         required
                     >-->
-                    <textarea name="quote" class="quote-input" id="quote" placeholder="Your funny quote..." #quote="ngModel" [(ngModel)]="quoteModel.quote"
+                    <textarea name="quote" class="quote-input" id="quote" placeholder="Start typing your quote..." #quote="ngModel" [(ngModel)]="quoteModel.quote"
                         (keyup)="updateCanvasOnKeyup()" (change)="updateCanvasOnChange()" autofocus required [maxLength]="100"></textarea>
 
                     <scrblr-form-error *ngIf="quote.errors && (quote.dirty || quote.touched)" [model]="quote" [modelName]="'Quote'">
