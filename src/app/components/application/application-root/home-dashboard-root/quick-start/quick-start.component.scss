@@ -1,3 +1,141 @@
-#quick-start {
+@import '../../../../../../scss/colors/colors';
 
+#quick-start--wrap {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(white, 0.9);
+    top: -100px;
+    left: -200px;
+    z-index: 35;
+    animation: fadeIn forwards 350ms ease-out;
+}
+
+.welcome-message {
+    opacity: 0;
+    transform: scale(0);
+    animation: fadeInScale 4500ms 350ms forwards ease-out;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .title {
+        text-align: center;
+        letter-spacing: -4px;
+
+        .blue {
+            color: $main-color-four !important;
+        }
+    }
+}
+
+.start-message {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .title {
+        opacity: 0;
+        transform: scale(0);
+        animation: fadeInScaleStay 4500ms 4850ms forwards ease-out;
+        text-align: center;
+        letter-spacing: -4px;
+    }
+
+    button {
+        opacity: 0;
+        transform: scale(0);
+        animation: fadeInScaleStay 2000ms 5350ms forwards ease-out;
+        line-height: 60px;
+        height: 60px;
+        width: auto;
+        margin-top: 40px;
+    }
+}
+
+.skip-welcome {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
+
+    .skip-arrow--wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: $main-color-one;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        img {
+            display: block;
+            width: 30px;
+            margin-left: 10px;
+        }
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    90% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInScaleStay {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    90% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

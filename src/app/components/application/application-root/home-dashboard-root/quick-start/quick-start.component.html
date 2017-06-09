@@ -1,3 +1,18 @@
-<div id="quick-start">
+<div id="quick-start--wrap">
+    <div class="welcome-message">
+        <h1 class="title">Welcome to <span class="blue">Scribblr</span>, {{ userName }}.</h1>
+    </div>
+
+    <div class="start-message">
+        <h1 class="title">Start by adding your first child.</h1>
+        <button (click)="openNewChild()" class="btn btn-primary btn-color-main">Let's start.</button>
+    </div>
+
+    <div class="skip-welcome">
+        <span class="skip-arrow--wrap">
+            Skip
+            <img src="/assets/icons/right-arrow.svg" alt="skip">
+        </span>
+    </div>
 
 </div>

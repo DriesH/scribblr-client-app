@@ -2,7 +2,7 @@
     <div class="loading-screen" *ngIf="isLoading">
         <span class="loading-spinner"></span>
     </div>
-    <div class="control-panel">
+    <div class="control-panel" *ngIf="!noChildren && !quickStartActive">
         <div class="statistics">
             <scrblr-statistics></scrblr-statistics>
         </div>
@@ -19,6 +19,6 @@
             <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>
         </div>
     </div>
-    <scrblr-quick-start *ngIf="noChildren"></scrblr-quick-start>
+    <scrblr-quick-start *ngIf="quickStartActive" (doneLoading)="doneLoading()" (closeQuickStart)="quickStartActive = false"></scrblr-quick-start>
 </div>
 

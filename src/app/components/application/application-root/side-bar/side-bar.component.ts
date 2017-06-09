@@ -25,8 +25,6 @@ export class SideBarComponent implements OnInit {
         this.store.select('CART').subscribe((CART: any) => {
             this.cart = CART.items_in_cart;
         });
-
-        // console.log(this.noChildren);
     }
 
     addChild() {

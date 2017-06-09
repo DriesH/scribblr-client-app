@@ -23,6 +23,10 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
         this._qs.getLatestPost().subscribe(res => {
             console.log(res);
             this.latestPostsArray = res.latest_posts;
+
+            if (!this.latestPostsArray.length) {
+                this.reachedLast.emit(true);
+            }
         });
     }
 

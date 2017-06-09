@@ -91,7 +91,16 @@
 
         .price-tag {
             font-weight: bold;
+
+            &.free-shipping {
+                text-decoration: line-through;
+            }
         }
+    }
+    .achievement-points-message {
+        display: block;
+        width: 100%;
+        text-align: right;
     }
 
     .products-in-cart {

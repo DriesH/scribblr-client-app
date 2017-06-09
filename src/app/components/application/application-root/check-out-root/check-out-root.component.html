@@ -63,7 +63,11 @@
                     </div>
                 </div>
                 <hr>
-                <p class="price">Shipping cost: <span class="price-tag">{{ prices.shipping | currency:'EUR':true }}</span></p>
+                <p class="price">Shipping cost:
+                    <span class="price-tag" *ngIf="!prices.can_get_free_shipping">{{ prices.shipping | currency:'EUR':true }}</span>
+                    <span class="price-tag" *ngIf="prices.can_get_free_shipping">Free</span>
+                </p>
+                <span class="achievement-points-message" *ngIf="prices.can_get_free_shipping">(100 achievement points)</span>
                 <hr>
                 <p class="total-price">Total price: <span class="price-tag">{{ totalPrice | currency:'EUR':true }}</span></p>
                 <div class="button-container">

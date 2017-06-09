@@ -4,10 +4,12 @@ import * as childActions from '../actions/child.action';
 
 export interface State {
     children: Array<any>;
+    receivedCall: boolean;
 };
 
 export const initialState: State = {
-    children: []
+    children: [],
+    receivedCall: false
 };
 
 export function ChildReducer(state = initialState, action: Action) {
@@ -17,7 +19,8 @@ export function ChildReducer(state = initialState, action: Action) {
     switch (action.type) {
         case childActions.ActionTypes.SUCCESS_DOWNLOAD_CHILDREN:
             return {
-                children: action.payload.slice(0)
+                children: action.payload.slice(0),
+                receivedCall: true
             };
 
         case childActions.ActionTypes.ADD_CHILD:

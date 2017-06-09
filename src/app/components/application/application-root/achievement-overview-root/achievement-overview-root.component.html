@@ -3,9 +3,13 @@
     <h1 class="title">Achievements.</h1>
 
     <div class="achievement--header">
-        <div class="points--explanation">
+        <div class="points--explanation" *ngIf="totalPoints < 100">
             <h2>Collect 100 points to get a discount on your next order.</h2>
             <p>Collect points by using Scribblr, we give you points when you share your memories, buy books, add children, ...</p>
+        </div>
+        <div class="points--explanation" *ngIf="totalPoints >= 100">
+            <h2>Congratulations! You have collected 100 points.</h2>
+            <p>You will receive a discount on your next order.</p>
         </div>
         <div class="points">
             <p class="type"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;Amount of points</p>

@@ -1,7 +1,7 @@
 <div id="latest-posts-wrap">
     <h1 class="title">Latest memories.</h1>
     <div id="latest-posts" #latestPosts>
-        <ul class="posts">
+        <ul class="posts" *ngIf="latestPostsArray.length">
             <li *ngFor="let post of latestPostsArray; let last = last">
                 <div class="post">
                     <span class="overlay"></span>
@@ -9,6 +9,9 @@
                 </div>
             </li>
         </ul>
+        <div class="placeholder" *ngIf="!latestPostsArray.length">
+            <p>You haven't added any memories.</p>
+        </div>
     </div>
 
 </div>
