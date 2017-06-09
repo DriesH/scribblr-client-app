@@ -12,6 +12,7 @@ export class QuickAccessComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        console.log(this.children);
     }
 
 }

@@ -17,21 +17,31 @@
         border: none;
         border-bottom: 1px dotted rgba($main-color-one, 0.7);
         padding: 5px;
-        margin: 0 10px -5px;
+        margin: 0 10px -3px;
         font-family: 'Open Sans', Arial;
+        /*for firefox*/
+        -moz-appearance: none;
+        /*for chrome*/
+        -webkit-appearance:none;
 
         &:focus {
             outline: none;
         }
     }
 
+
     button {
         width: auto;
         height: 40px;
         line-height: 40px;
+        margin-left: 30px;
     }
 
     p, select {
         font-size: 1.8rem;
+    }
+
+    p {
+        margin: 0;
     }
 }
