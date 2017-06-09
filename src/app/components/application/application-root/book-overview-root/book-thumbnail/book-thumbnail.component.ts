@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 
 import * as CartActions from '../../../../../ngrx-state/actions/cart.action';
 
+import { BookService } from '../../../../../services/application-services/book.service';
+
 @Component({
     selector: 'scrblr-book-thumbnail',
     templateUrl: './book-thumbnail.component.html',
@@ -16,10 +18,13 @@ export class BookThumbnailComponent implements OnInit {
     @Input('bookShortId') bookShortId: string;
 
     @Output('reachedLast') reachedLast = new EventEmitter<Boolean>();
+    @Output('deletedBook') deletedBook = new EventEmitter<string>();
 
     inspectorLink = '';
 
-    constructor(private store: Store<any>) { }
+    isDeleting = false;
+
+    constructor(private store: Store<any>, private _bs: BookService) { }
 
     ngOnInit() {
         if (this.bookData.is_flip_over) {
@@ -38,6 +43,20 @@ export class BookThumbnailComponent implements OnInit {
     addToCart(event, bookData) {
         event.stopPropagation();
         this.store.dispatch(new CartActions.AddToCart({ new_item: bookData }));
+    }
+
+    deleteBook(event, bookShortId) {
+        event.stopPropagation();
+
+        if (this.isDeleting) {
+            return;
+        }
+
+        this.isDeleting = true;
+        this._bs.deleteBook(bookShortId).subscribe(res => {
+            this.deletedBook.emit(bookShortId);
+            this.isDeleting = false;
+        });
     }
 
 }

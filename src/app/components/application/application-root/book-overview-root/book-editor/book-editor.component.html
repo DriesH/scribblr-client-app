@@ -30,7 +30,7 @@
     <scrblr-order-modal *ngIf="userIsSavingAndOrdering" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-order-modal>
 
     <div id="book-window">
-        <span *ngIf="currentPage !== 0" class="previous ripple" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>
+        <span *ngIf="currentPage !== 0" class="previous" (click)="previousPage()"><i class="fa fa-chevron-left"></i></span>
 
         <div id="book-front-page" *ngIf="currentPage === 0">
             <div class="front-page">
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <span *ngIf="currentPage !== maxPages" class="next ripple" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
+        <span *ngIf="currentPage !== maxPages" class="next" (click)="nextPage()"><i class="fa fa-chevron-right"></i></span>
     </div>
 
     <div id="selection-bar" class="side-bar--container">

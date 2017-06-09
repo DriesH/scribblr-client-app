@@ -7,9 +7,9 @@ import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { Store } from '@ngrx/store';
 
-import * as BookActions from '../../../../../ngrx-state/actions/book.action';
-import * as CartActions from '../../../../../ngrx-state/actions/cart.action';
+import { Router, Event, NavigationStart } from '@angular/router';
 
+import * as BookActions from '../../../../../ngrx-state/actions/book.action';
 
 @Component({
     selector: 'scrblr-book-editor',
@@ -101,7 +101,8 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     constructor(
         private _qs: QuoteService,
         private _bs: BookService,
-        private store: Store<any>
+        private store: Store<any>,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -134,12 +135,9 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             let c: any = CHILDREN;
             this.children = c.children;
         });
-
     }
 
     ngAfterViewInit() {
-
-
     }
 
     // GENERAL PURPOSE STUFF

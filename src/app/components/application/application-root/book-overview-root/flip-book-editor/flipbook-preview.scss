@@ -86,6 +86,14 @@
     user-select: none;
     align-self: center;
     padding: 15px;
+
+    &:hover {
+        color: lighten($main-color-one, 10%);
+    }
+
+    &:active {
+        color: $main-color-four;
+    }
 }
 
 .previous {

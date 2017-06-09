@@ -87,7 +87,7 @@ export class NewBookComponent implements OnInit {
         }
         setTimeout(() => {
             this.currentStep = step;
-        }, 500);
+        }, 300);
     }
 
     autoGenerate(type) {

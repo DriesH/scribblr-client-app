@@ -45,6 +45,8 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
                         this._bs.getAllBooks().subscribe(res => {
                             if (res.books.length <= 0) {
                                 this.noBooks = true;
+                            } else {
+                                this.noBooks = false;
                             }
                             this.books = res.books;
                             this.isLoading = false;
@@ -81,6 +83,27 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
     reloadMasonry() {
         this.msnry.layout();
+    }
+
+    removeBook(bookShortId) {
+        let index = -1;
+        this.books.forEach((book, key) => {
+            if (book.short_id === bookShortId) {
+                index = key;
+            }
+        });
+
+        if (index !== -1) {
+            this.books.splice(index, 1);
+        }
+
+        setTimeout(() => {
+            this.initMasonry();
+        }, 300);
+
+        if (!this.books.length) {
+            this.noBooks = true;
+        }
     }
 
 }

@@ -9,6 +9,8 @@ import { Store } from '@ngrx/store';
 
 import * as FlipBookActions from '../../../../../ngrx-state/actions/flip-book.action';
 
+import { Router, Event, NavigationStart } from '@angular/router';
+
 @Component({
     selector: 'scrblr-flip-book-editor',
     templateUrl: './flip-book-editor.component.html',
@@ -100,7 +102,8 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     constructor(
         private _qs: QuoteService,
         private _bs: BookService,
-        private store: Store<any>
+        private store: Store<any>,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -131,6 +134,12 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
         this.store.select('CURRENT_CHILDREN').subscribe(CHILDREN => {
             let c: any = CHILDREN;
             this.children = c.children;
+        });
+
+        this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationStart) {
+                this.openCloseModal();
+            }
         });
 
     }
