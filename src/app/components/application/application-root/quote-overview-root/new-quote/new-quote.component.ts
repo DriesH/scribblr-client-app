@@ -55,6 +55,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     pexelsLoading = false;
     oldSearchQuery = '';
 
+    isUploading = false;
+
     constructor(
         private _dz: DropzoneService,
         private _qs: QuoteService,
@@ -359,6 +361,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     addNewQuote(c: HTMLCanvasElement) {
+        this.isUploading = true;
         this.quoteData.append('quote', this.quoteModel.quote);
         this.quoteData.append('font_type', this.quoteModel.font);
 
@@ -370,7 +373,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         c.toBlob(blob => {
             this.quoteData.append('img_baked', blob, 'baked_img.jpg');
-            this._qs.newQuote(this.childShortId , this.quoteData).subscribe(res => this.dispatchNewQuote(res.quote));
+            this._qs.newQuote(this.childShortId , this.quoteData).subscribe(res => {
+                this.isUploading = false;
+                this.dispatchNewQuote(res.quote);
+            });
         }, 'image/jpeg', 0.65);
 
     }

@@ -47,7 +47,10 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">New quote</button>
+                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">
+                    <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    <span *ngIf="!isUploading">New quote</span>
+                </button>
 
             </form>
         </div>

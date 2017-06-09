@@ -16,24 +16,32 @@
                     </scrblr-form-error>
                 </div>
             </form>
-            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory(childShortId, storyModel)" [disabled]="!newMemoryForm.valid">New story</button>
+            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory(childShortId, storyModel)" [disabled]="!newMemoryForm.valid">
+                <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                <span *ngIf="!isUploading">New story</span>
+            </button>
         </div>
 
-        <div class="new-story-preview--container">
 
+
+
+
+        <div class="new-story-preview--container">
             <div class="preview-image--container" *ngIf="presetPickerActive">
                 <div class="image-loading" *ngIf="imageLoading">
-                    test
+                    <span class="loading-spinner"></span>
                 </div>
                 <img [src]="storyModel.img_baked" (load)="imageLoaded()" #presetImg>
             </div>
 
             <div class="preview-image--container" *ngIf="!presetPickerActive">
-                <div class="placeholder" *ngIf="!imageLoaded">
+                <div class="placeholder" *ngIf="notDropped">
                     <p>Drag and drop an image</p>
                 </div>
-                <img src="" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous" [hidden]="hideUserImage">
-                <img src="" alt="" id="aviaryImage" #aviaryImage crossorigin="anonymous" [hidden]="!hideUserImage">
+                <div class="image-loading" *ngIf="imageLoading">
+                    <span class="loading-spinner"></span>
+                </div>
+                <img src="" id="aviaryImage" #aviaryImage crossorigin="anonymous" [hidden]="!hideUserImage" (load)="imageLoaded()">
             </div>
 
             <div *ngIf="presetPickerActive" class="pexels-search">
@@ -75,4 +83,7 @@
 
         </div>
     </div>
+
+    <img src="" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous">
+
 </div>

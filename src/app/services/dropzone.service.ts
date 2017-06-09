@@ -38,25 +38,23 @@ export class DropzoneService {
 
     private dragOver(e) {
         e.preventDefault();
-        console.log('dragover', e);
+        e.toElement.className = 'overlay';
 
     }
 
     private dragEnter(e) {
         e.preventDefault();
-        console.log('dragstart', e);
-
-        console.log(e.target);
-
+        e.toElement.className = 'overlay';
     }
 
     private dragLeave(e) {
         e.preventDefault();
-        console.log('dragexit', e);
+        e.toElement.className = '';
     }
 
     private drop(e) {
         e.preventDefault();
+        e.toElement.className = '';
 
         if (e.dataTransfer.files.length === 0) {
             return;

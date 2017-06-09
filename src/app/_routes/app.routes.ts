@@ -19,6 +19,7 @@ import { HomeDashboardRootComponent } from '../components/application/applicatio
 import { NewStoryComponent } from '../components/application/application-root/quote-overview-root/new-story/new-story.component';
 import { NewQuoteComponent } from '../components/application/application-root/quote-overview-root/new-quote/new-quote.component';
 import { EditQuoteComponent } from '../components/application/application-root/quote-overview-root/edit-quote/edit-quote.component';
+import { EditStoryComponent } from '../components/application/application-root/quote-overview-root/edit-story/edit-story.component';
 
 // Child
 import { EditChildComponent } from '../components/application/application-root/children-overview-root/edit-child/edit-child.component';
@@ -95,6 +96,10 @@ const ROUTES: Routes = [
                     {
                         path: 'quote/:short_id_quote',
                         component: EditQuoteComponent
+                    },
+                    {
+                        path: 'story/:short_id_quote',
+                        component: EditStoryComponent
                     },
                     {
                         path: 'new-story',

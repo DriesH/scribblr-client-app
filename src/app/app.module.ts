@@ -116,6 +116,7 @@ import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
 import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
 import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
+import { EditStoryComponent } from './components/application/application-root/quote-overview-root/edit-story/edit-story.component';
 
 
 @NgModule({
@@ -170,6 +171,7 @@ import { StatisticsComponent } from './components/application/application-root/h
         QuickStoryComponent,
         LatestPostsComponent,
         StatisticsComponent,
+        EditStoryComponent,
     ],
     imports: [
         BrowserModule,

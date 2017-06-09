@@ -46,6 +46,10 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     presetPickerActive = true;
 
+    notDropped = true;
+
+    isUploading = false;
+
     //////////////
     /// PEXELS ///
     //////////////
@@ -94,6 +98,7 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit() {
         this.attachEventListeners();
+        console.log('After init:', this.userImg);
     }
 
     attachEventListeners() {
@@ -124,10 +129,16 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     addNewStory(childShortId, storyModel) {
+        if (this.isUploading) {
+            return;
+        }
+
+        this.isUploading = true;
         this.storyData.set('story', storyModel.story);
         this.storyData.set('img_baked', storyModel.img_baked);
 
         this._qs.newStory(childShortId, this.storyData).subscribe(res => {
+            this.isUploading = false;
             this.dispatchNewStory(res.story);
         });
     }
@@ -145,6 +156,7 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log(e);
 
         this.imageLoading = true;
+        this.notDropped = false;
 
         this.csdkImageEditor.launch({
             image: this.userImg.nativeElement.id
@@ -183,6 +195,9 @@ export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     toggleImageMode() {
         this.presetPickerActive = !this.presetPickerActive;
+
+        this.imageLoading = false;
+        this.notDropped = true;
 
         if (!this.presetPickerActive) {
             this._dz.init(this.dropzone.nativeElement, this.userImg.nativeElement);

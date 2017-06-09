@@ -1,0 +1,89 @@
+<div id="new-story-overlay" #dropzone>
+
+    <a class="close-cross" routerLink="../../">
+        <img src="/assets/icons/cross.svg">
+    </a>
+
+    <div class="new-story--container">
+
+        <div class="form--container">
+            <form #newMemoryForm="ngForm">
+                <div class="form-input-group">
+                    <label for="name">Story<span style="color:red">*</span></label>
+                    <textarea name="story" class="story-input" id="story" placeholder="Your funny story..." #story="ngModel" [(ngModel)]="storyModel.story"
+                        autofocus required></textarea>
+                    <scrblr-form-error *ngIf="story.errors && (story.dirty || story.touched)" [model]="story" [modelName]="'Story'">
+                    </scrblr-form-error>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory(childShortId, storyModel)" [disabled]="!newMemoryForm.valid">
+                <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                <span *ngIf="!isUploading">New story</span>
+            </button>
+        </div>
+
+
+
+
+
+        <div class="new-story-preview--container">
+            <div class="preview-image--container" *ngIf="presetPickerActive">
+                <div class="image-loading" *ngIf="imageLoading">
+                    <span class="loading-spinner"></span>
+                </div>
+                <img [src]="storyModel.img_baked" (load)="imageLoaded()" #presetImg>
+            </div>
+
+            <div class="preview-image--container" *ngIf="!presetPickerActive">
+                <div class="placeholder" *ngIf="notDropped">
+                    <p>Drag and drop an image</p>
+                </div>
+                <div class="image-loading" *ngIf="imageLoading">
+                    <span class="loading-spinner"></span>
+                </div>
+                <img src="" id="aviaryImage" #aviaryImage crossorigin="anonymous" [hidden]="!hideUserImage" (load)="imageLoaded()">
+            </div>
+
+            <div *ngIf="presetPickerActive" class="pexels-search">
+                <input (keydown)="searchPexelsApi($event, searchQuery)" [(ngModel)]="searchQuery" type="text" placeholder="Type in a keyword to search for pictures...">
+                <span (click)="searchPexelsApi($event, searchQuery)"><i class="fa fa-search"></i></span>
+            </div>
+
+            <div class="switch--container">
+                <div class="switch-button-text" [ngClass]="{ 'selected' : presetPickerActive }">
+                    <p>Select a preset image.</p>
+                </div>
+
+                <label class="switch-btn">
+                    <input type="checkbox" (change)="toggleImageMode()">
+                    <div class="slider round"></div>
+                </label>
+
+                <div class="switch-button-text" [ngClass]="{ 'selected' : !presetPickerActive }">
+                    <p>Upload my own image.</p>
+                </div>
+            </div>
+
+            <ul class="preset-picker" *ngIf="presetPickerActive">
+                <li class="loading" *ngIf="pexelsLoading">
+                    <span class="loading-spinner"></span>
+                    <p>Loading...</p>
+                </li>
+                <li class="no-images" *ngIf="!pexelsLoading && pexelsImgs <= 0">
+                    <p>No images found for <span style="font-weight:bold;">"{{ oldSearchQuery }}"</span>...</p>
+                </li>
+                <span *ngIf="!pexelsLoading">
+                    <li class="preset" *ngFor="let img of pexelsImgs" (click)="changeImage($event, img.src.large)">
+                        <img [src]="img.src.tiny" [alt]="img.photographer">
+                    </li>
+                </span>
+            </ul>
+
+            <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
+
+        </div>
+    </div>
+
+    <img src="" id="userImg" #userImg (load)="startAviary()" crossorigin="anonymous">
+
+</div>
