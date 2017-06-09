@@ -19,14 +19,17 @@
         padding: 5px;
         margin: 0 10px -3px;
         font-family: 'Open Sans', Arial;
-        /*for firefox*/
         -moz-appearance: none;
-        /*for chrome*/
         -webkit-appearance:none;
+        text-align: center;
 
         &:focus {
             outline: none;
         }
+    }
+
+    .error {
+        border-bottom: 2px dotted red;
     }
 
 
