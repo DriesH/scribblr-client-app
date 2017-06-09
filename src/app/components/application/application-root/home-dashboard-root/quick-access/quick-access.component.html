@@ -1,0 +1,13 @@
+<div id="quick-access">
+    <p>I want to create a</p>
+    <select>
+        <option value="">Quote</option>
+        <option value="">Story</option>
+    </select>
+    <p>for</p>
+    <select>
+        <option [value]="child.short_id" *ngFor="let child of children">{{ child.fullname }}</option>
+    </select>
+
+    <button class="btn btn-primary btn-color-main" type="">Go</button>
+</div>

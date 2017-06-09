@@ -1,0 +1,37 @@
+@import '../../../../../../scss/colors/colors';
+
+#quick-access {
+    height: 180px;
+    background-color: white;
+    border: 1px solid rgba($main-color-five, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+
+    select {
+        border: none;
+        border-bottom: 1px dotted rgba($main-color-one, 0.7);
+        padding: 5px;
+        margin: 0 10px -5px;
+        font-family: 'Open Sans', Arial;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    p, select {
+        font-size: 1.8rem;
+    }
+}

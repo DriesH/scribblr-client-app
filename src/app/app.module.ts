@@ -18,6 +18,7 @@ import { FacebookModule } from 'ngx-facebook';
 import { CountoModule } from 'angular2-counto';
 import { ClipModule } from 'ng2-clip';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
+import { Ng2DropdownModule } from 'ng2-material-dropdown';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -69,8 +70,11 @@ import { OrderModalComponent } from './components/application/application-root/b
 import { SaveModalComponent } from './components/application/application-root/book-overview-root/book-editor/save-modal/save-modal.component';
 import { NewsComponent } from './components/application/application-root/news-overview-root/news/news.component';
 import { HomeDashboardRootComponent } from './components/application/application-root/home-dashboard-root/home-dashboard-root.component';
-import { QuickQuoteComponent } from './components/application/application-root/home-dashboard-root/quick-quote/quick-quote.component';
 import { QuickStartComponent } from './components/application/application-root/home-dashboard-root/quick-start/quick-start.component';
+import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
+import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
+import { EditStoryComponent } from './components/application/application-root/quote-overview-root/edit-story/edit-story.component';
+
 
 
 /* Services */
@@ -112,11 +116,7 @@ import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { BookEffect } from './ngrx-state/effects/book.effects';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
-
-import { QuickStoryComponent } from './components/application/application-root/home-dashboard-root/quick-story/quick-story.component';
-import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
-import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
-import { EditStoryComponent } from './components/application/application-root/quote-overview-root/edit-story/edit-story.component';
+import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
 
 
 @NgModule({
@@ -166,12 +166,11 @@ import { EditStoryComponent } from './components/application/application-root/qu
         SaveModalComponent,
         NewsComponent,
         HomeDashboardRootComponent,
-        QuickQuoteComponent,
         QuickStartComponent,
-        QuickStoryComponent,
         LatestPostsComponent,
         StatisticsComponent,
         EditStoryComponent,
+        QuickAccessComponent,
     ],
     imports: [
         BrowserModule,
@@ -185,6 +184,7 @@ import { EditStoryComponent } from './components/application/application-root/qu
         DndModule.forRoot(),
         CountoModule,
         Ng2FilterPipeModule,
+        Ng2DropdownModule,
         APP_ROUTES,
         StoreModule.provideStore(localStorageNgrx),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),

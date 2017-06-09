@@ -64,28 +64,6 @@
     }
 }
 
-.skip-welcome {
-    position: absolute;
-    bottom: 25px;
-    right: 35px;
-
-    .skip-arrow--wrap {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: $main-color-one;
-        text-transform: uppercase;
-        cursor: pointer;
-
-        img {
-            display: block;
-            width: 30px;
-            margin-left: 10px;
-        }
-    }
-}
-
 @keyframes fadeInScale {
     0% {
         transform: scale(0);
