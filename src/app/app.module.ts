@@ -18,7 +18,6 @@ import { FacebookModule } from 'ngx-facebook';
 import { CountoModule } from 'angular2-counto';
 import { ClipModule } from 'ng2-clip';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
-import { Ng2DropdownModule } from 'ng2-material-dropdown';
 
 /* ngrx stuffs */
 import { StoreModule } from '@ngrx/store';
@@ -184,7 +183,6 @@ import { QuickAccessComponent } from './components/application/application-root/
         DndModule.forRoot(),
         CountoModule,
         Ng2FilterPipeModule,
-        Ng2DropdownModule,
         APP_ROUTES,
         StoreModule.provideStore(localStorageNgrx),
         EffectsModule.runAfterBootstrap(CurrentUserEffect),
