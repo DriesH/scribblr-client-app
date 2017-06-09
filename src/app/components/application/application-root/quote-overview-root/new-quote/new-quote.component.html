@@ -61,7 +61,7 @@
                     <span class="loading-spinner"></span>
                     <p>Loading...</p>
                 </div>
-                <canvas id="preview-canvas" class="canvas-style" #previewCanvas></canvas>
+                <canvas id="preview-canvas" class="canvas-style" #previewCanvas (click)="clickToUpload($event)"></canvas>
             </div>
 
             <div class="switch--container">
@@ -107,4 +107,6 @@
 
         </div>
     </div>
+
+    <input type="file" hidden #imgClickUpload>
 </div>

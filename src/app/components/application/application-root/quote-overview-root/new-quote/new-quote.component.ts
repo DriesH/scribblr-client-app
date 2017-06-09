@@ -28,6 +28,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
+    @ViewChild('imgClickUpload') imgClickUpload: ElementRef;
 
     csdkImageEditor;
     searchIsActive = false;
@@ -235,7 +236,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         c.width = 1680;
         c.height = 1050;
 
-        ctx.fillStyle = 'rgb(45,51,56)';
+        ctx.fillStyle = 'rgb(94,148,229)';
         ctx.fillRect(0, 0, c.width, c.height);
 
         fontSize = c.height / 15;
@@ -404,5 +405,11 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.pexelsLoading = false;
             });
         }
+    }
+
+    clickToUpload(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.imgClickUpload.nativeElement.click();
     }
 }
