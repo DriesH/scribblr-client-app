@@ -5,7 +5,7 @@ import { AchievementService } from '../../../../services/application-services/ac
 @Component({
     selector: 'scrblr-achievement-overview-root',
     templateUrl: './achievement-overview-root.component.html',
-    styleUrls: ['./achievement-overview-root.component.scss']
+    styleUrls: ['./achievement-overview-root.component.scss', './achievement-overview-root.media.scss']
 })
 export class AchievementOverviewRootComponent implements OnInit {
 

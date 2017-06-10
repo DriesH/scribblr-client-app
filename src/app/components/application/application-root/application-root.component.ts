@@ -25,7 +25,7 @@ import {
 @Component({
     selector: 'scrblr-application-root',
     templateUrl: './application-root.component.html',
-    styleUrls: ['./application-root.component.scss'],
+    styleUrls: ['./application-root.component.scss', './application-root.media.scss'],
     providers: [ EasterEggService ],
     animations: [
         trigger('fadeIn', [
