@@ -30,6 +30,8 @@ export class UserRootComponent implements OnInit {
 
     isActive = false;
 
+    countries = [];
+
     constructor(
         private store: Store<any>,
         private _us: UserService,
@@ -40,6 +42,10 @@ export class UserRootComponent implements OnInit {
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             let cu: any = CURRENT_USER;
             this.userModel = Object.assign({}, this.userModel, cu.user);
+        });
+
+        this._us.getCountries().subscribe(res => {
+            this.countries = res.countries;
         });
     }
 

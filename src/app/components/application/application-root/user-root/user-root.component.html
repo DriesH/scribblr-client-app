@@ -46,7 +46,10 @@
 
             <div class="form-input-group">
                 <label for="country">Country</label>
-                <input type="text" name="country" id="country" #country="ngModel" [(ngModel)]="userModel.country">
+                <select id="country" name="country" #country="ngModel" [(ngModel)]="userModel.country">
+                    <option value="null" disabled>Pick your country</option>
+                    <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                </select>
             </div>
 
             <button type="submit" id="submit-button" class="btn btn-primary btn-color-main" [disabled]="!userForm.valid" (click)="updateUser(userModel)">Save</button>

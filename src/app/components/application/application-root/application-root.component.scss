@@ -29,7 +29,6 @@
 
     .scribblr-logo {
         img {
-            transform: translateX(-10px);
             width: 200px;
         }
     }
@@ -64,66 +63,6 @@
     min-height: calc(100vh - 100px);
     box-sizing: border-box;
     background-color: #DEE0E3;
-}
-
-.application-body--quick-quote {
-    margin: auto;
-    padding: 15% 0;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    box-sizing: border-box;
-    height: calc(100vh - 100px);
-
-    label {
-        margin-bottom: 50px !important;
-    }
-
-    img { // CHECK NOG ZEKER IS LATER!! FIXME:
-        width: 60px;
-        margin-right: 10px;
-        // transform: translateY(-20px);
-    }
-
-    .bottom-border-input {
-        width: 100%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
-        margin-top: 5px;
-    }
-
-    .quick-quote-container {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .dropdown {
-        width: 80px;
-    }
-
-    #quote {
-        color: #2D3338;
-        font-size: 32px;
-        width: 90%;
-        border: none;
-        background: none;
-        box-sizing: border-box;
-        padding: 15px 15px 15px 30px;
-
-        &:focus {
-            outline: none;
-        }
-
-        &:focus + .bottom-border-input {
-            border-bottom: 2px solid rgba(#5E94E5, 0.7);
-            outline: none;
-        }
-    }
 }
 
 @media screen and (max-width: 480px) {

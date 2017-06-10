@@ -52,6 +52,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            .fa-trash-o {
+                opacity: 0;
+                color: white;
+                transition: 200ms all ease-out;
+
+                &:hover {
+                    color: #A0A0A0;
+                }
+
+                &:active {
+                    color: red;
+                }
+            }
+        }
+
+        &:hover .header-field i {
+            opacity: 1;
         }
 
         .title {

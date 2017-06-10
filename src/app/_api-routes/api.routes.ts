@@ -13,7 +13,8 @@ export const API_ROUTES = {
     getUserRoute: '/auth/user',
     logoutUser: '/auth/logout',
     user: {
-        update: '/auth/user'
+        update: '/auth/user',
+        countries: applicationPrefix + 'countries'
     },
     application: {
         stats: {

@@ -2,7 +2,7 @@
     <a class="return" routerLink="../"><img src="/assets/icons/right-arrow.svg">Go back</a>
 
     <h1 class="main-title title" *ngIf="currentStep === 1">What do you want to make?</h1>
-    <h1 class="main-title title" *ngIf="currentStep === 2">Hier komt een super coole zin.</h1>
+    <h1 class="main-title title" *ngIf="currentStep === 2">Let us do the work, or make it yourself.</h1>
 
     <div id="step1" class="step--container" *ngIf="currentStep === 1">
 
@@ -26,15 +26,15 @@
     <div id="step2" class="step--container" *ngIf="currentStep === 2">
         <div id="auto-generate-all-children" class="book-start-buttons--container ripple" (click)="autoGenerate(editorType)">
             <div class="book-start-information">
-                <h1 class="title">Generate a {{ editorType }} with all children</h1>
+                <h1 class="title">Generate a {{ editorType }}.</h1>
                 <img src="/assets/book-editor/autogenerate-all-icon.svg">
-                <p>Feeling lazy? Let us do the work! You can still edit the book after we generated it for you.</p>
+                <p>In a rush? Let us do the work! You can still edit the book after we generated it for you.</p>
             </div>
         </div>
 
         <div id="start-blank-book" class="book-start-buttons--container ripple" (click)="startEmpty(editorType)">
             <div class="book-start-information">
-                <h1 class="title">Start from a blank canvas</h1>
+                <h1 class="title">Start from a blank canvas.</h1>
                 <img src="/assets/book-editor/start-blank-book-icon.svg">
                 <p>If you like to do things yourself!</p>
             </div>

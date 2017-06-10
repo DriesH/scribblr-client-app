@@ -14,39 +14,11 @@ import * as ApplicationUIActions from '../../../ngrx-state/actions/application-u
 
 import { EasterEggService } from '../../../services/easter-egg/easter-egg.service';
 
-import {
-    trigger,
-    state,
-    style,
-    animate,
-    transition
-} from '@angular/animations';
-
 @Component({
     selector: 'scrblr-application-root',
     templateUrl: './application-root.component.html',
     styleUrls: ['./application-root.component.scss'],
-    providers: [ EasterEggService ],
-    animations: [
-        trigger('fadeIn', [
-            state('*',
-                style({
-                    opacity: 1,
-                })
-            ),
-            transition(':enter', [
-                style({
-                    opacity: 0,
-                }),
-                animate('150ms ease-in')
-            ]),
-            transition(':leave', [
-                animate('250ms ease-out', style({
-                    opacity: 0,
-                }))
-            ])
-        ])
-    ]
+    providers: [ EasterEggService ]
 })
 export class ApplicationRootComponent implements OnInit {
 

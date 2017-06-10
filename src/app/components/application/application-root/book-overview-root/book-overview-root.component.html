@@ -23,6 +23,7 @@
             [bookData]="book"
             [bookShortId]="book.short_id"
             (reachedLast)="initMasonry()"
+            (deletedBook)="removeBook($event)"
         >
         </scrblr-book-thumbnail>
     </div>

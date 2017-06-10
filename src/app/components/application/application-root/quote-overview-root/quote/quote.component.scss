@@ -149,7 +149,21 @@
 }
 
 .story {
-    position: absolute;
-    top: 0;
     z-index: 0;
+    background-color: white;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    max-height: 200px;
+    padding: 20px;
+
+    i {
+        color: $main-color-four;
+    }
+
+    p {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        color: $main-color-one;
+    }
 }

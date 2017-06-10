@@ -1,13 +1,15 @@
 <div id="quick-access">
     <p>I want to create a</p>
-    <select #type>
-        <option value="quote">Quote</option>
-        <option value="story">Story</option>
+    <select #type="ngModel" [(ngModel)]="quickAccessModel.type">
+        <option value="quote">quote</option>
+        <option value="story">story</option>
     </select>
     <p>for</p>
-    <select >
+    <select #childSelection="ngModel" [(ngModel)]="quickAccessModel.childShortId" [ngClass]="{ 'error': errorChild }" (change)="errorChild = false">
+        <option value="default" disabled>my child</option>
         <option [value]="child.short_id" *ngFor="let child of children">{{ child.full_name }}</option>
     </select>
+    <p>.</p>
 
-    <button class="btn btn-primary btn-color-main" type="">Go</button>
+    <button class="btn btn-primary btn-color-main" (click)="startQuickMemory(quickAccessModel)">Go</button>
 </div>

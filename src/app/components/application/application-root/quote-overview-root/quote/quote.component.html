@@ -1,11 +1,9 @@
 <div class="grid-item" #quoteBlock>
     <div class="quote-block">
-        <div class="img-header rounded-bottom">
+        <div class="img-header" [ngClass]="{ 'rounded-bottom' : !quoteData.is_memory }">
             <div class="control-overlay">
-
                 <a class="edit" *ngIf="!quoteData.is_memory" [routerLink]="'quote/' + quoteData.short_id"><i class="fa fa-edit"></i> Edit</a>
                 <a class="edit" *ngIf="quoteData.is_memory" [routerLink]="'story/' + quoteData.short_id"><i class="fa fa-edit"></i> Edit</a>
-
                 <span class="trash" (click)="removeQuoteFn(quoteData.short_id)"><i class="fa fa-trash"></i></span>
                 <div class="share">
                     <span class="share-facebook" (click)="share($event, childShortId, quoteData.short_id, quoteData.img_baked_url_id)"><i class="fa fa-facebook-square"></i></span>
@@ -17,7 +15,7 @@
         </div>
 
         <div *ngIf="quoteData.story !== null" class="story">
-            <p>{{ quoteData.story }}</p>
+            <p><i class="fa fa-quote-left"></i>&nbsp;&nbsp;{{ quoteData.story | ellipsis: 150 }}</p>
         </div>
     </div>
 </div>
