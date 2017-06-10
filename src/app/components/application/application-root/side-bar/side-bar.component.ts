@@ -9,7 +9,7 @@ import { API_ROUTES } from '../../../../_api-routes/api.routes';
 @Component({
   selector: 'scrblr-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss', './side-bar.media.scss']
+  styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { StatisticService } from '../../../../../services/application-services/s
 @Component({
     selector: 'scrblr-statistics',
     templateUrl: './statistics.component.html',
-    styleUrls: ['./statistics.component.scss', './statistics.media.scss'],
+    styleUrls: ['./statistics.component.scss'],
     providers: [StatisticService]
 })
 export class StatisticsComponent implements OnInit {
