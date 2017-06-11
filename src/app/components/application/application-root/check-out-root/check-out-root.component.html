@@ -75,6 +75,54 @@
                 </div>
             </div>
         </div>
+
+        <div class="product--container">
+            <div class="product-header">
+                <h1 class="title"><i class="fa fa-truck"></i> Shipping information.</h1>
+            </div>
+            <div class="product-body">
+                <ul class="shipping-information">
+                    <li class="information-box">
+                        <div class="information-field">
+                            <label for="first-name">First name:</label>
+                            <input type="text" name="first-name" #firstName="ngModel" [(ngModel)]="currentUserModel.first_name">
+                        </div>
+                        <div class="information-field">
+                            <label for="last-name">Last name:</label>
+                            <input type="text" name="last-name" #lastName="ngModel" [(ngModel)]="currentUserModel.last_name">
+                        </div>
+                    </li>
+                    <li class="information-box">
+                        <div class="information-field">
+                            <label for="streetname">Streetname:</label>
+                            <input type="text" name="streetname" #streetName="ngModel" [(ngModel)]="currentUserModel.street_name">
+                        </div>
+                        <div class="information-field">
+                            <label for="housenumber">Housenumber:</label>
+                            <input type="text" name="housenumber" #houseNumber="ngModel" [(ngModel)]="currentUserModel.house_number">
+                        </div>
+                    </li>
+                    <li class="information-box">
+                        <div class="information-field">
+                            <label for="city">City:</label>
+                            <input type="text" name="city" #city="ngModel" [(ngModel)]="currentUserModel.city">
+                        </div>
+                        <div class="information-field">
+                            <label for="postal-code">Postal code:</label>
+                            <input type="text" name="postal-code" #postalCode="ngModel" [(ngModel)]="currentUserModel.postal_code">
+                        </div>
+                    </li>
+                    <li class="information-field">
+                        <label for="countries">Country:</label>
+                        <select type="text" name="countries">
+                            <option [value]="country" *ngFor="let country of countries">{{ country }}</option>
+                        </select>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
     </section>
 
     <footer class="footer">

@@ -39,7 +39,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
     removeEventListeners() {
         document.removeEventListener('scroll', this.showBooksFn.bind(this));
-
     }
 
     showBooksFn(e) {
