@@ -6,6 +6,8 @@ import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
+import { NotificationsService } from 'angular2-notifications';
+
 @Component({
     selector: 'scrblr-quote',
     templateUrl: './quote.component.html',
@@ -28,6 +30,8 @@ export class QuoteComponent implements OnInit {
     @Output('shareFb') shareFb = new EventEmitter<Object>();
 
     @ViewChild('quoteBlock') quoteBlock: ElementRef;
+    @ViewChild('paragraphStory') paragraphStory: ElementRef;
+    @ViewChild('storyContainer') storyContainer: ElementRef;
 
     imageHasBeenLoaded = false;
 
@@ -36,8 +40,12 @@ export class QuoteComponent implements OnInit {
 
     isClicked = false;
     copyLinkText = 'Click to copy link';
+    linkToCopy = '';
 
-    constructor(private _qs: QuoteService) { }
+    ellipsisLength = 150;
+    isFullStory = false;
+
+    constructor(private _qs: QuoteService, private _ns: NotificationsService) { }
 
     ngOnInit() {
         this.scrollContainer = document.getElementById('gridboi');
@@ -46,7 +54,7 @@ export class QuoteComponent implements OnInit {
             this.reachedLast.emit(true);
         }
 
-        // console.log(this.quoteData);
+        this.linkToCopy = location.origin + '/shared/' + this.childShortId + '/' + this.quoteData.short_id + '/' + this.quoteData.img_baked_url_id;
     }
 
     formatImageSrc(child_short_id, post_short_id, img_original_url_id?, img_baked_url_id?): String {
@@ -80,15 +88,26 @@ export class QuoteComponent implements OnInit {
             method: 'share'
         };
 
-        this.shareFb.emit({ data: data, fbData: params });
-        this.triggerShare('', ''); // FIXME:
+        this._qs.sharePost(childShortId, postShortId).subscribe(res => {
+            if (res.success) {
+                this.shareFb.emit({ data: data, fbData: params });
+            }
+        });
     }
 
-    triggerShare(childShortId, postShortId) {
-        // trigger share of this post on API : /children/{childShortId}/posts/{postShortId}/share
-
+    triggerShare(event, childShortId, postShortId) {
         this._qs.sharePost(childShortId, postShortId).subscribe(res => {
-
+            this._ns.info('Successfully copied', 'We copied the link to your clipboard!');
         });
+    }
+
+    openStory() {
+        if (this.isFullStory) {
+            this.ellipsisLength = 150;
+        } else {
+            this.ellipsisLength = 10000;
+        }
+
+        this.isFullStory = !this.isFullStory;
     }
 }

@@ -149,12 +149,19 @@
 }
 
 .story {
-    z-index: 0;
+    position: relative;
+    z-index: 25;
     background-color: white;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    max-height: 200px;
+    box-sizing: border-box;
     padding: 20px;
+    user-select: none;
+    cursor: pointer;
+
+    &.expand {
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+    }
 
     i {
         color: $main-color-four;
@@ -165,5 +172,6 @@
         padding: 0;
         margin: 0;
         color: $main-color-one;
+        transition: all 200ms ease-out;
     }
 }

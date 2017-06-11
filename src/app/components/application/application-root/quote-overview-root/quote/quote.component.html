@@ -7,15 +7,15 @@
                 <span class="trash" (click)="removeQuoteFn(quoteData.short_id)"><i class="fa fa-trash"></i></span>
                 <div class="share">
                     <span class="share-facebook" (click)="share($event, childShortId, quoteData.short_id, quoteData.img_baked_url_id)"><i class="fa fa-facebook-square"></i></span>
-                    <span class="share-link" [clip]="'https://scribblr.be/shared/xxxx/yyyy/zzzz'" (onClip)="triggerShare(childShortId, quoteData.short_id)"><i class="fa fa-link"></i></span>
+                    <span class="share-link" [clip]="linkToCopy" (onClip)="triggerShare($event, childShortId, quoteData.short_id)"><i class="fa fa-link"></i></span>
                 </div>
             </div>
             <img [src]="quoteData.lqip" [lazyLoad]="formatImageSrc(childShortId, quoteData.short_id, null, quoteData.img_baked_url_id)"
                 [scrollTarget]="scrollContainer" [offset]="1600" (load)="imageLoadedFn()">
         </div>
 
-        <div *ngIf="quoteData.story !== null" class="story">
-            <p><i class="fa fa-quote-left"></i>&nbsp;&nbsp;{{ quoteData.story | ellipsis: 150 }}</p>
+        <div *ngIf="quoteData.is_memory" class="story" (click)="openStory()" [ngClass]="{ 'expand': isFullStory }" #storyContainer>
+            <p #paragraphStory><i class="fa fa-quote-left"></i>&nbsp;&nbsp;{{ quoteData.story | ellipsis: ellipsisLength }}</p>
         </div>
     </div>
 </div>

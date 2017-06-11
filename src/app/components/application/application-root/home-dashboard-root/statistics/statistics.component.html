@@ -2,7 +2,7 @@
     <h1 class="title">Some numbers.</h1>
     <div id="statistics">
         <div class="statistic">
-            <p class="type"><i class="fa fa-quote-left"></i>&nbsp;&nbsp;Amount of memories</p>
+            <p class="type"><i class="fa fa-quote-left"></i>&nbsp;&nbsp;memories</p>
             <p class="amount" *ngIf="!stats.memory_count">{{ stats.memory_count }}</p>
             <p class="amount" *ngIf="stats.memory_count" counto [step]="30" [countTo]="stats.memory_count" [countFrom]="0" [duration]="0.7"
                 (countoChange)="memories = $event">{{ memories | number:'1.0-0'}}</p>
@@ -11,7 +11,7 @@
         <span class="vertical-separator"></span>
 
         <div class="statistic">
-            <p class="type"><i class="fa fa-book"></i>&nbsp;&nbsp;Amount of books</p>
+            <p class="type"><i class="fa fa-book"></i>&nbsp;&nbsp;books</p>
             <p class="amount" *ngIf="!stats.book_count">{{ stats.book_count }}</p>
             <p class="amount" *ngIf="stats.book_count" counto [step]="30" [countTo]="stats.book_count" [countFrom]="0" [duration]="0.7"
                 (countoChange)="books = $event">{{ books | number:'1.0-0' }}</p>
@@ -20,19 +20,19 @@
         <span class="vertical-separator"></span>
 
         <div class="statistic">
-            <p class="type"><i class="fa fa-link"></i>&nbsp;&nbsp;Amount of shared memories</p>
+            <p class="type"><i class="fa fa-link"></i>&nbsp;&nbsp;shared memories</p>
             <p class="amount" *ngIf="!stats.shared_count">{{ stats.shared_count }}</p>
             <p class="amount" *ngIf="stats.shared_count" counto [step]="30" [countTo]="stats.shared_count" [countFrom]="0" [duration]="0.7"
-                (countoChange)="books = $event">{{ books | number:'1.0-0' }}</p>
+                (countoChange)="shared_memories = $event">{{ shared_memories | number:'1.0-0' }}</p>
         </div>
 
         <span class="vertical-separator"></span>
 
         <div class="statistic">
-            <p class="type"><i class="fa fa-print"></i>&nbsp;&nbsp;Amount of printed memories</p>
+            <p class="type"><i class="fa fa-print"></i>&nbsp;&nbsp;printed memories</p>
             <p class="amount" *ngIf="!stats.printed_memories_count">{{ stats.printed_memories_count }}</p>
             <p class="amount" *ngIf="stats.printed_memories_count" counto [step]="30" [countTo]="stats.printed_memories_count" [countFrom]="0"
-                [duration]="0.7" (countoChange)="books = $event">{{ books | number:'1.0-0' }}</p>
+                [duration]="0.7" (countoChange)="printed = $event">{{ printed | number:'1.0-0' }}</p>
         </div>
     </div>
 </div>
