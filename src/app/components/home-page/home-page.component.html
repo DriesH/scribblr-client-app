@@ -21,61 +21,35 @@
         </section>
     </header>
 
+
+
+
+
     <section class="section" id="section1" #bookSection>
-        <div class="section-information" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
-            <div class="info-textbox">
-                <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;What is Scribblr?</h1>
-                <h3>Scribblr is the place where you can collect all your memories of your children. Got any funny quotes or amazing stories you never want to forget?
-                    <br> We'll take care of that.
-                </h3>
-
-                <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;Why should you use it?</h1>
-                <h3>Never lose funny moments with your children again. </h3>
-            </div>
-
-            <div class="quotes" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
-                <div class="quote">
-                    <img src="/assets/homepage/quote--1.jpg" alt="">
-                </div>
-                <div class="quote">
-                    <img src="/assets/homepage/quote--3.jpg" alt="">
-                </div>
-                <div class="quote">
-                    <img src="/assets/homepage/quote--2.jpg" alt="">
-                </div>
-                <div class="quote">
-                    <img src="/assets/homepage/quote--4.jpg" alt="">
-                </div>
+        <div class="first-section">
+            <div class="heading-write-up">
+                <h1 class="title">What is Scribblr?</h1>
+                <hr class="underline">
             </div>
         </div>
     </section>
 
+
+
+
+
     <section class="section" id="section2">
-
-        <div class="books" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
-            <div class="book">
-                <img src="/assets/homepage/book1.png" alt="book">
-            </div>
-            <div class="book">
-                <img src="/assets/homepage/book2.png" alt="book">
-            </div>
-            <div class="book">
-                <img src="/assets/homepage/book3.png" alt="book">
-            </div>
-            <div class="book">
-                <img src="/assets/homepage/book4.png" alt="book">
-            </div>
-        </div>
-
-        <div>
-            <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;Print the real thing!</h1>
-            <h3>With a few clicks you can print your memories in a high quality book.</h3>
-        </div>
     </section>
 
     <section class="section" id="section3">
-
     </section>
+
+    <footer class="footer">
+        <a routerLink="/home" class="logo">
+            <img src="/assets/logos/logo-svg-white.svg" alt="logo">
+            <p>Scribblr Inc. © 2017</p>
+        </a>
+    </footer>
 
 </div>
 
@@ -98,3 +72,53 @@
 <p>That one amazing day at the seaside, their first day of school or the day they make the most beautiful drawing.</p>
 <br>
 <p>All these memories are worth saving! With Scribblr this is only a matter of seconds.</p>-->
+
+
+<!--<div class="section-information" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
+    <div class="info-textbox">
+        <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;What is Scribblr?</h1>
+        <h3>Scribblr is the place where you can collect all your memories of your children. Got any funny quotes or amazing stories
+            you never want to forget?
+            <br> We'll take care of that.
+        </h3>
+
+        <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;Why should you use it?</h1>
+        <h3>Never lose funny moments with your children again. </h3>
+    </div>
+
+    <div class="quotes" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
+        <div class="quote">
+            <img src="/assets/homepage/quote--1.jpg" alt="">
+        </div>
+        <div class="quote">
+            <img src="/assets/homepage/quote--3.jpg" alt="">
+        </div>
+        <div class="quote">
+            <img src="/assets/homepage/quote--2.jpg" alt="">
+        </div>
+        <div class="quote">
+            <img src="/assets/homepage/quote--4.jpg" alt="">
+        </div>
+    </div>
+</div>-->
+
+
+<!--<div class="books" [ngClass]="{ 'show': showBooks, 'hide': !showBooks }">
+    <div class="book">
+        <img src="/assets/homepage/book1.png" alt="book">
+    </div>
+    <div class="book">
+        <img src="/assets/homepage/book2.png" alt="book">
+    </div>
+    <div class="book">
+        <img src="/assets/homepage/book3.png" alt="book">
+    </div>
+    <div class="book">
+        <img src="/assets/homepage/book4.png" alt="book">
+    </div>
+</div>
+
+<div>
+    <h1 class="title"><i class="fa fa-quote-left blue"></i>&nbsp;Print the real thing!</h1>
+    <h3>With a few clicks you can print your memories in a high quality book.</h3>
+</div>-->

@@ -1,11 +1,14 @@
 <div class="nav-link">
     <p>Hello, {{ currentUser?.first_name }}</p>
     <a routerLink="/application">Application</a>
+    <a (click)="logout()" style="cursor:pointer;">
+        Sign out&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg" style="color: white; cursor:pointer;"></i>
+    </a>
 </div>
 
 <div class="mobile">
-    <a (click)="logout()">
-        Sign out&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg" style="color: white;"></i>
+    <a (click)="logout()" style="cursor:pointer;">
+        Sign out&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg" style="color: white; cursor:pointer;"></i>
     </a>
 </div>
 

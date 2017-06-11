@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 @Component({
     selector: 'scrblr-home-page',
     templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.scss', './home.media.scss']
+    styleUrls: ['./home-page.component.scss', './home.media.scss', './home-page.keyframes.scss']
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 

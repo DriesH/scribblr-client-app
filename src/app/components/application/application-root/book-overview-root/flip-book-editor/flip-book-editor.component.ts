@@ -220,6 +220,10 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
             return;
         }
 
+        if (this.currentPage === 0) {
+            this.changeTool(this.children[0].short_id);
+        }
+
         this.currentPage++;
 
         this.isMemoryBoolean = this.isMemory(this.book, this.currentPage);
@@ -271,6 +275,8 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     returnToPreviousPage() {
         this.currentPage = this.previousPageIndex;
+
+        this.changeTool(this.children[0].short_id);
 
         this.previousPageIndex = null;
     }

@@ -33,9 +33,11 @@ p {
     z-index: 25;
     overflow: hidden;
     padding: 50px;
+    box-sizing: border-box;
 }
 
-#section2 {
+#section2,
+#section3 {
     position: relative;
     height: 760px;
     display: flex;
@@ -43,7 +45,38 @@ p {
     align-items: center;
     z-index: 20;
     overflow: hidden;
+    box-sizing: border-box;
     background-color: $main-color-two;
+}
+
+.footer {
+    height: 150px;
+    width: 100%;
+    background-color: $main-color-one;
+    padding: 0 150px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-decoration: none;
+
+        img {
+            width: 100px;
+        }
+
+        p {
+            font-family: 'Poppins';
+            color: white;
+            margin: 5px 0 0;
+            font-size: 12px;
+        }
+    }
 }
 
 .main-title {
@@ -163,148 +196,28 @@ p {
 }
 
 .section {
-    .section-information {
-        width: 75%;
-        margin: 0 auto;
-        opacity: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .title {
-            font-size: 3rem;
-            text-align: right;
-
-            i {
-                color: $main-color-four;
-            }
-        }
-
-        .info-textbox {
-            max-width: 680px;
-
-            h3 {
-                font-weight: normal;
-                font-size: 1.2rem;
-                text-align: right;
-            }
-
-            p {
-                line-height: 1.5rem;
-                text-align: right;
-            }
-        }
-
-
-        &.hide {
-            animation: fadeOutRight 400ms ease-out forwards;
-        }
-
-        &.show {
-            animation: fadeInRight 400ms ease-out forwards;
-        }
-    }
+    width: 1280px;
+    margin: 0 auto;
 }
 
-.quotes {
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    user-select: none;
-    flex-wrap: wrap;
+.first-section {
+    width: 100%;
 
-    &.show {
-        animation: forwards 400ms ease-out fadeInLeft;
-    }
-
-    &.hide {
-        animation: forwards 400ms ease-out fadeOutLeft;
-    }
-
-    .quote {
-        width: 250px;
+    .heading-write-up {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-        }
-    }
-}
-
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(-250px);
     }
 
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeOutRight {
-    0% {
-        opacity: 1;
-        transform: translateX(0);
+    .title {
+        letter-spacing: -4px;
+        line-height: 5rem;
     }
 
-    100% {
-        opacity: 0;
-        transform: translateX(-250px);
-    }
-}
-
-@keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(250px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeOutLeft {
-    0% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(250px);
-    }
-}
-
-@keyframes bookFadeIn {
-    0% {
-        opacity: 0;
-        transform: rotate(5deg) translate(235px, 535px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: rotate(5deg) translate(235px, 135px);
-    }
-}
-
-@keyframes bookFadeOut {
-    0% {
-        opacity: 1;
-        transform: rotate(5deg) translate(235px, 135px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: rotate(5deg) translate(235px, 535px);
+    .underline {
+        border: 2px solid #5E94E5;
+        width: 60px;
+        margin: 15px 0 0;
     }
 }
