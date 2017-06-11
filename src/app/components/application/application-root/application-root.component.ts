@@ -11,7 +11,6 @@ import { Store } from '@ngrx/store';
 import * as ChildActions from '../../../ngrx-state/actions/child.action';
 import * as ApplicationUIActions from '../../../ngrx-state/actions/application-ui.action';
 
-
 import { EasterEggService } from '../../../services/easter-egg/easter-egg.service';
 
 @Component({

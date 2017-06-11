@@ -58,15 +58,7 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
         });
     }
 
-    ngAfterViewInit() {
-        this._bs.getAllBooks().subscribe(res => {
-            if (res.books.length <= 0) {
-                this.noBooks = true;
-            }
-            this.books = res.books;
-            this.isLoading = false;
-        });
-    }
+    ngAfterViewInit() { }
 
     initMasonry() {
         this.msnry = new Masonry(this.bookContainer.nativeElement, {

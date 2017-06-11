@@ -71,7 +71,10 @@
                 <hr>
                 <p class="total-price">Total price: <span class="price-tag">{{ totalPrice | currency:'EUR':true }}</span></p>
                 <div class="button-container">
-                    <button class="checkout-btn" (click)="payCart(currentItemsInCart)"><i class="fa fa-paypal"></i> Pay with paypal</button>
+                    <button class="checkout-btn" (click)="payCart(currentItemsInCart)">
+                        <span *ngIf="!isCheckingOut"><i class="fa fa-paypal"></i> Pay with paypal</span>
+                        <span *ngIf="isCheckingOut"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    </button>
                 </div>
             </div>
         </div>

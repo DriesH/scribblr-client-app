@@ -9,6 +9,9 @@ import { CheckOutService } from '../../../../services/application-services/check
 
 import * as CartActions from '../../../../ngrx-state/actions/cart.action';
 
+import { NotificationsService } from 'angular2-notifications';
+import { NotificationConfig } from '../notifications/config';
+
 interface CurrentUser {
     first_name: string;
     last_name: string;
@@ -43,10 +46,15 @@ export class CheckOutRootComponent implements OnInit {
         country: null
     };
 
+    isCheckingOut = false;
+
+    _config = NotificationConfig;
+
     constructor(private store: Store<any>,
         private _cos: CheckOutService,
         private location: Location,
-        private _us: UserService
+        private _us: UserService,
+        private _ns: NotificationsService
     ) { }
 
     ngOnInit() {
@@ -94,9 +102,16 @@ export class CheckOutRootComponent implements OnInit {
     }
 
     payCart(cartData) {
-        console.log(cartData);
+        if (this.isCheckingOut) {
+            return;
+        }
+        this.isCheckingOut = true;
+
         this._cos.checkOut({ books: cartData }).subscribe(res => {
+            console.log(res);
+            this._ns.success('Payment successfull!', 'We have sent you a confirmation email with additional details.');
             this.store.dispatch(new CartActions.ClearCart({}));
+            this.isCheckingOut = false;
         });
     }
 

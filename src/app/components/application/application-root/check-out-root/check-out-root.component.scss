@@ -197,6 +197,10 @@
     margin-top: 20px;
 }
 
+.fa-truck {
+    transform: rotateY(180deg);
+}
+
 .checkout-btn {
     border: none;
     border-radius: 3px;
@@ -209,9 +213,18 @@
     font-weight: bold;
     text-transform: uppercase;
 
+    &:focus {
+        outline: none;
+    }
+
     &:hover {
         background-color: lighten($main-color-four, 5%);
         box-shadow: 0 4px 0 darken($main-color-four, 5%);
+    }
+
+    &:active {
+        background-color: darken($main-color-four, 5%);
+        box-shadow: 0 2px 0 darken($main-color-four, 15%);
     }
 }
 
