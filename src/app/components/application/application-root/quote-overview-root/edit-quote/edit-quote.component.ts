@@ -29,6 +29,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('userImg') userImg: ElementRef;
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
+    @ViewChild('imgClickUpload') imgClickUpload: ElementRef;
 
     csdkImageEditor;
     searchIsActive = false;
@@ -254,7 +255,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         c.width = 1680;
         c.height = 1050;
 
-        ctx.fillStyle = 'rgb(45,51,56)';
+        ctx.fillStyle = 'rgb(94,148,229)';
         ctx.fillRect(0, 0, c.width, c.height);
 
         fontSize = c.height / 15;
@@ -268,8 +269,8 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         // Set the text color.
         ctx.fillStyle = 'white';
 
-        ctx.fillText('Select an image on your computer', c.width / 2, (c.height / 2) - (fontSize / 2));
-        ctx.fillText('and drop it on the page!', c.width / 2, (c.height / 2) + (fontSize / 2));
+        ctx.fillText('Drag and drop an image', c.width / 2, (c.height / 2) - (fontSize / 2));
+        ctx.fillText('or click here.', c.width / 2, (c.height / 2) + (fontSize / 2));
     }
 
     /**
@@ -419,5 +420,23 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.pexelsLoading = false;
             });
         }
+    }
+
+    clickToUpload(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.imgClickUpload.nativeElement.click();
+    }
+
+    getFileData() {
+        let fr = new FileReader();
+
+        if (this.imgClickUpload.nativeElement.files.length) {
+            fr.readAsDataURL(this.imgClickUpload.nativeElement.files[0]);
+        }
+
+        fr.addEventListener('load', () => {
+            this.userImg.nativeElement.src = fr.result;
+        });
     }
 }

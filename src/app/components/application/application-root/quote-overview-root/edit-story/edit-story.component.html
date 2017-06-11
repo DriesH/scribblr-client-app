@@ -22,10 +22,6 @@
             </button>
         </div>
 
-
-
-
-
         <div class="new-story-preview--container">
             <div class="preview-image--container" *ngIf="presetPickerActive">
                 <div class="image-loading" *ngIf="imageLoading">
@@ -35,8 +31,8 @@
             </div>
 
             <div class="preview-image--container" *ngIf="!presetPickerActive">
-                <div class="placeholder" *ngIf="notDropped">
-                    <p>Drag and drop an image</p>
+                <div class="placeholder" *ngIf="notDropped" (click)="clickToUpload($event)">
+                    <p>Drag and drop an image, or click here.</p>
                 </div>
                 <div class="image-loading" *ngIf="imageLoading">
                     <span class="loading-spinner"></span>

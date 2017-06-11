@@ -108,5 +108,5 @@
         </div>
     </div>
 
-    <input type="file" hidden #imgClickUpload>
+    <input type="file" accept="image/*" hidden #imgClickUpload (change)="getFileData($event)">
 </div>

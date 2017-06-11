@@ -63,6 +63,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('previewCanvas') previewCanvas: ElementRef;
     @ViewChild('dropzone') dropzone: ElementRef;
     @ViewChild('aviaryImage') aviaryImage: ElementRef;
+    @ViewChild('imgClickUpload') imgClickUpload: ElementRef;
 
     constructor(
         private _dz: DropzoneService,
@@ -230,6 +231,24 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.pexelsLoading = false;
             });
         }
+    }
+
+    clickToUpload(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.imgClickUpload.nativeElement.click();
+    }
+
+    getFileData() {
+        let fr = new FileReader();
+
+        if (this.imgClickUpload.nativeElement.files.length) {
+            fr.readAsDataURL(this.imgClickUpload.nativeElement.files[0]);
+        }
+
+        fr.addEventListener('load', () => {
+            this.userImg.nativeElement.src = fr.result;
+        });
     }
 
 }

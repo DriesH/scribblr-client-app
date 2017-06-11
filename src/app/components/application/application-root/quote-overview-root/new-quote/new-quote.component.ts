@@ -250,8 +250,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         // Set the text color.
         ctx.fillStyle = 'white';
 
-        ctx.fillText('Select an image on your computer', c.width / 2, (c.height / 2) - (fontSize / 2));
-        ctx.fillText('and drop it on the page!', c.width / 2, (c.height / 2) + (fontSize / 2));
+        ctx.fillText('Drag and drop an image', c.width / 2, (c.height / 2) - (fontSize / 2));
+        ctx.fillText('or click here.', c.width / 2, (c.height / 2) + (fontSize / 2));
     }
 
     /**
@@ -411,5 +411,17 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         e.preventDefault();
         e.stopPropagation();
         this.imgClickUpload.nativeElement.click();
+    }
+
+    getFileData() {
+        let fr = new FileReader();
+
+        if (this.imgClickUpload.nativeElement.files.length) {
+            fr.readAsDataURL(this.imgClickUpload.nativeElement.files[0]);
+        }
+
+        fr.addEventListener('load', () => {
+            this.userImg.nativeElement.src = fr.result;
+        });
     }
 }
