@@ -65,6 +65,10 @@ const ROUTES: Routes = [
     },
 
     {
+        path: 'application', redirectTo: 'application/home', pathMatch: 'full'
+    },
+
+    {
         path: 'application',
         component: ApplicationRootComponent,
         canActivate: [ AuthGuard ],
