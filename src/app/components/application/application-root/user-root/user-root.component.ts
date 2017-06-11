@@ -50,9 +50,9 @@ export class UserRootComponent implements OnInit {
     }
 
     updateUser(userModel) {
-        console.log('hello', userModel);
+        // console.log('hello', userModel);
         this._us.updateUser(userModel).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.store.dispatch(new UserActions.UpdateUser({ user: res.user }));
             this._ns.success('Successfully updated your profile!');
             this.router.navigate(['application']);

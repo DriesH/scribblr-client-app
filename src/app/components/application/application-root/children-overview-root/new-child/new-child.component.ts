@@ -64,7 +64,7 @@ export class NewChildComponent implements OnInit {
     ngOnInit() {
         this.addEventListeners();
 
-        console.log(this.imageData);
+        // console.log(this.imageData);
     }
 
     addEventListeners() {
@@ -82,7 +82,7 @@ export class NewChildComponent implements OnInit {
         try {
             quoteInput.focus();
         } catch (e) {
-            console.log('no quoteInput');
+            // console.log('no quoteInput');
         }
 
         this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: false }));

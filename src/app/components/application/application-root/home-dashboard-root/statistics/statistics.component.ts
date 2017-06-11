@@ -23,12 +23,12 @@ export class StatisticsComponent implements OnInit {
 
     ngOnInit() {
         this._ss.getStats().subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.stats.book_count = res.book_count;
             this.stats.memory_count = res.memory_count;
             this.stats.shared_count = res.shared_count;
             this.stats.printed_memories_count = res.printed_memories_count;
-            console.log(this.stats);
+            // console.log(this.stats);
 
         });
     }

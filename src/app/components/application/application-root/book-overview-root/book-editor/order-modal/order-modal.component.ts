@@ -34,7 +34,7 @@ export class OrderModalComponent implements OnInit {
     saveAndOrderBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
             this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
@@ -48,7 +48,7 @@ export class OrderModalComponent implements OnInit {
     order(bookShortId, bookModel, book) {
         bookModel.book = book;
         this._bs.editBook(bookShortId, bookModel).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {

@@ -60,10 +60,10 @@ export class RegistrationFormComponent implements OnInit {
                         this.router.navigate(['/application']);
                     })
                     .catch(error => {
-                        console.log(error);
+                        // console.log(error);
                     });
             } else {
-                console.log(res);
+                // console.log(res);
             }
         });
     }

@@ -92,7 +92,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
         });
 
         this.store.select('QUOTES').subscribe((QUOTES: any) => {
-            console.log('QUOTES has changes, ', QUOTES);
+            // console.log('QUOTES has changes, ', QUOTES);
 
             this.posts = QUOTES.posts;
         });
@@ -102,7 +102,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     initMasonry() {
-        console.log('initMasonry');
+        // console.log('initMasonry');
 
         this.msnry = {};
 
@@ -118,7 +118,7 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
     }
 
     reloadMasonry() {
-        console.log('reloadMasonry');
+        // console.log('reloadMasonry');
         this.msnry.layout();
     }
 
@@ -139,13 +139,13 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             this.facebook.ui(shareData.fbData).then((resFb: UIResponse) => {
                 // console.log(resFb);
             }).catch((e: any) => {
-                console.log(e);
+                // console.log(e);
             });
         });
     }
 
     changeFilter(event) {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         if (event.target.value !== 'null') {
             this.filterProperty.is_memory = +event.target.value;
             setTimeout(() => {

@@ -42,7 +42,7 @@ export function ChildReducer(state = initialState, action: Action) {
                 }
             });
 
-            console.log('index: ', index);
+            // console.log('index: ', index);
 
             return {
                 children: [

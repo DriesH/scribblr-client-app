@@ -19,7 +19,7 @@ export class HomeDashboardRootComponent implements OnInit {
 
     ngOnInit() {
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
-            console.log('children state changed home dashboord', CURRENT_CHILDREN);
+            // console.log('children state changed home dashboord', CURRENT_CHILDREN);
 
             if (CURRENT_CHILDREN.receivedCall) {
                 if (CURRENT_CHILDREN.children.length > 0) {
@@ -27,7 +27,7 @@ export class HomeDashboardRootComponent implements OnInit {
                     this.noChildren = false;
                     this.quickStartActive = false;
                 } else {
-                    console.log('quickstart active no children');
+                    // console.log('quickstart active no children');
                     this.noChildren = true;
                     this.quickStartActive = true;
                 }

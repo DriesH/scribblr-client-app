@@ -48,7 +48,7 @@ export class ErrorHandlerService {
 
     // Delegate errors to function handlers.
     public handler(error: Error) {
-        console.log(error);
+        // console.log(error);
         switch (error.error_type) {
             case errorTypes.MODEL_NOT_FOUND:
                 this.modelNotFound(error);
@@ -204,7 +204,7 @@ export class ErrorHandlerService {
     }
 
     private noPosts(error: Error) {
-        console.log(error);
+        // console.log(error);
         // Contents for alert box.
         const _errorMsg = {
             title: 'No posts!',

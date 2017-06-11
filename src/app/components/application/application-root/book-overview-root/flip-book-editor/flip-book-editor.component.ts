@@ -171,10 +171,10 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
 
     isMemory(book, currentPageNumber) {
         if (book[currentPageNumber - 1].is_memory === 1) {
-            console.log('boolean is memory', true);
+            // console.log('boolean is memory', true);
             return true;
         } else {
-            console.log('boolean is memory', false);
+            // console.log('boolean is memory', false);
             return false;
         }
     }
@@ -209,7 +209,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
             originalShortId: this.book[this.currentPage - 1].short_id,
         };
 
-        console.log(dataEvent);
+        // console.log(dataEvent);
         this.store.dispatch(new FlipBookActions.UpdateFlipBookPage(dataEvent));
         this.store.dispatch(new FlipBookActions.RemoveFromFlipBookPostList({ shortId: $event.dragData.short_id }));
     }

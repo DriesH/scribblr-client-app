@@ -24,7 +24,7 @@ export class QuickStartComponent implements OnInit {
         });
 
         setTimeout(() => {
-            console.log('done loading quick start');
+            // console.log('done loading quick start');
             this.doneLoading.emit(true);
         }, 300);
     }

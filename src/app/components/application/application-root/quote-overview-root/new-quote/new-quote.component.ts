@@ -232,7 +232,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     */
     changeImage(e, original_url) {
         e.preventDefault();
-        console.log('changeImage');
+        // console.log('changeImage');
         this.quoteModel.selectedPreset = original_url;
     }
 
@@ -323,12 +323,12 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     * @param e: Event
     */
     startAviary(e) {
-        console.log(e);
+        // console.log(e);
 
         this.csdkImageEditor.launch({
             image: this.userImg.nativeElement.id
         });
-        console.log('startAviary');
+        // console.log('startAviary');
     }
 
     /**
@@ -337,8 +337,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     * @param newURL; String
     */
     saveToAviary(imageID, newURL) {
-        console.log('newURL: ', newURL);
-        console.log('imageID: ', imageID);
+        // console.log('newURL: ', newURL);
+        // console.log('imageID: ', imageID);
         this.canvasLoading = true;
 
         let img = new Image();
@@ -361,7 +361,7 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     * @param errorObj: Object
     */
     errorSavingToAviary(errorObj) {
-        console.log('erroooor');
+        // console.log('erroooor');
     }
 
     /**
@@ -403,14 +403,14 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
             this.pexelsLoading = true;
             this.oldSearchQuery = searchQuery;
             this._pas.searchImages(searchQuery).subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.pexelsImgs = res.photos;
                 this.pexelsLoading = false;
             });
         } else if (event.type === 'click') {
             this.pexelsLoading = true;
             this._pas.searchImages(searchQuery).subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.pexelsImgs = res.photos;
                 this.pexelsLoading = false;
             });

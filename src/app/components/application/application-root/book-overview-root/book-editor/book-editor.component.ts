@@ -166,10 +166,10 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
 
         for (i = 0; i < 2; i++) {
             if (book[currentPageNumber - 1][i].is_memory === 1) {
-                console.log('boolean is memory', true);
+                // console.log('boolean is memory', true);
                 return true;
             } else {
-                console.log('boolean is memory', false);
+                // console.log('boolean is memory', false);
                 return false;
             }
         }
@@ -223,7 +223,7 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             };
         }
 
-        console.log(dataEvent);
+        // console.log(dataEvent);
         this.store.dispatch(new BookActions.UpdateBookPage(dataEvent));
         this.store.dispatch(new BookActions.RemoveFromPostList({ shortId: $event.dragData.short_id }));
     }

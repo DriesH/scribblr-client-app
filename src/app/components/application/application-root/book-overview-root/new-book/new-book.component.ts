@@ -103,7 +103,7 @@ export class NewBookComponent implements OnInit {
                 break;
             case 'flip-over':
                 this._bs.autoGenerateNewFlipBook().subscribe(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.store.dispatch(new FlipBookActions.FlipBookDataReceived(res.book));
                     this.store.dispatch(new FlipBookActions.FlipBookPostsDataReceived(res.all_marked_posts));
 

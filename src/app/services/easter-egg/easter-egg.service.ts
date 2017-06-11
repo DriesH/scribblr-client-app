@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
 export class EasterEggService {
 
     easterEgg(e) {
-        console.log(e);
+        // console.log(e);
     }
 }

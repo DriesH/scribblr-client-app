@@ -28,7 +28,7 @@ export class SaveModalComponent implements OnInit {
     saveBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {
@@ -40,7 +40,7 @@ export class SaveModalComponent implements OnInit {
     editBook(bookShortId, bookModel, book) {
         bookModel.book = book;
         this._bs.editBook(bookShortId, bookModel).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {

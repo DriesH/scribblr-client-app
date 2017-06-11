@@ -109,7 +109,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit() {
         this.attachEventListeners();
-        console.log('After init:', this.userImg);
+        // console.log('After init:', this.userImg);
     }
 
     attachEventListeners() {
@@ -164,7 +164,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
      * @param e: Event
      */
     startAviary(e) {
-        console.log(e);
+        // console.log(e);
 
         this.imageLoading = true;
         this.notDropped = false;
@@ -172,7 +172,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         this.csdkImageEditor.launch({
             image: this.userImg.nativeElement.id
         });
-        console.log('startAviary');
+        // console.log('startAviary');
     }
 
     /**
@@ -182,7 +182,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
      */
     saveToAviary(imageID, newURL) {
         this.hideUserImage = true;
-        console.log(this.hideUserImage);
+        // console.log(this.hideUserImage);
         this.aviaryImage.nativeElement.src = newURL;
         this.storyModel.img_baked = newURL;
 
@@ -194,7 +194,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
      * @param errorObj: Object
      */
     errorSavingToAviary(errorObj) {
-        console.log('erroooor');
+        // console.log('erroooor');
     }
 
     /**
@@ -220,7 +220,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
     changeImage(e, original_url) {
         e.preventDefault();
         this.imageLoading = true;
-        console.log('changeImage');
+        // console.log('changeImage');
         this.storyModel.img_baked = original_url;
     }
 
@@ -229,14 +229,14 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
             this.pexelsLoading = true;
             this.oldSearchQuery = searchQuery;
             this._pas.searchImages(searchQuery).subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.pexelsImgs = res.photos;
                 this.pexelsLoading = false;
             });
         } else if (event.type === 'click') {
             this.pexelsLoading = true;
             this._pas.searchImages(searchQuery).subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.pexelsImgs = res.photos;
                 this.pexelsLoading = false;
             });

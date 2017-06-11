@@ -108,7 +108,7 @@ export class CheckOutRootComponent implements OnInit {
         this.isCheckingOut = true;
 
         this._cos.checkOut({ books: cartData }).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this._ns.success('Payment successfull!', 'We have sent you a confirmation email with additional details.');
             this.store.dispatch(new CartActions.ClearCart({}));
             this.isCheckingOut = false;

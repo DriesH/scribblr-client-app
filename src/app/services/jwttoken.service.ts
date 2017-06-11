@@ -11,10 +11,10 @@ export class JWTTokenService {
 
         return new Promise((resolve, reject) => {
             if (localStorage.getItem('_token')) {
-                console.log('Success storing token.');
+                // console.log('Success storing token.');
                 resolve('success');
             } else {
-                console.log('Error storing token.');
+                // console.log('Error storing token.');
                 reject(Error);
             }
         });
@@ -25,10 +25,10 @@ export class JWTTokenService {
 
         return new Promise((resolve, reject) => {
             if (_token) {
-                console.log('Success getting token.');
+                // console.log('Success getting token.');
                 resolve(_token);
             } else {
-                console.log('Error getting token.');
+                // console.log('Error getting token.');
                 reject(Error);
             }
         });

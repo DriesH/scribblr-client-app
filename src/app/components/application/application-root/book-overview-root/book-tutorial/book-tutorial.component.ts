@@ -80,14 +80,14 @@ export class BookTutorialComponent implements OnInit {
 
     skipTutorial() {
         this._ts.skipTutorial().subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.closeTutorialFn();
         });
     }
 
     completedTutorial() {
         this._ts.completedTutorial().subscribe(res => {
-            console.log(res);
+            // console.log(res);
 
             this.currentUser = Object.assign({}, this.currentUser, { has_seen_book_tutorial: 1 });
 

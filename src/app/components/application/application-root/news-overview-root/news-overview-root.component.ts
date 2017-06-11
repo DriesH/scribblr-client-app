@@ -21,7 +21,7 @@ export class NewsOverviewRootComponent implements OnInit {
 
         this._ns.getAllNews()
             .subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.news = res.news;
                 this.newsIsLoading = false;
             });
@@ -31,7 +31,7 @@ export class NewsOverviewRootComponent implements OnInit {
 
     hasReadAll() {
         this._ns.readAll().subscribe(res => {
-            console.log(res);
+            // console.log(res);
         });
     }
 

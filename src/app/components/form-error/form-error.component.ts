@@ -35,7 +35,7 @@ export class FormErrorComponent implements OnInit {
         }
 
         if (errors.maxlength !== undefined) {
-            console.log(errors);
+            // console.log(errors);
             this.message.length = 'Min length is ';
         }
     }
