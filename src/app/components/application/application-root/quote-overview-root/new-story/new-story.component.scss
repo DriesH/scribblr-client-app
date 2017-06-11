@@ -11,6 +11,10 @@
     background: #DEE0E3;
     z-index: 30;
 
+    .title {
+        font-size: 2rem;
+    }
+
     .close-cross {
         cursor: pointer;
         width: 25px;

@@ -5,19 +5,10 @@
 
     <div class="new-quote--container">
         <div class="form--container">
+            <h1 class="title">Edit quote for {{ child?.full_name }}</h1>
             <form (ngSubmit)="editQuote(previewCanvas)" #newQuoteForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Quote<span style="color:red">*</span></label>
-                    <!--<input type="text"
-                        name="quote"
-                        id="quote"
-                        #quote="ngModel"
-                        [(ngModel)]="quoteModel.quote"
-                        (keyup)="updateCanvasOnKeyup()"
-                        (change)="updateCanvasOnChange()"
-                        autofocus
-                        required
-                    >-->
                     <textarea name="quote" class="quote-input" id="quote" placeholder="Start typing your quote..." #quote="ngModel" [(ngModel)]="quoteModel.quote"
                         (keyup)="updateCanvasOnKeyup()" (change)="updateCanvasOnChange()" autofocus required [maxLength]="100"></textarea>
 

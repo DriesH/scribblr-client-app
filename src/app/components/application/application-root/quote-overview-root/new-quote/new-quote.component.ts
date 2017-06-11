@@ -58,6 +58,8 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     isUploading = false;
 
+    child;
+
     constructor(
         private _dz: DropzoneService,
         private _qs: QuoteService,
@@ -90,6 +92,14 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.route.parent.params.subscribe(params => {
             this.childShortId = params.short_id_child;
+        });
+
+        this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
+            CURRENT_CHILDREN.children.forEach((child, key) => {
+                if (child.short_id === this.childShortId) {
+                    this.child = child;
+                }
+            });
         });
     }
 

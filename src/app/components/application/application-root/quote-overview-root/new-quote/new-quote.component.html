@@ -3,8 +3,10 @@
         <img src="/assets/icons/cross.svg">
     </a>
 
+
     <div class="new-quote--container">
         <div class="form--container">
+            <h1 class="title">New quote for {{ child?.full_name }}</h1>
             <form (ngSubmit)="addNewQuote(previewCanvas)" #newQuoteForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Quote<span style="color:red">*</span></label>

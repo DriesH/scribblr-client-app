@@ -58,6 +58,8 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     pexelsLoading = false;
     oldSearchQuery = '';
 
+    child;
+
     constructor(
         private _dz: DropzoneService,
         private _qs: QuoteService,
@@ -109,6 +111,14 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
                                                          this.quoteShortId,
                                                          item.img_original_url_id
                                                      );
+                }
+            });
+        });
+
+        this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
+            CURRENT_CHILDREN.children.forEach((child, key) => {
+                if (child.short_id === this.childShortId) {
+                    this.child = child;
                 }
             });
         });
