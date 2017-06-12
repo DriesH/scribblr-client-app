@@ -20,7 +20,7 @@
         margin: 0 10px -3px;
         font-family: 'Open Sans', Arial;
         -moz-appearance: none;
-        -webkit-appearance:none;
+        -webkit-appearance: none;
         text-align: center;
 
         &:focus {
@@ -32,7 +32,6 @@
         border-bottom: 2px dotted red;
     }
 
-
     button {
         width: auto;
         height: 40px;
@@ -40,11 +39,34 @@
         margin-left: 30px;
     }
 
-    p, select {
+    p,
+    select {
         font-size: 1.8rem;
     }
 
     p {
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #quick-access {
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        select {
+            margin: 0;
+        }
+
+        p,
+        select {
+            font-size: 1.2rem;
+        }
+
+        button {
+            margin: 20px 0;
+        }
     }
 }

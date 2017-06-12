@@ -1,0 +1,9 @@
+@media screen and (max-width: 480px) {
+    #sidebar {
+        z-index: 50;
+
+        .close-btn {
+            display: block !important;
+        }
+    }
+}

@@ -8,4 +8,28 @@
     .grid-sizer {
         width: 100%;
     }
+
+    .child-infomatics--container {
+        height: auto;
+        flex-direction: column;
+
+        .button--container {
+            margin-bottom: 10px;
+        }
+
+        .row1 {
+            margin-bottom: 10px;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            .title, .filters {
+                width: 45%;
+                position: initial !important;
+                transform: translate(0) !important;
+            }
+        }
+
+    }
 }

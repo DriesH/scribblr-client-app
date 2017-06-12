@@ -10,11 +10,13 @@
 
 @media screen and (min-width: 300px) and (max-width: 739px) {
     .main-title {
-        font-size: 25px;
+        font-size: 2.2rem !important;
     }
 
     .sub-title {
-        font-size: 15px;
+        width: 75%;
+        margin: 0 auto;
+        font-size: 1.2rem !important;
     }
 
     .title-container {
@@ -22,7 +24,6 @@
     }
 
     .button-container {
-        bottom: -35vh;
         left: 50%;
         transform: translateX(-50%);
         position: absolute;
@@ -44,8 +45,12 @@
 
     #intro {
         padding: 20px;
-        height: 100vh;
-        justify-content: space-around;
+        height: 100vh !important;
+        justify-content: space-around !important;
+    }
+
+    .footer {
+        padding: 0 !important;
     }
 }
 
@@ -65,49 +70,6 @@
     .btn-empty,
     .btn-full {
         margin: 0;
-    }
-}
-
-@media screen and (max-width: 940px) {
-    .books {
-        width: 700px;
-
-        .book {
-            width: 325px;
-        }
-
-        .book:nth-child(odd) {
-            margin-right: 5px;
-            margin-bottom: -50px;
-        }
-
-        .book:nth-child(even) {
-            margin-bottom: 5px;
-        }
-    }
-
-    @keyframes bookFadeIn {
-        0% {
-            opacity: 0;
-            transform: rotate(5deg) translate(225px, 535px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: rotate(5deg) translate(225px, -15px);
-        }
-    }
-
-    @keyframes bookFadeOut {
-        0% {
-            opacity: 1;
-            transform: rotate(5deg) translate(225px, -15px);
-        }
-
-        100% {
-            opacity: 0;
-            transform: rotate(5deg) translate(225px, 535px);
-        }
     }
 }
 

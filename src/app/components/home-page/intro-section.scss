@@ -1,0 +1,93 @@
+@import '../../../scss/colors/colors';
+
+#intro {
+    position: relative;
+    height: 934px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    z-index: 30;
+    box-sizing: border-box;
+}
+
+.main-title {
+    text-align: center;
+    font-family: 'Poppins';
+    letter-spacing: -2px;
+    font-size: 72px;
+    text-shadow: 0 5px 5px rgba(17, 50, 99, 0.45);
+    color: white;
+}
+
+.sub-title {
+    font-size: 30px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    letter-spacing: -1px;
+    text-align: center;
+    text-shadow: 0 3px 5px rgba(17, 50, 99, 0.45);
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.btn-empty,
+.btn-full {
+    display: block;
+    width: 215px;
+    height: 50px;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 100ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn-empty {
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+    border: 3px solid white;
+
+    &:hover {
+        background-color: white;
+        color: $main-color-four;
+    }
+
+    &:active {
+
+    }
+}
+
+.btn-full {
+    margin-left: 20px;
+    font-weight: 600;
+    color: $main-color-four;
+    border: 3px solid white;
+    background-color: white;
+
+    &:hover {
+        color: white;
+        border: 3px solid $main-color-four;
+        background-color: $main-color-four;
+        box-shadow: 0 4px 5px rgba(17, 50, 99, 0.45);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        color: white;
+        border: 3px solid lighten($main-color-four, 10%);
+        background-color: lighten($main-color-four, 10%);
+        box-shadow: 0 1px 3px rgba(17, 50, 99, 0.45);
+        transform: translateY(0);
+    }
+}

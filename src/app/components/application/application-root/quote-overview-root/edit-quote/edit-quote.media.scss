@@ -1,0 +1,53 @@
+@media screen and (max-width: 800px) {
+    #new-quote-overlay {
+        .close-cross {
+            right: 5px !important;
+        }
+    }
+
+    .new-quote--container {
+        flex-direction: column;
+
+        .form--container {
+            width: 100%;
+            margin-bottom: 10px;
+
+            form {
+                width: 100%;
+            }
+        }
+
+        .new-quote-preview--container {
+            width: 100%;
+        }
+    }
+
+    .switch--container {
+        margin-bottom: 10px;
+    }
+
+    .switch-button-text {
+        p {
+            font-size: 0.7rem;
+        }
+    }
+
+    .preset-picker {
+        .preset {
+            width: 30%;
+        }
+    }
+
+    .pexels-link {
+        margin-bottom: 50px;
+    }
+
+    .desktop-btn {
+        display: none;
+    }
+
+    .mobile-btn {
+        display: block;
+        margin: 0 auto;
+    }
+}

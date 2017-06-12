@@ -20,7 +20,7 @@ declare var Aviary: any;
 @Component({
     selector: 'scrblr-edit-quote',
     templateUrl: './edit-quote.component.html',
-    styleUrls: ['./edit-quote.component.scss'],
+    styleUrls: ['./edit-quote.component.scss', './edit-quote.media.scss'],
     providers: [DropzoneService]
 })
 export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -57,6 +57,8 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     pexelsLoading = false;
     oldSearchQuery = '';
+
+    isUploading = false;
 
     child;
 
@@ -390,19 +392,30 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     onAviaryClose(isDirty) {
     }
 
+    updateQuote(canvas) {
+        this.editQuote(canvas);
+    }
+
     editQuote(c: HTMLCanvasElement) {
-        this.quoteData.append('quote', this.quoteModel.quote);
-        this.quoteData.append('font_type', this.quoteModel.font);
+        this.quoteData.set('quote', this.quoteModel.quote);
+        this.quoteData.set('font_type', this.quoteModel.font);
 
         if (this.presetPickerActive) {
-            this.quoteData.append('img_original', this.quoteModel.selectedPreset);
+            this.quoteData.set('img_original', this.quoteModel.selectedPreset);
         } else {
-            this.quoteData.append('img_original', this.aviaryLink);
+            this.quoteData.set('img_original', this.aviaryLink);
         }
 
+        this.isUploading = true;
+
         c.toBlob(blob => {
-            this.quoteData.append('img_baked', blob, 'baked_img.jpg');
-            this._qs.updateQuote(this.childShortId, this.quoteShortId, this.quoteData).subscribe(res => this.dispatchEditQuote(res.quote));
+            this.quoteData.set('img_baked', blob, 'baked_img.jpg');
+            this._qs.updateQuote(this.childShortId, this.quoteShortId, this.quoteData).subscribe(res => {
+                this.isUploading = false;
+                this.dispatchEditQuote(res.quote);
+            }, error => {
+                this.isUploading = false;
+            });
         }, 'image/jpeg', 0.65);
 
     }

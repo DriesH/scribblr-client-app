@@ -5,7 +5,10 @@ import { NewsService } from '../../../../services/application-services/news.serv
 @Component({
     selector: 'scrblr-news-overview-root',
     templateUrl: './news-overview-root.component.html',
-    styleUrls: ['./news-overview-root.component.scss']
+    styleUrls: [
+        './news-overview-root.component.scss',
+        './news.media.scss'
+    ]
 })
 export class NewsOverviewRootComponent implements OnInit {
 
@@ -34,5 +37,4 @@ export class NewsOverviewRootComponent implements OnInit {
             // console.log(res);
         });
     }
-
 }

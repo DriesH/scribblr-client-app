@@ -1,0 +1,35 @@
+.books {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 950px;
+    flex-wrap: wrap;
+    transform: rotate(5deg) translate(235px, 135px);
+    opacity: 0;
+    user-select: none;
+
+    &.show {
+        animation: forwards 400ms ease-out bookFadeIn;
+    }
+
+    &.hide {
+        animation: forwards 400ms ease-out bookFadeOut;
+    }
+
+    .book {
+        width: 450px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .book:nth-child(odd) {
+        margin-right: 15px;
+        margin-bottom: -50px;
+    }
+
+    .book:nth-child(even) {
+        margin-bottom: 15px;
+    }
+}

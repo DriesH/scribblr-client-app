@@ -243,6 +243,15 @@ textarea:focus {
     display: block;
 }
 
+.mobile-btn {
+    display: none;
+}
+
+.desktop-btn {
+    display: block;
+}
+
+
 @keyframes spinning {
     0% {
         transform: rotateZ(0deg);

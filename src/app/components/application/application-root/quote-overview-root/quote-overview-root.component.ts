@@ -93,8 +93,10 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
         this.store.select('QUOTES').subscribe((QUOTES: any) => {
             // console.log('QUOTES has changes, ', QUOTES);
-
             this.posts = QUOTES.posts;
+            setTimeout(() => {
+                this.initMasonry();
+            }, 300);
         });
     }
 

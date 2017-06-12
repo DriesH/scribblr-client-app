@@ -21,8 +21,8 @@ export function QuoteReducer(state = initialState, action: Action) {
             return {
                 ...state,
                 posts: [
-                    ...state.posts,
-                    action.payload.newPost
+                    action.payload.newPost,
+                    ...state.posts
                 ]
             };
 

@@ -3,7 +3,6 @@
         <img src="/assets/icons/cross.svg">
     </a>
 
-
     <div class="new-quote--container">
         <div class="form--container">
             <h1 class="title">New quote for {{ child?.full_name }}</h1>
@@ -49,7 +48,7 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">
+                <button type="submit" class="btn btn-primary btn-color-main desktop-btn" [disabled]="!newQuoteForm.valid">
                     <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
                     <span *ngIf="!isUploading">New quote</span>
                 </button>
@@ -102,6 +101,11 @@
             </ul>
 
             <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
+
+            <button type="submit" class="btn btn-primary btn-color-main mobile-btn" [disabled]="!newQuoteForm.valid" (click)="submitForm(previewCanvas)">
+                <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                <span *ngIf="!isUploading">New quote</span>
+            </button>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 

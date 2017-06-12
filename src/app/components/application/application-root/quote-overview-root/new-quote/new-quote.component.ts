@@ -19,7 +19,7 @@ declare var Aviary: any;
 @Component({
     selector: 'scrblr-new-quote',
     templateUrl: './new-quote.component.html',
-    styleUrls: ['./new-quote.component.scss'],
+    styleUrls: ['./new-quote.component.scss', './new-quote.media.scss'],
     providers: [ DropzoneService ]
 })
 export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -127,8 +127,10 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
         if (!this.presetPickerActive) {
             this._dz.destroy(this.dropzone.nativeElement);
         }
+    }
 
-
+    submitForm(canvas) {
+        this.addNewQuote(canvas);
     }
 
     updateCanvasOnKeyup() {
@@ -373,20 +375,22 @@ export class NewQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
 
     addNewQuote(c: HTMLCanvasElement) {
         this.isUploading = true;
-        this.quoteData.append('quote', this.quoteModel.quote);
-        this.quoteData.append('font_type', this.quoteModel.font);
+        this.quoteData.set('quote', this.quoteModel.quote);
+        this.quoteData.set('font_type', this.quoteModel.font);
 
         if (this.presetPickerActive) {
-            this.quoteData.append('img_original', this.quoteModel.selectedPreset);
+            this.quoteData.set('img_original', this.quoteModel.selectedPreset);
         } else {
-            this.quoteData.append('img_original', this.aviaryLink);
+            this.quoteData.set('img_original', this.aviaryLink);
         }
 
         c.toBlob(blob => {
-            this.quoteData.append('img_baked', blob, 'baked_img.jpg');
+            this.quoteData.set('img_baked', blob, 'baked_img.jpg');
             this._qs.newQuote(this.childShortId , this.quoteData).subscribe(res => {
                 this.isUploading = false;
                 this.dispatchNewQuote(res.quote);
+            }, error => {
+                this.isUploading = false;
             });
         }, 'image/jpeg', 0.65);
 

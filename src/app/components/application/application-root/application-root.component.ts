@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { EasterEggService } from '../../../services/easter-egg/easter-egg.servic
     selector: 'scrblr-application-root',
     templateUrl: './application-root.component.html',
     styleUrls: ['./application-root.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     providers: [ EasterEggService ]
 })
 export class ApplicationRootComponent implements OnInit {
@@ -29,6 +30,8 @@ export class ApplicationRootComponent implements OnInit {
 
     noChildren = false;
 
+    isHidingSidebar = false;
+
     @ViewChild('quickQuote') quickQuote: ElementRef;
 
     constructor(
@@ -39,6 +42,10 @@ export class ApplicationRootComponent implements OnInit {
         private _ees: EasterEggService) { }
 
     ngOnInit() {
+        if (window.innerWidth <= 480) {
+            this.isHidingSidebar = true;
+        }
+
         this.store.select('CURRENT_USER').subscribe(CURRENT_USER => {
             // console.log('My state changed in CURRENT_USER');
             this.currentUser = CURRENT_USER;
@@ -74,7 +81,6 @@ export class ApplicationRootComponent implements OnInit {
                 this.noChildren = false;
                 this.dispatchChildrenToStore(res.children);
             });
-
     }
 
     dispatchChildrenToStore(children) {
@@ -85,5 +91,13 @@ export class ApplicationRootComponent implements OnInit {
     logout() {
         localStorage.removeItem('_token');
         window.location.reload();
+    }
+
+    openSideBar() {
+        this.isHidingSidebar = !this.isHidingSidebar;
+    }
+
+    testFun(event) {
+        this.isHidingSidebar = event;
     }
 }

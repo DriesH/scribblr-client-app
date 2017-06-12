@@ -1,11 +1,15 @@
 <div id="application-root">
-    <scrblr-side-bar [children]="children" [currentUser]="currentUser.user" [noChildren]="noChildren"></scrblr-side-bar>
+    <scrblr-side-bar [children]="children" [currentUser]="currentUser.user" [noChildren]="noChildren" [isHidingSidebar]="isHidingSidebar" (isHidingSidebarChange)="testFun($event)"></scrblr-side-bar>
 
     <div id="application-body">
         <div class="application-body--header">
+
+            <button class="burger-menu" (click)="openSideBar()"><i class="fa fa-bars fa-2x"></i></button>
+
             <a routerLink="/home" class="scribblr-logo">
                 <img src="/assets/logos/logo-svg.svg" alt="logo">
             </a>
+
 
             <a class="account-link" (click)="logout()">Logout<img id='logout' src="/assets/icons/logout.svg" alt="logout"></a>
         </div>

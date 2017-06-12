@@ -3,7 +3,7 @@ export const ActionTypes = {
     NEW_QUOTE: '[Quote] New quote added',
     UPDATE_QUOTE: '[Quote] Update quote',
     CLEAR_QUOTES: '[Quote] Clear quote fields',
-    REMOVE_QUOTE: '[Quote] '
+    REMOVE_QUOTE: '[Quote] Remove quote'
 };
 
 export class PostsLoaded {

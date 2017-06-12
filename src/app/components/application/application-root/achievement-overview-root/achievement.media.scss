@@ -1,0 +1,27 @@
+@media screen and (max-width: 560px) {
+    .achievement--header {
+        height: auto !important;
+        flex-direction: column;
+
+        .points--explanation {
+            text-align: center;
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        .points {
+            margin-top: 25px;
+        }
+    }
+
+    .category--container {
+        width: 100%;
+    }
+}
+

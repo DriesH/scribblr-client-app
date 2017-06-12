@@ -5,11 +5,13 @@
         <option value="story">story</option>
     </select>
     <p>for</p>
-    <select #childSelection="ngModel" [(ngModel)]="quickAccessModel.childShortId" [ngClass]="{ 'error': errorChild }" (change)="errorChild = false">
-        <option value="default" disabled>my child</option>
-        <option [value]="child.short_id" *ngFor="let child of children">{{ child.full_name }}</option>
-    </select>
-    <p>.</p>
+    <div style="display: flex; flex-direction:row;">
+        <select #childSelection="ngModel" [(ngModel)]="quickAccessModel.childShortId" [ngClass]="{ 'error': errorChild }" (change)="errorChild = false">
+            <option value="default" disabled>my child</option>
+            <option [value]="child.short_id" *ngFor="let child of children">{{ child.full_name }}</option>
+        </select>
+        <p>.</p>
+    </div>
 
     <button class="btn btn-primary btn-color-main" (click)="startQuickMemory(quickAccessModel)">Go</button>
 </div>

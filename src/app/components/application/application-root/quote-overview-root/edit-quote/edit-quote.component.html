@@ -6,7 +6,7 @@
     <div class="new-quote--container">
         <div class="form--container">
             <h1 class="title">Edit quote for {{ child?.full_name }}</h1>
-            <form (ngSubmit)="editQuote(previewCanvas)" #newQuoteForm="ngForm">
+            <form (ngSubmit)="editQuote(previewCanvas)" #editQuoteForm="ngForm">
                 <div class="form-input-group">
                     <label for="name">Quote<span style="color:red">*</span></label>
                     <textarea name="quote" class="quote-input" id="quote" placeholder="Start typing your quote..." #quote="ngModel" [(ngModel)]="quoteModel.quote"
@@ -27,7 +27,10 @@
                     </scrblr-form-error>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-color-main" [disabled]="!newQuoteForm.valid">Save quote</button>
+                <button type="submit" class="btn btn-primary btn-color-main desktop-btn" [disabled]="!editQuoteForm.valid">
+                    <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    <span *ngIf="!isUploading">Save quote</span>
+                </button>
 
             </form>
         </div>
@@ -77,6 +80,11 @@
             </ul>
 
             <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
+
+            <button type="submit" class="btn btn-primary btn-color-main mobile-btn" [disabled]="!editQuoteForm.valid" (click)="updateQuote(previewCanvas)">
+                    <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    <span *ngIf="!isUploading">Save quote</span>
+                </button>
 
             <img [src]="quoteModel.selectedPreset" id="presetImg" #presetImg (load)="initCanvas(presetImg, previewCanvas, '40')" *ngIf="presetPickerActive" crossorigin="anonymous">
 

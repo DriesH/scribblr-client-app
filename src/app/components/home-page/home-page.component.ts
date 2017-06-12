@@ -7,15 +7,19 @@ import { Store } from '@ngrx/store';
 @Component({
     selector: 'scrblr-home-page',
     templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.scss', './home.media.scss', './home-page.keyframes.scss']
+    styleUrls: ['./home-page.component.scss',
+        './home-page.keyframes.scss',
+        './intro-section.scss',
+        './books.scss',
+        './explanation-section.scss',
+        './home.media.scss',
+    ]
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 
     isLoggedIn = false;
     showBooks = false;
     randomImageIndex = 1;
-
-    @ViewChild('bookSection') bookSection: ElementRef;
 
     constructor(private auth: AuthService, private store: Store<any>) { }
 
@@ -36,18 +40,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
 
     addEventListeners() {
-        document.addEventListener('scroll', this.showBooksFn.bind(this));
     }
 
     removeEventListeners() {
-        document.removeEventListener('scroll', this.showBooksFn.bind(this));
-    }
-
-    showBooksFn(e) {
-        if (this.bookSection.nativeElement.getBoundingClientRect().top <= 400) {
-            this.showBooks = true;
-        } else {
-            this.showBooks = false;
-        }
     }
 }

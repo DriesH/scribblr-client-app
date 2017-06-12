@@ -152,7 +152,12 @@
         flex: 1 0;
     }
 
+    .button--container {
+        display: flex;
+    }
+
     .button--container a {
+        display: block;
         margin-right: 20px;
     }
 
