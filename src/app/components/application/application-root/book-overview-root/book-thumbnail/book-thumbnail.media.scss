@@ -1,0 +1,19 @@
+@media screen and (max-width: 1200px) and (min-width: 876px) {
+    .grid-item {
+        width: 50%;
+
+        &.double {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .grid-item {
+        width: 100%;
+
+        &.double {
+            width: 100%;
+        }
+    }
+}

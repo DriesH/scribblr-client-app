@@ -9,7 +9,7 @@ declare var Masonry: any;
 @Component({
     selector: 'scrblr-book-overview-root',
     templateUrl: './book-overview-root.component.html',
-    styleUrls: ['./book-overview-root.component.scss']
+    styleUrls: ['./book-overview-root.component.scss', 'book.media.scss']
 })
 export class BookOverviewRootComponent implements OnInit, AfterViewInit {
 
@@ -64,7 +64,6 @@ export class BookOverviewRootComponent implements OnInit, AfterViewInit {
         this.msnry = new Masonry(this.bookContainer.nativeElement, {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
-            gutter: 10,
             percentPosition: true,
             stagger: 20,
             initLayout: false

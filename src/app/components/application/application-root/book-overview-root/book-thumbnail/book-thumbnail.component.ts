@@ -9,7 +9,7 @@ import { BookService } from '../../../../../services/application-services/book.s
 @Component({
     selector: 'scrblr-book-thumbnail',
     templateUrl: './book-thumbnail.component.html',
-    styleUrls: ['./book-thumbnail.component.scss']
+    styleUrls: ['./book-thumbnail.component.scss', './book-thumbnail.media.scss']
 })
 export class BookThumbnailComponent implements OnInit {
 
