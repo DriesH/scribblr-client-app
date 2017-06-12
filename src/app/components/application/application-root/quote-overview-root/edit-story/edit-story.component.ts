@@ -172,14 +172,14 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this._qs.updateStory(childShortId, storyShortId, this.storyData).subscribe(res => {
             this.isUploading = false;
-            this.dispatchNewStory(res.story);
+            this.dispatchEditStory(res.story);
         }, error => {
             this.isUploading = false;
         });
     }
 
-    dispatchNewStory(newStory) {
-        this.store.dispatch(new quoteActions.NewQuote({ newPost: newStory }));
+    dispatchEditStory(updatedStory) {
+        this.store.dispatch(new quoteActions.UpdateQuote({ updatedPost: updatedStory }));
         this.router.navigate(['application', 'overview', this.childShortId]);
     }
 

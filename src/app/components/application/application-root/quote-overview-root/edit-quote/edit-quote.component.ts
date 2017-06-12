@@ -421,7 +421,7 @@ export class EditQuoteComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     dispatchEditQuote(updatedQuote) {
-        this.store.dispatch(new quoteActions.UpdateQuote({ updatedQuote: updatedQuote }));
+        this.store.dispatch(new quoteActions.UpdateQuote({ updatedPost: updatedQuote }));
 
         this.router.navigate(['application', 'overview', this.childShortId]);
     }

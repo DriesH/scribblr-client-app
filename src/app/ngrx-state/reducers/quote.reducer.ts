@@ -30,7 +30,7 @@ export function QuoteReducer(state = initialState, action: Action) {
             index = -1;
 
             state.posts.forEach((item, key) => {
-                if (item.short_id === action.payload.updatedQuote.short_id) {
+                if (item.short_id === action.payload.updatedPost.short_id) {
                     index = key;
                 }
             });
