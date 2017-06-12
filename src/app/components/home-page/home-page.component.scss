@@ -10,16 +10,13 @@ p {
 
 #wrapper {
     overflow-x: hidden;
-}
 
-.section {
-    width: 1280px;
-    margin: 0 auto;
-    height: 900px;
-    background-color: white;
-
-    h1 {
-        margin-top: 50px;
+    hr {
+        width: 60%;
+        border-top: 1px solid rgba($main-color-five, 0.4);
+        border-left: transparent;
+        border-right: transparent;
+        border-bottom: transparent;
     }
 }
 

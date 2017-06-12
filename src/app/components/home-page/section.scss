@@ -1,0 +1,59 @@
+@import '../../../scss/colors/colors';
+
+.section {
+    margin: 50px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .image {
+        width: 20%;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .section-information {
+        width: 40%;
+
+        .title--container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+
+            .title {
+                font-size: 2.2rem;
+                font-weight: 400;
+            }
+
+            .underline {
+                display: block;
+                width: 55px;
+                height: 3px;
+                background-color: $main-color-four;
+                margin: 10px 0 0;
+            }
+        }
+
+        .content--container {
+            width: 100%;
+
+            p {
+                text-align: center;
+                margin: 25px auto 0;
+                font-size: 1.2rem;
+                width: 80%;
+            }
+        }
+    }
+}

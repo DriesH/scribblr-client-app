@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
         './home-page.keyframes.scss',
         './intro-section.scss',
         './books.scss',
-        './explanation-section.scss',
+        './section.scss',
         './home.media.scss',
     ]
 })

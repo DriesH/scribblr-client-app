@@ -6,7 +6,7 @@
         <section id="intro" [ngStyle]="{'background-image': 'url(/assets/homepage/hero' + randomImageIndex + '.jpg)'}">
             <div class="title-container">
                 <h1 class="main-title">Saving memories for later.</h1>
-                <p class="sub-title">Collect and print the most valuable moments with your children.</p>
+                <p class="sub-title">Capture and print the most valuable moments with your children.</p>
 
                 <div class="button-container" *ngIf="!isLoggedIn">
                     <a class="btn-empty" href="home#section1">Learn more</a>
@@ -22,10 +22,57 @@
     </header>
 
     <section class="section">
-        <div class="first-section">
-            <div class="heading-write-up">
-                <h1 class="title">Collect memories.</h1>
-                <hr class="underline">
+        <div class="image">
+            <img src="/assets/homepage/section-1-image.jpg" alt="Women with two kids">
+        </div>
+        <div class="section-information">
+            <div class="title--container">
+                <h1 class="title">Never miss a memory.</h1>
+                <span class="underline"></span>
+            </div>
+            <div class="content--container">
+                <p>
+                    Moments with your children are great, but keeping and reliving them is even better.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="section reverse">
+        <div class="image">
+            <img src="/assets/homepage/section-2-image.jpg" alt="four quotes">
+        </div>
+        <div class="section-information">
+            <div class="title--container">
+                <h1 class="title">Tell the story.</h1>
+                <span class="underline"></span>
+            </div>
+            <div class="content--container">
+                <p>
+                    Your children have their own unique way of discovering and describing the world around them. It's up to you to tell the real story and share
+                    it with family and friends. <br> Simply add a quote or write a story.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="section">
+        <div class="image">
+            <img src="/assets/homepage/section-3-image.jpg" alt="two books">
+        </div>
+        <div class="section-information">
+            <div class="title--container">
+                <h1 class="title">Print.</h1>
+                <span class="underline"></span>
+            </div>
+            <div class="content--container">
+                <p>
+                    Having a physical copy of your memories is even better. <br> So what are you waiting for!
+                </p>
             </div>
         </div>
     </section>
@@ -36,14 +83,13 @@
             <p>Scribblr Inc. © 2017</p>
         </a>
     </footer>
-
 </div>
 
 
 
 <!--<div class="section-content">
     <h1 class="title"> <i class="fa fa-quote-left blue"></i> What is Scribblr?</h1>
-    <p>Scribblr is the place where you can collect all your memories of your children. Got any funny quotes or amazing stories you never want to forget?
+    <p>Scribblr is the place where you can collect all memories of your children. Got any funny quotes or amazing stories you never want to forget?
         <br> We'll take care of that.
     </p>
     <br>

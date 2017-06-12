@@ -49,6 +49,34 @@
         justify-content: space-around !important;
     }
 
+    #wrapper {
+        hr {
+            width: 90%;
+        }
+    }
+
+    .section {
+        flex-direction: column;
+
+        .image {
+            width: 80%;
+        }
+
+        &.reverse {
+            flex-direction: column;
+        }
+
+        .section-information {
+            .title--container {
+                margin-top: 30px;
+
+                .title {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+
     .footer {
         padding: 0 !important;
     }
@@ -70,6 +98,22 @@
     .btn-empty,
     .btn-full {
         margin: 0;
+    }
+
+    .section {
+        .section-information {
+            .title--container {
+                .title {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .content--container {
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
     }
 }
 
