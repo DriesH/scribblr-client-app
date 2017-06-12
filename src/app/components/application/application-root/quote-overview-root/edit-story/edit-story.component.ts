@@ -96,7 +96,6 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         this._pas.getMostPopular().subscribe(res => {
             this.pexelsLoading = false;
             this.pexelsImgs = res.photos;
-            this.storyModel.img_baked = this.pexelsImgs[0].src.large;
         });
 
         this.route.parent.params.subscribe(params => {
