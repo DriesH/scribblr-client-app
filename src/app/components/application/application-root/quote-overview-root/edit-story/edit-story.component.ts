@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { APP_CONFIG } from '../../../../../_config/app.config';
+import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { DropzoneService } from '../../../../../services/dropzone.service';
 
@@ -19,7 +20,10 @@ declare var Aviary: any;
 @Component({
     selector: 'scrblr-edit-story',
     templateUrl: './edit-story.component.html',
-    styleUrls: ['./edit-story.component.scss'],
+    styleUrls: [
+        './edit-story.component.scss',
+        './edit-story.media.scss'
+    ],
     providers: [DropzoneService]
 
 })
@@ -31,7 +35,8 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
     aviaryLink: string = null;
 
-    childShortId: String;
+    childShortId: string;
+    storyShortId: string;
 
     storyModel = {
         story: null,
@@ -98,10 +103,28 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
             this.childShortId = params.short_id_child;
         });
 
+        this.route.params.subscribe(params => {
+            this.storyShortId = params.short_id_story;
+        });
+
         this.store.select('CURRENT_CHILDREN').subscribe((CURRENT_CHILDREN: any) => {
             CURRENT_CHILDREN.children.forEach((child, key) => {
                 if (child.short_id === this.childShortId) {
                     this.child = child;
+                }
+            });
+        });
+
+        this.store.select('QUOTES').subscribe((QUOTES: any) => {
+            QUOTES.posts.forEach((item, key) => {
+                if (item.short_id === this.storyShortId) {
+                    this.storyModel.story = item.story;
+                    this.storyModel.img_baked = API_ROUTES.baseUrl +
+                        API_ROUTES.application.posts.imageBaked(
+                            this.childShortId,
+                            this.storyShortId,
+                            item.img_baked_url_id
+                        );
                 }
             });
         });
@@ -139,7 +162,7 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         this.imageLoading = false;
     }
 
-    addNewStory(childShortId, storyModel) {
+    updateStory(childShortId, storyShortId, storyModel) {
         if (this.isUploading) {
             return;
         }
@@ -148,9 +171,11 @@ export class EditStoryComponent implements OnInit, OnDestroy, AfterViewInit {
         this.storyData.set('story', storyModel.story);
         this.storyData.set('img_baked', storyModel.img_baked);
 
-        this._qs.newStory(childShortId, this.storyData).subscribe(res => {
+        this._qs.updateStory(childShortId, storyShortId, this.storyData).subscribe(res => {
             this.isUploading = false;
             this.dispatchNewStory(res.story);
+        }, error => {
+            this.isUploading = false;
         });
     }
 

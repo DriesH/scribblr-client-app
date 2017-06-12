@@ -83,6 +83,18 @@
         transform: translateY(-50%);
     }
 
+    .logout-text {
+        display: none;
+    }
+
+    .application-body--header {
+        .scribblr-logo {
+            img {
+                width: 125px;
+            }
+        }
+    }
+
     #application-root {
         padding-left: 0;
     }

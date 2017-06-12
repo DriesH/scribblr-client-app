@@ -102,7 +102,7 @@ const ROUTES: Routes = [
                         component: EditQuoteComponent
                     },
                     {
-                        path: 'story/:short_id_quote',
+                        path: 'story/:short_id_story',
                         component: EditStoryComponent
                     },
                     {

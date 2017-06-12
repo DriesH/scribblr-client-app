@@ -20,7 +20,7 @@ declare var Aviary: any;
 @Component({
     selector: 'scrblr-new-story',
     templateUrl: './new-story.component.html',
-    styleUrls: ['./new-story.component.scss'],
+    styleUrls: ['./new-story.component.scss', './new-story.media.scss'],
     providers: [ DropzoneService ]
 })
 export class NewStoryComponent implements OnInit, OnDestroy, AfterViewInit {

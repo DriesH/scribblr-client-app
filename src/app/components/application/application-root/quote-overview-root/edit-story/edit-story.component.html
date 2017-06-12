@@ -1,4 +1,4 @@
-<div id="new-story-overlay" #dropzone>
+<div id="edit-story-overlay" #dropzone>
 
     <a class="close-cross" routerLink="../../">
         <img src="/assets/icons/cross.svg">
@@ -17,9 +17,9 @@
                     </scrblr-form-error>
                 </div>
             </form>
-            <button type="submit" class="btn btn-primary btn-color-main" (click)="addNewStory(childShortId, storyModel)" [disabled]="!newMemoryForm.valid">
+            <button type="submit" class="btn btn-primary btn-color-main desktop-btn" (click)="updateStory(childShortId, storyShortId, storyModel)" [disabled]="!newMemoryForm.valid">
                 <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
-                <span *ngIf="!isUploading">New story</span>
+                <span *ngIf="!isUploading">Save story</span>
             </button>
         </div>
 
@@ -77,6 +77,11 @@
             </ul>
 
             <span *ngIf="presetPickerActive" class="pexels-link">Search results provided by: <a href="https://www.pexels.com/">www.pexels.com</a></span>
+
+            <button type="submit" class="btn btn-primary btn-color-main mobile-btn" (click)="updateStory(childShortId, storyShortId, storyModel)" [disabled]="!newMemoryForm.valid">
+                <span *ngIf="isUploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                <span *ngIf="!isUploading">New story</span>
+            </button>
 
         </div>
     </div>
