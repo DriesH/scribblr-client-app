@@ -8,13 +8,10 @@ import * as ApplicationUIActions from '../../../../../ngrx-state/actions/applica
 import * as ChildActions from '../../../../../ngrx-state/actions/child.action';
 
 import { ChildService } from '../../../../../services/application-services/child.service';
-import { ErrorHandlerService } from '../../../../../services/error-handler.service';
-
-import { CropperSettings } from 'ng2-img-cropper';
 
 import { dataURItoBlob } from '../../../../../classes/base64toblob';
 
-import { ImageCropperComponent } from 'ng2-img-cropper';
+import { ImageCropperComponent, CropperSettings } from 'ng2-img-cropper';
 
 @Component({
     selector: 'scrblr-new-child',
@@ -136,7 +133,6 @@ export class NewChildComponent implements OnInit {
             return;
         }
 
-
         let img;
         let ext;
 
@@ -160,6 +156,8 @@ export class NewChildComponent implements OnInit {
 
         this._cs.newChild(this.childData).subscribe(res => {
             this.dispatchNewChild(res.child);
+            this.makingChild = false;
+        }, err => {
             this.makingChild = false;
         });
     }

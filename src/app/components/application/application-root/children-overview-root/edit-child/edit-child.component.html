@@ -34,8 +34,38 @@
             </scrblr-form-error>
         </div>
 
+        <div class="form-avatar-upload">
+            <div class="dropzone">
+                <label for="avatar-upload">Upload an avatar</label>
 
-        <button type="submit" id="submit-btn-edit-child" class="btn btn-primary btn-color-main" [disabled]="!editChildForm.valid">Save</button>
+                <div class="file-upload" (click)="openFile($event)">
+                    <button (click)="openFile($event)">Upload</button>
+                    <span *ngIf="!imageData.image">No file selected...</span>
+                    <span *ngIf="imageData.image">{{ imageData.fileName }}</span>
+                </div>
+
+                <input id="avatar-upload" name="avatar" type="file" accept="image/*" (change)="fileChangeListener($event)" capture="camera"
+                    hidden #avatarFileInput>
+            </div>
+
+            <div [hidden]="!isShowingCropper" class="img-cropper-container">
+                <img-cropper [hidden]="!image.src" #cropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+            </div>
+
+            <scrblr-form-error *ngIf="avatarError" [model]="story" [modelName]="'Story'">
+            </scrblr-form-error>
+        </div>
+
+
+        <button type="submit" id="submit-btn-edit-child" class="btn btn-primary btn-color-main" [disabled]="!editChildForm.valid">
+            <span *ngIf="!editingChild">
+                Edit child
+            </span>
+
+            <span *ngIf="editingChild">
+                <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            </span>
+        </button>
     </form>
 
     <div class="danger-zone">
@@ -53,8 +83,6 @@
             <span *ngIf="isDeletingChild">
                 <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
             </span>
-
         </button>
     </div>
-
 </div>

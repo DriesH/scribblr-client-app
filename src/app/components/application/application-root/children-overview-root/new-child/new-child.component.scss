@@ -51,6 +51,12 @@
         width: 100%;
         margin: auto;
 
+        label {
+            color: $main-color-one;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
         .file-upload {
             border-radius: 5px;
             border: 1px solid $main-color-two;

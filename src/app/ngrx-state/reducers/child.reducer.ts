@@ -42,20 +42,36 @@ export function ChildReducer(state = initialState, action: Action) {
                 }
             });
 
-            // console.log('index: ', index);
-
-            return {
-                children: [
-                    ...state.children.slice(0, index),
-                    {
-                        ...state.children[index],
-                        full_name: updatedChild.full_name,
-                        gender: updatedChild.gender,
-                        date_of_birth: updatedChild.date_of_birth
-                    },
-                    ...state.children.slice(index + 1)
-                ]
-            };
+            if (state.children[index].avatar_url_id === action.payload.updatedChild.avatar_url_id) {
+                return {
+                    receivedCall: true,
+                    children: [
+                        ...state.children.slice(0, index),
+                        {
+                            ...state.children[index],
+                            full_name: updatedChild.full_name,
+                            gender: updatedChild.gender,
+                            date_of_birth: updatedChild.date_of_birth
+                        },
+                        ...state.children.slice(index + 1)
+                    ]
+                };
+            } else {
+                return {
+                    receivedCall: true,
+                    children: [
+                        ...state.children.slice(0, index),
+                        {
+                            ...state.children[index],
+                            full_name: updatedChild.full_name,
+                            gender: updatedChild.gender,
+                            date_of_birth: updatedChild.date_of_birth,
+                            avatar_url_id: updatedChild.avatar_url_id
+                        },
+                        ...state.children.slice(index + 1)
+                    ]
+                };
+            }
 
         case childActions.ActionTypes.DELETE_CHILD:
             state.children.forEach((child, key) => {
