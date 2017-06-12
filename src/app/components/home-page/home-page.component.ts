@@ -13,12 +13,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
     isLoggedIn = false;
     showBooks = false;
+    randomImageIndex = 1;
 
     @ViewChild('bookSection') bookSection: ElementRef;
 
     constructor(private auth: AuthService, private store: Store<any>) { }
 
     ngOnInit() {
+        this.randomImageIndex = Math.floor(Math.random() * 3) + 1;
         this.store.select('CURRENT_USER').subscribe((CURRENT_USER: any) => {
             if (CURRENT_USER.isAuth) {
                 this.isLoggedIn = true;
