@@ -54,7 +54,7 @@
             <a (click)="closeSideBar()" routerLink="news" class="sidebar--toolbox-link" routerLinkActive="active">
                 <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">News
                 <span class="flex-grow"></span>
-                <span class="unread-badge">{{ unreadNewsCount }}</span>
+                <span class="unread-badge" *ngIf="unreadNewsCount">{{ unreadNewsCount }}</span>
             </a>
         </li>
     </ul>
