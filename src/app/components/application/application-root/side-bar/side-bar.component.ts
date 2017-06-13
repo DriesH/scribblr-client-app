@@ -6,6 +6,8 @@ import * as ApplicationUIActions from '../../../../ngrx-state/actions/applicatio
 
 import { API_ROUTES } from '../../../../_api-routes/api.routes';
 
+import { NewsService } from '../../../../services/application-services/news.service';
+
 @Component({
     selector: 'scrblr-side-bar',
     templateUrl: './side-bar.component.html',
@@ -20,16 +22,18 @@ export class SideBarComponent implements OnInit {
     @Input('noChildren') noChildren;
     @Input('currentUser') currentUser;
     @Input('isHidingSidebar') isHidingSidebar;
+    @Input('unreadNewsCount') unreadNewsCount = 0;
     @Output('isHidingSidebarChange') isHidingSidebarChange= new EventEmitter<boolean>();
 
     cart;
 
-    constructor(private store: Store<any>) { }
+    constructor(private store: Store<any>, private _ns: NewsService) { }
 
     ngOnInit() {
         this.store.select('CART').subscribe((CART: any) => {
             this.cart = CART.items_in_cart;
         });
+
     }
 
     addChild() {

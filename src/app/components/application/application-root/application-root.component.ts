@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 
 import { ChildService } from '../../../services/application-services/child.service';
 
@@ -11,14 +11,14 @@ import { Store } from '@ngrx/store';
 import * as ChildActions from '../../../ngrx-state/actions/child.action';
 import * as ApplicationUIActions from '../../../ngrx-state/actions/application-ui.action';
 
-import { EasterEggService } from '../../../services/easter-egg/easter-egg.service';
+import { NewsService } from '../../../services/application-services/news.service';
+
 
 @Component({
     selector: 'scrblr-application-root',
     templateUrl: './application-root.component.html',
     styleUrls: ['./application-root.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    providers: [ EasterEggService ]
+    encapsulation: ViewEncapsulation.None
 })
 export class ApplicationRootComponent implements OnInit {
 
@@ -32,6 +32,8 @@ export class ApplicationRootComponent implements OnInit {
 
     isHidingSidebar = false;
 
+    unreadNewsCount = 0;
+
     @ViewChild('quickQuote') quickQuote: ElementRef;
 
     constructor(
@@ -39,7 +41,7 @@ export class ApplicationRootComponent implements OnInit {
         private store: Store<any>,
         private router: Router,
         private route: ActivatedRoute,
-        private _ees: EasterEggService) { }
+        private _ns: NewsService) { }
 
     ngOnInit() {
         if (window.innerWidth <= 480) {
@@ -68,8 +70,9 @@ export class ApplicationRootComponent implements OnInit {
             this.applicationUI = APPLICATION_UI;
         });
 
-        this.router.events.subscribe((event: any) => {
-            if (event.state) {
+        this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationEnd) {
+                this._ns.getAmoutOfUnread().subscribe(res => this.unreadNewsCount = res.unread_count);
                 this.store.dispatch(new ApplicationUIActions.AddNewChildActive({ addingNewChild: false }));
                 let e: any = event;
                 this.currentRoute = e.url;
@@ -81,6 +84,9 @@ export class ApplicationRootComponent implements OnInit {
                 this.noChildren = false;
                 this.dispatchChildrenToStore(res.children);
             });
+
+        this._ns.getAmoutOfUnread().subscribe(res => this.unreadNewsCount = res.unread_count);
+
     }
 
     dispatchChildrenToStore(children) {

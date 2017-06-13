@@ -37,4 +37,10 @@ export class NewsService {
                 .catch(err => this._hhs.errorHandler(err));
         }
 
+        getAmoutOfUnread(): Observable<any> {
+            return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.getUnreadCount, this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+        }
+
 }

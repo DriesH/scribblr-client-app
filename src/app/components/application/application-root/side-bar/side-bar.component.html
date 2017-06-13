@@ -51,10 +51,11 @@
             </a>
         </li>
         <li>
-            <a (click)="closeSideBar()" routerLink="news"class="sidebar--toolbox-link" routerLinkActive="active">
+            <a (click)="closeSideBar()" routerLink="news" class="sidebar--toolbox-link" routerLinkActive="active">
                 <img src="/assets/icons/sidebar-icons/news-icon.svg" alt="news">News
+                <span class="flex-grow"></span>
+                <span class="unread-badge">{{ unreadNewsCount }}</span>
             </a>
-            <!--NOTIFICATION POP UP-->
         </li>
     </ul>
 
