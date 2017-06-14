@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -52,6 +53,7 @@ export class CheckOutRootComponent implements OnInit {
 
     constructor(private store: Store<any>,
         private _cos: CheckOutService,
+        private router: Router,
         private location: Location,
         private _us: UserService,
         private _ns: NotificationsService
@@ -67,7 +69,7 @@ export class CheckOutRootComponent implements OnInit {
             this.currentItemsInCart = CART.items_in_cart;
 
             if (!this.currentItemsInCart.length) {
-                this.location.back();
+                this.router.navigate(['application', 'home']);
             }
         });
 
