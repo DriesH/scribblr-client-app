@@ -1,42 +1,23 @@
 @import '../../../../../scss/colors/colors';
 
 #home-panel {
-    height: calc(100vh - 100px);
+    height: 100%;
     width: 100%;
 }
 
 .control-panel {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     padding: 50px 0 0;
 }
 
-.statistics {
-    // width: 100%;
-}
-
-.latest-posts {
-    width: 100%;
-}
-
-.quick-access-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    .header-container {
-        width: 100%;
-    }
-
-    .quick-access-panels {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
+.panel-2x {
+    width: 49%;
 
     .title {
         font-size: 2rem;

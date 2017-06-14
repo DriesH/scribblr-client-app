@@ -3,17 +3,14 @@
         <span class="loading-spinner"></span>
     </div>
     <div class="control-panel" *ngIf="!noChildren && !quickStartActive">
-        <div class="statistics">
+        <div class="panel-2x">
             <scrblr-statistics></scrblr-statistics>
         </div>
-        <div class="quick-access-container">
-            <div class="header-container">
-                <h1 class="title">Quick memory.</h1>
-            </div>
-            <div class="quick-access-panels">
-                <scrblr-quick-access [children]="children"></scrblr-quick-access>
-            </div>
+
+        <div class="panel-2x">
+            <scrblr-quick-access [children]="children"></scrblr-quick-access>
         </div>
+
         <div class="latest-posts">
             <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>
         </div>

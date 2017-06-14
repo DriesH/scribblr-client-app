@@ -40,7 +40,7 @@ export function QuoteReducer(state = initialState, action: Action) {
                     ...state,
                     posts: [
                         ...state.posts.slice(0, index),
-                        action.payload.updatedQuote,
+                        action.payload.updatedPost,
                         ...state.posts.slice(index + 1)
                     ]
                 };

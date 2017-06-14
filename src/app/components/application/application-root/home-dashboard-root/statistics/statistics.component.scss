@@ -1,36 +1,50 @@
 @import '../../../../../../scss/colors/colors';
 
 :host {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 #statistics-wrap {
+    width: 100%;
+
     .title {
         font-size: 2rem;
     }
 }
 
 #statistics {
-    // width: 100%;
-    height: 180px;
+    width: 100%;
+    height: 360px;
     background-color: white;
     border: 1px solid rgba($main-color-five, 0.2);
     border-radius: 3px;
     box-sizing: border-box;
-    padding: 10px 25px;
+    padding: 5px;
     display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    flex-direction: row;
     margin-bottom: 20px;
     flex-wrap: wrap;
+
+    .statistic:nth-child(3n+3) {
+        border-right: none;
+    }
+
+    .statistic:nth-last-child(-n+3) {
+        border-bottom: none;
+    }
 
     .statistic {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 145px;
+        width: 160px;
+        padding: 30px 40px;
+        border-right: 1px solid rgba($main-color-five, 0.2);
+        border-bottom: 1px solid rgba($main-color-five, 0.2);
 
         p {
             margin: 0;

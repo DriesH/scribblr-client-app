@@ -10,32 +10,23 @@ import { StatisticService } from '../../../../../services/application-services/s
 })
 export class StatisticsComponent implements OnInit {
 
-
     stats = {
         memory_count: 0,
         book_count: 0,
         shared_count: 0,
-        printed_memories_count: 0
+        printed_memories_count: 0,
+        achievement_points: 0
     };
-
 
     constructor(private _ss: StatisticService) { }
 
     ngOnInit() {
         this._ss.getStats().subscribe(res => {
-            // console.log(res);
             this.stats.book_count = res.book_count;
             this.stats.memory_count = res.memory_count;
             this.stats.shared_count = res.shared_count;
             this.stats.printed_memories_count = res.printed_memories_count;
-            // console.log(this.stats);
-
+            this.stats.achievement_points = res.achievement_points;
         });
     }
-
-    countToAmount(maxAmount: number) {
-
-    }
-
-
 }

@@ -32,4 +32,9 @@ export class AchievementService {
             .catch(err => this._hhs.errorHandler(err));
     }
 
+    getLatestAchievement(): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.achievement.latest, this._headers.setOptions(this.token))
+            .map(res => this._hhs.extractData(res))
+            .catch(err => this._hhs.errorHandler(err));
+    }
 }

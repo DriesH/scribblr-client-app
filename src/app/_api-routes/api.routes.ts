@@ -78,7 +78,8 @@ export const API_ROUTES = {
             }
         },
         achievement: {
-            index: applicationPrefix + 'achievements'
+            index: applicationPrefix + 'achievements',
+            latest: applicationPrefix + 'achievements/latest',
         },
         book: {
             index: applicationPrefix + 'books',
