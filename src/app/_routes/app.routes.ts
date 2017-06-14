@@ -31,6 +31,7 @@ import { FlipBookInspectorComponent } from '../components/application/applicatio
 
 // News
 import { NewsOverviewRootComponent } from '../components/application/application-root/news-overview-root/news-overview-root.component';
+import { NewsDetailComponent } from '../components/application/application-root/news-overview-root/news-detail/news-detail.component';
 
 // Checkout
 import { CheckOutRootComponent } from '../components/application//application-root/check-out-root/check-out-root.component';
@@ -117,7 +118,13 @@ const ROUTES: Routes = [
             },
             {
                 path: 'news',
-                component: NewsOverviewRootComponent
+                component: NewsOverviewRootComponent,
+                children: [
+                    {
+                        path: ':new-title',
+                        component: NewsDetailComponent
+                    }
+                ]
             },
             {
                 path: 'books',

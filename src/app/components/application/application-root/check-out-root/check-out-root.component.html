@@ -88,36 +88,37 @@
                     <li class="information-box">
                         <div class="information-field">
                             <label for="first-name">First name:</label>
-                            <input type="text" name="first-name" #firstName="ngModel" [(ngModel)]="currentUserModel.first_name">
+                            <input id="first-name" type="text" name="first-name" #firstName="ngModel" [(ngModel)]="currentUserModel.first_name">
                         </div>
                         <div class="information-field">
                             <label for="last-name">Last name:</label>
-                            <input type="text" name="last-name" #lastName="ngModel" [(ngModel)]="currentUserModel.last_name">
+                            <input id="last-name" type="text" name="last-name" #lastName="ngModel" [(ngModel)]="currentUserModel.last_name">
                         </div>
                     </li>
                     <li class="information-box">
                         <div class="information-field">
                             <label for="streetname">Streetname:</label>
-                            <input type="text" name="streetname" #streetName="ngModel" [(ngModel)]="currentUserModel.street_name">
+                            <input id="streetname" type="text" name="streetname" #streetName="ngModel" [(ngModel)]="currentUserModel.street_name">
                         </div>
                         <div class="information-field">
                             <label for="housenumber">Housenumber:</label>
-                            <input type="text" name="housenumber" #houseNumber="ngModel" [(ngModel)]="currentUserModel.house_number">
+                            <input id="housenumber" type="text" name="housenumber" #houseNumber="ngModel" [(ngModel)]="currentUserModel.house_number">
                         </div>
                     </li>
                     <li class="information-box">
                         <div class="information-field">
                             <label for="city">City:</label>
-                            <input type="text" name="city" #city="ngModel" [(ngModel)]="currentUserModel.city">
+                            <input id="city" type="text" name="city" #city="ngModel" [(ngModel)]="currentUserModel.city">
                         </div>
                         <div class="information-field">
                             <label for="postal-code">Postal code:</label>
-                            <input type="text" name="postal-code" #postalCode="ngModel" [(ngModel)]="currentUserModel.postal_code">
+                            <input id="postal-code" type="text" name="postal-code" #postalCode="ngModel" [(ngModel)]="currentUserModel.postal_code">
                         </div>
                     </li>
                     <li class="information-field">
-                        <label for="countries">Country:</label>
-                        <select type="text" name="countries">
+                        <label for="country">Country:</label>
+                        <select id="country" type="text" name="country" #country="ngModel" [(ngModel)]="currentUserModel.country">
+                            <option value="null" disabled>Pick your country</option>
                             <option [value]="country" *ngFor="let country of countries">{{ country }}</option>
                         </select>
                     </li>

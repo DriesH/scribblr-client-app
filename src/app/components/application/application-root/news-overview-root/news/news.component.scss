@@ -5,7 +5,7 @@
     border: 1px solid rgba($main-color-five, 0.2);
     border-radius: 3px;
     box-sizing: border-box;
-    padding: 15px;
+    padding: 15px 15px 55px;
     color: $main-color-five;
     width: 100%;
     margin-bottom: 10px;
@@ -13,6 +13,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
+    position: relative;
 
     &.unread {
         border-left: 3px red solid;
@@ -36,6 +37,43 @@
         p {
             margin: 0;
             line-height: 1.6;
+        }
+    }
+
+    .read-more {
+        text-decoration: none;
+        font-size: 0.8rem;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 30;
+        cursor: pointer;
+
+        i {
+            line-height: 1.5rem;
+            transform: translateY(2px);
+            color: $main-color-four;
+        }
+
+        p {
+            line-height: 1.5rem;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            color: $main-color-one;
+            transition: all 200ms ease-out;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active,
+        &:active p {
+            color: $main-color-four;
         }
     }
 }

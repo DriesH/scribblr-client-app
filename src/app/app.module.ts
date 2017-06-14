@@ -117,6 +117,7 @@ import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
 import { OrderStatusComponent } from './components/application/application-root/home-dashboard-root/order-status/order-status.component';
+import { NewsDetailComponent } from './components/application/application-root/news-overview-root/news-detail/news-detail.component';
 
 
 @NgModule({
@@ -172,6 +173,7 @@ import { OrderStatusComponent } from './components/application/application-root/
         EditStoryComponent,
         QuickAccessComponent,
         OrderStatusComponent,
+        NewsDetailComponent,
     ],
     imports: [
         BrowserModule,

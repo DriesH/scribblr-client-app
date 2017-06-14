@@ -3,6 +3,14 @@
     <p class="date">-&nbsp;{{ newsData.created_at | date }}</p>
 
     <div class="message--container">
-        <p [innerHTML]="newsData.message"></p>
+        <p [innerHTML]="newsData.message | ellipsis: 150"></p>
+        <a class="read-more" [routerLink]="newsData.title">
+            <i class="fa fa-plus"></i>
+            &nbsp;
+            <p>read
+                <span *ngIf="!isFullStory">more</span>
+                <span *ngIf="isFullStory">less</span>
+            </p>
+        </a>
     </div>
 </div>
