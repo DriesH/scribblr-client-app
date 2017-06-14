@@ -169,7 +169,9 @@ export class ErrorHandlerService {
             _msg: error.error_message
         };
 
-        this._ns.error(_errorMsg.title, _errorMsg.msg);
+        this._ns.error(_errorMsg.title, _errorMsg.msg, {
+            position: ['top', 'left']
+        });
 
         // Contents for ui state.
         const _error = {
