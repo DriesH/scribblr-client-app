@@ -116,6 +116,7 @@ import { BookEffect } from './ngrx-state/effects/book.effects';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
+import { OrderStatusComponent } from './components/application/application-root/home-dashboard-root/order-status/order-status.component';
 
 
 @NgModule({
@@ -170,6 +171,7 @@ import { QuickAccessComponent } from './components/application/application-root/
         StatisticsComponent,
         EditStoryComponent,
         QuickAccessComponent,
+        OrderStatusComponent,
     ],
     imports: [
         BrowserModule,

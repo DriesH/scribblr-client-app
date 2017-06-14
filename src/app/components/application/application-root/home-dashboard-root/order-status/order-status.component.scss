@@ -1,0 +1,15 @@
+@import '../../../../../../scss/colors/colors';
+
+#order-status {
+    height: 180px;
+    background-color: white;
+    border: 1px solid rgba($main-color-five, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
