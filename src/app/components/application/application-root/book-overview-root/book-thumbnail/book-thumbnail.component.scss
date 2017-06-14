@@ -2,10 +2,22 @@
     width: 32%;
     margin-bottom: 20px;
     box-sizing: border-box;
-    float: left;
+    box-sizing: border-box;
+    animation: fadeInMemories 200ms ease-out forwards;
+    transition: all 200ms ease-out;
 
     &.double {
         width: 60%;
+    }
+}
+
+@keyframes fadeInBooks {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 

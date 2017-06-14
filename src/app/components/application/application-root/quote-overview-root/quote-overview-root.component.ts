@@ -112,8 +112,9 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
             columnWidth: '.grid-sizer',
             itemSelector: '.grid-item',
             percentPosition: true,
-            stagger: 20,
-            initLayout: false
+            stagger: 300,
+            initLayout: false,
+            transitionDuration: 0
         });
 
         this.reloadMasonry();
