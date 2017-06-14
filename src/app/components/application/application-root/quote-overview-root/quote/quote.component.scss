@@ -88,8 +88,14 @@
             cursor: pointer;
             text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
             color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
 
             &:active {
+                text-decoration: underline;
                 color: $main-color-four;
             }
         }
@@ -102,6 +108,7 @@
             cursor: pointer;
             text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
             padding: 5px;
+            transform: translateY(-1.5px);
 
             &:hover {
                 text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
@@ -143,7 +150,7 @@
 
 .story {
     position: relative;
-    z-index: 25;
+    z-index: 35;
     background-color: white;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -151,6 +158,26 @@
     padding: 20px;
     user-select: none;
     cursor: pointer;
+
+    .read-more {
+        font-size: 0.8rem;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 30;
+
+        i {
+            line-height: 1.5rem;
+            transform: translateY(1px);
+        }
+
+        p {
+            line-height: 1.5rem;
+        }
+    }
 
     &.expand {
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);

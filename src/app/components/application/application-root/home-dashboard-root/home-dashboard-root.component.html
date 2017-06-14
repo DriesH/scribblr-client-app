@@ -3,17 +3,24 @@
         <span class="loading-spinner"></span>
     </div>
     <div class="control-panel" *ngIf="!noChildren && !quickStartActive">
-        <div class="panel-2x">
+        <div class="panel-2x double-height">
             <scrblr-statistics></scrblr-statistics>
         </div>
 
-        <div class="panel-2x">
-            <scrblr-quick-access [children]="children"></scrblr-quick-access>
+        <div class="double-panel">
+            <div class="panel-2x">
+                <scrblr-quick-access [children]="children"></scrblr-quick-access>
+            </div>
+
+            <div class="panel-2x">
+                <scrblr-order-status></scrblr-order-status>
+            </div>
         </div>
 
         <div class="panel-2x">
-            <scrblr-order-status></scrblr-order-status>
+
         </div>
+
 
         <div class="latest-posts">
             <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>

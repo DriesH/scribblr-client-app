@@ -1,7 +1,7 @@
 <div class="modal-container">
     <div class="modal save-modal" *ngIf="!isEditing"> <!-- DIt moet zijn isOrdering, zodat er niet meer kan gesaved worden met de order shit -->
         <div *ngIf="!isSaved" class="modal-body">
-            <h1 class="title">Give your book a title!</h1>
+            <h1 class="title">Give your book a title</h1>
 
             <input type="text" name="title" #title="ngModel" [(ngModel)]="bookModel.title" autofocus>
 
@@ -28,7 +28,7 @@
 
             <div class="btn-container">
                 <a (click)="closeModal()" class="btn-trans back">Go back</a>
-                <a (click)="editBook(configuration.bookShortId, bookModel, book)" class="btn-trans">Edit and save</a>
+                <a (click)="editBook(configuration.bookShortId, bookModel, book)" class="btn-trans">Order</a>
             </div>
         </div>
 

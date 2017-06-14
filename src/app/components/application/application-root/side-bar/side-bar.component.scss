@@ -39,9 +39,19 @@
         color: white;
         font-size: 14px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         text-decoration: none;
+
+        .flex-grow {
+            flex: 1 0;
+        }
+
+        img {
+            display: block;
+            width: 20px;
+            margin-right: 15px;
+        }
 
         .cart {
             margin: 0;
@@ -53,7 +63,7 @@
             text-align: center;
             line-height: 20px;
             box-sizing: border-box;
-            background-color: red;
+            background-color: #245DB3;
             display: block;
             font-size: 14px;
             border-radius: 50%;
@@ -166,7 +176,7 @@
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                background-color: red;
+                background-color: #E55E5E;
                 text-align: center;
                 line-height: 20px;
             }

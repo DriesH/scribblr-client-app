@@ -16,6 +16,13 @@
 
         <div *ngIf="quoteData.is_memory" class="story" (click)="openStory()" [ngClass]="{ 'expand': isFullStory }" #storyContainer>
             <p #paragraphStory><i class="fa fa-quote-left"></i>&nbsp;&nbsp;{{ quoteData.story | ellipsis: ellipsisLength }}</p>
+            <span class="read-more" *ngIf="quoteData.story.length >= ellipsisLength">
+                <i class="fa" [ngClass]="{ 'fa-plus': !isFullStory, 'fa-minus': isFullStory }"></i>
+                &nbsp;<p>read
+                    <span *ngIf="!isFullStory">more</span>
+                    <span *ngIf="isFullStory">less</span>
+                </p>
+            </span>
         </div>
     </div>
 </div>

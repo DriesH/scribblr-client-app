@@ -16,8 +16,26 @@
     padding: 50px 0 0;
 }
 
+.double-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 49%;
+    height: 380px;
+
+    .panel-2x {
+        width: 100% !important;
+    }
+}
+
 .panel-2x {
     width: 49%;
+    height: 180px;
+
+    &.double-height {
+        height: 380px;
+    }
 
     .title {
         font-size: 2rem;
