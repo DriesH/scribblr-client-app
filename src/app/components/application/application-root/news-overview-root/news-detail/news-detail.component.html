@@ -3,6 +3,8 @@
         <h1 class="title">{{ newsArticle?.title }}</h1>
         <p class="date">-&nbsp;{{ newsArticle?.created_at | date }}</p>
 
+        <img [src]="newsArticle?.img" alt="newsArticle?.title">
+
         <div class="message--container">
             <p [innerHTML]="newsArticle?.message"></p>
         </div>

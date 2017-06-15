@@ -24,7 +24,7 @@
 
         <hr class="sidebar--separator" *ngIf="cart.length > 0">
 
-        <a routerLink="/checkout" class="shopping-cart" *ngIf="cart.length > 0">
+        <a routerLink="/checkout" routerLinkActive="active" class="shopping-cart" *ngIf="cart.length > 0">
             <img src="/assets/icons/shopping-cart.svg">
             <p class="cart">
                 Cart

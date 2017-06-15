@@ -33,15 +33,48 @@
     }
 }
 
+@keyframes bounceEffectCart {
+    0% {
+        transform: scale(1) rotate(0deg);
+        background-color: transparent;
+    }
+
+    10% {
+        transform: rotate(3deg);
+    }
+
+    20% {
+        transform: rotate(-3deg);
+    }
+
+    60% {
+        transform: scale(1.1) rotate(0deg);
+        background-color: lighten($main-color-four, 5%);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .sidebar {
     .shopping-cart {
-        width: 90%;
+        width: 180px;
+        height: 45px;
         color: white;
         font-size: 14px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         text-decoration: none;
+        padding: 10px;
+        box-sizing: border-box;
+        animation: bounceEffectCart 800ms 300ms ease-out forwards;
+
+        &:hover,
+        &.active {
+            background-color: lighten($main-color-four, 5%);
+        }
 
         .flex-grow {
             flex: 1 0;
