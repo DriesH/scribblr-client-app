@@ -14,7 +14,6 @@
     box-sizing: border-box;
     align-items: flex-start;
     margin-bottom: 20px;
-    overflow-x: auto;
     width: 100%;
 
     .posts {
@@ -36,13 +35,12 @@
 
     .post {
         width: 250px;
-        // height: 250px;
-        // background-color: $main-color-two;
+        height: 150px;
         margin: 0 5px;
         overflow: hidden;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
         border-radius: 3px;
         position: relative;
         cursor: pointer;
@@ -65,13 +63,31 @@
         }
 
         img {
-            width: 100%;
+            width: 120%;
         }
     }
 }
 
-@media screen and (max-width: 800px) {
-    .post {
-        width: 100px;
+@media screen and (max-width: 480px) {
+    #latest-posts {
+        width: 100%;
+        overflow-x: auto;
+
+        .posts {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 0;
+
+            li {
+                width: 100%;
+            }
+        }
+
+        .post {
+            width: 100%;
+            margin: 0 10px 0 0;
+        }
     }
 }

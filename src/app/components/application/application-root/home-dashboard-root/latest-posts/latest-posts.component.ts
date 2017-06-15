@@ -13,15 +13,12 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     latestPostsArray = [];
 
-    @ViewChild('latestPosts') latestPosts: ElementRef;
-
     @Output('reachedLast') reachedLast = new EventEmitter<boolean>();
 
     constructor(private _qs: QuoteService) { }
 
     ngOnInit() {
         this._qs.getLatestPost().subscribe(res => {
-            // console.log(res);
             this.latestPostsArray = res.latest_posts;
 
             if (!this.latestPostsArray.length) {
@@ -31,28 +28,9 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.addEventListeners();
     }
 
     ngOnDestroy() {
-        this.removeEventListeners();
-    }
-
-    addEventListeners() {
-        this.latestPosts.nativeElement.addEventListener('mousewheel', this.scrollX.bind(this));
-    }
-
-    removeEventListeners() {
-        this.latestPosts.nativeElement.removeEventListener('mousewheel', this.scrollX.bind(this));
-    }
-
-    scrollX(event: WheelEvent) {
-        event.preventDefault();
-        if (Math.sign(event.deltaY) > 0) {
-            this.latestPosts.nativeElement.scrollLeft += 100;
-        } else if (Math.sign(event.deltaY) < 0) {
-            this.latestPosts.nativeElement.scrollLeft -= 100;
-        }
     }
 
     makePostUrl(csi, psi, ibui) {

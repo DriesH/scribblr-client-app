@@ -42,6 +42,10 @@
     }
 }
 
+.latest-posts {
+    width: 100%;
+}
+
 .loading-screen {
     position: absolute;
     display: flex;
@@ -75,6 +79,22 @@
     left: -5px;
     border-top-color: $main-color-four;
     animation: loadingAnimation1 500ms infinite linear;
+}
+
+@media screen and (max-width: 480px) {
+    .control-panel {
+        flex-direction: column;
+    }
+
+    .panel-2x,
+    .double-panel {
+        width: 100%;
+        height: auto;
+
+        &.double-height {
+            height: auto;
+        }
+    }
 }
 
 @keyframes loadingAnimation1 {

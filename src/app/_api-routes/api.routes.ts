@@ -114,7 +114,8 @@ export const API_ROUTES = {
         },
         check_out: {
             prices: applicationPrefix + 'orders/prices',
-            checkout: applicationPrefix + 'orders/checkout'
+            checkout: applicationPrefix + 'orders/checkout',
+            orderStatus: applicationPrefix + 'orders/status'
         },
         news: {
             index: applicationPrefix + 'news',

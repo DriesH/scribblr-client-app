@@ -66,45 +66,21 @@
             font-size: 0.9rem;
         }
     }
-
-    .vertical-separator {
-        height: 80%;
-        display: block;
-        width: 1px;
-        background-color: $main-color-two;
-        margin: 0 30px;
-    }
 }
 
-@media screen and (max-width: 1240px) and (min-width: 801px) {
+@media screen and (max-width: 480px) {
     #statistics {
-        height: 360px;
-    }
-
-    .vertical-separator {
-        height: 40% !important;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #statistics {
-        height: auto;
-        padding: 10px;
-
         .statistic {
-            width: 45%;
-
-            .amount {
-                font-size: 3.5rem;
-            }
-
-            .type {
-                font-size: 0.7rem;
-            }
+            border: none;
+            border-bottom: 1px solid rgba($main-color-five, 0.2);
         }
 
-        .vertical-separator {
-            display: none;
+        .statistic:nth-last-child(-n+3) {
+            border-bottom: 1px solid rgba($main-color-five, 0.2);
+        }
+
+        .statistic:last-child {
+            border-bottom: none;
         }
     }
 }
