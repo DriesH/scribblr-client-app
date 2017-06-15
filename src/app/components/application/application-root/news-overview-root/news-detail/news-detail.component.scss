@@ -5,7 +5,7 @@
     border: 1px solid rgba($main-color-five, 0.2);
     border-radius: 3px;
     box-sizing: border-box;
-    padding: 15px;
+    padding: 25px;
     color: $main-color-five;
     width: 60%;
     min-height: 200px;
@@ -15,6 +15,17 @@
     align-items: flex-start;
     flex-direction: column;
     position: relative;
+
+    .content {
+        img {
+            margin: 20px 0 10px;
+            border: 1px solid rgba($main-color-two, 0.5);
+            border-radius: 3px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    }
 
     .loading-screen-article {
         width: 100%;
