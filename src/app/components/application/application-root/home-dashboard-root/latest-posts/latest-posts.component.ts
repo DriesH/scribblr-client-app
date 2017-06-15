@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { QuoteService } from '../../../../../services/application-services/quote.service';
 
@@ -15,7 +16,7 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @Output('reachedLast') reachedLast = new EventEmitter<boolean>();
 
-    constructor(private _qs: QuoteService) { }
+    constructor(private _qs: QuoteService, private router: Router) { }
 
     ngOnInit() {
         this._qs.getLatestPost().subscribe(res => {
@@ -34,12 +35,16 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     makePostUrl(csi, psi, ibui) {
-        return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageBaked(csi, psi, ibui);
+        return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageOriginal(csi, psi, ibui);
     }
 
     reachedLastFn(last) {
         if (last) {
             this.reachedLast.emit(last);
         }
+    }
+
+    goToChild(childShortId) {
+        this.router.navigate(['application', 'overview', childShortId]);
     }
 }

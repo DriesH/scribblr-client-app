@@ -1,0 +1,48 @@
+@import '../../../../../../scss/colors/colors';
+
+#child-book-add {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid rgba($main-color-five, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+        a {
+            display: block;
+            text-decoration: none;
+            width: 50%;
+            height: 100%;
+            cursor: pointer;
+            text-align: center;
+            color: rgba($main-color-five, 0.8);
+
+            &:hover {
+                background-color: $main-color-two;
+            }
+
+            &:active {
+                background-color: darken($main-color-two, 10%);
+            }
+
+            &:visited {
+                color: rgba($main-color-five, 0.5);
+            }
+        }
+    }
+}
+

@@ -9,12 +9,14 @@ import { CheckOutService } from '../../../../../services/application-services/ch
 })
 export class OrderStatusComponent implements OnInit {
 
+    activeOrders = [];
+
     constructor(private _cos: CheckOutService) { }
 
     ngOnInit() {
         this._cos.orderStatus().subscribe(res => {
             console.log(res);
+            this.activeOrders = res.orders;
         });
     }
-
 }

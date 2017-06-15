@@ -7,20 +7,17 @@
             <scrblr-statistics></scrblr-statistics>
         </div>
 
-        <div class="double-panel">
-            <div class="panel-2x">
-                <scrblr-quick-access [children]="children"></scrblr-quick-access>
-            </div>
-
-            <div class="panel-2x">
-                <scrblr-order-status></scrblr-order-status>
-            </div>
+        <div class="panel-2x double-height">
+            <scrblr-order-status></scrblr-order-status>
         </div>
 
         <div class="panel-2x">
-
+            <scrblr-quick-access [children]="children"></scrblr-quick-access>
         </div>
 
+        <div class="panel-2x">
+             <scrblr-quick-child-book></scrblr-quick-child-book>
+        </div>
 
         <div class="latest-posts">
             <scrblr-latest-posts (reachedLast)="doneLoading()"></scrblr-latest-posts>

@@ -1,4 +1,4 @@
-<div class="grid-item" #quoteBlock>
+<div class="grid-item" #quoteBlock [style.zIndex]="zIndexComponent">
     <div class="quote-block">
         <div class="img-header" [ngClass]="{ 'rounded-bottom' : !quoteData.is_memory }">
             <div class="control-overlay">

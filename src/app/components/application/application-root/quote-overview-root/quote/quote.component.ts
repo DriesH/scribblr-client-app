@@ -45,6 +45,9 @@ export class QuoteComponent implements OnInit {
     ellipsisLength = 150;
     isFullStory = false;
 
+    zIndexComponent = 1;
+
+
     constructor(private _qs: QuoteService, private _ns: NotificationsService) { }
 
     ngOnInit() {
@@ -103,8 +106,10 @@ export class QuoteComponent implements OnInit {
 
     openStory() {
         if (this.isFullStory) {
+            this.zIndexComponent = 1;
             this.ellipsisLength = 150;
         } else {
+            this.zIndexComponent = 65;
             this.ellipsisLength = 10000;
         }
 

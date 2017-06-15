@@ -4,8 +4,10 @@
         <ul class="posts" *ngIf="latestPostsArray.length">
             <li *ngFor="let post of latestPostsArray; let last = last">
                 <div class="post">
-                    <span class="overlay"></span>
-                    <img [src]="makePostUrl(post.child.short_id, post.short_id, post.img_baked_url_id)" (load)=reachedLastFn(last)>
+                    <span class="overlay" (click)="goToChild(post.child.short_id)">
+                        <i class="fa fa-2x" [ngClass]="{ 'fa-book': post.is_memory, 'fa-quote-left': !post.is_memory }"></i>
+                    </span>
+                    <img [src]="makePostUrl(post.child.short_id, post.short_id, post.img_original_url_id)" (load)=reachedLastFn(last)>
                 </div>
             </li>
         </ul>

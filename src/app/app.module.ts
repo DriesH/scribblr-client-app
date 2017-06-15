@@ -118,6 +118,7 @@ import { localStorageNgrx } from './classes/ngrx-localstorage';
 import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
 import { OrderStatusComponent } from './components/application/application-root/home-dashboard-root/order-status/order-status.component';
 import { NewsDetailComponent } from './components/application/application-root/news-overview-root/news-detail/news-detail.component';
+import { QuickChildBookComponent } from './components/application/application-root/home-dashboard-root/quick-child-book/quick-child-book.component';
 
 
 @NgModule({
@@ -174,6 +175,7 @@ import { NewsDetailComponent } from './components/application/application-root/n
         QuickAccessComponent,
         OrderStatusComponent,
         NewsDetailComponent,
+        QuickChildBookComponent,
     ],
     imports: [
         BrowserModule,

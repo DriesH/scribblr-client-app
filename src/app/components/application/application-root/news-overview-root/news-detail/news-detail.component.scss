@@ -1,5 +1,31 @@
 @import '../../../../../../scss/colors/colors';
 
+.news-info-page {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 50px;
+
+    .return-btn  {
+        display: flex;
+        width: 75px;
+        justify-content: center;
+        align-items: center;
+        color: $main-color-one;
+        text-decoration: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+
+        img {
+            display: block;
+            width: 20px;
+            transform: rotate(180deg);
+        }
+
+    }
+}
+
 .news-item {
     background-color: white;
     border: 1px solid rgba($main-color-five, 0.2);
@@ -7,9 +33,9 @@
     box-sizing: border-box;
     padding: 25px;
     color: $main-color-five;
-    width: 60%;
+    width: 80%;
     min-height: 200px;
-    margin: 50px auto;
+    margin: 0 auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;

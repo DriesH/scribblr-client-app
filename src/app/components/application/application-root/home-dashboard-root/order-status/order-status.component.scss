@@ -1,7 +1,8 @@
 @import '../../../../../../scss/colors/colors';
 
 #order-status {
-    height: 180px;
+    width: 100%;
+    height: 100%;
     background-color: white;
     border: 1px solid rgba($main-color-five, 0.2);
     border-radius: 3px;
@@ -12,4 +13,115 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.orders-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.orders {
+    list-style: none;
+    padding: 0;
+
+    .header-table {
+        padding: 0 0 10px;
+        border-bottom: 1px solid rgba($main-color-five, 0.2);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: bold;
+
+        .order-number,
+        .order-status {
+            width: 25%;
+        }
+
+        .order-content {
+            flex: 1 0;
+        }
+
+    }
+
+    .order {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba($main-color-five, 0.2);
+
+        .order-number {
+            color: rgba($main-color-five, 0.8);
+        }
+
+        .order-status {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: rgba($main-color-five, 0.8);
+
+            .status-bullet {
+                display: block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin-right: 10px;
+
+                .status-text {
+                    margin: 0;
+                }
+
+                &.production {
+                    background-color: orangered;
+                }
+            }
+        }
+
+        .order-number,
+        .order-status {
+            width: 25%;
+        }
+
+        .order-content {
+            flex: 1 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .book-covers {
+            width: 25%;
+            margin-right: 5px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .orders {
+        .order {
+            .order-status {
+                justify-content: center;
+
+                .status-text {
+                    display: none;
+                }
+            }
+
+            .order-content {
+                align-content: center;
+            }
+        }
+    }
 }

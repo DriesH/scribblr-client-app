@@ -1,3 +1,41 @@
 <div id="order-status">
+    <div class="orders-wrapper">
+        <ul class="orders" *ngIf="activeOrders.length">
+            <li class="header-table">
+                <div class="order-number">Order number</div>
+                <div class="order-content">Products</div>
+                <div class="order-status">Status</div>
+            </li>
+            <li class="order" *ngFor="let order of activeOrders">
+                <div class="order-number">{{ order.short_id }}</div>
+                <div class="order-content">
+                    <div class="book-covers" *ngFor="let book of order.books">
+                        <img [src]="'/assets/book-covers/' + book.cover_preset">
+                    </div>
+                </div>
+                <div class="order-status processed">
+                    <span class="status-bullet production"></span><p class="status-text">In production</p>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="orders" *ngIf="!activeOrders.length">
+            <li class="header-table">
+                <div class="order-number">Order number</div>
+                <div class="order-content">Products</div>
+                <div class="order-status">Status</div>
+            </li>
+            <li class="order">
+                <div class="order-number"></div>
+                <div class="order-content">
+                    No active orders.
+                </div>
+                <div class="order-status processed">
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
 
 </div>
