@@ -1,0 +1,113 @@
+@import '../../../../../../scss/colors/colors';
+
+.news-item {
+    background-color: white;
+    border: 1px solid rgba($main-color-five, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 15px;
+    color: $main-color-five;
+    width: 60%;
+    min-height: 200px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+
+    .loading-screen-article {
+        width: 100%;
+        height: 200px;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .loading-spinner-article {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid rgba($main-color-one, 0.6);
+            position: relative;
+        }
+
+        .loading-spinner-article::after {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            border-top-color: $main-color-four;
+            animation: loadingAnimation3 500ms infinite linear;
+        }
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .date {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin: 0 0 20px;
+    }
+
+    .message--container {
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+    }
+
+    .read-more {
+        text-decoration: none;
+        font-size: 0.8rem;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 30;
+        cursor: pointer;
+
+        i {
+            line-height: 1.5rem;
+            transform: translateY(2px);
+            color: $main-color-four;
+        }
+
+        p {
+            line-height: 1.5rem;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            color: $main-color-one;
+            transition: all 200ms ease-out;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active,
+        &:active p {
+            color: $main-color-four;
+        }
+    }
+}
+
+@keyframes loadingAnimation3 {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

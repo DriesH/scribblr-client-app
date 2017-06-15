@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NewsService } from '../../../../services/application-services/news.service';
+import { Router, Event, NavigationEnd } from '@angular/router';
 
 @Component({
     selector: 'scrblr-news-overview-root',
@@ -14,27 +15,33 @@ export class NewsOverviewRootComponent implements OnInit {
 
     news;
     newsIsLoading = false;
+    showNewsArticle = false;
 
     constructor(
         private _ns: NewsService,
+        private router: Router
     ) { }
 
     ngOnInit() {
+        let regExpRouter;
+
         this.newsIsLoading = true;
 
-        this._ns.getAllNews()
-            .subscribe(res => {
-                // console.log(res);
-                this.news = res.news;
-                this.newsIsLoading = false;
-            });
+        this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationEnd) {
+                this._ns.getAllNews()
+                    .subscribe(res => {
+                        this.news = res.news;
+                        this.newsIsLoading = false;
+                    });
 
-        this.hasReadAll();
-    }
-
-    hasReadAll() {
-        this._ns.readAll().subscribe(res => {
-            // console.log(res);
+                regExpRouter = event.url.match(/\/application\/news\/article/g);
+                if (regExpRouter && regExpRouter[0] === '/application/news/article') {
+                    this.showNewsArticle = true;
+                } else {
+                    this.showNewsArticle = false;
+                }
+            }
         });
     }
 }

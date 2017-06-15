@@ -4,7 +4,7 @@
 
     <div class="message--container">
         <p [innerHTML]="newsData.message | ellipsis: 150"></p>
-        <a class="read-more" [routerLink]="newsData.title">
+        <a class="read-more" [routerLink]="'article/' + newsData.url">
             <i class="fa fa-plus"></i>
             &nbsp;
             <p>read

@@ -1,0 +1,15 @@
+<div class="news-item">
+    <div class="content" *ngIf="!articleIsLoading">
+        <h1 class="title">{{ newsArticle?.title }}</h1>
+        <p class="date">-&nbsp;{{ newsArticle?.created_at | date }}</p>
+
+        <div class="message--container">
+            <p [innerHTML]="newsArticle?.message"></p>
+        </div>
+    </div>
+
+    <div *ngIf="articleIsLoading" class="loading-screen-article">
+        <span class="loading-spinner-article"></span>
+    </div>
+
+</div>

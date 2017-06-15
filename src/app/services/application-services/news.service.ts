@@ -31,8 +31,14 @@ export class NewsService {
                 .catch(err => this._hhs.errorHandler(err));
         }
 
-        readAll(): Observable<any> {
-            return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.readAll, this._headers.setOptions(this.token))
+        // readAll(): Observable<any> {
+        //     return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.readAll, this._headers.setOptions(this.token))
+        //         .map(res => this._hhs.extractData(res))
+        //         .catch(err => this._hhs.errorHandler(err));
+        // }
+
+        readArticle(newsTitle): Observable<any> {
+            return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.readArticle(newsTitle), this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
         }

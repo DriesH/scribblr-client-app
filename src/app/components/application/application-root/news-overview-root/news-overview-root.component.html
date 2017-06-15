@@ -3,8 +3,10 @@
         <span class="loading-spinner"></span>
     </div>
 
-    <div class="news--container">
+    <div class="news--container" *ngIf="!showNewsArticle">
         <h1 class="title">News.</h1>
         <scrblr-news *ngFor="let newsItem of news" [newsData]="newsItem"></scrblr-news>
     </div>
+
+    <router-outlet></router-outlet>
 </div>

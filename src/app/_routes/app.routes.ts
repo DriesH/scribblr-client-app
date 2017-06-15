@@ -121,7 +121,7 @@ const ROUTES: Routes = [
                 component: NewsOverviewRootComponent,
                 children: [
                     {
-                        path: ':new-title',
+                        path: 'article/:news-title',
                         component: NewsDetailComponent
                     }
                 ]
