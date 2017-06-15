@@ -7,9 +7,10 @@ import { API_ROUTES } from '../../../../../_api-routes/api.routes';
 
 import { Store } from '@ngrx/store';
 
-import { Router, Event, NavigationStart } from '@angular/router';
+import { Router, Event, NavigationStart, ActivatedRoute, Params } from '@angular/router';
 
 import * as BookActions from '../../../../../ngrx-state/actions/book.action';
+import * as CartActions from '../../../../../ngrx-state/actions/cart.action';
 
 @Component({
     selector: 'scrblr-book-editor',
@@ -70,6 +71,8 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         book: [] // CHECK THIS
     };
 
+    bookShortId = null;
+
     isSaved = false; // book saved
     isFailed = false;
     userIsSaving = false;
@@ -102,7 +105,8 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
         private _qs: QuoteService,
         private _bs: BookService,
         private store: Store<any>,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute,
     ) { }
 
     ngOnInit() {
@@ -135,6 +139,15 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
             let c: any = CHILDREN;
             this.children = c.children;
         });
+
+        this.route.params.subscribe((params: Params) => {
+            if (params['short_id_book']) {
+                this.bookShortId = params['short_id_book'];
+            } else {
+                this.bookShortId = null;
+            }
+        });
+
     }
 
     ngAfterViewInit() {
@@ -298,6 +311,14 @@ export class BookEditorComponent implements OnInit, AfterViewInit {
     removeCurrentPage(pageIndex, pageSide, shortId) {
         this.store.dispatch(new BookActions.RemoveFromBook({ pageIndex: pageIndex, pageSide: pageSide }));
         this.store.dispatch(new BookActions.AddToPostList({ shortId: shortId }));
+    }
+
+    orderBook() {
+        this.bookModel.book = this.book;
+        this._bs.editBook(this.bookShortId, this.bookModel).subscribe(res => {
+            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.router.navigate(['checkout']);
+        });
     }
 
     openSaveModal() {

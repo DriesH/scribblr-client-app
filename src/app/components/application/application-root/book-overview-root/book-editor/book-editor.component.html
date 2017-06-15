@@ -22,8 +22,8 @@
     </div>
 
     <div class="save-and-order" *ngIf="configuration.editing">
-        <span class="save" (click)="openSaveModal()"><i class="fa fa-edit"></i> Edit and save</span>
-        <span class="order" (click)="openOrderSaveModal()"><i class="fa fa-shopping-cart"></i> Order</span>
+        <span class="save" (click)="openSaveModal()"><i class="fa fa-edit"></i> Save</span>
+        <span class="order" (click)="orderBook()"><i class="fa fa-shopping-cart"></i> Order</span>
     </div>
 
     <scrblr-save-modal *ngIf="userIsSaving" (close)="closeModal()" [bookModel]="bookModel" [book]="book" [isEditing]="configuration.editing"></scrblr-save-modal>

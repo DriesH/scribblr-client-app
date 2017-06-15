@@ -19,7 +19,7 @@ export class NewsDetailComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params: Params) => {
             this.articleIsLoading = true;
-            this._ns.readArticle(params['news-title']).subscribe(res => {
+            this._ns.readArticle(params['news_title']).subscribe(res => {
                 this.newsArticle = res.news_item;
                 this.articleIsLoading = false;
             });
