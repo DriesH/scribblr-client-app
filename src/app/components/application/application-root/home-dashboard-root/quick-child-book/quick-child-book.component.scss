@@ -23,16 +23,28 @@
         height: 100%;
 
         a {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-decoration: none;
             width: 50%;
             height: 100%;
             cursor: pointer;
             text-align: center;
             color: rgba($main-color-five, 0.8);
+            border-radius: 3px;
+
+            p {
+                margin: 0;
+            }
+
+            i {
+                color: $main-color-four;
+            }
 
             &:hover {
-                background-color: $main-color-two;
+                background-color: lighten($main-color-two, 10%);
             }
 
             &:active {
