@@ -15,7 +15,6 @@ export class OrderStatusComponent implements OnInit {
 
     ngOnInit() {
         this._cos.orderStatus().subscribe(res => {
-            console.log(res);
             this.activeOrders = res.orders;
         });
     }

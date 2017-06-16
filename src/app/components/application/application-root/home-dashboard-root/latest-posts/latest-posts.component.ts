@@ -38,6 +38,10 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
         return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageOriginal(csi, psi, ibui);
     }
 
+    makePostBakedUrl(csi, psi, ibui) {
+        return API_ROUTES.baseUrl + API_ROUTES.application.posts.imageBaked(csi, psi, ibui);
+    }
+
     reachedLastFn(last) {
         if (last) {
             this.reachedLast.emit(last);
