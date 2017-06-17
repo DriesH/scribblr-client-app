@@ -1,3 +1,4 @@
+/* tslint:disable:member-ordering */
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
@@ -36,26 +37,21 @@ export class CurrentUserEffect {
     private extractUser(res) {
         const user: Object = res.json();
 
-        // console.log(user);
-
         const payload = {
             isAuth: true,
             user: user[0]
         };
 
-        // console.log(payload);
-
         return (new userActions.SuccessfullLogin(payload));
     }
 
-    // private removeToken() {
-    //     console.log('removing token');
-    //     return Observable.of(localStorage.removeItem('_token'));
-    // }
+    private removeToken() {
+        console.log('removing token');
+        return Observable.of(localStorage.removeItem('_token'));
+    }
 
     // This effect authenticates the user when he/her has a
     // JWT Token in the localStorage. If it fails it throws an error.
-    /* tslint:disable-next-line:member-ordering */
     @Effect()
     loginWithToken$: Observable<Action> = this.actions$
         .ofType(userActions.ActionTypes.TOKEN_PRESENT)
@@ -66,12 +62,11 @@ export class CurrentUserEffect {
             .catch(() => Observable.of(new userActions.ErrorLogin({}))));
 
     // Remove the token from the localStorage on fail.
-    /* tslint:disable-next-line:member-ordering */
-    // @Effect({ dispatch: false })
-    // removeOldToken$: Observable<any> = this.actions$
-    //     .ofType(userActions.ActionTypes.ERROR_LOGIN)
-    //     .map(toPayload)
-    //     .switchMap(() => this.removeToken());
+    @Effect({ dispatch: false })
+    removeOldToken$: Observable<any> = this.actions$
+        .ofType(userActions.ActionTypes.ERROR_LOGIN)
+        .map(toPayload)
+        .switchMap(() => this.removeToken());
 
     constructor(private actions$: Actions, private http: Http) {
         this.userRoute = API_ROUTES.baseUrl + API_ROUTES.getUserRoute;

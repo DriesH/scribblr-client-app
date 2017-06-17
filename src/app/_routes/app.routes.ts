@@ -38,6 +38,9 @@ import { CheckOutRootComponent } from '../components/application//application-ro
 
 // Guards
 import { AuthGuard } from '../guards/auth.guard';
+import { IsLoggedInGuard } from '../guards/is-logged-in.guard';
+
+
 
 const ROUTES: Routes = [
     // redirection route.
@@ -51,13 +54,15 @@ const ROUTES: Routes = [
     // registration route.
     {
         path: 'register',
-        component: RegistrationPageComponent
-        // TODO: add a route guard.
+        component: RegistrationPageComponent,
+        canActivate: [IsLoggedInGuard]
     },
 
+    // login route.
     {
         path: 'login',
         component: LoginPageComponent,
+        canActivate: [IsLoggedInGuard]
     },
 
     {
@@ -145,11 +150,11 @@ const ROUTES: Routes = [
                 ]
             }
         ]
+    },
+    {
+        path: '**',
+        redirectTo: 'home'
     }
-    // {
-    //     path: '**',
-    //     redirectTo: 'home'
-    // }
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

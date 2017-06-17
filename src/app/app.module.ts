@@ -101,6 +101,8 @@ import { NewsService } from './services/application-services/news.service';
 
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
+import { IsLoggedInGuard } from './guards/is-logged-in.guard';
+
 
 /* Pipes */
 import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
@@ -206,6 +208,7 @@ import { QuickChildBookComponent } from './components/application/application-ro
         JWTTokenService,
         AuthService,
         AuthGuard,
+        IsLoggedInGuard,
         ChildService,
         QuoteService,
         HttpHeaderService,
