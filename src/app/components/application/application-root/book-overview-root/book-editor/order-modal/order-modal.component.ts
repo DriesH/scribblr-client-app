@@ -53,7 +53,7 @@ export class OrderModalComponent implements OnInit, OnDestroy {
         this._bs.saveBook(bookModel).subscribe(res => {
             this.isSaved = true;
             this.isFailed = false;
-            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.store.dispatch(new CartActions.CheckBeforeAdd({ new_item: res.book }));
             this.router.navigate(['checkout']);
         }, err => {
             this.isSaved = false;
@@ -66,7 +66,7 @@ export class OrderModalComponent implements OnInit, OnDestroy {
         this._bs.editBook(bookShortId, bookModel).subscribe(res => {
             this.isSaved = true;
             this.isFailed = false;
-            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.store.dispatch(new CartActions.CheckBeforeAdd({ new_item: res.book }));
             this.router.navigate(['checkout']);
         }, err => {
             this.isSaved = false;

@@ -302,7 +302,7 @@ export class FlipBookEditorComponent implements OnInit, AfterViewInit {
     orderBook() {
         this.bookModel.book = this.book;
         this._bs.editBook(this.bookShortId, this.bookModel).subscribe(res => {
-            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.store.dispatch(new CartActions.CheckBeforeAdd({ new_item: res.book }));
             this.router.navigate(['checkout']);
         });
     }

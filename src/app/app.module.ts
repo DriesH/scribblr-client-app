@@ -73,8 +73,10 @@ import { QuickStartComponent } from './components/application/application-root/h
 import { LatestPostsComponent } from './components/application/application-root/home-dashboard-root/latest-posts/latest-posts.component';
 import { StatisticsComponent } from './components/application/application-root/home-dashboard-root/statistics/statistics.component';
 import { EditStoryComponent } from './components/application/application-root/quote-overview-root/edit-story/edit-story.component';
-
-
+import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
+import { OrderStatusComponent } from './components/application/application-root/home-dashboard-root/order-status/order-status.component';
+import { NewsDetailComponent } from './components/application/application-root/news-overview-root/news-detail/news-detail.component';
+import { QuickChildBookComponent } from './components/application/application-root/home-dashboard-root/quick-child-book/quick-child-book.component';
 
 /* Services */
 import { RegisterService } from './services/register.service';
@@ -98,11 +100,9 @@ import { FlipBookService } from './services/application-services/flip-book.servi
 import { CheckOutService } from './services/application-services/check-out.service';
 import { NewsService } from './services/application-services/news.service';
 
-
 /* Guards */
 import { AuthGuard } from './guards/auth.guard';
 import { IsLoggedInGuard } from './guards/is-logged-in.guard';
-
 
 /* Pipes */
 import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
@@ -116,12 +116,8 @@ import { CurrentUserEffect } from './ngrx-state/effects/current-user.effects';
 import { ChildEffect } from './ngrx-state/effects/child.effects';
 import { BookEffect } from './ngrx-state/effects/book.effects';
 import { FlipBookEffect } from './ngrx-state/effects/flip-book.effects';
+import { CartEffect } from './ngrx-state/effects/cart.effects';
 import { localStorageNgrx } from './classes/ngrx-localstorage';
-import { QuickAccessComponent } from './components/application/application-root/home-dashboard-root/quick-access/quick-access.component';
-import { OrderStatusComponent } from './components/application/application-root/home-dashboard-root/order-status/order-status.component';
-import { NewsDetailComponent } from './components/application/application-root/news-overview-root/news-detail/news-detail.component';
-import { QuickChildBookComponent } from './components/application/application-root/home-dashboard-root/quick-child-book/quick-child-book.component';
-
 
 @NgModule({
     declarations: [
@@ -197,6 +193,7 @@ import { QuickChildBookComponent } from './components/application/application-ro
         EffectsModule.runAfterBootstrap(ChildEffect),
         EffectsModule.runAfterBootstrap(BookEffect),
         EffectsModule.runAfterBootstrap(FlipBookEffect),
+        EffectsModule.runAfterBootstrap(CartEffect),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         SimpleNotificationsModule.forRoot(),
         FacebookModule.forRoot(),
