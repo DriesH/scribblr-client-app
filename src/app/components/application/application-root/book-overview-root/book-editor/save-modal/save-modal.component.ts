@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 
 import { BookService } from '../../../../../../services/application-services/book.service';
 
@@ -7,14 +7,14 @@ import { BookService } from '../../../../../../services/application-services/boo
     templateUrl: './save-modal.component.html',
     styleUrls: ['./save-modal.component.scss']
 })
-export class SaveModalComponent implements OnInit {
+export class SaveModalComponent implements OnInit, OnDestroy {
 
     isSaved = false;
     isFailed = false;
 
     @Input('bookModel') bookModel;
     @Input('book') book;
-    @Input('isEditing') isEditing;
+    @Input('configuration') configuration;
 
     @Output('close') close = new EventEmitter<boolean>();
 
@@ -23,12 +23,29 @@ export class SaveModalComponent implements OnInit {
     ngOnInit() {
         this.isSaved = false;
         this.isFailed = false;
+
+        this.addEventListeners();
+    }
+
+    ngOnDestroy() {
+        this.removeEventListeners();
+    }
+
+    addEventListeners() {
+        document.addEventListener('keyup', this.saveOnEnter.bind(this));
+    }
+
+    removeEventListeners() {
+        document.removeEventListener('keyup', this.saveOnEnter.bind(this));
+    }
+
+    saveOnEnter() {
+        this.saveBook(this.bookModel, this.book);
     }
 
     saveBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
-            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {
@@ -40,7 +57,6 @@ export class SaveModalComponent implements OnInit {
     editBook(bookShortId, bookModel, book) {
         bookModel.book = book;
         this._bs.editBook(bookShortId, bookModel).subscribe(res => {
-            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
         }, err => {

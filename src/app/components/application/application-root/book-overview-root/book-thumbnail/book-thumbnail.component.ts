@@ -6,6 +6,8 @@ import * as CartActions from '../../../../../ngrx-state/actions/cart.action';
 
 import { BookService } from '../../../../../services/application-services/book.service';
 
+import { NotificationsService } from 'angular2-notifications';
+
 @Component({
     selector: 'scrblr-book-thumbnail',
     templateUrl: './book-thumbnail.component.html',
@@ -24,7 +26,7 @@ export class BookThumbnailComponent implements OnInit {
 
     isDeleting = false;
 
-    constructor(private store: Store<any>, private _bs: BookService) { }
+    constructor(private store: Store<any>, private _bs: BookService, private _ns: NotificationsService) { }
 
     ngOnInit() {
         if (this.bookData.is_flip_over) {
@@ -54,7 +56,12 @@ export class BookThumbnailComponent implements OnInit {
 
         this.isDeleting = true;
         this._bs.deleteBook(bookShortId).subscribe(res => {
-            this.deletedBook.emit(bookShortId);
+            if (res.can_delete) {
+                this.deletedBook.emit(bookShortId);
+                this.store.dispatch(new CartActions.ClearCart({}));
+            } else {
+                this._ns.alert('Can\'t delete book!', 'You can\'t delete this book. It is currently being ordered.');
+            }
             this.isDeleting = false;
         });
     }

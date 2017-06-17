@@ -48,4 +48,11 @@ export class CheckOutService {
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
+
+    checkForEmptyPages(bookShortId): Observable<any> {
+        return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.check_out.checkOnEmptyPages(bookShortId),
+            this._headers.setOptions(this.token))
+                .map(res => this._hhs.extractData(res))
+                .catch(err => this._hhs.errorHandler(err));
+    }
 }

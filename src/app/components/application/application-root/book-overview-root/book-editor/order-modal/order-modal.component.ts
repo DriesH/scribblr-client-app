@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -13,14 +13,14 @@ import * as CartActions from '../../../../../../ngrx-state/actions/cart.action';
   templateUrl: './order-modal.component.html',
   styleUrls: ['./order-modal.component.scss']
 })
-export class OrderModalComponent implements OnInit {
+export class OrderModalComponent implements OnInit, OnDestroy {
 
     isSaved = false;
     isFailed = false;
 
     @Input('bookModel') bookModel;
     @Input('book') book;
-    @Input('isEditing') isEditing;
+    @Input('configuration') configuration;
 
     @Output('close') close = new EventEmitter<boolean>();
 
@@ -29,12 +29,28 @@ export class OrderModalComponent implements OnInit {
     ngOnInit() {
         this.isSaved = false;
         this.isFailed = false;
+        this.addEventListeners();
+    }
+
+    ngOnDestroy() {
+        this.removeEventListeners();
+    }
+
+    addEventListeners() {
+        document.addEventListener('keyup', this.saveOnEnter.bind(this));
+    }
+
+    removeEventListeners() {
+        document.removeEventListener('keyup', this.saveOnEnter.bind(this));
+    }
+
+    saveOnEnter() {
+        this.saveAndOrderBook(this.bookModel, this.book);
     }
 
     saveAndOrderBook(bookModel, book) {
         bookModel.book = book;
         this._bs.saveBook(bookModel).subscribe(res => {
-            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
             this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
@@ -48,9 +64,10 @@ export class OrderModalComponent implements OnInit {
     order(bookShortId, bookModel, book) {
         bookModel.book = book;
         this._bs.editBook(bookShortId, bookModel).subscribe(res => {
-            // console.log(res);
             this.isSaved = true;
             this.isFailed = false;
+            this.store.dispatch(new CartActions.AddToCart({ new_item: res.book }));
+            this.router.navigate(['checkout']);
         }, err => {
             this.isSaved = false;
             this.isFailed = true;
