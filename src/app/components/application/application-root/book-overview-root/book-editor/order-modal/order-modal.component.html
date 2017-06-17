@@ -1,5 +1,5 @@
 <div class="modal-container">
-    <div class="modal save-modal" *ngIf="!configuration.isEditing"> <!-- DIt moet zijn isOrdering, zodat er niet meer kan gesaved worden met de order shit -->
+    <div class="modal save-modal" *ngIf="!configuration.editing"> <!-- DIt moet zijn isOrdering, zodat er niet meer kan gesaved worden met de order shit -->
         <div *ngIf="!isSaved" class="modal-body">
             <h1 class="title">Give your book a title</h1>
 
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="modal save-modal" *ngIf="configuration.isEditing">
+    <div class="modal save-modal" *ngIf="configuration.editing">
         <div *ngIf="!isSaved" class="modal-body">
             <h1 class="title">Edit the title</h1>
 

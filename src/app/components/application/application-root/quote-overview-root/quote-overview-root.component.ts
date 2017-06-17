@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, UIParams, UIResponse, InitParams  } from 'ngx-facebook';
 
+import { NotificationsService } from 'angular2-notifications';
+
 import * as QuoteActions from '../../../../ngrx-state/actions/quote.action';
 
 declare var Masonry: any;
@@ -49,7 +51,8 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
         private _qs: QuoteService,
         private route: ActivatedRoute,
         private store: Store<any>,
-        private facebook: FacebookService
+        private facebook: FacebookService,
+        private _ns: NotificationsService
     ) {
         let initParams: InitParams = {
             appId: '1236834116439954',
@@ -127,13 +130,18 @@ export class QuoteOverviewRootComponent implements OnInit, AfterViewInit {
 
     removeQuote(postShortId) {
         this._qs.deletePost(this.childShortId, postShortId).subscribe(res => {
-            this.posts = this.posts.filter((post) => {
-                return post.short_id !== postShortId;
-            });
+            if (res.can_delete) {
+                this.posts = this.posts.filter((post) => {
+                    return post.short_id !== postShortId;
+                });
 
-            setTimeout(() => {
-                this.reloadMasonry();
-            }, 100);
+                setTimeout(() => {
+                    this.reloadMasonry();
+                }, 100);
+            } else {
+                this._ns.alert('Can\'t delete memory!', 'You can\'t delete this memory, because it is part of a book.');
+            }
+
         });
     }
 
