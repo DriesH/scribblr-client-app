@@ -39,8 +39,12 @@ export class SaveModalComponent implements OnInit, OnDestroy {
         document.removeEventListener('keyup', this.saveOnEnter.bind(this));
     }
 
-    saveOnEnter() {
-        this.saveBook(this.bookModel, this.book);
+    saveOnEnter(event) {
+        event.preventDefault();
+
+        if (event.keyCode === 13) {
+           this.saveBook(this.bookModel, this.book);
+        }
     }
 
     saveBook(bookModel, book) {

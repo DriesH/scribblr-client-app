@@ -44,8 +44,12 @@ export class OrderModalComponent implements OnInit, OnDestroy {
         document.removeEventListener('keyup', this.saveOnEnter.bind(this));
     }
 
-    saveOnEnter() {
-        this.saveAndOrderBook(this.bookModel, this.book);
+    saveOnEnter(event) {
+        event.preventDefault();
+
+        if (event.keyCode === 13) {
+            this.saveAndOrderBook(this.bookModel, this.book);
+        }
     }
 
     saveAndOrderBook(bookModel, book) {

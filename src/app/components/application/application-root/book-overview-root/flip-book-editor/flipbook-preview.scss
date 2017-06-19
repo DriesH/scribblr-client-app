@@ -39,6 +39,41 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+        &.story {
+            .story-page {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+
+                .picture {
+                    height: 100%;
+                    width: 48%;
+                    overflow: hidden;
+                }
+
+                .page-image {
+                    width: 150%;
+                    height: auto;
+                }
+
+                .story-text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    width: 48%;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 0.9rem;
+
+                    .quote-icon {
+                        color: $main-color-four;
+                    }
+                }
+            }
+        }
     }
 
     .flip-book-page:hover .delete-page {

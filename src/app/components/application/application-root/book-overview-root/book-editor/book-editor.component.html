@@ -66,7 +66,7 @@
                 <hr>
                 <div class="page-right" data-is-memory="true" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                     <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1][0].short_id)"><i class="fa fa-trash"></i> Remove</span>
-                    <div class="quote-icon" [style.color]="bookModel.color">
+                    <div class="quote-icon">
                         <i class="fa fa-quote-left fa-5x"></i>
                     </div>
                     <p>{{ book[currentPage - 1][0].story }}</p>

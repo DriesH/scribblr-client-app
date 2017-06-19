@@ -69,9 +69,19 @@
             <!--STORY-->
             <div class="book" *ngIf="isMemoryBoolean === true">
 
-                <div class="flip-book-page" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
+                <div class="flip-book-page story" dnd-droppable (onDropSuccess)="transferDataSuccess($event)">
                     <span class="delete-page" (click)="removeCurrentPage((currentPage - 1), 0, book[currentPage - 1].short_id)"><i class="fa fa-trash"></i> Remove</span>
-                    <scrblr-book-page [pageData]="book[currentPage - 1]" [src]="currentImages[0]"></scrblr-book-page>
+                    <div class="story-page">
+                        <div class="picture">
+                            <scrblr-book-page [pageData]="book[currentPage - 1]" [src]="currentImages[0]"></scrblr-book-page>
+                        </div>
+                        <div class="story-text">
+                            <div class="quote-icon">
+                                <i class="fa fa-quote-left fa-3x"></i>
+                            </div>
+                            <p>{{ book[currentPage - 1].story }}</p>
+                        </div>
+                    </div>
                     <span class="page-number">{{ currentPage }}</span>
                 </div>
 
