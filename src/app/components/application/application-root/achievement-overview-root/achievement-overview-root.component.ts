@@ -11,6 +11,7 @@ export class AchievementOverviewRootComponent implements OnInit {
 
     achievementCategories;
     totalPoints = 0;
+    spentPoints = 0;
     isLoadingAchievements = false;
 
     constructor(
@@ -22,9 +23,9 @@ export class AchievementOverviewRootComponent implements OnInit {
 
         this._as.getAllAchievements()
             .subscribe(res => {
-                // console.log(res);
                 this.achievementCategories = res.achievements;
                 this.totalPoints = res.total_points;
+                this.spentPoints = res.spent_points;
                 this.isLoadingAchievements = false;
             });
 

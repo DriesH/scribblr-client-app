@@ -14,6 +14,8 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
     latestPostsArray = [];
 
+    hasLatestPosts = false;
+
     @Output('reachedLast') reachedLast = new EventEmitter<boolean>();
 
     constructor(private _qs: QuoteService, private router: Router) { }
@@ -23,7 +25,10 @@ export class LatestPostsComponent implements OnInit, OnDestroy, AfterViewInit {
             this.latestPostsArray = res.latest_posts;
 
             if (!this.latestPostsArray.length) {
+                this.hasLatestPosts = false;
                 this.reachedLast.emit(true);
+            } else {
+                this.hasLatestPosts = true;
             }
         });
     }

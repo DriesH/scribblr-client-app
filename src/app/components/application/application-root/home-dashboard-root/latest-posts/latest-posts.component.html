@@ -1,4 +1,4 @@
-<div id="latest-posts-wrap">
+<div id="latest-posts-wrap" *ngIf="hasLatestPosts">
     <h1 class="title">Latest memories.</h1>
     <div id="latest-posts">
         <ul class="posts" *ngIf="latestPostsArray.length">
@@ -16,5 +16,4 @@
             <p>You haven't added any memories.</p>
         </div>
     </div>
-
 </div>

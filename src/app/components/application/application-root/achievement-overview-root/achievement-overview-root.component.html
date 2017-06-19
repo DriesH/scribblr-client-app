@@ -9,13 +9,12 @@
         </div>
         <div class="points--explanation" *ngIf="totalPoints >= 100">
             <h2>Congratulations! You have collected 100 points.</h2>
-            <p>You will receive a discount on your next order.</p>
+            <p>Use them on your next order and receive a discount.</p>
         </div>
         <div class="points">
-            <p class="type"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;Amount of points</p>
+            <p class="type"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;Current points</p>
             <p class="amount" *ngIf="!totalPoints">{{ totalPoints }}</p>
-            <p class="amount" *ngIf="totalPoints" counto [step]="30" [countTo]="totalPoints" [countFrom]="0" [duration]="0.7"
-                (countoChange)="points = $event">{{ points | number:'1.0-0'}}</p>
+            <p class="amount" *ngIf="totalPoints" counto [step]="30" [countTo]="totalPoints" [countFrom]="0" [duration]="0.7" (countoChange)="total_points = $event">{{ total_points | number:'1.0-0'}}</p>
         </div>
     </div>
 
