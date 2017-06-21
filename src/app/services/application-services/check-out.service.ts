@@ -28,6 +28,8 @@ export class CheckOutService {
 
     // GET
     getPrices(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.check_out.prices,
             this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
@@ -35,6 +37,8 @@ export class CheckOutService {
     }
 
     checkOut(cartData): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.check_out.checkout,
             cartData,
             this._headers.setOptions(this.token))
@@ -43,6 +47,8 @@ export class CheckOutService {
     }
 
     orderStatus(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.check_out.orderStatus,
             this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
@@ -50,6 +56,8 @@ export class CheckOutService {
     }
 
     checkForEmptyPages(bookShortId): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.check_out.checkOnEmptyPages(bookShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))

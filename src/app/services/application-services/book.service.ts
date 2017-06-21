@@ -28,6 +28,8 @@ export class BookService {
 
     // GET
     autoGenerateNewBook(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.generateNewBook, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
@@ -35,6 +37,8 @@ export class BookService {
 
     // POST
     saveBook(bookData): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.newBook,
             bookData,
             this._headers.setOptions(this.token))
@@ -43,6 +47,8 @@ export class BookService {
     }
 
     editBook(bookShortId, bookData): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.book.editBook(bookShortId),
             bookData,
             this._headers.setOptions(this.token))
@@ -52,6 +58,8 @@ export class BookService {
 
     // GET
     getAllBooks(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.index,
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
@@ -59,6 +67,8 @@ export class BookService {
     }
 
     getBook(bookShortId): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.book.getBook(bookShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
@@ -67,6 +77,8 @@ export class BookService {
 
     // DELETE
     deleteBook(bookShortId): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.delete(API_ROUTES.baseUrl + API_ROUTES.application.book.deleteBook(bookShortId),
             this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
@@ -77,12 +89,16 @@ export class BookService {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     // GET
     autoGenerateNewFlipBook(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.generateNewBook, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
     saveFlipBook(bookData): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.newBook,
             bookData,
             this._headers.setOptions(this.token))
@@ -91,6 +107,8 @@ export class BookService {
     }
 
     editFlipBook(bookShortId, bookData): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.editBook(bookShortId),
             bookData,
             this._headers.setOptions(this.token))
@@ -99,6 +117,8 @@ export class BookService {
     }
 
     getFlipBook(bookShortId): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.flip_book.getBook(bookShortId),
             this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))

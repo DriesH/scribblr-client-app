@@ -26,12 +26,16 @@ export class TutorialService {
 
     // GET
     skipTutorial(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.tutorial.skipTutorialBook, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
     completedTutorial(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.tutorial.completedTutorialBook, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));

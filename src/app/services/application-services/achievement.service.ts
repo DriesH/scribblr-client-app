@@ -27,12 +27,16 @@ export class AchievementService {
 
     // GET
     getAllAchievements(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.achievement.index, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));
     }
 
     getLatestAchievement(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.achievement.latest, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));

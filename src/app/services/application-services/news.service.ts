@@ -26,6 +26,8 @@ export class NewsService {
         }
 
         getAllNews(): Observable<any> {
+            this.token = localStorage.getItem('_token');
+
             return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.index, this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
@@ -38,12 +40,16 @@ export class NewsService {
         // }
 
         readArticle(newsTitle): Observable<any> {
+            this.token = localStorage.getItem('_token');
+
             return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.readArticle(newsTitle), this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));
         }
 
         getAmoutOfUnread(): Observable<any> {
+            this.token = localStorage.getItem('_token');
+
             return this.http.get(API_ROUTES.baseUrl + API_ROUTES.application.news.getUnreadCount, this._headers.setOptions(this.token))
                 .map(res => this._hhs.extractData(res))
                 .catch(err => this._hhs.errorHandler(err));

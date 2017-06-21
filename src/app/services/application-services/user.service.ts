@@ -26,6 +26,8 @@ export class UserService {
 
     // POST
     updateUser(data): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.post(API_ROUTES.baseUrl + API_ROUTES.user.update,
             data,
             this._headers.setOptions(this.token))
@@ -34,6 +36,8 @@ export class UserService {
     }
 
     getCountries(): Observable<any> {
+        this.token = localStorage.getItem('_token');
+
         return this.http.get(API_ROUTES.baseUrl + API_ROUTES.user.countries, this._headers.setOptions(this.token))
             .map(res => this._hhs.extractData(res))
             .catch(err => this._hhs.errorHandler(err));

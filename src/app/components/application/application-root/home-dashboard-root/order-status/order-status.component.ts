@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { CheckOutService } from '../../../../../services/application-services/check-out.service';
 
@@ -7,13 +7,16 @@ import { CheckOutService } from '../../../../../services/application-services/ch
     templateUrl: './order-status.component.html',
     styleUrls: ['./order-status.component.scss']
 })
-export class OrderStatusComponent implements OnInit {
+export class OrderStatusComponent implements OnInit, AfterViewInit {
 
     activeOrders = [];
 
     constructor(private _cos: CheckOutService) { }
 
     ngOnInit() {
+    }
+
+    ngAfterViewInit() {
         this._cos.orderStatus().subscribe(res => {
             this.activeOrders = res.orders;
         });
