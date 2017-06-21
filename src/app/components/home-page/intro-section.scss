@@ -39,7 +39,8 @@
 }
 
 .btn-empty,
-.btn-full {
+.btn-full,
+.btn-header {
     display: block;
     width: 215px;
     height: 50px;
@@ -68,8 +69,7 @@
     }
 }
 
-.btn-full {
-    margin-left: 20px;
+.btn-header {
     font-weight: 600;
     color: $main-color-four;
     border: 3px solid white;
@@ -77,16 +77,40 @@
 
     &:hover {
         color: white;
-        border: 3px solid $main-color-four;
-        background-color: $main-color-four;
+        border: 3px solid lighten($main-color-four, 10%);
+        background-color: lighten($main-color-four, 10%);
         box-shadow: 0 4px 5px rgba(17, 50, 99, 0.45);
         transform: translateY(-2px);
     }
 
     &:active {
         color: white;
+        border: 3px solid darken($main-color-four, 10%);
+        background-color: darken($main-color-four, 10%);
+        box-shadow: 0 1px 3px rgba(17, 50, 99, 0.45);
+        transform: translateY(0);
+    }
+}
+
+.btn-full {
+    // margin-left: 20px;
+    font-weight: 600;
+    color: white;
+    border: 3px solid $main-color-four;
+    background-color: $main-color-four;
+
+    &:hover {
+        color: white;
         border: 3px solid lighten($main-color-four, 10%);
         background-color: lighten($main-color-four, 10%);
+        box-shadow: 0 4px 5px rgba(17, 50, 99, 0.45);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        color: white;
+        border: 3px solid darken($main-color-four, 10%);
+        background-color: darken($main-color-four, 10%);
         box-shadow: 0 1px 3px rgba(17, 50, 99, 0.45);
         transform: translateY(0);
     }

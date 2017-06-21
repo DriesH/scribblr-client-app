@@ -10,11 +10,11 @@
 
                 <div class="button-container" *ngIf="!isLoggedIn">
                     <a class="btn-empty" href="home#section1">Learn more</a>
-                    <a class="btn-full" routerLink="/register">Create account</a>
+                    <a class="btn-header" routerLink="/register">Create account</a>
                 </div>
 
                 <div class="button-container" *ngIf="isLoggedIn">
-                    <a class="btn-full" routerLink="/application/home">Let's start</a>
+                    <a class="btn-header" routerLink="/application/home">Let's start</a>
                 </div>
 
             </div>
@@ -84,7 +84,6 @@
             </h1>
 
             <a class="btn-full" routerLink="/register">Create account</a>
-
         </div>
     </section>
 
